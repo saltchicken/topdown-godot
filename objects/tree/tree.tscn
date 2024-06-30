@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbcfk118nxkn7"]
+
+[ext_resource type="Texture2D" uid="uid://q343hi5h3w3e" path="res://objects/tree/tree.png" id="1_wrrpp"]
+[ext_resource type="PackedScene" uid="uid://bgihn1242qk6t" path="res://components/health_component/health_component.tscn" id="2_qyjmv"]
+[ext_resource type="PackedScene" uid="uid://b8vr052ouuvpf" path="res://components/hitbox_component/hitbox_component.tscn" id="2_y2dvs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpiw6"]
+radius = 7.0
+height = 26.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6jud6"]
+radius = 8.0
+height = 28.0
+
+[node name="Tree" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -18)
+texture = ExtResource("1_wrrpp")
+hframes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_dpiw6")
+
+[node name="HealthComponent" parent="." instance=ExtResource("2_qyjmv")]
+MAX_HEALTH = 30.0
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_y2dvs")]
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, 1)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_6jud6")
