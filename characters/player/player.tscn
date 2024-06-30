@@ -6,7 +6,7 @@
 [ext_resource type="Script" path="res://characters/player/animation/animation.gd" id="3_65hso"]
 [ext_resource type="PackedScene" uid="uid://bef8t70v0pmr1" path="res://components/input_component/input_component.tscn" id="3_l52s8"]
 [ext_resource type="AnimationLibrary" uid="uid://cn2h6gqoydhn5" path="res://characters/player/animation/idle.res" id="3_x68ir"]
-[ext_resource type="PackedScene" uid="uid://dy04wfary7rnh" path="res://state_machine/state_machine.tscn" id="4_5gocp"]
+[ext_resource type="PackedScene" uid="uid://dy04wfary7rnh" path="res://components/state_machine/state_machine.tscn" id="4_5gocp"]
 [ext_resource type="Script" path="res://characters/player/states/idle.gd" id="5_dos0p"]
 [ext_resource type="Script" path="res://characters/player/states/run.gd" id="8_kbly6"]
 
@@ -652,6 +652,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_lbwvk")
 initial_state = NodePath("StateMachine/idle")
+run_speed = 120.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_6evst")
@@ -666,15 +667,15 @@ scale = Vector2(1.03125, 1)
 texture = ExtResource("2_287s8")
 hframes = 8
 vframes = 8
-frame = 32
+frame = 33
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 root_node = NodePath("../CharacterBase")
 tree_root = SubResource("AnimationNodeStateMachine_07n6f")
 anim_player = NodePath("AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.0855392
-parameters/current_delta = 0.0148547
+parameters/current_position = 0.192276
+parameters/current_delta = 0.00694444
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -682,15 +683,15 @@ parameters/Start/current_length = 0.0
 parameters/Start/current_position = 0.0
 parameters/Start/current_delta = 0.0
 parameters/idle/current_length = 0.8
-parameters/idle/current_position = 0.0855392
-parameters/idle/current_delta = 0.0148547
+parameters/idle/current_position = 0.192276
+parameters/idle/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/current_length = 0.8
-parameters/idle/BlendSpace2D/current_position = 0.0855392
-parameters/idle/BlendSpace2D/current_delta = 0.0148547
+parameters/idle/BlendSpace2D/current_position = 0.192276
+parameters/idle/BlendSpace2D/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.0703499, 0.752577)
 parameters/idle/BlendSpace2D/0/current_length = 0.8
-parameters/idle/BlendSpace2D/0/current_position = 0.0855392
-parameters/idle/BlendSpace2D/0/current_delta = 0.0148547
+parameters/idle/BlendSpace2D/0/current_position = 0.192276
+parameters/idle/BlendSpace2D/0/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/1/current_length = 0.8
 parameters/idle/BlendSpace2D/1/current_position = 0.0489433
 parameters/idle/BlendSpace2D/1/current_delta = 0.00694444
@@ -713,12 +714,12 @@ parameters/idle/BlendSpace2D/7/current_length = 0.8
 parameters/idle/BlendSpace2D/7/current_position = 0.600369
 parameters/idle/BlendSpace2D/7/current_delta = 0.00694444
 parameters/idle/TimeScale/current_length = 0.8
-parameters/idle/TimeScale/current_position = 0.0855392
-parameters/idle/TimeScale/current_delta = 0.0148547
+parameters/idle/TimeScale/current_position = 0.192276
+parameters/idle/TimeScale/current_delta = 0.00694444
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.8
-parameters/idle/output/current_position = 0.0855392
-parameters/idle/output/current_delta = 0.0148547
+parameters/idle/output/current_position = 0.192276
+parameters/idle/output/current_delta = 0.00694444
 parameters/run/current_length = null
 parameters/run/current_position = null
 parameters/run/current_delta = null

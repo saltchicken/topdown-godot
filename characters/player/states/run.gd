@@ -7,8 +7,8 @@ func Enter():
 func Exit():
 	pass
 	
-func Update(_delta:float):
-	parse_input_direction()
+func Update(delta:float):
+	parse_input_direction(delta)
 	animation.set_direction(self.name, input.direction)
 		
 func state_movement():
