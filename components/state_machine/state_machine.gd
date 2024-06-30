@@ -25,7 +25,7 @@ func _init_state():
 func  _physics_process(delta): # TODO: Should this be _physics or just _process
 	if current_state:
 		if state_transitioning:
-			print('Transitioning')
+			push_warning('StateMachine update called while transitioning')
 		current_state.Update(delta)
 	
 func change_state(source_state : State, new_state_name : String, params : Dictionary = {}):
