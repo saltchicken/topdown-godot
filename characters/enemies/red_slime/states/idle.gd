@@ -14,5 +14,4 @@ func Update(_delta:float):
 	state_movement()
 	
 func state_movement():
-	print('hello')
 	owner.velocity = Vector2(0.0, 0.0)
