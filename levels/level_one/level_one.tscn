@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=4 uid="uid://de87suv6kg5db"]
+[gd_scene load_steps=7 format=4 uid="uid://de87suv6kg5db"]
 
 [ext_resource type="Script" path="res://scene_manager/gameplay/scripts/level.gd" id="1_w0a4h"]
 [ext_resource type="Texture2D" uid="uid://fjuy5toi0an4" path="res://levels/level_one/decor_16x16_grass.png" id="2_8qbdq"]
 [ext_resource type="PackedScene" uid="uid://dbcfk118nxkn7" path="res://objects/tree/tree.tscn" id="3_t5xyq"]
+[ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="4_omtx2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2kwp"]
 resource_name = "grasslands"
@@ -44,3 +45,6 @@ tile_set = SubResource("TileSet_ujudc")
 [node name="Tree" parent="." instance=ExtResource("3_t5xyq")]
 z_as_relative = false
 position = Vector2(125, -73)
+
+[node name="RedSlime" parent="." instance=ExtResource("4_omtx2")]
+position = Vector2(-85, -94)

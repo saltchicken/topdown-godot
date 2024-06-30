@@ -2,6 +2,7 @@ extends Node
 class_name State
 
 @onready var input: InputComponent = get_parent().input
+@onready var steering: SteeringComponent = get_parent().steering
 @onready var animation: AnimationTree = get_parent().animation
 
 @warning_ignore("unused_signal")
@@ -18,26 +19,6 @@ func Update(_delta:float):
 	
 func state_movement():
 	pass
-
-func parse_input_action(current_state) -> void:
-	if input.attack:
-		state_transition.emit(self, 'sword_attack')
-		
-
-func parse_input_direction(current_state) -> void:
-	match current_state.name:
-		'idle':
-			if input.direction:
-				state_transition.emit(self, 'run')
-		'run':
-			if !input.direction:
-				state_transition.emit(self, 'idle')
-		_:
-			if input.direction:
-				state_transition.emit(self, 'run')
-			else:
-				state_transition.emit(self, 'idle')
-	state_movement()
 
 
 # TODO: This goes to health component	

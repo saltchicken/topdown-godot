@@ -37,18 +37,38 @@ func _physics_process(_delta: float) -> void:
 		#parse_input_actions()
 		#parse_input_direction()
 	
-func parse_input_actions() -> String:
-	if use:
-		return 'use'
-	if sneak:
-		return 'sneak'
-	if dash:
-		return 'dash'
+#func parse_input_actions() -> String:
+	#if use:
+		#return 'use'
+	#if sneak:
+		#return 'sneak'
+	#if dash:
+		#return 'dash'
+	#if attack:
+		#return 'attack'
+	#if cast:
+		#return 'cast'
+	#return ''
+	
+func parse_input_action(current_state) -> void:
 	if attack:
-		return 'attack'
-	if cast:
-		return 'cast'
-	return ''
+		current_state.state_transition.emit(current_state, 'sword_attack')
+		
+
+func parse_input_direction(current_state) -> void:
+	match current_state.name:
+		'idle':
+			if direction:
+				current_state.state_transition.emit(current_state, 'run')
+		'run':
+			if !direction:
+				current_state.state_transition.emit(current_state, 'idle')
+		_:
+			if direction:
+				current_state.state_transition.emit(current_state, 'run')
+			else:
+				current_state.state_transition.emit(current_state, 'idle')
+	current_state.state_movement()
 
 func disable():
 	input_disabled = true
