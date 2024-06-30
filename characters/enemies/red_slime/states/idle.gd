@@ -2,9 +2,8 @@ extends State
 
 
 func Enter():
-	print('Entering idle')
 	animation.play(self.name)
-	animation.set_direction(self.name, steering.direction)
+	animation.set_direction(self.name, steering.idle_direction)
 	
 func Exit():
 	pass
