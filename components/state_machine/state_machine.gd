@@ -3,6 +3,7 @@ class_name FiniteStateMachine
 
 var states : Dictionary = {}
 var current_state : State
+var state_transitioning : bool = false
 
 @export var input: InputComponent
 @export var animation: AnimationTree
@@ -23,9 +24,12 @@ func _init_state():
 
 func  _physics_process(delta): # TODO: Should this be _physics or just _process
 	if current_state:
+		if state_transitioning:
+			print('Transitioning')
 		current_state.Update(delta)
 	
 func change_state(source_state : State, new_state_name : String, params : Dictionary = {}):
+	state_transitioning = true
 	if source_state != current_state:
 		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
 		#This typically only happens when trying to switch from death state following a force_change
@@ -45,3 +49,4 @@ func change_state(source_state : State, new_state_name : String, params : Dictio
 	else:
 		new_state.Enter()
 	current_state = new_state
+	state_transitioning = false

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dnvdfur02sndk"]
+
+[ext_resource type="Script" path="res://components/sword_attack_component/sword_attack_component.gd" id="1_n2pk3"]
+
+[node name="SwordAttackComponent" type="Area2D"]
+script = ExtResource("1_n2pk3")

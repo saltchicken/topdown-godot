@@ -19,14 +19,26 @@ func Update(_delta:float):
 	
 func state_movement():
 	pass
-	
-func parse_input_direction(delta) -> void:
-	if input.direction:
-		state_transition.emit(self, 'run')
-	else:
-		state_transition.emit(self, 'idle')
+
+func parse_input_action(current_state) -> void:
+	if input.attack:
+		state_transition.emit(self, 'sword_attack')
+		
+
+func parse_input_direction(current_state) -> void:
+	match current_state.name:
+		'idle':
+			if input.direction:
+				state_transition.emit(self, 'run')
+		'run':
+			if !input.direction:
+				state_transition.emit(self, 'idle')
+		_:
+			if input.direction:
+				state_transition.emit(self, 'run')
+			else:
+				state_transition.emit(self, 'idle')
 	state_movement()
-	character_body.move_and_collide(character_body.velocity * delta)
 
 
 # TODO: This goes to health component	

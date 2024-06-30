@@ -1,6 +1,7 @@
 extends State
 
 func Enter():
+	#print("entering idle")
 	animation.play(self.name)
 	animation.set_direction(self.name, input.previous_direction)
 	
@@ -8,7 +9,9 @@ func Exit():
 	pass
 	
 func Update(delta:float):
-	parse_input_direction(delta)
+	#print("updating idle")
+	parse_input_direction(self)
+	parse_input_action(self)
 	
 	animation.set_direction(self.name, input.previous_direction)
 	
