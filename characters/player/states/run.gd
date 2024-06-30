@@ -10,6 +10,7 @@ func Exit():
 	
 func Update(delta:float):
 	#print('updating run')
+	parse_input_action(self)
 	parse_input_direction(self)
 	animation.set_direction(self.name, input.direction)
 		

@@ -10,8 +10,9 @@ func Exit():
 	
 func Update(delta:float):
 	#print("updating idle")
-	parse_input_direction(self)
 	parse_input_action(self)
+	parse_input_direction(self)
+	
 	
 	animation.set_direction(self.name, input.previous_direction)
 	
