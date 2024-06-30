@@ -1,7 +1,6 @@
 extends Node
 class_name State
 
-@onready var character_body = self.get_owner()
 @onready var input: InputComponent = get_parent().input
 @onready var animation: AnimationTree = get_parent().animation
 

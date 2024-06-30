@@ -18,7 +18,7 @@ func Update(delta:float):
 	#animation.set_direction(self.name, input.direction)
 		
 func state_movement():
-	character_body.velocity = Vector2(0.0, 0.0)
+	owner.velocity = Vector2(0.0, 0.0)
 	
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name.split('/')[0] == 'sword_attack':

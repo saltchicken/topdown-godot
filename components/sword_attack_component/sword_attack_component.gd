@@ -6,7 +6,6 @@ func _ready():
 	self.area_entered.connect(_on_hitbox_area_entered)
 
 func _on_hitbox_area_entered(area):
-	print(area)
 	if area is HitboxComponent and area.owner != owner:
 		var hitbox : HitboxComponent = area
 		
