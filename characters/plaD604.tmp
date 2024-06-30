@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://rf4wl30ejldv"]
+
+[ext_resource type="Script" path="res://characters/player/player.gd" id="1_lbwvk"]
+[ext_resource type="Texture2D" uid="uid://cb0arcdwc8qpr" path="res://characters/player/animation/idle_sheet.png" id="2_287s8"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6evst"]
+radius = 5.0
+height = 16.0
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_07n6f"]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_lbwvk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_6evst")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Animation" type="Node2D" parent="."]
+
+[node name="CharacterBase" type="Sprite2D" parent="Animation"]
+position = Vector2(-0.5, -12)
+scale = Vector2(1.03125, 1)
+texture = ExtResource("2_287s8")
+hframes = 8
+vframes = 8
+frame = 63
+
+[node name="AnimationTree" type="AnimationTree" parent="Animation"]
+root_node = NodePath("../CharacterBase")
+tree_root = SubResource("AnimationNodeStateMachine_07n6f")
+anim_player = NodePath("AnimationPlayer")
+parameters/current_length = 0.0
+parameters/current_position = 0.0
+parameters/current_delta = 0.0
+parameters/End/current_length = null
+parameters/End/current_position = null
+parameters/End/current_delta = null
+parameters/Start/current_length = 0.0
+parameters/Start/current_position = 0.0
+parameters/Start/current_delta = 0.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animation/AnimationTree"]
+root_node = NodePath("../../CharacterBase")
