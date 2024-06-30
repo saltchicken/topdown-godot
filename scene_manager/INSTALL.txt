@@ -1,0 +1,2 @@
+Autoload scene_manager.tscn as a Global named SceneManager
+Select main_menu.tscn as the default scene to run
