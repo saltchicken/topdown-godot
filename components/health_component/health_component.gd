@@ -13,12 +13,15 @@ func _ready():
 func damage(attack: Attack):
 	if health <= 0:
 		push_warning("Should be dead already")
-	health -= attack.attack_damage
 	if state_machine:
-		print('setting to hit')
-		state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
+		if state_machine.current_state.name not in ["hit", "death"]:
+			health -= attack.attack_damage
+			if health <= 0:
+				print('set to death')
+				state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+			else:
+				state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
+	else:
+		push_warning("StateMachine not set")
 	
-	if health <= 0:
-		print("Death should be handled")
-		if state_machine:
-			state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+			

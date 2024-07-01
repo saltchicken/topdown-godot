@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b28dce2v0n1ek"]
+
+[ext_resource type="Script" path="res://components/impact_attack_component/impact_attack_component.gd" id="1_8jr2h"]
+
+[node name="ImpactAttackCollision" type="Node2D"]
+script = ExtResource("1_8jr2h")

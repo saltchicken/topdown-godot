@@ -4,7 +4,6 @@ func _ready():
 	animation.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
-	print('Entering hit')
 	animation.play(self.name)
 	
 
@@ -28,8 +27,8 @@ func Update(_delta:float):
 	state_movement()
 	
 func state_movement():
-	owner.velocity = -steering.direction_to_player * 50 # (knockback / character_body.stats.knockback_protection)
+	owner.velocity = Vector2.ZERO
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name.split('/')[0] == self.name:
-		state_transition.emit(self, 'idle') # TODO: Should this revert to the previous state and not just idle
+		print("Death is done. This needs to be handled")

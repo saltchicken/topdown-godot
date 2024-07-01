@@ -28,7 +28,8 @@ func Update(_delta:float):
 	state_movement()
 	
 func state_movement():
-	owner.velocity = -steering.direction_to_player * 50 # (knockback / character_body.stats.knockback_protection)
+	owner.velocity = Vector2.ZERO
+	#owner.velocity = -steering.direction_to_player * 50 # (knockback / character_body.stats.knockback_protection)
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name.split('/')[0] == self.name:

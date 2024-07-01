@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=3 uid="uid://crt86hiji50om"]
+[gd_scene load_steps=64 format=3 uid="uid://crt86hiji50om"]
 
 [ext_resource type="Texture2D" uid="uid://b7v76t3d6r1kj" path="res://characters/enemies/red_slime/animation/red_slime_spritesheet.png" id="1_syx3v"]
 [ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_ug285"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://djxdjld4spq7e" path="res://components/steering_component/steering_component.tscn" id="5_6e6u6"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/chase.gd" id="5_ak76l"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/leap_attack.gd" id="6_rlyej"]
+[ext_resource type="PackedScene" uid="uid://b28dce2v0n1ek" path="res://components/impact_attack_component/impact_attack_component.tscn" id="7_k8rnk"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/hit.gd" id="9_y0jrt"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/death.gd" id="10_jio4r"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/idle.gd" id="13_soku3"]
@@ -1061,6 +1062,8 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_x5ehx")
+
+[node name="ImpactAttackCollision" parent="." instance=ExtResource("7_k8rnk")]
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("steering", "animation") instance=ExtResource("2_egpls")]
 steering = NodePath("../SteeringComponent")

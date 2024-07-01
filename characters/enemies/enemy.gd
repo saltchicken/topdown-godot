@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var initial_state : State
 
+@onready var collision
+
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
-	move_and_collide(velocity * delta)
+	collision = move_and_collide(velocity * delta)
