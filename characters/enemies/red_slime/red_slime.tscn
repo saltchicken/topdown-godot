@@ -52,8 +52,8 @@ nodes/TimeScale/position = Vector2(1535, 215)
 nodes/output/position = Vector2(1840, 220)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2bgy3"]
-animation = &"hit/omni_directional"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_elu1q"]
+animation = &"hit/omni"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_inqph"]
 animation = &"idle/down"
@@ -124,8 +124,8 @@ node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mgdyy"]
 states/chase/node = SubResource("AnimationNodeBlendTree_3hlvx")
 states/chase/position = Vector2(564, 156)
-states/hit/node = SubResource("AnimationNodeAnimation_2bgy3")
-states/hit/position = Vector2(385, 72)
+states/hit/node = SubResource("AnimationNodeAnimation_elu1q")
+states/hit/position = Vector2(371, 60)
 states/idle/node = SubResource("AnimationNodeBlendTree_d3xbs")
 states/idle/position = Vector2(379, 288)
 states/wander/node = SubResource("AnimationNodeBlendTree_tk0ge")
@@ -468,7 +468,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7nx17"]
 _data = {
-"omni_directional": SubResource("Animation_ia21b")
+"omni": SubResource("Animation_ia21b")
 }
 
 [sub_resource type="Animation" id="Animation_udkyg"]
