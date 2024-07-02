@@ -33,4 +33,7 @@ func state_movement():
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name.split('/')[0] == self.name:
+		var health_component = owner.get_node('HealthComponent')
+		if health_component:
+			health_component.i_frames = 0.5
 		state_transition.emit(self, 'idle') # TODO: Should this revert to the previous state and not just idle
