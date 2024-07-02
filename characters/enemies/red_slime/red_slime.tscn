@@ -11,8 +11,8 @@
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/chase.gd" id="5_ak76l"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/leap_attack.gd" id="6_rlyej"]
 [ext_resource type="PackedScene" uid="uid://b28dce2v0n1ek" path="res://components/impact_attack_component/impact_attack_component.tscn" id="7_k8rnk"]
-[ext_resource type="Script" path="res://characters/enemies/red_slime/states/hit.gd" id="9_y0jrt"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/death.gd" id="10_jio4r"]
+[ext_resource type="Script" path="res://characters/states/hit.gd" id="12_si6iq"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/idle.gd" id="13_soku3"]
 [ext_resource type="Script" path="res://testing_shapecast.gd" id="14_o6nwm"]
 
@@ -1079,7 +1079,7 @@ script = ExtResource("5_ak76l")
 script = ExtResource("6_rlyej")
 
 [node name="hit" type="Node2D" parent="StateMachine"]
-script = ExtResource("9_y0jrt")
+script = ExtResource("12_si6iq")
 
 [node name="death" type="Node2D" parent="StateMachine"]
 script = ExtResource("10_jio4r")

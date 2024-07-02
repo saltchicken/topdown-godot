@@ -12,7 +12,7 @@
 [ext_resource type="Script" path="res://characters/player/states/run.gd" id="8_kbly6"]
 [ext_resource type="Script" path="res://characters/player/states/sword_attack.gd" id="9_vd5ou"]
 [ext_resource type="PackedScene" uid="uid://b8vr052ouuvpf" path="res://components/hitbox_component/hitbox_component.tscn" id="10_vfxrv"]
-[ext_resource type="Script" path="res://characters/player/states/hit.gd" id="11_7ndpq"]
+[ext_resource type="Script" path="res://characters/states/hit.gd" id="11_7ndpq"]
 [ext_resource type="PackedScene" uid="uid://bgihn1242qk6t" path="res://components/health_component/health_component.tscn" id="11_dyhpn"]
 [ext_resource type="Script" path="res://characters/player/states/death.gd" id="12_qrqse"]
 [ext_resource type="PackedScene" uid="uid://dnvdfur02sndk" path="res://components/sword_attack_component/sword_attack_component.tscn" id="13_kw1cj"]
