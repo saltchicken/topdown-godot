@@ -7,6 +7,7 @@ func _physics_process(delta: float) -> void:
 		var body = owner.collision.get_collider()
 		if body is Player:
 			var attack = Attack.new()
+			attack.attacker = owner
 			attack.attack_damage = attack_damage
 			body.get_node('HealthComponent').damage(attack)
 				#self.state_machine.current_state.state_transition.emit(self.state_machine.current_state, 'collision_attack')

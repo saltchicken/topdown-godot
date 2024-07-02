@@ -3,7 +3,7 @@ extends State
 func _ready():
 	animation.animation_finished.connect(_on_animation_tree_animation_finished)
 
-func Enter():
+func Enter(attack: Attack):
 	print('Entering hit')
 	animation.play(self.name)
 	

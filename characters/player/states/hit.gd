@@ -3,9 +3,9 @@ extends State
 func _ready():
 	animation.animation_finished.connect(_on_animation_tree_animation_finished)
 
-func Enter():
-	print('Entering hit')
+func Enter(attack: Attack):
 	animation.play(self.name)
+	owner.velocity = -owner.global_position.direction_to(attack.attacker.global_position) * 50 # This needs to be knockback
 	
 
 #func Enter(params: Dictionary = {}):
@@ -28,8 +28,9 @@ func Update(_delta:float):
 	state_movement()
 	
 func state_movement():
-	owner.velocity = Vector2.ZERO
-	#owner.velocity = -steering.direction_to_player * 50 # (knockback / character_body.stats.knockback_protection)
+	# Apply deceleration
+	owner.velocity.x = move_toward(owner.velocity.x, 0, 1.5)
+	owner.velocity.y = move_toward(owner.velocity.y, 0, 1.5)
 	
 func i_frames_handler():
 	var health_component = owner.get_node('HealthComponent')

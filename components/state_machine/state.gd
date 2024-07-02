@@ -8,8 +8,8 @@ class_name State
 @warning_ignore("unused_signal")
 signal state_transition
 
-func Enter():
-	pass
+#func Enter(): # TODO: How to make this active
+	#pass
 	
 func Exit():
 	pass

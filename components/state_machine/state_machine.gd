@@ -29,7 +29,7 @@ func  _physics_process(delta): # TODO: Should this be _physics or just _process
 			push_warning('StateMachine update called while transitioning')
 		current_state.Update(delta)
 	
-func change_state(source_state : State, new_state_name : String, params : Dictionary = {}):
+func change_state(source_state : State, new_state_name : String, params = null):
 	state_transitioning = true
 	if source_state != current_state:
 		print("Invalid change_state trying from: " + source_state.name + " but currently in: " + current_state.name)
@@ -45,7 +45,7 @@ func change_state(source_state : State, new_state_name : String, params : Dictio
 		current_state.Exit()
 		
 	#print('Entering ' + new_state_name) # For debugging state changes
-	if params.size() > 0:
+	if params:
 		new_state.Enter(params)
 	else:
 		new_state.Enter()

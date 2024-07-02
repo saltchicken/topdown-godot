@@ -27,7 +27,7 @@ func damage(attack: Attack):
 				print('set to death')
 				state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 			else:
-				state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit')
+				state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', attack)
 	else:
 		push_warning("StateMachine not set")
 	
