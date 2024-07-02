@@ -30,10 +30,13 @@ func Update(_delta:float):
 func state_movement():
 	owner.velocity = Vector2.ZERO
 	#owner.velocity = -steering.direction_to_player * 50 # (knockback / character_body.stats.knockback_protection)
+	
+func i_frames_handler():
+	var health_component = owner.get_node('HealthComponent')
+	if health_component:
+		health_component.i_frames = 0.5
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name.split('/')[0] == self.name:
-		var health_component = owner.get_node('HealthComponent')
-		if health_component:
-			health_component.i_frames = 0.5
+		i_frames_handler()
 		state_transition.emit(self, 'idle') # TODO: Should this revert to the previous state and not just idle
