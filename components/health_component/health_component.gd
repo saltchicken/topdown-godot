@@ -13,10 +13,13 @@ func _ready():
 	health = MAX_HEALTH
 	
 func _physics_process(delta: float) -> void:
+	i_frame_handler(delta)
+
+func i_frame_handler(delta):
 	i_frames -= delta
 	if i_frames < 0.0:
 		i_frames = 0.0
-	
+
 func damage(attack: Attack):
 	if health <= 0:
 		push_warning("Should be dead already")
