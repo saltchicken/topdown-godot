@@ -6,24 +6,8 @@ func _ready():
 func Enter(attack: Attack):
 	animation.play(self.name)
 	owner.velocity = -owner.global_position.direction_to(attack.attacker.global_position) * 50 # This needs to be knockback
+	##animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
 	
-
-#func Enter(params: Dictionary = {}):
-	#if params.has('attacking_body'):
-		#if take_damage_check_death(character_body, params['attacking_body']):
-			#state_transition.emit(character_body.state_machine.current_state, 'death')
-			#return
-		#else:
-			#animation_tree.get("parameters/playback").start(self.name)
-			##animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
-			#var knockback = params['attacking_body'].stats.attack_knockback
-			#character_body.velocity = -character_body.direction_to_player * (knockback / character_body.stats.knockback_protection)
-	#else:
-		#print("Hit shouldn't be called without an attacking body")
-	#
-#func Exit():
-	#pass
-	#
 func Update(_delta:float):
 	state_movement()
 	
