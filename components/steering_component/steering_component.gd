@@ -8,18 +8,50 @@ class_name SteeringComponent extends Area2D
 @onready var direction_to_player
 
 @onready var raycast = get_node('RayCast2D')
+@onready var raycast_perpendicular_line = get_node('RayCast2D/Line2D')
 @onready var player_los = false
+@onready var previous_los = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+	#var rot = PI/2
+	#var t = Transform2D()
+	#t.x.x = cos(rot)
+	#t.y.y = cos(rot)
+	#t.x.y = sin(rot)
+	#t.y.x = -sin(rot)
+	#r_90_counterclockwise = t
 	
 func _physics_process(_delta: float) -> void:
 	check_for_player()
 	if player:
 		set_distance_and_direction_to_player()
 		raycast_handler()
-	print(player_los)
+		set_perpendicular_line(raycast.target_position, 50)
+		lost_los_handler()
+		
+func set_perpendicular_line(target_position, magnitude):
+	var slope = target_position.y / target_position.x
+	var perpendicular_slope = -1 / slope
+	var end_point = calculate_end_point(perpendicular_slope, magnitude)
+	raycast_perpendicular_line.set_point_position(0, -end_point)
+	raycast_perpendicular_line.set_point_position(1, end_point)
+
+func calculate_end_point(slope, magnitude):
+	var x = magnitude / sqrt(1 + slope ** 2)
+	var y = slope * x
+	return Vector2(x, y)
+	
+func lost_los_handler():
+	if !player_los and previous_los:
+		print(raycast.get_collider())
+		print(raycast.get_collision_point())
+		#var marker = Marker2D.new()
+		#marker.position = raycast.get_collision_point()
+		#add_child(marker)
+	previous_los = player_los
 
 func raycast_handler():
 	raycast.target_position = player.global_position - global_position
