@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://crt86hiji50om"]
+[gd_scene load_steps=62 format=3 uid="uid://crt86hiji50om"]
 
 [ext_resource type="Texture2D" uid="uid://b7v76t3d6r1kj" path="res://characters/enemies/red_slime/animation/red_slime_spritesheet.png" id="1_syx3v"]
 [ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_ug285"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/death.gd" id="10_jio4r"]
 [ext_resource type="Script" path="res://characters/states/hit.gd" id="12_si6iq"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/idle.gd" id="13_soku3"]
-[ext_resource type="Script" path="res://testing_shapecast.gd" id="14_o6nwm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkjjn"]
 radius = 7.0
@@ -921,9 +920,6 @@ radius = 257.002
 radius = 8.0
 height = 20.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_mgvdw"]
-radius = 29.14
-
 [node name="RedSlime" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 script = ExtResource("1_ug285")
 initial_state = NodePath("StateMachine/idle")
@@ -1086,11 +1082,3 @@ script = ExtResource("10_jio4r")
 
 [node name="idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("13_soku3")
-
-[node name="ShapeCast2D" type="ShapeCast2D" parent="." node_paths=PackedStringArray("steering")]
-visible = false
-enabled = false
-shape = SubResource("CircleShape2D_mgvdw")
-target_position = Vector2(0, 147)
-script = ExtResource("14_o6nwm")
-steering = NodePath("../SteeringComponent")

@@ -7,6 +7,9 @@ class_name SteeringComponent extends Area2D
 @onready var distance_to_player
 @onready var direction_to_player
 
+@onready var raycast = get_node('RayCast2D')
+@onready var player_los = false
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -15,7 +18,15 @@ func _physics_process(_delta: float) -> void:
 	check_for_player()
 	if player:
 		set_distance_and_direction_to_player()
-		
+		raycast_handler()
+	print(player_los)
+
+func raycast_handler():
+	raycast.target_position = player.global_position - global_position
+	if raycast.get_collider() is Player:
+		player_los = true
+	else:
+		player_los = false
 		
 func check_for_player():
 	player = null
