@@ -4,27 +4,34 @@ class_name LOSRaycast extends Node
 @onready var direction_to_player_last_known_pos
 
 @onready var raycast
-@onready var perpendicular_line = get_node('RayCast2D/Line2D')
+@onready var perpendicular_line
 @onready var player_los = false
 @onready var previous_los = false
 @onready var last_known_pos = null
 
-@onready var perpendicular_line_magnitude = 50
+var perpendicular_line_magnitude = 50
 
 # Called when the node enters the scene tree for the first time.
 func _init() -> void:
 	pass
+	#perpendicular_line = Line2D.new()
+	#perpendicular_line.add_point(Vector2(0,0))
+	#perpendicular_line.add_point(Vector2(0,0))
+	#perpendicular_line.width = 1
+	
 	
 func create_raycast(parent_node):
 	var r = RayCast2D.new()
 	parent_node.add_child(r)
 	raycast = r
+	#parent_node.add_child(perpendicular_line)
 	
 func process(parent_node, player) -> void:
 	if !player:
 		player_los = false
 	lost_los_handler(player)
 	raycast_handler(parent_node, player)
+	#set_perpendicular_line(player)
 	
 func raycast_handler(parent_node, player):
 	if player:
@@ -39,6 +46,7 @@ func raycast_handler(parent_node, player):
 func lost_los_handler(player):
 	if (!player_los or !player) and previous_los:
 		print("Lost line of sight")
+		Debug.draw_point(raycast.get_collision_point())
 		#var lost_loc_pos = los_raycast.get_collision_point() # pos that blocked AI's LOS
 	previous_los = player_los
 	
@@ -51,9 +59,11 @@ func calculate_end_point(slope, magnitude):
 	var y = slope * x
 	return Vector2(x, y)
 	
-func set_perpendicular_line():
-	var slope = raycast.target_position.y / raycast.target_position.x
-	var perpendicular_slope = -1 / slope
-	var end_point = calculate_end_point(perpendicular_slope, perpendicular_line_magnitude)
-	perpendicular_line.set_point_position(0, -end_point)
-	perpendicular_line.set_point_position(1, end_point)
+func set_perpendicular_line(player):
+	if player:
+		var slope = raycast.target_position.y / raycast.target_position.x
+		print(slope)
+		var perpendicular_slope = -1 / slope
+		var end_point = calculate_end_point(perpendicular_slope, perpendicular_line_magnitude)
+		perpendicular_line.set_point_position(0, -end_point)
+		perpendicular_line.set_point_position(1, end_point)

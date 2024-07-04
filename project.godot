@@ -17,6 +17,7 @@ config/features=PackedStringArray("4.3", "Forward Plus")
 [autoload]
 
 SceneManager="*res://scene_manager/scene_manager.tscn"
+Debug="*res://debug/DEBUG.tscn"
 
 [input]
 
