@@ -1,41 +1,29 @@
-class_name LOSRaycast extends Node
+extends Node2D
+
+@export var steering_component : SteeringComponent
 
 @onready var distance_to_player_last_known_pos
 @onready var direction_to_player_last_known_pos
 
-@onready var raycast
-@onready var perpendicular_line
+@onready var raycast = get_node("RayCast2D")
+@onready var perpendicular_line = get_node("PerpLine")
 @onready var player_los = false
 @onready var previous_los = false
 @onready var last_known_pos = null
 
 var perpendicular_line_magnitude = 50
 
-# Called when the node enters the scene tree for the first time.
-func _init() -> void:
-	pass
-	#perpendicular_line = Line2D.new()
-	#perpendicular_line.add_point(Vector2(0,0))
-	#perpendicular_line.add_point(Vector2(0,0))
-	#perpendicular_line.width = 1
-	
-	
-func create_raycast(parent_node):
-	var r = RayCast2D.new()
-	parent_node.add_child(r)
-	raycast = r
-	#parent_node.add_child(perpendicular_line)
-	
-func process(parent_node, player) -> void:
-	if !player:
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if !steering_component.player:
 		player_los = false
-	lost_los_handler(player)
-	raycast_handler(parent_node, player)
+	lost_los_handler()
+	raycast_handler()
 	#set_perpendicular_line(player)
-	
-func raycast_handler(parent_node, player):
-	if player:
-		raycast.target_position = player.global_position - parent_node.global_position
+
+func raycast_handler():
+	if steering_component.player:
+		raycast.target_position = steering_component.player.global_position - global_position
 		var collider = raycast.get_collider()
 		if collider is Player:
 			player_los = true
@@ -43,8 +31,8 @@ func raycast_handler(parent_node, player):
 		else:
 			player_los = false
 
-func lost_los_handler(player):
-	if (!player_los or !player) and previous_los:
+func lost_los_handler():
+	if (!player_los or !steering_component.player) and previous_los:
 		print("Lost line of sight")
 		Debug.draw_point(raycast.get_collision_point())
 		#var lost_loc_pos = los_raycast.get_collision_point() # pos that blocked AI's LOS

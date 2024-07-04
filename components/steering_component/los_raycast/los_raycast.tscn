@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://xxno0yjis6d2"]
+
+[ext_resource type="Script" path="res://components/steering_component/los_raycast/los_raycast.gd" id="1_e57tv"]
+
+[node name="LosRaycast" type="Node2D"]
+script = ExtResource("1_e57tv")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+
+[node name="PerpLine" type="Line2D" parent="."]

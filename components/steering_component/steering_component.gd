@@ -6,20 +6,9 @@ class_name SteeringComponent extends Area2D
 @onready var player
 @onready var distance_to_player
 @onready var direction_to_player
-
-var eight_directional_raycast = EightDirectionalRaycast.new()
-var los_raycast = LOSRaycast.new()
-
-func _ready() -> void:
-	eight_directional_raycast.create_raycasts(self)
-	los_raycast.create_raycast(self)
-	#for raycast in eight_directional_raycast.raycasts.keys():
-		#print(eight_directional_raycast.raycasts[raycast])
 	
 func _physics_process(_delta: float) -> void:
 	player = check_for_player()
-	eight_directional_raycast.process()
-	los_raycast.process(self, player)
 	set_distance_and_direction_to_player(player)
 		
 func check_for_player():
