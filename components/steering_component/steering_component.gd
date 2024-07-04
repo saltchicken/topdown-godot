@@ -12,6 +12,8 @@ class_name SteeringComponent extends Area2D
 @onready var player_los = false
 @onready var previous_los = false
 
+@onready var DEBUG_points = []
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,7 +26,14 @@ func _ready() -> void:
 	#t.y.x = -sin(rot)
 	#r_90_counterclockwise = t
 	
+func _draw():
+	print('hello')
+	for point in DEBUG_points:
+		print(point)
+		draw_circle(point - global_position, 5, Color.WHITE)
+	
 func _physics_process(_delta: float) -> void:
+	queue_redraw()
 	check_for_player()
 	if player:
 		set_distance_and_direction_to_player()
@@ -48,6 +57,7 @@ func lost_los_handler():
 	if !player_los and previous_los:
 		print(raycast.get_collider())
 		print(raycast.get_collision_point())
+		DEBUG_points.append(raycast.get_collision_point())
 		#var marker = Marker2D.new()
 		#marker.position = raycast.get_collision_point()
 		#add_child(marker)

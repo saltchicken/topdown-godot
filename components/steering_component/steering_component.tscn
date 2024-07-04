@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://components/steering_component/steering_component.gd" id="1_j4rne"]
 
 [node name="SteeringComponent" type="Area2D"]
+z_index = 2
 script = ExtResource("1_j4rne")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
