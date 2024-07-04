@@ -13,8 +13,6 @@ extends Node2D
 	}
 var raycasts = {}
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	for direction in eight_directions.keys():
 		var r = RayCast2D.new()
@@ -22,9 +20,7 @@ func _ready() -> void:
 		add_child(r)
 		raycasts[direction] = r
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void: # TODO: Should this be called so often?
 	for raycast in raycasts.keys():
 		var collider = raycasts[raycast].get_collider()
 		if collider:

@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var steering_component : SteeringComponent
+@export var perpendicular_line_magnitude = 50
 
 @onready var distance_to_player_last_known_pos
 @onready var direction_to_player_last_known_pos
@@ -8,17 +9,18 @@ extends Node2D
 @onready var raycast = get_node("RayCast2D")
 @onready var perpendicular_line = get_node("PerpLine")
 @onready var player_los = false
-@onready var previous_los = false
+#@onready var previous_los = false
 @onready var last_known_pos = null
 
-var perpendicular_line_magnitude = 50
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void: # TODO: Should this be called so often?
 	if !steering_component.player:
 		player_los = false
-	lost_los_handler()
+	#lost_los_handler()
 	raycast_handler()
+	set_distance_and_direction_to_player_last_known_position()
+	if last_known_pos:
+		Debug.draw_point(last_known_pos)
 	#set_perpendicular_line(player)
 
 func raycast_handler():
@@ -31,16 +33,17 @@ func raycast_handler():
 		else:
 			player_los = false
 
-func lost_los_handler():
-	if (!player_los or !steering_component.player) and previous_los:
-		print("Lost line of sight")
-		Debug.draw_point(raycast.get_collision_point())
-		#var lost_loc_pos = los_raycast.get_collision_point() # pos that blocked AI's LOS
-	previous_los = player_los
+#func lost_los_handler():
+	#if (!player_los or !steering_component.player) and previous_los:
+		#print("Lost line of sight")
+		##Debug.draw_point(raycast.get_collision_point())
+		##var lost_loc_pos = los_raycast.get_collision_point() # pos that blocked AI's LOS
+	#previous_los = player_los
 	
-func set_distance_and_direction_to_player_last_known_position(parent_node):
-	distance_to_player_last_known_pos = parent_node.global_position.distance_to(last_known_pos)
-	direction_to_player_last_known_pos = parent_node.global_position.direction_to(last_known_pos)
+func set_distance_and_direction_to_player_last_known_position():
+	if last_known_pos:
+		distance_to_player_last_known_pos = global_position.distance_to(last_known_pos)
+		direction_to_player_last_known_pos = global_position.direction_to(last_known_pos)
 
 func calculate_end_point(slope, magnitude):
 	var x = magnitude / sqrt(1 + slope ** 2)
