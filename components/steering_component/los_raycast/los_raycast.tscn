@@ -8,3 +8,5 @@ script = ExtResource("1_e57tv")
 [node name="RayCast2D" type="RayCast2D" parent="."]
 
 [node name="PerpLine" type="Line2D" parent="."]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 1.0

@@ -3,4 +3,5 @@
 [ext_resource type="Script" path="res://debug/debug.gd" id="1_5lnju"]
 
 [node name="Debug" type="Node2D"]
+z_index = 10
 script = ExtResource("1_5lnju")

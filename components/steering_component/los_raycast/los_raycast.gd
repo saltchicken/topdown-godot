@@ -21,7 +21,7 @@ func _physics_process(delta: float) -> void: # TODO: Should this be called so of
 	set_distance_and_direction_to_player_last_known_position()
 	if last_known_pos:
 		Debug.draw_point(last_known_pos)
-	#set_perpendicular_line(player)
+	#set_perpendicular_line()
 
 func raycast_handler():
 	if steering_component.player:
@@ -50,10 +50,9 @@ func calculate_end_point(slope, magnitude):
 	var y = slope * x
 	return Vector2(x, y)
 	
-func set_perpendicular_line(player):
-	if player:
+func set_perpendicular_line():
+	if steering_component.player:
 		var slope = raycast.target_position.y / raycast.target_position.x
-		print(slope)
 		var perpendicular_slope = -1 / slope
 		var end_point = calculate_end_point(perpendicular_slope, perpendicular_line_magnitude)
 		perpendicular_line.set_point_position(0, -end_point)

@@ -8,7 +8,15 @@
 z_index = 2
 script = ExtResource("1_j4rne")
 
-[node name="EightDirectionalRaycast" parent="." instance=ExtResource("2_s0kbs")]
+[node name="PlayerSeek(EightDirectionalRaycast)" parent="." node_paths=PackedStringArray("steering_component") instance=ExtResource("2_s0kbs")]
+steering_component = NodePath("..")
+color = Color(0, 0.299281, 0, 1)
+target_layer = 1
+
+[node name="ObstacleAvoidance(EightDirectionalRaycast)" parent="." node_paths=PackedStringArray("steering_component") instance=ExtResource("2_s0kbs")]
+steering_component = NodePath("..")
+color = Color(0.518437, 0.0386699, 1.44392e-07, 1)
+target_layer = 4
 
 [node name="LosRaycast" parent="." node_paths=PackedStringArray("steering_component") instance=ExtResource("3_m1pv7")]
 steering_component = NodePath("..")

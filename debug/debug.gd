@@ -6,9 +6,9 @@ extends Node2D
 
 func _draw():
 	if point:
-		draw_circle(point, 10, Color.WHITE)
+		draw_circle(point, 5, Color.WHITE)
 	for point in points:
-		draw_circle(point, 10, Color.WHITE)
+		draw_circle(point, 5, Color.WHITE)
 	
 func _ready() -> void:
 	pass # Replace with function body.
