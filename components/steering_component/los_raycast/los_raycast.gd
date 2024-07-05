@@ -12,33 +12,43 @@ extends Behavior
 @onready var player_los = false
 #@onready var previous_los = false
 @onready var last_known_pos = null
+@onready var arrival_radius = 20
 
 
 	
-var lines = []
+#var lines = []
 	
-func _ready():
-	for direction in range(directions.size()):
-		var l = Line2D.new()
-		l.width = 1
-		l.default_color = color
-		l.add_point(Vector2.ZERO)
-		l.add_point(directions[direction].normalized() * 50)
-		add_child(l)
-		
-		lines.append(l)
+#func _ready():
+	#for direction in range(directions.size()):
+		#var l = Line2D.new()
+		#l.width = 1
+		#l.default_color = color
+		#l.add_point(Vector2.ZERO)
+		#l.add_point(directions[direction].normalized() * 50)
+		#add_child(l)
+		#
+		#lines.append(l)
 
 
-func _physics_process(delta: float) -> void: # TODO: Should this be called so often?
+func update():
 	if !steering_component.player:
 		player_los = false
 	#lost_los_handler()
 	raycast_handler()
 	set_distance_and_direction_to_player_last_known_position()
 	calculate_directional_weights()
+	check_if_at_last_known_pos()
 	if last_known_pos != null:
 		Debug.draw_point(last_known_pos)
 	#set_perpendicular_line()
+
+func check_if_at_last_known_pos():
+	if last_known_pos:
+		var distance_to_last_known_pos = global_position.distance_to(last_known_pos)
+		if distance_to_last_known_pos <= arrival_radius:
+			last_known_pos = null
+			print('reached last_known_pos. Stop enemy from wandering off at same velocity')
+			
 
 func output_velocity():
 	velocity = direction_to_player_last_known_pos
@@ -86,10 +96,10 @@ func calculate_directional_weights():
 			for direction in range(directions.size()):
 				var dot_product = target_direction.dot(directions[direction].normalized())
 				weights[direction] = dot_product
-				if dot_product > 0:
-					lines[direction].set_point_position(1, directions[direction].normalized() * dot_product * 100) # TODO: Make variable for weighted_line length
-				else:
-					lines[direction].set_point_position(1, Vector2.ZERO)
-	else:
-		for direction in range(directions.size()):
-			lines[direction].set_point_position(1, Vector2.ZERO)
+				#if dot_product > 0:
+					#lines[direction].set_point_position(1, directions[direction].normalized() * dot_product * 100) # TODO: Make variable for weighted_line length
+				#else:
+					#lines[direction].set_point_position(1, Vector2.ZERO)
+	#else:
+		#for direction in range(directions.size()):
+			#lines[direction].set_point_position(1, Vector2.ZERO)
