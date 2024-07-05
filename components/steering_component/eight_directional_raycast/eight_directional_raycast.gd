@@ -5,7 +5,6 @@ extends Behavior
 @export var target_layer : int
 
 @export var radius = 30
-@export var agent_collider_size = 40
 
 @export var avoidance_weight_gain = 5
 
@@ -39,9 +38,9 @@ func _ready() -> void:
 		#lines.append(l)
 
 func update():
-	calculate_directional_weights()
 	find_target()
-			
+	calculate_directional_weights()
+	
 func find_target():
 	var targets = []
 	for raycast in raycasts:
@@ -63,9 +62,6 @@ func find_target():
 					target = body
 					closest_distance = distance
 					
-				
-	
-			
 func calculate_directional_weights():
 	weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	if target:

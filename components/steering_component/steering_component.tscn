@@ -24,5 +24,5 @@ points = PackedVector2Array(0, 0, 0, 0)
 default_color = Color(0.713885, 0.000393325, 0.715252, 1)
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.001
+wait_time = 0.05
 autostart = true

@@ -13,10 +13,11 @@ var final_velocity = Vector2.ZERO
 
 @onready var debug_desired_direction = get_node("Line2D")
 
-#func _ready():
-	#get_node('Timer').timeout.connect(update)
+func _ready():
+	get_node('Timer').timeout.connect(update)
 	
-func _physics_process(delta: float) -> void:
+func update() -> void:
+	print("updating")
 	player = check_for_player()
 	set_distance_and_direction_to_player(player)
 	for behavior in behaviors:
