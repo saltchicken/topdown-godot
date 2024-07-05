@@ -1,6 +1,6 @@
 class_name SteeringComponent extends Area2D
 
-@export var chase_speed := 30.0
+@export var chase_speed := 60.0
 
 @onready var idle_direction = Vector2(0.0, -1.0)
 @onready var player
@@ -8,16 +8,14 @@ class_name SteeringComponent extends Area2D
 @onready var direction_to_player
 
 @onready var behaviors = get_behaviors()
-var final_weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 var final_velocity = Vector2.ZERO
 
 @onready var debug_desired_direction = get_node("Line2D")
 
-func _ready():
-	get_node('Timer').timeout.connect(update)
+#func _ready():
+	#get_node('Timer').timeout.connect(update)
 	
-func update() -> void:
-	print("updating")
+func _physics_process(_delta: float):
 	player = check_for_player()
 	set_distance_and_direction_to_player(player)
 	for behavior in behaviors:
@@ -38,23 +36,13 @@ func check_for_player():
 	return null
 	
 func check_for_weights():
-	final_weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-	var velocities = []
+	final_velocity = Vector2.ZERO
 	for behavior in behaviors:
-		for i in range(behavior.weights.size()):
-			final_weights[i] += behavior.weights[i]
+		if behavior.velocity:
+			final_velocity += behavior.velocity
+	final_velocity = final_velocity.normalized()
 	
-	for i in range(behaviors[0].directions.size()):
-		velocities.append(final_weights[i] * behaviors[0].directions[i].normalized())
-		
-	final_velocity = sum(velocities).normalized()
-	debug_desired_direction.set_point_position(1, final_velocity * 50)
 	
-func sum(arr:Array):
-	var result = Vector2.ZERO
-	for i in arr:
-		result+=i
-	return result
 
 func set_distance_and_direction_to_player(player):
 	if player:

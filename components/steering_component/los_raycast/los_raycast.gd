@@ -41,6 +41,7 @@ func update():
 	if last_known_pos != null:
 		Debug.draw_point(last_known_pos)
 	#set_perpendicular_line()
+	output_velocity()
 
 func check_if_at_last_known_pos():
 	if last_known_pos:
@@ -71,7 +72,7 @@ func raycast_handler():
 	#previous_los = player_los
 	
 func set_distance_and_direction_to_player_last_known_position():
-	if last_known_pos:
+	if last_known_pos != null:
 		distance_to_player_last_known_pos = global_position.distance_to(last_known_pos)
 		direction_to_player_last_known_pos = global_position.direction_to(last_known_pos)
 

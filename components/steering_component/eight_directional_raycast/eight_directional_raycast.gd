@@ -6,8 +6,6 @@ extends Behavior
 
 @export var radius = 30
 
-@export var avoidance_weight_gain = 5
-
 var raycasts = []
 #var lines = []
 
@@ -40,6 +38,7 @@ func _ready() -> void:
 func update():
 	find_target()
 	calculate_directional_weights()
+	calculate_velocity()
 	
 func find_target():
 	var targets = []
@@ -60,7 +59,7 @@ func find_target():
 				var distance = self.global_position.distance_to(body.global_position)
 				if distance < closest_distance:
 					target = body
-					closest_distance = distance
+					closest_distance = distance	
 					
 func calculate_directional_weights():
 	weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
@@ -72,15 +71,15 @@ func calculate_directional_weights():
 				if raycast.is_colliding():
 					var collision_distance = (global_position - raycast.get_collision_point()).length()
 					var weight = (radius - collision_distance) / radius
-					weight *= avoidance_weight_gain
 					weights[i] -= weight
-					#weights[i - 1] -= weight * 0.05
-					#if i + 1 == weights.size():
-						#weights[0] -= weight * 0.05
-					#elif i + 1 > weights.size():
-						#push_error('Directions and weights arrays out of sync')
-					#else:
-						#weights[i + 1] -= weight * 0.33					
+					if weight > 0.6:
+						weights[i - 1] -= weight * 0.15
+						if i + 1 == weights.size():
+							weights[0] -= weight * 0.15
+						elif i + 1 > weights.size():
+							push_error('Directions and weights arrays out of sync')
+						else:
+							weights[i + 1] -= weight * 0.15				
 					if weights[i] > 1.0:
 						push_warning('Issue with weight calculation in eight_directional_raycast')
 			
@@ -94,4 +93,9 @@ func calculate_directional_weights():
 		#for direction in range(directions.size()):
 			#lines[direction].set_point_position(1, Vector2.ZERO)
 			#weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-		
+			
+func calculate_velocity():
+	velocity = Vector2.ZERO
+	for i in range(directions.size()):
+		velocity += weights[i] * directions[i]
+	#velocity = sum.normalized()
