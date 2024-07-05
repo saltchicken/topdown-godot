@@ -14,6 +14,6 @@ func Update(_delta:float):
 	state_movement()
 	
 func state_movement():
-	var target_direction = steering.direction_to_player
+	var target_direction = steering.final_velocity
 	owner.velocity.x = target_direction.x * steering.chase_speed
 	owner.velocity.y = target_direction.y * steering.chase_speed

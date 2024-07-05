@@ -46,5 +46,17 @@ tile_set = SubResource("TileSet_ujudc")
 z_as_relative = false
 position = Vector2(125, -73)
 
+[node name="Tree2" parent="." instance=ExtResource("3_t5xyq")]
+z_as_relative = false
+position = Vector2(34, -151)
+
+[node name="Tree3" parent="." instance=ExtResource("3_t5xyq")]
+z_as_relative = false
+position = Vector2(36, -14)
+
+[node name="Tree4" parent="." instance=ExtResource("3_t5xyq")]
+z_as_relative = false
+position = Vector2(16, -144)
+
 [node name="RedSlime" parent="." instance=ExtResource("4_omtx2")]
-position = Vector2(-85, -94)
+position = Vector2(43, -89)

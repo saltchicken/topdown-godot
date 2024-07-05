@@ -1,30 +1,23 @@
-extends Node2D
+extends Behavior
 
 @export var steering_component : SteeringComponent
 @export var color : Color
 @export var target_layer : int
 @export var direction_radius = 150
-@onready var eight_directions = {
-		"up": Vector2(0,1),
-		"up_right": Vector2(1,1),
-		"right": Vector2(1,0),
-		"down_right": Vector2(1,-1),
-		"down": Vector2(0,-1),
-		"down_left": Vector2(-1,-1),
-		"left": Vector2(-1,0),
-		"up_left": Vector2(-1,1)
-	}
-var raycasts = {}
-var lines = {}
-var weights = {}
+
+@export var radius = 50
+@export var agent_collider_size = 20
+
+var raycasts = []
+var lines = []
 
 var targets = []
 var target = null
 
 func _ready() -> void:
-	for direction in eight_directions.keys():
+	for direction in directions:
 		var r = RayCast2D.new()
-		r.target_position = eight_directions[direction].normalized() * direction_radius
+		r.target_position = direction.normalized() * direction_radius
 		r.self_modulate = 0
 		for layer in range(16):
 			layer += 1
@@ -38,11 +31,11 @@ func _ready() -> void:
 		l.width = 1
 		l.default_color = color
 		l.add_point(Vector2.ZERO)
-		l.add_point(eight_directions[direction].normalized() * 50)
+		l.add_point(direction.normalized() * 50)
 		r.add_child(l)
 		
-		raycasts[direction] = r
-		lines[direction] = l
+		raycasts.append(r)
+		lines.append(l)
 
 func _physics_process(delta: float) -> void: # TODO: Should this be called so often?
 	calculate_directional_weights()
@@ -55,8 +48,8 @@ func _physics_process(delta: float) -> void: # TODO: Should this be called so of
 			
 func find_target():
 	targets = []
-	for raycast in raycasts.keys():
-		var collider = raycasts[raycast].get_collider()
+	for raycast in raycasts:
+		var collider = raycast.get_collider()
 		if collider:
 			targets.append(collider)
 	if targets.size() == 0:
@@ -78,18 +71,46 @@ func find_target():
 	
 			
 func calculate_directional_weights():
+	weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 	if target:
 		var target_direction = self.global_position.direction_to(target.global_position)
 		if target_direction:
-			for direction in eight_directions.keys():
-				var raycast = raycasts[direction]
-				var dot_product = target_direction.dot(eight_directions[direction].normalized())
-				weights[direction] = dot_product
-				if dot_product > 0:
-					lines[direction].set_point_position(1, eight_directions[direction].normalized() * dot_product * 100) # TODO: Make variable for weighted_line length
+			for i in range(directions.size()):
+				var raycast = raycasts[i]
+				var distance_to_object
+				#var dot_product = target_direction.dot(direction.normalized())
+				var collider = raycast.get_collider()
+				if collider:
+					distance_to_object = (global_position - raycast.get_collision_point()).length()
+					#print(distance_to_object)
+					if distance_to_object < agent_collider_size:
+						weights[i] += -1.0
+						weights[i - 1] += -0.33
+						if i + 1 >= directions.size():
+							weights[-1] += -0.33
+						else:
+							weights[i + 1] += 0.33
+					elif distance_to_object > radius:
+						weights[i] = 0.0
+					else:
+						weights[i] += -(radius - distance_to_object) / radius
+					#print(weights[direction])
+					if weights[i] > 1.0:
+						push_warning('Issue with weight calculation in eight_directional_raycast')
 				else:
-					lines[direction].set_point_position(1, Vector2.ZERO)
+					weights[i] = 0.0
+					
+				
+			var avoidance_weight_gain = 5
+			for i in range(weights.size()):
+				weights[i] *= avoidance_weight_gain
+				lines[i].set_point_position(1, directions[i].normalized() * weights[i] * 100) # TODO: Make variable for weighted_line length
+				#if weights[i] < 0:
+					#lines[i].set_point_position(1, directions[i].normalized() * weights[i] * 100) # TODO: Make variable for weighted_line length
+				#else:
+					#lines[i].set_point_position(1, Vector2.ZERO)
 	else:
-		for direction in eight_directions.keys():
+		for direction in range(directions.size()):
 			lines[direction].set_point_position(1, Vector2.ZERO)
+			weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 		

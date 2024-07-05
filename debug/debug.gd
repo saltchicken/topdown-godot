@@ -5,7 +5,7 @@ extends Node2D
 
 
 func _draw():
-	if point:
+	if point != null:
 		draw_circle(point, 5, Color.WHITE)
 	for point in points:
 		draw_circle(point, 5, Color.WHITE)

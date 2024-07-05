@@ -8,7 +8,7 @@ func Enter():
 func Exit():
 	pass
 	
-func Update(delta:float):
+func Update(_delta:float):
 	#print("updating idle")
 	input.parse_input_action(self)
 	input.parse_input_direction(self)
