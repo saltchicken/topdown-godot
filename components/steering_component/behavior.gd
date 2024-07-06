@@ -1,5 +1,7 @@
 class_name Behavior extends Node2D
 
+### Make sure that the proper mask layer is selected in the associated Area2D.
+
 var velocity
 var weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
