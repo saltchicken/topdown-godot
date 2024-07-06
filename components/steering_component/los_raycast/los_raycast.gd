@@ -14,8 +14,8 @@ func update():
 		raycast_handler()
 	else:
 		target_los = false
-	if target_position:
-		reached_target_position
+	if target_position != null:
+		reached_target_position()
 	
 func raycast_handler():
 	raycast.target_position = steering_component.player.global_position - global_position
