@@ -1,6 +1,6 @@
 extends Behavior
 
-@export var alignment_coefficient : float = 0.5
+@export var alignment_coefficient : float = 1
 @onready var boid_area = get_node("Area2D")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,5 +14,5 @@ func update():
 	
 	perceived_velocity = perceived_velocity / boids.size()
 	
-	velocity = perceived_velocity * alignment_coefficient
+	velocity = perceived_velocity.normalized() * alignment_coefficient
 	#print(velocity)
