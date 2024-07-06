@@ -8,9 +8,7 @@ class_name SteeringComponent extends Area2D
 @onready var direction_to_player
 
 @onready var behaviors = get_behaviors()
-var final_velocity = Vector2.ZERO
-
-@onready var debug_desired_direction = get_node("Line2D")
+var direction = Vector2.ZERO
 
 #func _ready():
 	#get_node('Timer').timeout.connect(update)
@@ -36,11 +34,11 @@ func check_for_player():
 	return null
 	
 func check_for_weights():
-	final_velocity = Vector2.ZERO
+	direction = Vector2.ZERO
 	for behavior in behaviors:
 		if behavior.velocity:
-			final_velocity += behavior.velocity
-	final_velocity = final_velocity.normalized()
+			direction += behavior.velocity
+	direction = direction.normalized()
 	
 	
 
