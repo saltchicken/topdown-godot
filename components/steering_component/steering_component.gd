@@ -4,18 +4,12 @@ class_name SteeringComponent extends Area2D
 
 @onready var idle_direction = Vector2(0.0, -1.0)
 @onready var player
-@onready var distance_to_player
-@onready var direction_to_player
-
 @onready var behaviors = get_behaviors()
-var direction = Vector2.ZERO
-
-#func _ready():
-	#get_node('Timer').timeout.connect(update)
+var direction = null
 	
 func _physics_process(_delta: float):
 	player = check_for_player()
-	set_distance_and_direction_to_player(player)
+	#set_distance_and_direction_to_player(player)
 	for behavior in behaviors:
 		behavior.update()
 	check_for_weights()
@@ -39,14 +33,6 @@ func check_for_weights():
 		if behavior.velocity:
 			direction += behavior.velocity
 	direction = direction.normalized()
-	
-	
-
-func set_distance_and_direction_to_player(player):
-	if player:
-		distance_to_player = self.global_position.distance_to(player.global_position)
-		direction_to_player = self.global_position.direction_to(player.global_position)
-		idle_direction = direction_to_player	
 		
 func parse_steering_direction(current_state):
 	match current_state.name:

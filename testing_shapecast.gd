@@ -8,5 +8,5 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.target_position = steering.direction_to_player * 50
+	self.target_position = steering.direction * 50
 	#print(self.collision_result)

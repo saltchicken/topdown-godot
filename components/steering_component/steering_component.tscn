@@ -25,12 +25,3 @@ target_layer = 4
 [node name="SeparationBehavior" parent="." instance=ExtResource("5_61fc0")]
 
 [node name="AlignmentBehavior" parent="." instance=ExtResource("6_ncyg5")]
-
-[node name="Line2D" type="Line2D" parent="."]
-visible = false
-points = PackedVector2Array(0, 0, 0, 0)
-default_color = Color(0.713885, 0.000393325, 0.715252, 1)
-
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
-autostart = true
