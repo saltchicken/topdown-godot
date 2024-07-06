@@ -19,8 +19,12 @@ func get_behaviors():
 	for node in get_children():
 		if node is Behavior:
 			behavior_nodes.append(node)
+			node.override_behaviors.connect(on_override_behavior)
 	return behavior_nodes
 		
+func on_override_behavior():
+	print('Behavior override')
+	
 func check_for_player():
 	for body in self.get_overlapping_bodies():
 		if body is Player:

@@ -2,7 +2,9 @@ class_name Behavior extends Node2D
 
 ### Make sure that the proper mask layer is selected in the associated Area2D.
 
+
 var direction
+signal override_behaviors
 	
 #var eight_directions = {
 		#"up": Vector2(0,1),

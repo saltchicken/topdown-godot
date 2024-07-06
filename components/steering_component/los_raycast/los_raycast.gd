@@ -15,6 +15,7 @@ func update():
 	else:
 		target_los = false
 	if target_position != null:
+		Debug.draw_point(target_position)
 		reached_target_position()
 	
 func raycast_handler():
@@ -23,13 +24,14 @@ func raycast_handler():
 	if collider is Player:
 		target_los = true
 		target_position = collider.global_position
-		target_distance = global_position.distance_to(target_position)
 		direction = global_position.direction_to(target_position)
 	else:
 		target_los = false
 			
 func reached_target_position():
+	target_distance = global_position.distance_to(target_position)
 	if target_distance <= arrival_radius:
 		target_position = null
 		target_distance = null
 		direction = Vector2.ZERO
+		override_behaviors.emit()
