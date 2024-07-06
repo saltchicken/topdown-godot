@@ -59,13 +59,4 @@ z_as_relative = false
 position = Vector2(16, -144)
 
 [node name="RedSlime" parent="." instance=ExtResource("4_omtx2")]
-position = Vector2(43, -89)
-
-[node name="RedSlime2" parent="." instance=ExtResource("4_omtx2")]
-position = Vector2(-31, -71)
-
-[node name="RedSlime3" parent="." instance=ExtResource("4_omtx2")]
-position = Vector2(-91, -196)
-
-[node name="RedSlime4" parent="." instance=ExtResource("4_omtx2")]
-position = Vector2(139, -198)
+position = Vector2(-389, -221)

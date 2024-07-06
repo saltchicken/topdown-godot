@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://cx8nagltvxj0p" path="res://components/steering_component/eight_directional_raycast/eight_directional_raycast.tscn" id="12_vg7r6"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/idle.gd" id="13_soku3"]
 [ext_resource type="PackedScene" uid="uid://cqwvsmftm0dyi" path="res://components/steering_component/cohesion_behavior/cohesion_behavior.tscn" id="13_ushkq"]
-[ext_resource type="PackedScene" uid="uid://dg170hs6qmerm" path="res://components/steering_component/separation_behavior/separation_behavior.tscn" id="15_8dnrv"]
+[ext_resource type="PackedScene" uid="uid://ctqr6cdq3m073" path="res://components/steering_component/alignment_behavior/alignment_behavior.tscn" id="14_adkcg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkjjn"]
 radius = 7.0
@@ -925,7 +925,7 @@ height = 20.0
 collision_layer = 4
 collision_mask = 15
 script = ExtResource("1_amajc")
-initial_state = NodePath("StateMachine/idle")
+initial_state = NodePath("StateMachine/chase")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
@@ -1076,7 +1076,9 @@ script = ExtResource("5_ak76l")
 
 [node name="CohesionBehavior2" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("13_ushkq")]
 
-[node name="SeparationBehavior2" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("15_8dnrv")]
+[node name="AlignmentBehavior2" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("14_adkcg")]
+
+[node name="SteeringComponent" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("5_6e6u6")]
 
 [node name="leap_attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_rlyej")

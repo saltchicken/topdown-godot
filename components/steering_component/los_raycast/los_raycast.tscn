@@ -1,10 +1,18 @@
-[gd_scene load_steps=2 format=3 uid="uid://xxno0yjis6d2"]
+[gd_scene load_steps=3 format=3 uid="uid://xxno0yjis6d2"]
 
 [ext_resource type="Script" path="res://components/steering_component/los_raycast/los_raycast.gd" id="1_e57tv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mwor3"]
+radius = 270.15
 
 [node name="LosRaycast" type="Node2D"]
 script = ExtResource("1_e57tv")
 color = Color(0, 0.352941, 0, 1)
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_mwor3")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 collision_mask = 9

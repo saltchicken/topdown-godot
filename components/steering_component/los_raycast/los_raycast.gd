@@ -1,9 +1,10 @@
 extends Behavior
 
-@export var steering_component : SteeringComponent
 @export var color : Color
 #@export var perpendicular_line_magnitude = 50
 
+var player = null
+@onready var area = get_node("Area2D")
 @onready var distance_to_player_last_known_pos
 @onready var direction_to_player_last_known_pos
 
@@ -13,6 +14,14 @@ extends Behavior
 #@onready var previous_los = false
 @onready var last_known_pos = null
 @onready var arrival_radius = 20
+
+signal player_los_exists
+
+func lost_los():
+	player_los_exists.emit(false)
+	
+func found_los():
+	player_los_exists.emit(true)
 
 
 	
@@ -31,7 +40,8 @@ extends Behavior
 
 
 func update():
-	if !steering_component.player:
+	player = check_for_player()
+	if !player:
 		player_los = false
 	#lost_los_handler()
 	raycast_handler()
@@ -42,6 +52,13 @@ func update():
 		Debug.draw_point(last_known_pos)
 	#set_perpendicular_line()
 	output_velocity()
+	
+func check_for_player():
+	for body in area.get_overlapping_bodies():
+		if body is Player:
+			return body
+	#lost_los()
+	return null
 
 func check_if_at_last_known_pos():
 	if last_known_pos:
@@ -55,10 +72,12 @@ func output_velocity():
 	velocity = direction_to_player_last_known_pos
 	
 func raycast_handler():
-	if steering_component.player:
-		raycast.target_position = steering_component.player.global_position - global_position
+	if player:
+		raycast.target_position = player.global_position - global_position
 		var collider = raycast.get_collider()
 		if collider is Player:
+			if player_los == false:
+				found_los()
 			player_los = true
 			last_known_pos = collider.global_position
 		else:
@@ -75,6 +94,9 @@ func set_distance_and_direction_to_player_last_known_position():
 	if last_known_pos != null:
 		distance_to_player_last_known_pos = global_position.distance_to(last_known_pos)
 		direction_to_player_last_known_pos = global_position.direction_to(last_known_pos)
+	else:
+		distance_to_player_last_known_pos = Vector2.ZERO
+		direction_to_player_last_known_pos = Vector2.ZERO
 
 #func calculate_end_point(slope, magnitude):
 	#var x = magnitude / sqrt(1 + slope ** 2)
