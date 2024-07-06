@@ -1,6 +1,6 @@
 class_name SteeringComponent extends Area2D
 
-@export var chase_speed := 60.0
+@export var chase_speed := 50.0
 
 @onready var idle_direction = Vector2(0.0, -1.0)
 @onready var player

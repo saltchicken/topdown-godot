@@ -1,7 +1,7 @@
 [gd_scene load_steps=62 format=3 uid="uid://crt86hiji50om"]
 
+[ext_resource type="Script" path="res://characters/enemies/red_slime/red_slime.gd" id="1_amajc"]
 [ext_resource type="Texture2D" uid="uid://b7v76t3d6r1kj" path="res://characters/enemies/red_slime/animation/red_slime_spritesheet.png" id="1_syx3v"]
-[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="1_ug285"]
 [ext_resource type="PackedScene" uid="uid://dy04wfary7rnh" path="res://components/state_machine/state_machine.tscn" id="2_egpls"]
 [ext_resource type="Script" path="res://components/animation_component/animation.gd" id="3_8dd6c"]
 [ext_resource type="PackedScene" uid="uid://bgihn1242qk6t" path="res://components/health_component/health_component.tscn" id="3_soycc"]
@@ -923,7 +923,7 @@ height = 20.0
 [node name="RedSlime" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 collision_layer = 4
 collision_mask = 15
-script = ExtResource("1_ug285")
+script = ExtResource("1_amajc")
 initial_state = NodePath("StateMachine/idle")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
