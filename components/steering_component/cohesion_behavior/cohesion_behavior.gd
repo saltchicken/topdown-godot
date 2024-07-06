@@ -24,5 +24,5 @@ func cohesion_rule() -> void:
 	
 	#Debug.draw_point((perceived_centre))
 	
-	#velocity = (perceived_centre-position) / 10
-	velocity = self.global_position.direction_to(perceived_centre) * cohesion_coefficient
+	#direction = (perceived_centre-position) / 10
+	direction = self.global_position.direction_to(perceived_centre) * cohesion_coefficient

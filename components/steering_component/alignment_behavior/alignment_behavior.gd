@@ -14,5 +14,5 @@ func update():
 	
 	perceived_velocity = perceived_velocity / boids.size()
 	
-	velocity = perceived_velocity.normalized() * alignment_coefficient
-	#print(velocity)
+	direction = perceived_velocity.normalized() * alignment_coefficient
+	#print(direction)

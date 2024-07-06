@@ -6,6 +6,19 @@ extends Behavior
 
 @export var radius = 30
 
+var weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+var directions = [
+		Vector2(0,1),
+		Vector2(1,1),
+		Vector2(1,0),
+		Vector2(1,-1),
+		Vector2(0,-1),
+		Vector2(-1,-1),
+		Vector2(-1,0),
+		Vector2(-1,1)
+	]
+
 var raycasts = []
 #var lines = []
 
@@ -95,7 +108,7 @@ func calculate_directional_weights():
 			#weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 			
 func calculate_velocity():
-	velocity = Vector2.ZERO
+	direction = Vector2.ZERO
 	for i in range(directions.size()):
-		velocity += weights[i] * directions[i]
-	velocity *= avoidance_coefficient
+		direction += weights[i] * directions[i]
+	direction *= avoidance_coefficient

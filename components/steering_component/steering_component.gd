@@ -30,9 +30,11 @@ func check_for_player():
 func check_for_weights():
 	direction = Vector2.ZERO
 	for behavior in behaviors:
-		if behavior.velocity:
-			direction += behavior.velocity
+		if behavior.direction:
+			direction += behavior.direction
 	direction = direction.normalized()
+	
+
 		
 func parse_steering_direction(current_state):
 	match current_state.name:
@@ -40,7 +42,7 @@ func parse_steering_direction(current_state):
 			if player:
 				current_state.state_transition.emit(current_state, 'chase')
 		"chase":
-			if !player:
+			if !player and !direction:
 				current_state.state_transition.emit(current_state, 'idle')
 		_:
 				print('parse_steering_direction state not handled yet')

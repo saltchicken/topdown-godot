@@ -16,5 +16,5 @@ func separation_rule():
 			if (body.global_position - global_position).length() < separation_amount:
 				separation_vec = separation_vec - (body.global_position - global_position)
 	
-	#velocity = -self.global_position.direction_to(separation_vec) * separation_coefficient
-	velocity = separation_vec.normalized() * separation_coefficient
+	#direction = -self.global_position.direction_to(separation_vec) * separation_coefficient
+	direction = separation_vec.normalized() * separation_coefficient

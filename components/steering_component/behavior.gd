@@ -2,19 +2,7 @@ class_name Behavior extends Node2D
 
 ### Make sure that the proper mask layer is selected in the associated Area2D.
 
-var velocity
-var weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
-
-var directions = [
-		Vector2(0,1),
-		Vector2(1,1),
-		Vector2(1,0),
-		Vector2(1,-1),
-		Vector2(0,-1),
-		Vector2(-1,-1),
-		Vector2(-1,0),
-		Vector2(-1,1)
-	]
+var direction
 	
 #var eight_directions = {
 		#"up": Vector2(0,1),

@@ -25,3 +25,16 @@ func add_point(pos):
 	
 func clear_points():
 	points = []
+	
+#func calculate_end_point(slope, magnitude):
+	#var x = magnitude / sqrt(1 + slope ** 2)
+	#var y = slope * x
+	#return Vector2(x, y)
+	
+#func set_perpendicular_line():
+	#var slope = raycast.target_position.y / raycast.target_position.x
+	#var perpendicular_slope = -1 / slope
+	#var perpendicular_line_magnitude = 50
+	#var end_point = calculate_end_point(perpendicular_slope, perpendicular_line_magnitude)
+	#perpendicular_line.set_point_position(0, -end_point)
+	#perpendicular_line.set_point_position(1, end_point)
