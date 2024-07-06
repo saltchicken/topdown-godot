@@ -6,6 +6,8 @@ class_name SteeringComponent extends Area2D
 @onready var player
 @onready var behaviors = get_behaviors()
 var direction = null
+
+#var behavior_override = false
 	
 func _physics_process(_delta: float):
 	player = check_for_player()
@@ -19,11 +21,14 @@ func get_behaviors():
 	for node in get_children():
 		if node is Behavior:
 			behavior_nodes.append(node)
-			node.override_behaviors.connect(on_override_behavior)
+			#node.override_behaviors.connect(on_override_behavior)
 	return behavior_nodes
 		
-func on_override_behavior():
-	print('Behavior override')
+#func on_override_behavior(switch):
+	#print('Behavior override')
+	#behavior_override = switch
+	#var state_machine = owner.get_node('StateMachine') # TODO: Should not be calling state_machine this way.
+	#state_machine.current_state.state_transition.emit(state_machine.current_state, 'idle')
 	
 func check_for_player():
 	for body in self.get_overlapping_bodies():
@@ -33,6 +38,8 @@ func check_for_player():
 	
 func check_for_weights():
 	direction = Vector2.ZERO
+	#if behavior_override:
+		#return
 	for behavior in behaviors:
 		if behavior.direction:
 			direction += behavior.direction

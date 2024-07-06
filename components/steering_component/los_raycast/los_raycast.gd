@@ -22,6 +22,8 @@ func raycast_handler():
 	raycast.target_position = steering_component.player.global_position - global_position
 	var collider = raycast.get_collider()
 	if collider is Player:
+		#if !target_los:
+			#override_behaviors.emit(false)
 		target_los = true
 		target_position = collider.global_position
 		direction = global_position.direction_to(target_position)
@@ -34,4 +36,4 @@ func reached_target_position():
 		target_position = null
 		target_distance = null
 		direction = Vector2.ZERO
-		override_behaviors.emit()
+		#override_behaviors.emit(true)

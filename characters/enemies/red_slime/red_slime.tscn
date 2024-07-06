@@ -1050,6 +1050,7 @@ libraries = {
 state_machine = NodePath("../StateMachine")
 
 [node name="SteeringComponent" parent="." instance=ExtResource("5_6e6u6")]
+visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SteeringComponent"]
 shape = SubResource("CircleShape2D_b3ut4")

@@ -4,7 +4,7 @@ class_name Behavior extends Node2D
 
 
 var direction
-signal override_behaviors
+#signal override_behaviors
 	
 #var eight_directions = {
 		#"up": Vector2(0,1),
