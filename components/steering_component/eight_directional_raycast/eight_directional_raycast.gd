@@ -1,6 +1,6 @@
 extends Behavior
 
-@export var steering_component : SteeringComponent
+@export var avoidance_coefficient: float = 10
 @export var color : Color
 @export var target_layer : int
 
@@ -98,4 +98,4 @@ func calculate_velocity():
 	velocity = Vector2.ZERO
 	for i in range(directions.size()):
 		velocity += weights[i] * directions[i]
-	#velocity = sum.normalized()
+	velocity *= avoidance_coefficient
