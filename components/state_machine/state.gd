@@ -2,7 +2,7 @@ extends Node
 class_name State
 
 @onready var input: InputComponent = get_parent().input
-@onready var steering: SteeringComponent = get_parent().steering
+@onready var steering: SteeringComponent = get_node("SteeringComponent")
 @onready var animation: AnimationTree = get_parent().animation
 
 @warning_ignore("unused_signal")

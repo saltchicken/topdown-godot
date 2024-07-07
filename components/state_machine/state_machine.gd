@@ -6,7 +6,6 @@ var current_state : State
 var state_transitioning : bool = false
 
 @export var input: InputComponent
-@export var steering: SteeringComponent
 @export var animation: AnimationTree
 
 func _ready():

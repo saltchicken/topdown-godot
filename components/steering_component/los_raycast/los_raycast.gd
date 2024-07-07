@@ -1,6 +1,6 @@
 extends Behavior
 
-@export var steering_component : SteeringComponent
+@onready var steering_component : SteeringComponent = get_parent()
 
 @onready var raycast = get_node("RayCast2D")
 @onready var target_los = false

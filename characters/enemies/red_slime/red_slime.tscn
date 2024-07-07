@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://crt86hiji50om"]
+[gd_scene load_steps=63 format=3 uid="uid://crt86hiji50om"]
 
 [ext_resource type="Script" path="res://characters/enemies/red_slime/red_slime.gd" id="1_amajc"]
 [ext_resource type="Texture2D" uid="uid://b7v76t3d6r1kj" path="res://characters/enemies/red_slime/animation/red_slime_spritesheet.png" id="1_syx3v"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/death.gd" id="10_jio4r"]
 [ext_resource type="PackedScene" uid="uid://xxno0yjis6d2" path="res://components/steering_component/los_raycast/los_raycast.tscn" id="11_p0p34"]
 [ext_resource type="Script" path="res://characters/states/hit.gd" id="12_si6iq"]
-[ext_resource type="PackedScene" uid="uid://cx8nagltvxj0p" path="res://components/steering_component/eight_directional_raycast/eight_directional_raycast.tscn" id="12_vg7r6"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/idle.gd" id="13_soku3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkjjn"]
@@ -915,12 +914,12 @@ _data = {
 "up": SubResource("Animation_qc2y1")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_b3ut4"]
-radius = 257.002
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_x5ehx"]
 radius = 8.0
 height = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_r0m0i"]
+radius = 200.003
 
 [node name="RedSlime" type="CharacterBody2D" node_paths=PackedStringArray("initial_state")]
 collision_layer = 4
@@ -1051,17 +1050,6 @@ libraries = {
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("3_soycc")]
 state_machine = NodePath("../StateMachine")
 
-[node name="SteeringComponent" parent="." instance=ExtResource("5_6e6u6")]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SteeringComponent"]
-shape = SubResource("CircleShape2D_b3ut4")
-
-[node name="LosRaycast" parent="SteeringComponent" node_paths=PackedStringArray("steering_component") instance=ExtResource("11_p0p34")]
-steering_component = NodePath("..")
-
-[node name="EightDirectionalRaycast" parent="SteeringComponent" instance=ExtResource("12_vg7r6")]
-
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_t0g18")]
 health_component = NodePath("../HealthComponent")
 
@@ -1071,8 +1059,7 @@ shape = SubResource("CapsuleShape2D_x5ehx")
 
 [node name="ImpactAttackCollision" parent="." instance=ExtResource("7_k8rnk")]
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("steering", "animation") instance=ExtResource("2_egpls")]
-steering = NodePath("../SteeringComponent")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("animation") instance=ExtResource("2_egpls")]
 animation = NodePath("../Animation/AnimationTree")
 
 [node name="wander" type="Node2D" parent="StateMachine"]
@@ -1080,6 +1067,13 @@ script = ExtResource("4_ucbq6")
 
 [node name="chase" type="Node2D" parent="StateMachine"]
 script = ExtResource("5_ak76l")
+
+[node name="SteeringComponent" parent="StateMachine/chase" instance=ExtResource("5_6e6u6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/chase/SteeringComponent"]
+shape = SubResource("CircleShape2D_r0m0i")
+
+[node name="LosRaycast" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("11_p0p34")]
 
 [node name="leap_attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_rlyej")
@@ -1092,3 +1086,10 @@ script = ExtResource("10_jio4r")
 
 [node name="idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("13_soku3")
+
+[node name="SteeringComponent" parent="StateMachine/idle" instance=ExtResource("5_6e6u6")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/idle/SteeringComponent"]
+shape = SubResource("CircleShape2D_r0m0i")
+
+[node name="LosRaycast" parent="StateMachine/idle/SteeringComponent" instance=ExtResource("11_p0p34")]

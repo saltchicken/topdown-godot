@@ -2,6 +2,7 @@ extends State
 
 
 func Enter():
+	steering.update()
 	animation.play(self.name)
 	animation.set_direction(self.name, steering.idle_direction)
 	
@@ -9,6 +10,7 @@ func Exit():
 	pass
 	
 func Update(_delta:float):
+	steering.update()
 	steering.parse_steering_direction(self)
 	state_movement()
 	

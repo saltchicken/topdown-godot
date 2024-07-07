@@ -9,7 +9,8 @@ var direction = Vector2.ZERO
 
 #var behavior_override = false
 	
-func _physics_process(_delta: float):
+func update():
+	print(get_parent())
 	player = check_for_player()
 	#set_distance_and_direction_to_player(player)
 	for behavior in behaviors:
