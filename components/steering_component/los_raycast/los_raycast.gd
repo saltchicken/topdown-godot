@@ -15,7 +15,7 @@ func update():
 	else:
 		target_los = false
 	if target_position != null:
-		Debug.draw_point(target_position)
+		Debug.draw_point(self, target_position)
 		reached_target_position()
 	
 func raycast_handler():
