@@ -68,16 +68,6 @@ func add_element_to_queue(element):
 	if !element_exists:
 		queue.append(element)
 	
-	
-#func draw_point(pos):
-	#point = pos
-	#
-#func add_point(pos):
-	#points.append(pos)
-	#
-#func clear_points():
-	#points = []
-	
 #func calculate_end_point(slope, magnitude):
 	#var x = magnitude / sqrt(1 + slope ** 2)
 	#var y = slope * x
