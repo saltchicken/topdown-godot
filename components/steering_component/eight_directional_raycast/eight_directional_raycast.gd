@@ -4,7 +4,7 @@ extends Behavior
 @export var color : Color
 @export var target_layer : int
 
-@export var radius = 30
+@export var look_ahead = 30
 
 var weights = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
 
@@ -27,7 +27,7 @@ var target = null
 func _ready() -> void:
 	for direction in directions:
 		var r = RayCast2D.new()
-		r.target_position = direction.normalized() * radius
+		r.target_position = direction.normalized() * look_ahead
 		r.self_modulate = 0
 		for layer in range(16):
 			layer += 1
@@ -83,7 +83,7 @@ func calculate_directional_weights():
 				var raycast = raycasts[i]
 				if raycast.is_colliding():
 					var collision_distance = (global_position - raycast.get_collision_point()).length()
-					var weight = (radius - collision_distance) / radius
+					var weight = (look_ahead - collision_distance) / look_ahead
 					weights[i] -= weight
 					if weight > 0.6:
 						weights[i - 1] -= weight * 0.15
