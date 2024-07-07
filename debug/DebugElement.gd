@@ -6,6 +6,7 @@ enum draw_type {
 	CIRCLE
 }
 var type
+var id
 var body
 var pos: Vector2
 var color: Color

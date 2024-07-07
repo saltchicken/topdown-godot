@@ -7,4 +7,4 @@ z_index = 10
 script = ExtResource("1_5lnju")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.05
+wait_time = 0.25
