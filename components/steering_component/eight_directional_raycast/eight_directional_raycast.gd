@@ -87,12 +87,7 @@ func calculate_directional_weights():
 					weights[i] -= weight
 					if weight > 0.6:
 						weights[i - 1] -= weight * 0.15
-						if i + 1 == weights.size():
-							weights[0] -= weight * 0.15
-						elif i + 1 > weights.size():
-							push_error('Directions and weights arrays out of sync')
-						else:
-							weights[i + 1] -= weight * 0.15				
+						weights[(i + 1) % weights.size()] -= weight * 0.15		
 					if weights[i] > 1.0:
 						push_warning('Issue with weight calculation in eight_directional_raycast')
 			
