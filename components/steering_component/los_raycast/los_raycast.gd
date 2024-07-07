@@ -27,6 +27,7 @@ func raycast_handler():
 		target_los = true
 		target_position = collider.global_position
 		direction = global_position.direction_to(target_position)
+		#Debug.line("LOS_Raycast direction", self, direction * 50)
 	else:
 		target_los = false
 			

@@ -108,4 +108,5 @@ func calculate_velocity():
 		direction += weights[i] * directions[i]
 	#direction = direction.normalized()
 	direction *= avoidance_coefficient
+	#Debug.line("Eight_Directional direction", self, direction * 50)
 	
