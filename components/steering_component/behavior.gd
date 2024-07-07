@@ -4,6 +4,7 @@ class_name Behavior extends Node2D
 
 
 var direction
+@export_range(0.0, 1.0) var steer_power: float = 1.0
 #signal override_behaviors
 	
 #var eight_directions = {

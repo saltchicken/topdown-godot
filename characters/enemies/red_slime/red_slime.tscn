@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=3 uid="uid://crt86hiji50om"]
+[gd_scene load_steps=64 format=3 uid="uid://crt86hiji50om"]
 
 [ext_resource type="Script" path="res://characters/enemies/red_slime/red_slime.gd" id="1_amajc"]
 [ext_resource type="Texture2D" uid="uid://b7v76t3d6r1kj" path="res://characters/enemies/red_slime/animation/red_slime_spritesheet.png" id="1_syx3v"]
@@ -12,7 +12,9 @@
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/leap_attack.gd" id="6_rlyej"]
 [ext_resource type="PackedScene" uid="uid://b28dce2v0n1ek" path="res://components/impact_attack_component/impact_attack_component.tscn" id="7_k8rnk"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/death.gd" id="10_jio4r"]
+[ext_resource type="PackedScene" uid="uid://xxno0yjis6d2" path="res://components/steering_component/los_raycast/los_raycast.tscn" id="11_p0p34"]
 [ext_resource type="Script" path="res://characters/states/hit.gd" id="12_si6iq"]
+[ext_resource type="PackedScene" uid="uid://cx8nagltvxj0p" path="res://components/steering_component/eight_directional_raycast/eight_directional_raycast.tscn" id="12_vg7r6"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/idle.gd" id="13_soku3"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkjjn"]
@@ -1054,6 +1056,11 @@ visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SteeringComponent"]
 shape = SubResource("CircleShape2D_b3ut4")
+
+[node name="LosRaycast" parent="SteeringComponent" node_paths=PackedStringArray("steering_component") instance=ExtResource("11_p0p34")]
+steering_component = NodePath("..")
+
+[node name="EightDirectionalRaycast" parent="SteeringComponent" instance=ExtResource("12_vg7r6")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_t0g18")]
 health_component = NodePath("../HealthComponent")

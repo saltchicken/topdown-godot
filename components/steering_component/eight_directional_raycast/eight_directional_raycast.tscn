@@ -4,3 +4,6 @@
 
 [node name="EightDirectionalRaycast" type="Node2D"]
 script = ExtResource("1_ygiwq")
+avoidance_coefficient = 2.0
+target_layer = 4
+steer_power = 0.423

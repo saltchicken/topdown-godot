@@ -5,7 +5,7 @@ class_name SteeringComponent extends Area2D
 @onready var idle_direction = Vector2(0.0, -1.0)
 @onready var player
 @onready var behaviors = get_behaviors()
-var direction = null
+var direction = Vector2.ZERO
 
 #var behavior_override = false
 	
@@ -37,12 +37,13 @@ func check_for_player():
 	return null
 	
 func check_for_weights():
-	direction = Vector2.ZERO
+	#direction = Vector2.ZERO
 	#if behavior_override:
 		#return
 	for behavior in behaviors:
 		if behavior.direction:
-			direction += behavior.direction
+			#direction += behavior.direction
+			direction = direction.lerp(behavior.direction, behavior.steer_power)
 	direction = direction.normalized()
 	
 

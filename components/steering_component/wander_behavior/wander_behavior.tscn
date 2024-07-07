@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bj0pbywhx36j"]
+
+[ext_resource type="Script" path="res://components/steering_component/wander_behavior/wander_behavior.gd" id="1_h03kn"]
+
+[sub_resource type="Curve2D" id="Curve2D_c0ot0"]
+
+[node name="WanderBehavior" type="Node2D"]
+script = ExtResource("1_h03kn")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = SubResource("Curve2D_c0ot0")

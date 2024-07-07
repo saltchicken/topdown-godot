@@ -112,3 +112,5 @@ func calculate_velocity():
 	for i in range(directions.size()):
 		direction += weights[i] * directions[i]
 	direction *= avoidance_coefficient
+	#direction = direction.normalized()
+	print(direction)
