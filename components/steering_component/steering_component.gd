@@ -7,15 +7,17 @@ class_name SteeringComponent extends Area2D
 @onready var behaviors = get_behaviors()
 var direction = Vector2.ZERO
 
+
+#@onready var debug_area = get_node("CollisionShape2D")
 #var behavior_override = false
 	
 func update():
-	print(get_parent())
 	player = check_for_player()
 	#set_distance_and_direction_to_player(player)
 	for behavior in behaviors:
 		behavior.update()
 	check_for_weights()
+	#Debug.circle('Area', self, Vector2(debug_area.shape.radius, 0))
 
 func get_behaviors():
 	var behavior_nodes = []

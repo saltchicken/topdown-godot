@@ -18,3 +18,4 @@ func separation_rule():
 	
 	#direction = -self.global_position.direction_to(separation_vec) * separation_coefficient
 	direction = separation_vec.normalized() * separation_coefficient
+	#Debug.line('Separation', self, direction * 50)
