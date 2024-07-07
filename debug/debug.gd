@@ -17,7 +17,7 @@ func _draw():
 			DebugElement.draw_type.POINT:
 				draw_circle(element.pos, 5, element.color)
 			DebugElement.draw_type.LINE:
-				draw_line(element.body.global_position, element.pos, element.color, 1.0)
+				draw_line(element.body.global_position, element.body.global_position + element.pos, element.color, 1.0)
 			DebugElement.draw_type.CIRCLE:
 				var point_count = 16
 				draw_arc(element.body.global_position, element.pos.length(), 0.0, TAU, point_count, element.color, 1.0)
@@ -25,9 +25,27 @@ func _draw():
 func _process(delta: float) -> void:
 	queue_redraw()
 	
-func draw_point(id, body, pos, color = default_color):
+func point(id, body, pos, color = default_color):
 	var element = DebugElement.new()
 	element.type = DebugElement.draw_type.POINT
+	element.id = id
+	element.body = body
+	element.pos = pos
+	element.color = color
+	add_element_to_queue(element)
+	
+func line(id, body, pos, color = default_color):
+	var element = DebugElement.new()
+	element.type = DebugElement.draw_type.LINE
+	element.id = id
+	element.body = body
+	element.pos = pos
+	element.color = color
+	add_element_to_queue(element)
+	
+func circle(id, body, pos, color = default_color):
+	var element = DebugElement.new()
+	element.type = DebugElement.draw_type.CIRCLE
 	element.id = id
 	element.body = body
 	element.pos = pos
