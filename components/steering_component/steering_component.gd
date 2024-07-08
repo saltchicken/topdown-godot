@@ -6,6 +6,7 @@ class_name SteeringComponent extends Area2D
 @onready var player
 @onready var behaviors = get_behaviors()
 var direction = Vector2.ZERO
+var previous_direction = direction
 
 
 #@onready var debug_area = get_node("CollisionShape2D")
@@ -43,6 +44,7 @@ func check_for_weights():
 	#direction = Vector2.ZERO
 	#if behavior_override:
 		#return
+	previous_direction = direction
 	for behavior in behaviors:
 		if behavior.direction:
 			#direction += behavior.direction
