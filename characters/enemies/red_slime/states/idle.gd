@@ -3,7 +3,6 @@ extends State
 
 func Enter():
 	steering.update()
-	print(steering.direction)
 	animation.play(self.name)
 	animation.set_direction(self.name, steering.idle_direction)
 	

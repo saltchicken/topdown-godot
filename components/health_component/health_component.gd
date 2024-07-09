@@ -6,9 +6,6 @@ var health : float
 
 var i_frames = 0.0
 
-#signal hit
-#signal death
-
 func _ready():
 	health = MAX_HEALTH
 	
@@ -28,10 +25,11 @@ func damage(attack: Attack):
 			health -= attack.attack_damage
 			if health <= 0:
 				print('set to death')
-				state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+				#state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
+				owner.death.emit()
 			else:
 				hit_indicator(owner, str(attack.attack_damage))
-				state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', attack)
+				owner.hit.emit(attack)
 	else:
 		push_warning("StateMachine not set")
 
@@ -45,5 +43,3 @@ func hit_indicator(parent_node, text_info: String, x_offset: float = 0.0, y_offs
 	hit_indicator_instance.x_offset = x_offset
 	hit_indicator_instance.y_offset = y_offset
 	hit_indicator_instance.main()
-	
-			
