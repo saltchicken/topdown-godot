@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=3 uid="uid://crt86hiji50om"]
+[gd_scene load_steps=65 format=3 uid="uid://crt86hiji50om"]
 
 [ext_resource type="Script" path="res://characters/enemies/red_slime/red_slime.gd" id="1_amajc"]
 [ext_resource type="Texture2D" uid="uid://b7v76t3d6r1kj" path="res://characters/enemies/red_slime/animation/red_slime_spritesheet.png" id="1_syx3v"]
@@ -17,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://cx8nagltvxj0p" path="res://components/steering_component/eight_directional_raycast/eight_directional_raycast.tscn" id="12_vg7r6"]
 [ext_resource type="PackedScene" uid="uid://dg170hs6qmerm" path="res://components/steering_component/separation_behavior/separation_behavior.tscn" id="12_xjr5n"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/idle.gd" id="13_soku3"]
-[ext_resource type="PackedScene" uid="uid://bj0pbywhx36j" path="res://components/steering_component/wander_behavior/wander_behavior.tscn" id="18_73rlw"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkjjn"]
 radius = 7.0
@@ -1082,9 +1081,6 @@ shape = SubResource("CircleShape2D_r0m0i")
 steer_power = 0.342
 
 [node name="EightDirectionalRaycast" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("12_vg7r6")]
-
-[node name="WanderBehavior" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("18_73rlw")]
-steer_power = 0.162
 
 [node name="leap_attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_rlyej")

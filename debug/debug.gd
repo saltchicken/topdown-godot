@@ -60,7 +60,7 @@ func add_element_to_queue(element):
 		if queue[i].id == element.id and queue[i].body == element.body:
 			if queue[i].pos.is_equal_approx(element.pos):
 				element_exists = true
-				print("Element already queued")
+				#print("Element already queued")
 			else:
 				elements_to_remove.append(i)
 	for element_to_remove in elements_to_remove:

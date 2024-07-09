@@ -14,8 +14,9 @@ func update():
 		raycast_handler()
 	else:
 		target_los = false
+		direction = Vector2.ZERO
 	if target_position != null:
-		Debug.point('target position', self, target_position)
+		Debug.point('target position', owner, target_position)
 		reached_target_position()
 	
 func raycast_handler():
@@ -30,6 +31,7 @@ func raycast_handler():
 		#Debug.line("LOS_Raycast direction", self, direction * 50)
 	else:
 		target_los = false
+		direction = Vector2.ZERO
 			
 func reached_target_position():
 	target_distance = global_position.distance_to(target_position)
@@ -37,4 +39,6 @@ func reached_target_position():
 		target_position = null
 		target_distance = null
 		direction = Vector2.ZERO
+		print('idle emitted')
+		owner.idle.emit()
 		#override_behaviors.emit(true)

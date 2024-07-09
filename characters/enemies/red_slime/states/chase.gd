@@ -11,7 +11,10 @@ func Exit():
 	
 func Update(_delta:float):
 	steering.update()
-	steering.parse_steering_direction(self)
+	if steering.direction.is_equal_approx(Vector2.ZERO):
+		owner.idle.emit()
+		return
+	#steering.parse_steering_direction(self)
 	animation.set_direction(self.name, steering.direction)
 	state_movement()
 	

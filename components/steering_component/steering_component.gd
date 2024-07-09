@@ -50,16 +50,3 @@ func check_for_weights():
 			#direction += behavior.direction
 			direction = direction.lerp(behavior.direction, behavior.steer_power)
 	direction = direction.normalized()
-	
-
-		
-func parse_steering_direction(current_state):
-	match current_state.name:
-		"idle":
-			if player:
-				current_state.state_transition.emit(current_state, 'chase')
-		"chase":
-			if !player and !direction:
-				current_state.state_transition.emit(current_state, 'idle')
-		_:
-				print('parse_steering_direction state not handled yet')
