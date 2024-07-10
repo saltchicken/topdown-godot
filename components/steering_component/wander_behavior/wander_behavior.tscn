@@ -2,5 +2,5 @@
 
 [ext_resource type="Script" path="res://components/steering_component/wander_behavior/wander_behavior.gd" id="1_h03kn"]
 
-[node name="WanderBehavior" type="Node2D"]
+[node name="WanderBehavior" type="Area2D"]
 script = ExtResource("1_h03kn")

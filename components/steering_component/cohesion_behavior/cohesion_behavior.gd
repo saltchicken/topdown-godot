@@ -1,7 +1,6 @@
 extends Behavior
 
 @export var cohesion_coefficient : float = .1
-@onready var boid_area = get_node("Area2D")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -15,7 +14,7 @@ func update():
 func cohesion_rule() -> void:
 	var perceived_centre:Vector2
 	
-	var boids = boid_area.get_overlapping_bodies()
+	var boids = get_overlapping_bodies()
 	for body in boids:
 		if body is RedSlime:
 			perceived_centre = perceived_centre + body.global_position

@@ -1,4 +1,4 @@
-class_name Behavior extends Node2D
+class_name Behavior extends Area2D
 
 ### Make sure that the proper mask layer is selected in the associated Area2D.
 

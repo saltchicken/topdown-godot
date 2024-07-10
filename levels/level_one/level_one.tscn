@@ -60,3 +60,6 @@ position = Vector2(16, -144)
 
 [node name="RedSlime" parent="." instance=ExtResource("4_omtx2")]
 position = Vector2(43, -89)
+
+[node name="RedSlime2" parent="." instance=ExtResource("4_omtx2")]
+position = Vector2(-9, -112)

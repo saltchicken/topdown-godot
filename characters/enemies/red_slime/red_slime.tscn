@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://crt86hiji50om"]
+[gd_scene load_steps=75 format=3 uid="uid://crt86hiji50om"]
 
 [ext_resource type="Script" path="res://characters/enemies/red_slime/red_slime.gd" id="1_amajc"]
 [ext_resource type="Texture2D" uid="uid://b7v76t3d6r1kj" path="res://characters/enemies/red_slime/animation/red_slime_spritesheet.png" id="1_syx3v"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://cx8nagltvxj0p" path="res://components/steering_component/eight_directional_raycast/eight_directional_raycast.tscn" id="12_vg7r6"]
 [ext_resource type="PackedScene" uid="uid://dg170hs6qmerm" path="res://components/steering_component/separation_behavior/separation_behavior.tscn" id="12_xjr5n"]
 [ext_resource type="Script" path="res://characters/enemies/red_slime/states/idle.gd" id="13_soku3"]
+[ext_resource type="PackedScene" uid="uid://cqwvsmftm0dyi" path="res://components/steering_component/cohesion_behavior/cohesion_behavior.tscn" id="14_wjbvs"]
+[ext_resource type="PackedScene" uid="uid://ctqr6cdq3m073" path="res://components/steering_component/alignment_behavior/alignment_behavior.tscn" id="15_8xtpm"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lkjjn"]
 radius = 7.0
@@ -53,6 +55,40 @@ nodes/BlendSpace2D/position = Vector2(1201, 215)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_m8h7j")
 nodes/TimeScale/position = Vector2(1535, 215)
 nodes/output/position = Vector2(1840, 220)
+node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_72ld3"]
+animation = &"death/omni"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gjhex"]
+animation = &"death/omni"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_uro43"]
+animation = &"death/omni"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_j7our"]
+animation = &"death/omni"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_nw20g"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_72ld3")
+blend_point_0/pos = Vector2(0, 1)
+blend_point_1/node = SubResource("AnimationNodeAnimation_gjhex")
+blend_point_1/pos = Vector2(1, 0)
+blend_point_2/node = SubResource("AnimationNodeAnimation_uro43")
+blend_point_2/pos = Vector2(0, -1)
+blend_point_3/node = SubResource("AnimationNodeAnimation_j7our")
+blend_point_3/pos = Vector2(-1, 0)
+blend_mode = 1
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_ho58s"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_ggw1n"]
+graph_offset = Vector2(-305.895, -31.1293)
+nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_nw20g")
+nodes/BlendSpace2D/position = Vector2(678.1, 73.63)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_ho58s")
+nodes/TimeScale/position = Vector2(1007.22, 99.04)
+nodes/output/position = Vector2(1260, 80)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_elu1q"]
@@ -127,6 +163,8 @@ node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_mgdyy"]
 states/chase/node = SubResource("AnimationNodeBlendTree_3hlvx")
 states/chase/position = Vector2(564, 156)
+states/death/node = SubResource("AnimationNodeBlendTree_ggw1n")
+states/death/position = Vector2(491, 48)
 states/hit/node = SubResource("AnimationNodeAnimation_elu1q")
 states/hit/position = Vector2(371, 60)
 states/idle/node = SubResource("AnimationNodeBlendTree_d3xbs")
@@ -414,7 +452,62 @@ _data = {
 "up": SubResource("Animation_2j2jf")
 }
 
+[sub_resource type="Animation" id="Animation_ill1n"]
+resource_name = "omni"
+step = 0.33
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprites/CharacterBase:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("1_syx3v")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprites/CharacterBase:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Sprites/CharacterBase:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Sprites/CharacterBase:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.33, 0.66, 0.99),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ywx03"]
+_data = {
+"omni": SubResource("Animation_ill1n")
+}
 
 [sub_resource type="Animation" id="Animation_ia21b"]
 resource_name = "new_animation"
@@ -981,6 +1074,32 @@ parameters/chase/TimeScale/scale = 1.0
 parameters/chase/output/current_length = null
 parameters/chase/output/current_position = null
 parameters/chase/output/current_delta = null
+parameters/death/current_length = null
+parameters/death/current_position = null
+parameters/death/current_delta = null
+parameters/death/BlendSpace2D/current_length = Vector2(0, 0)
+parameters/death/BlendSpace2D/current_position = Vector2(0, 0)
+parameters/death/BlendSpace2D/current_delta = Vector2(0, 0)
+parameters/death/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/death/BlendSpace2D/0/current_length = null
+parameters/death/BlendSpace2D/0/current_position = null
+parameters/death/BlendSpace2D/0/current_delta = null
+parameters/death/BlendSpace2D/1/current_length = null
+parameters/death/BlendSpace2D/1/current_position = null
+parameters/death/BlendSpace2D/1/current_delta = null
+parameters/death/BlendSpace2D/2/current_length = null
+parameters/death/BlendSpace2D/2/current_position = null
+parameters/death/BlendSpace2D/2/current_delta = null
+parameters/death/BlendSpace2D/3/current_length = null
+parameters/death/BlendSpace2D/3/current_position = null
+parameters/death/BlendSpace2D/3/current_delta = null
+parameters/death/TimeScale/current_length = 1.0
+parameters/death/TimeScale/current_position = 1.0
+parameters/death/TimeScale/current_delta = 1.0
+parameters/death/TimeScale/scale = 1.0
+parameters/death/output/current_length = null
+parameters/death/output/current_position = null
+parameters/death/output/current_delta = null
 parameters/hit/current_length = null
 parameters/hit/current_position = null
 parameters/hit/current_delta = null
@@ -1072,15 +1191,21 @@ script = ExtResource("5_ak76l")
 
 [node name="SteeringComponent" parent="StateMachine/chase" instance=ExtResource("5_6e6u6")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/chase/SteeringComponent"]
-shape = SubResource("CircleShape2D_r0m0i")
-
 [node name="LosRaycast" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("11_p0p34")]
 
-[node name="SeparationBehavior" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("12_xjr5n")]
-steer_power = 0.342
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/chase/SteeringComponent/LosRaycast"]
+shape = SubResource("CircleShape2D_r0m0i")
 
 [node name="EightDirectionalRaycast" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("12_vg7r6")]
+
+[node name="AlignmentBehavior" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("15_8xtpm")]
+steer_power = 0.252
+
+[node name="CohesionBehavior" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("14_wjbvs")]
+steer_power = 0.243
+
+[node name="SeparationBehavior" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("12_xjr5n")]
+steer_power = 0.171
 
 [node name="leap_attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_rlyej")
@@ -1096,7 +1221,7 @@ script = ExtResource("13_soku3")
 
 [node name="SteeringComponent" parent="StateMachine/idle" instance=ExtResource("5_6e6u6")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/idle/SteeringComponent"]
-shape = SubResource("CircleShape2D_r0m0i")
-
 [node name="LosRaycast" parent="StateMachine/idle/SteeringComponent" instance=ExtResource("11_p0p34")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/idle/SteeringComponent/LosRaycast"]
+shape = SubResource("CircleShape2D_r0m0i")

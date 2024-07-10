@@ -5,12 +5,8 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_0gsb2"]
 radius = 275.356
 
-[node name="AlignmentBehavior" type="Node2D"]
+[node name="AlignmentBehavior" type="Area2D"]
 script = ExtResource("1_utjt8")
 
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_0gsb2")
