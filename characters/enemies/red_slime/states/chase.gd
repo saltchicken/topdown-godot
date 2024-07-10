@@ -2,12 +2,12 @@ extends State
 
 
 func Enter():
+	steering.init()
 	steering.update()
 	animation.play(self.name)
 	animation.set_direction(self.name, steering.direction)
 	
 func Exit():
-	steering.direction = Vector2.ZERO # TODO: Why is this necessary
 	pass
 	
 func Update(_delta:float):
@@ -15,11 +15,9 @@ func Update(_delta:float):
 	if steering.direction.is_equal_approx(Vector2.ZERO):
 		owner.idle.emit()
 		return
-	#steering.parse_steering_direction(self)
 	animation.set_direction(self.name, steering.direction)
 	state_movement()
 	
 func state_movement():
-	var target_direction = steering.direction
-	owner.velocity.x = target_direction.x * steering.chase_speed
-	owner.velocity.y = target_direction.y * steering.chase_speed
+	owner.velocity.x = steering.direction.x * steering.chase_speed
+	owner.velocity.y = steering.direction.y * steering.chase_speed
