@@ -1,10 +1,11 @@
 extends State
 
+@export var idle_direction : Vector2 = Vector2(0.0, 1.0)
 
 func Enter():
 	steering.init()
 	animation.play(self.name)
-	animation.set_direction(self.name, steering.idle_direction)
+	animation.set_direction(self.name, idle_direction)
 	
 func Exit():
 	pass

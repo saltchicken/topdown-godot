@@ -117,6 +117,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_4ymfy"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_d3xbs"]
+graph_offset = Vector2(76, 140)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_0okql")
 nodes/BlendSpace2D/position = Vector2(1310, 188)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_4ymfy")
@@ -168,6 +169,7 @@ states/idle/node = SubResource("AnimationNodeBlendTree_d3xbs")
 states/idle/position = Vector2(379, 288)
 states/wander/node = SubResource("AnimationNodeBlendTree_tk0ge")
 states/wander/position = Vector2(377, 172)
+graph_offset = Vector2(-312, 125)
 
 [sub_resource type="Animation" id="Animation_lum82"]
 length = 0.001

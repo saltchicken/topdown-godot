@@ -1,8 +1,5 @@
 class_name SteeringComponent extends Node2D
 
-@export var chase_speed := 50.0
-
-@onready var idle_direction = Vector2(0.0, -1.0)
 @onready var behaviors = get_behaviors()
 var direction = Vector2.ZERO
 var previous_direction = direction
