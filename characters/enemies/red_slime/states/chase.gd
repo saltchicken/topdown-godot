@@ -7,6 +7,7 @@ func Enter():
 	animation.set_direction(self.name, steering.direction)
 	
 func Exit():
+	steering.direction = Vector2.ZERO # TODO: Why is this necessary
 	pass
 	
 func Update(_delta:float):

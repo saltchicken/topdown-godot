@@ -44,6 +44,6 @@ func check_for_weights():
 		if behavior.direction != null and !is_nan(behavior.direction.x) and !is_nan(behavior.direction.y): # TODO: Handle this in the behavior
 			#direction += behavior.direction
 			direction = direction.lerp(behavior.direction, behavior.steer_power)
-			#prints(behavior, direction)
+			prints(behavior, direction)
 	direction = direction.normalized()
 	#print(direction)

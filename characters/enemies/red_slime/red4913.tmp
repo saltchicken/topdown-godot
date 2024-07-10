@@ -1189,6 +1189,7 @@ script = ExtResource("5_ak76l")
 [node name="SteeringComponent" parent="StateMachine/chase" instance=ExtResource("5_6e6u6")]
 
 [node name="LosRaycast" parent="StateMachine/chase/SteeringComponent" instance=ExtResource("11_p0p34")]
+steer_power = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/chase/SteeringComponent/LosRaycast"]
 shape = SubResource("CircleShape2D_r0m0i")
@@ -1210,6 +1211,7 @@ script = ExtResource("13_soku3")
 [node name="SteeringComponent" parent="StateMachine/idle" instance=ExtResource("5_6e6u6")]
 
 [node name="LosRaycast" parent="StateMachine/idle/SteeringComponent" instance=ExtResource("11_p0p34")]
+steer_power = null
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/idle/SteeringComponent/LosRaycast"]
 shape = SubResource("CircleShape2D_r0m0i")
