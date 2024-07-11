@@ -23,7 +23,7 @@ var data:LevelDataHandoff
 func _ready() -> void:
 	player = gameplay.player
 	#add_child(player)
-	player.get_node("InputComponent").disable()
+	player.disable()
 	#player.visible = false
 	set_player_position()
 	
@@ -79,7 +79,7 @@ func init_scene() -> void:
 
 # Emitted at end of SceneManager.on_content_finished_loading
 func start_scene() -> void:
-	player.get_node("InputComponent").enable()
+	player.enable()
 	print("Start scene")
 	_connect_to_doors()
 

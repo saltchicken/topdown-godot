@@ -1,8 +1,7 @@
-class_name SteeringComponent extends Node2D
+class_name SteeringComponent extends Mover
 
 @onready var behaviors = get_behaviors()
 var direction = Vector2.ZERO
-var previous_direction = direction
 
 func init():
 	for behavior in behaviors:
@@ -22,7 +21,6 @@ func get_behaviors():
 	return behavior_nodes
 
 func check_for_weights():
-	previous_direction = direction
 	for behavior in behaviors:
 		if behavior.direction != null and !is_nan(behavior.direction.x) and !is_nan(behavior.direction.y): # TODO: Handle this in the behavior
 			#direction += behavior.direction
