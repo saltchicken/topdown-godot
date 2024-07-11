@@ -20,6 +20,7 @@ func i_frame_handler(delta):
 func damage(attack: Attack):
 	if health <= 0:
 		push_warning("Should be dead already")
+		return
 	if state_machine:
 		if state_machine.current_state.name not in ["hit", "death"] and i_frames <= 0.0:
 			health -= attack.attack_damage

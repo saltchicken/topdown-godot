@@ -42,8 +42,8 @@ func on_idle(direction):
 func on_moving():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'run')
 	
-func on_hit(attack : Attack):
-	state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', attack)
+func on_hit(attack_object : Attack):
+	state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', attack_object)
 	
 func on_death():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')

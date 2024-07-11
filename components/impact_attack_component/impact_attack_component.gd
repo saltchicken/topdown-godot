@@ -2,7 +2,7 @@ extends Node2D
 
 @export var attack_damage := 20
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if owner.collision:
 		var body = owner.collision.get_collider()
 		if body is Player:

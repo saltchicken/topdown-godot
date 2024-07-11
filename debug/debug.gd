@@ -23,7 +23,7 @@ func _draw():
 				var point_count = 16
 				draw_arc(element.body.global_position, element.pos.length(), 0.0, TAU, point_count, element.color, 1.0)
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	queue_redraw()
 	
 func point(id, body, pos, color = default_color):

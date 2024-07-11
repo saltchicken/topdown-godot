@@ -10,7 +10,7 @@ func Enter():
 func Exit():
 	pass
 	
-func Update(delta:float):
+func Update(_delta:float):
 	state_movement()
 	pass
 	#print('updating run')

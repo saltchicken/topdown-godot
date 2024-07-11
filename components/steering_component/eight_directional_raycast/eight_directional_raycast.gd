@@ -25,9 +25,9 @@ var raycasts = []
 var target = null
 
 func _ready() -> void:
-	for direction in directions:
+	for d in directions:
 		var r = RayCast2D.new()
-		r.target_position = direction.normalized() * look_ahead
+		r.target_position = d.normalized() * look_ahead
 		r.self_modulate = 0
 		for layer in range(16):
 			layer += 1
@@ -42,7 +42,7 @@ func _ready() -> void:
 		#l.width = 1
 		#l.default_color = color
 		#l.add_point(Vector2.ZERO)
-		#l.add_point(direction.normalized() * 50)
+		#l.add_point(d.normalized() * 50)
 		#r.add_child(l)
 		
 		
