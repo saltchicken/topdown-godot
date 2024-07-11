@@ -52,22 +52,22 @@ func _physics_process(_delta: float) -> void:
 	
 func parse_input_action(current_state) -> void:
 	if attack:
-		current_state.state_transition.emit(current_state, 'sword_attack_1')
+		owner.attack.emit()
 		
 
 func parse_input_direction(current_state) -> void:
 	match current_state.name:
 		'idle':
 			if direction:
-				current_state.state_transition.emit(current_state, 'run')
+				owner.moving.emit()
 		'run':
 			if !direction:
-				current_state.state_transition.emit(current_state, 'idle')
+				owner.idle.emit()
 		_:
 			if direction:
-				current_state.state_transition.emit(current_state, 'run')
+				owner.moving.emit()
 			else:
-				current_state.state_transition.emit(current_state, 'idle')
+				owner.idle.emit()
 	current_state.state_movement()
 
 func disable():
