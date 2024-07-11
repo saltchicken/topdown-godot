@@ -12,6 +12,7 @@ class_name Player extends CharacterBody2D
 
 signal idle
 signal moving
+signal dash
 signal hit
 signal death
 signal attack_1
@@ -20,6 +21,7 @@ signal attack_2
 func _ready() -> void:
 	idle.connect(on_idle)
 	moving.connect(on_moving)
+	dash.connect(on_dash)
 	hit.connect(on_hit)
 	death.connect(on_death)
 	attack_1.connect(on_attack_1)
@@ -43,6 +45,9 @@ func on_idle():
 	
 func on_moving():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'run')
+	
+func on_dash():
+	state_machine.current_state.state_transition.emit(state_machine.current_state, 'dash')
 	
 func on_hit(attack_object : Attack):
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', attack_object)
