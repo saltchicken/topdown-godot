@@ -1,21 +1,19 @@
-[gd_scene load_steps=83 format=3 uid="uid://rf4wl30ejldv"]
+[gd_scene load_steps=81 format=3 uid="uid://rf4wl30ejldv"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_lbwvk"]
 [ext_resource type="Texture2D" uid="uid://dpopakrdchjc5" path="res://characters/player/animation/run_sheet.png" id="2_7ixhf"]
 [ext_resource type="Texture2D" uid="uid://cfj72abslexwc" path="res://characters/player/animation/sword_swing1.png" id="2_66tmu"]
 [ext_resource type="Texture2D" uid="uid://cb0arcdwc8qpr" path="res://characters/player/animation/idle_sheet.png" id="2_287s8"]
 [ext_resource type="Script" path="res://components/animation_component/animation.gd" id="3_65hso"]
-[ext_resource type="PackedScene" uid="uid://bef8t70v0pmr1" path="res://components/input_component/input_component.tscn" id="3_l52s8"]
+[ext_resource type="PackedScene" uid="uid://b37qu3trd83qk" path="res://components/input_component/input_component.tscn" id="3_l52s8"]
 [ext_resource type="AnimationLibrary" uid="uid://cn2h6gqoydhn5" path="res://characters/player/animation/idle.res" id="3_x68ir"]
 [ext_resource type="PackedScene" uid="uid://dy04wfary7rnh" path="res://components/state_machine/state_machine.tscn" id="4_5gocp"]
 [ext_resource type="Script" path="res://characters/player/states/idle.gd" id="5_dos0p"]
 [ext_resource type="Script" path="res://characters/player/states/run.gd" id="8_kbly6"]
 [ext_resource type="Script" path="res://characters/player/states/sword_attack.gd" id="9_vd5ou"]
-[ext_resource type="PackedScene" uid="uid://cmdqip1f2cgx2" path="res://components/input_component/direction_module/direction_module.tscn" id="10_c402k"]
 [ext_resource type="PackedScene" uid="uid://b8vr052ouuvpf" path="res://components/hitbox_component/hitbox_component.tscn" id="10_vfxrv"]
 [ext_resource type="Script" path="res://characters/states/hit.gd" id="11_7ndpq"]
 [ext_resource type="PackedScene" uid="uid://bgihn1242qk6t" path="res://components/health_component/health_component.tscn" id="11_dyhpn"]
-[ext_resource type="PackedScene" uid="uid://cqcq28tpdv1qr" path="res://components/input_component/action_module/action_module.tscn" id="11_rmut5"]
 [ext_resource type="Script" path="res://characters/player/states/death.gd" id="12_qrqse"]
 [ext_resource type="PackedScene" uid="uid://dnvdfur02sndk" path="res://components/sword_attack_component/sword_attack_component.tscn" id="13_kw1cj"]
 
@@ -2083,15 +2081,15 @@ scale = Vector2(1.03125, 1)
 texture = ExtResource("2_287s8")
 hframes = 8
 vframes = 8
-frame = 37
+frame = 32
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 root_node = NodePath("../Sprites/CharacterBase")
 tree_root = SubResource("AnimationNodeStateMachine_07n6f")
 anim_player = NodePath("AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.501169
-parameters/current_delta = 0.00555556
+parameters/current_position = 0.0364455
+parameters/current_delta = 0.009743
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -2105,15 +2103,15 @@ parameters/hit/current_length = null
 parameters/hit/current_position = null
 parameters/hit/current_delta = null
 parameters/idle/current_length = 0.8
-parameters/idle/current_position = 0.501169
-parameters/idle/current_delta = 0.00555556
+parameters/idle/current_position = 0.0364455
+parameters/idle/current_delta = 0.009743
 parameters/idle/BlendSpace2D/current_length = 0.8
-parameters/idle/BlendSpace2D/current_position = 0.501169
-parameters/idle/BlendSpace2D/current_delta = 0.00555556
+parameters/idle/BlendSpace2D/current_position = 0.0364455
+parameters/idle/BlendSpace2D/current_delta = 0.009743
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.0703499, 0.752577)
 parameters/idle/BlendSpace2D/0/current_length = 0.8
-parameters/idle/BlendSpace2D/0/current_position = 0.501169
-parameters/idle/BlendSpace2D/0/current_delta = 0.00555556
+parameters/idle/BlendSpace2D/0/current_position = 0.0364455
+parameters/idle/BlendSpace2D/0/current_delta = 0.009743
 parameters/idle/BlendSpace2D/1/current_length = 0.8
 parameters/idle/BlendSpace2D/1/current_position = 0.0489433
 parameters/idle/BlendSpace2D/1/current_delta = 0.00694444
@@ -2136,12 +2134,12 @@ parameters/idle/BlendSpace2D/7/current_length = 0.8
 parameters/idle/BlendSpace2D/7/current_position = 0.600369
 parameters/idle/BlendSpace2D/7/current_delta = 0.00694444
 parameters/idle/TimeScale/current_length = 0.8
-parameters/idle/TimeScale/current_position = 0.501169
-parameters/idle/TimeScale/current_delta = 0.00555556
+parameters/idle/TimeScale/current_position = 0.0364455
+parameters/idle/TimeScale/current_delta = 0.009743
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.8
-parameters/idle/output/current_position = 0.501169
-parameters/idle/output/current_delta = 0.00555556
+parameters/idle/output/current_position = 0.0364455
+parameters/idle/output/current_delta = 0.009743
 parameters/run/current_length = null
 parameters/run/current_position = null
 parameters/run/current_delta = null
@@ -2231,31 +2229,20 @@ libraries = {
 "sword_attack": SubResource("AnimationLibrary_nnlnq")
 }
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("animation") instance=ExtResource("4_5gocp")]
+[node name="InputComponent" parent="." instance=ExtResource("3_l52s8")]
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("input", "animation") instance=ExtResource("4_5gocp")]
+input = NodePath("../InputComponent")
 animation = NodePath("../Animation/AnimationTree")
 
 [node name="idle" type="Node2D" parent="StateMachine"]
 script = ExtResource("5_dos0p")
 
-[node name="InputComponent" parent="StateMachine/idle" instance=ExtResource("3_l52s8")]
-
-[node name="DirectionModule" parent="StateMachine/idle/InputComponent" instance=ExtResource("10_c402k")]
-
-[node name="ActionModule" parent="StateMachine/idle/InputComponent" instance=ExtResource("11_rmut5")]
-
 [node name="run" type="Node2D" parent="StateMachine"]
 script = ExtResource("8_kbly6")
 
-[node name="InputComponent" parent="StateMachine/run" instance=ExtResource("3_l52s8")]
-
-[node name="DirectionModule" parent="StateMachine/run/InputComponent" instance=ExtResource("10_c402k")]
-
-[node name="ActionModule" parent="StateMachine/run/InputComponent" instance=ExtResource("11_rmut5")]
-
 [node name="sword_attack" type="Node2D" parent="StateMachine"]
 script = ExtResource("9_vd5ou")
-
-[node name="InputComponent" parent="StateMachine/sword_attack" instance=ExtResource("3_l52s8")]
 
 [node name="hit" type="Node2D" parent="StateMachine"]
 script = ExtResource("11_7ndpq")

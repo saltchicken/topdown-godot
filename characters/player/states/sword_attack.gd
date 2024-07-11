@@ -1,14 +1,11 @@
 extends State
 
-var attack_direction
-
 func _ready():
 	animation.animation_finished.connect(_on_animation_tree_animation_finished)
 
-func Enter(direction):
+func Enter():
 	animation.play(self.name)
-	attack_direction = direction
-	animation.set_direction(self.name, attack_direction)
+	animation.set_direction(self.name, input.previous_direction)
 	
 func Exit():
 	pass
@@ -25,5 +22,5 @@ func state_movement():
 	
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name.split('/')[0] == self.name:
-		owner.idle.emit(attack_direction)
+		input.parse_input_direction(self)
 	

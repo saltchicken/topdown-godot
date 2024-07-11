@@ -1,4 +1,4 @@
-class_name SteeringComponent extends Mover
+class_name SteeringComponent extends Node2D
 
 @onready var behaviors = get_behaviors()
 var direction = Vector2.ZERO

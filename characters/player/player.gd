@@ -20,7 +20,6 @@ func _ready() -> void:
 	hit.connect(on_hit)
 	death.connect(on_death)
 	attack.connect(on_attack)
-	pass # Replace with function body.
 	
 func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update

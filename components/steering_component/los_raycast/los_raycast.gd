@@ -1,6 +1,5 @@
 extends Behavior
 
-@onready var steering_component : Mover = get_parent()
 @onready var raycast = get_node("RayCast2D")
 var target_position = null
 @onready var arrival_radius = 5 # TODO: Programmatically set to owners collision radius

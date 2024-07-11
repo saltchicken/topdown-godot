@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://cmdqip1f2cgx2"]
-
-[ext_resource type="Script" path="res://components/input_component/direction_module/direction_module.gd" id="1_yboqm"]
-
-[node name="DirectionModule" type="Node2D"]
-script = ExtResource("1_yboqm")
