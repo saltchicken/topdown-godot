@@ -31,4 +31,4 @@ func state_movement():
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name.split('/')[0] == self.name:
-		print("Death is done. This needs to be handled")
+		owner.despawn.emit()

@@ -23,7 +23,7 @@ func state_movement():
 func i_frames_handler():
 	var health_component = owner.get_node('HealthComponent')
 	if health_component:
-		health_component.i_frames = 0.5
+		health_component.i_frames = owner.i_frames
 
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name.split('/')[0] == self.name:

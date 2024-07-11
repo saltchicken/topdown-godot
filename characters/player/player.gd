@@ -8,6 +8,8 @@ class_name Player extends CharacterBody2D
 
 @onready var collision
 
+@export var i_frames: float = 0.5
+
 signal idle
 signal moving
 signal hit
