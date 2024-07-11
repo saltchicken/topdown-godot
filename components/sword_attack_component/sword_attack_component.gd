@@ -1,6 +1,6 @@
 extends Node2D
 
-var attack_damage := 10.0
+var attack_damage := 35.0
 
 func _ready():
 	self.area_entered.connect(_on_hitbox_area_entered)

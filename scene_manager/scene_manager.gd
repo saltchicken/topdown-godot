@@ -129,7 +129,7 @@ func _on_content_finished_loading(incoming_scene) -> void:
 			_scene_to_unload.queue_free()
 			
 			
-	#get_tree().current_scene = incoming_scene # TODO: Where is the best place for this
+	get_tree().current_scene = incoming_scene # TODO: Where is the best place for this
 	#print("Incoming Scene")
 	#print(incoming_scene)
 	
