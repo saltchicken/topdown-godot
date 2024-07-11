@@ -22,6 +22,9 @@ func _ready() -> void:
 	attack.connect(on_attack)
 	pass # Replace with function body.
 	
+func _physics_process(delta: float) -> void:
+	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
+	
 func disable():
 	var input_components = find_children('InputComponent')
 	for input_component in input_components:
@@ -31,9 +34,6 @@ func enable():
 	var input_components = find_children('InputComponent')
 	for input_component in input_components:
 		input_component.enable()
-func _physics_process(delta: float) -> void:
-	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
-
 
 func on_idle(direction):
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'idle', direction)
