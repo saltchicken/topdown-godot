@@ -14,14 +14,16 @@ signal idle
 signal moving
 signal hit
 signal death
-signal attack
+signal attack_1
+signal attack_2
 
 func _ready() -> void:
 	idle.connect(on_idle)
 	moving.connect(on_moving)
 	hit.connect(on_hit)
 	death.connect(on_death)
-	attack.connect(on_attack)
+	attack_1.connect(on_attack_1)
+	attack_2.connect(on_attack_2)
 	
 func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
@@ -36,8 +38,8 @@ func enable():
 	for input_component in input_components:
 		input_component.enable()
 
-func on_idle(direction):
-	state_machine.current_state.state_transition.emit(state_machine.current_state, 'idle', direction)
+func on_idle():
+	state_machine.current_state.state_transition.emit(state_machine.current_state, 'idle')
 	
 func on_moving():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'run')
@@ -48,8 +50,11 @@ func on_hit(attack_object : Attack):
 func on_death():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 	
-func on_attack():
+func on_attack_1():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_1')
+	
+func on_attack_2():
+	state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_2')
 
 
 	

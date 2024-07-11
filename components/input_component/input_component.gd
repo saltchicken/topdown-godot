@@ -52,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 	
 func parse_input_action(current_state) -> void:
 	if attack:
-		owner.attack.emit()
+		owner.attack_1.emit()
 		
 
 func parse_input_direction(current_state) -> void:
