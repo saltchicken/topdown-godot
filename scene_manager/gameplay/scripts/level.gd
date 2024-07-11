@@ -27,8 +27,8 @@ func _ready() -> void:
 	#player.visible = false
 	set_player_position()
 	
-	register_bonfires()
-	check_known_bonfires()
+	#register_bonfires()
+	#check_known_bonfires()
 	
 	#create_timer_for_enemy(preload('res://characters/enemies/red_slime/red_slime.tscn'), 'red_slime', 0.25)
 	#create_timer_for_enemy(preload('res://characters/enemies/green_slime/green_slime.tscn'), 'green_slime', 1.0)
@@ -104,28 +104,28 @@ func _disconnect_from_doors() -> void:
 		if door.player_entered_door.is_connected(_on_player_entered_door):
 			door.player_entered_door.disconnect(_on_player_entered_door)
 			
-func register_bonfires():
-	for bonfire in get_tree().get_nodes_in_group("Bonfires"):
-		bonfire.area_2d.body_entered.connect(bonfire_body_entered.bind(bonfire))
-		bonfire.area_2d.body_exited.connect(bonfire_body_exited)
+#func register_bonfires():
+	#for bonfire in get_tree().get_nodes_in_group("Bonfires"):
+		#bonfire.area_2d.body_entered.connect(bonfire_body_entered.bind(bonfire))
+		#bonfire.area_2d.body_exited.connect(bonfire_body_exited)
 		
-func check_known_bonfires():
-	for bonfire in get_tree().get_nodes_in_group("Bonfires"):
-		if bonfire.data.get_path() in player.bonfire_menu.known_bonfires:
-				# TODO: Make a function that inits a new initial state and also updates the current_state
-				bonfire.initial_state = bonfire.state_machine.get_node('on')
-				bonfire.state_machine.current_state = bonfire.state_machine.get_node('on')
-				
-func bonfire_body_entered(body, bonfire):
-	if body.get_script() == Player:
-		if bonfire.state_machine.current_state.name == 'on':
-			for timer in timers.keys():
-				timers[timer].stop()
-	
-func bonfire_body_exited(body):
-	if body.get_script() == Player:
-		for timer in timers.keys():
-				timers[timer].start()
+#func check_known_bonfires():
+	#for bonfire in get_tree().get_nodes_in_group("Bonfires"):
+		#if bonfire.data.get_path() in player.bonfire_menu.known_bonfires:
+				## TODO: Make a function that inits a new initial state and also updates the current_state
+				#bonfire.initial_state = bonfire.state_machine.get_node('on')
+				#bonfire.state_machine.current_state = bonfire.state_machine.get_node('on')
+				#
+#func bonfire_body_entered(body, bonfire):
+	#if body.get_script() == Player:
+		#if bonfire.state_machine.current_state.name == 'on':
+			#for timer in timers.keys():
+				#timers[timer].stop()
+	#
+#func bonfire_body_exited(body):
+	#if body.get_script() == Player:
+		#for timer in timers.keys():
+				#timers[timer].start()
 			
 func spawn_mob(mob):
 	#var enemy_type = rng.randi_range(0, 1)

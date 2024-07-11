@@ -1,9 +1,9 @@
 [gd_scene load_steps=28 format=3 uid="uid://cxncyww8qag7b"]
 
 [ext_resource type="Texture2D" uid="uid://bnmvr6c7bo4oh" path="res://objects/bonfire/bonfire.png" id="1_a6ptv"]
-[ext_resource type="Script" path="res://objects/bonfire/bonfire_main.gd" id="1_l4mkk"]
+[ext_resource type="Script" path="res://objects/bonfire/bonfire.gd" id="1_l4mkk"]
 [ext_resource type="Texture2D" uid="uid://bddvfc2ucvrra" path="res://objects/bonfire/bonfire_off.png" id="2_03uex"]
-[ext_resource type="Script" path="res://utility/state_machine/state_machine.gd" id="4_t7lc4"]
+[ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="4_t7lc4"]
 [ext_resource type="Script" path="res://objects/bonfire/states/off_state.gd" id="5_32o3t"]
 [ext_resource type="Script" path="res://objects/bonfire/states/on_state.gd" id="6_b3p32"]
 
@@ -155,6 +155,8 @@ radius = 128.016
 
 [node name="Bonfire" type="StaticBody2D" node_paths=PackedStringArray("initial_state")]
 y_sort_enabled = true
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_l4mkk")
 initial_state = NodePath("StateMachine/off")
 
@@ -179,6 +181,8 @@ script = ExtResource("5_32o3t")
 script = ExtResource("6_b3p32")
 
 [node name="Area2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_rhulh")
