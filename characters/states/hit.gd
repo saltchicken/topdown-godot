@@ -9,6 +9,10 @@ func Enter(attack: Attack):
 	##animation_tree.set("parameters/hit/BlendSpace2D/blend_position", character_body.direction_to_player)
 	
 func Update(_delta:float):
+	if owner.collision:
+		var collision_body = owner.collision.get_collider()
+		if collision_body.state_machine.current_state.name != 'deflect':
+			collision_body.deflect.emit(owner.velocity.normalized())
 	state_movement()
 	
 func state_movement():

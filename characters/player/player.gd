@@ -6,6 +6,8 @@ class_name Player extends CharacterBody2D
 
 @onready var state_machine = get_node("StateMachine")
 
+@onready var collision
+
 signal idle
 signal moving
 signal hit
@@ -29,6 +31,8 @@ func enable():
 	var input_components = find_children('InputComponent')
 	for input_component in input_components:
 		input_component.enable()
+func _physics_process(delta: float) -> void:
+	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
 
 
 func on_idle(direction):
@@ -46,6 +50,5 @@ func on_death():
 func on_attack(direction):
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack', direction)
 
-func _physics_process(delta: float) -> void:
-	move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
+
 	
