@@ -39,7 +39,6 @@ func on_death():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 	
 func on_deflect(direction):
-	print('deflect')
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'deflect', direction)
 	
 func on_despawn():

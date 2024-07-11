@@ -19,7 +19,6 @@ func state_movement():
 	owner.velocity = Vector2(0.0, 0.0)
 	
 func _on_animation_tree_animation_finished(anim_name):
-	print(anim_name)
 	if anim_name.split('/')[0] == self.name:
 		input.parse_input_direction(self)
 	
