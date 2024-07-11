@@ -10,6 +10,7 @@ var default_color = Color.WHITE
 	#timer.start()
 
 func _draw():
+	validate_elements()
 	if queue.size() > 50:
 		push_warning("Way to many element in Debug Queue")		
 	for element in queue:
@@ -67,6 +68,15 @@ func add_element_to_queue(element):
 		queue.remove_at(element_to_remove)
 	if !element_exists:
 		queue.append(element)
+		
+func validate_elements():
+	var elements_to_remove = []
+	for i in queue.size():
+		if !is_instance_valid(queue[i].body):
+			elements_to_remove.append(i)
+	for element_to_remove in elements_to_remove:
+		queue.remove_at(element_to_remove)
+		
 	
 #func calculate_end_point(slope, magnitude):
 	#var x = magnitude / sqrt(1 + slope ** 2)
