@@ -52,7 +52,7 @@ func _physics_process(_delta: float) -> void:
 	
 func parse_input_action(current_state) -> void:
 	if attack:
-		current_state.state_transition.emit(current_state, 'sword_attack')
+		current_state.state_transition.emit(current_state, 'sword_attack_1')
 		
 
 func parse_input_direction(current_state) -> void:

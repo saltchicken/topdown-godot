@@ -49,7 +49,7 @@ func on_death():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 	
 func on_attack(direction):
-	state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack', direction)
+	state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_1', direction)
 
 
 	

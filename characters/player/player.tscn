@@ -136,28 +136,28 @@ nodes/output/position = Vector2(1260, 200)
 node_connections = [&"TimeScale", 0, &"BlendSpace2D", &"output", 0, &"TimeScale"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o74vm"]
-animation = &"sword_attack/up"
+animation = &"sword_attack_1/up"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ecjx7"]
-animation = &"sword_attack/up_right"
+animation = &"sword_attack_1/up_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ikp5p"]
-animation = &"sword_attack/right"
+animation = &"sword_attack_1/right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3pok6"]
-animation = &"sword_attack/down_right"
+animation = &"sword_attack_1/down_right"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qguur"]
-animation = &"sword_attack/down"
+animation = &"sword_attack_1/down"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_55th7"]
-animation = &"sword_attack/down_left"
+animation = &"sword_attack_1/down_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6bw80"]
-animation = &"sword_attack/left"
+animation = &"sword_attack_1/left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_761vx"]
-animation = &"sword_attack/up_left"
+animation = &"sword_attack_1/up_left"
 
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_vqj4g"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_o74vm")
@@ -181,7 +181,7 @@ blend_mode = 1
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_cfho1"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_kkp5w"]
-graph_offset = Vector2(-294.345, -38.3031)
+graph_offset = Vector2(-192.98, -34.5672)
 nodes/BlendSpace2D/node = SubResource("AnimationNodeBlendSpace2D_vqj4g")
 nodes/BlendSpace2D/position = Vector2(763, 98)
 nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_cfho1")
@@ -201,8 +201,8 @@ states/idle/node = SubResource("AnimationNodeBlendTree_6wxw8")
 states/idle/position = Vector2(471, 78)
 states/run/node = SubResource("AnimationNodeBlendTree_3s3jf")
 states/run/position = Vector2(410, 183)
-states/sword_attack/node = SubResource("AnimationNodeBlendTree_kkp5w")
-states/sword_attack/position = Vector2(631, 141)
+states/sword_attack_1/node = SubResource("AnimationNodeBlendTree_kkp5w")
+states/sword_attack_1/position = Vector2(631, 141)
 transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_8iirg")]
 
 [sub_resource type="Animation" id="Animation_4lrmr"]
@@ -2084,15 +2084,15 @@ scale = Vector2(1.03125, 1)
 texture = ExtResource("2_287s8")
 hframes = 8
 vframes = 8
-frame = 38
+frame = 34
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 root_node = NodePath("../Sprites/CharacterBase")
 tree_root = SubResource("AnimationNodeStateMachine_07n6f")
 anim_player = NodePath("AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.623378
-parameters/current_delta = 0.00694444
+parameters/current_position = 0.283333
+parameters/current_delta = 0.0131733
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -2106,15 +2106,15 @@ parameters/hit/current_length = null
 parameters/hit/current_position = null
 parameters/hit/current_delta = null
 parameters/idle/current_length = 0.8
-parameters/idle/current_position = 0.623378
-parameters/idle/current_delta = 0.00694444
+parameters/idle/current_position = 0.283333
+parameters/idle/current_delta = 0.0131733
 parameters/idle/BlendSpace2D/current_length = 0.8
-parameters/idle/BlendSpace2D/current_position = 0.623378
-parameters/idle/BlendSpace2D/current_delta = 0.00694444
+parameters/idle/BlendSpace2D/current_position = 0.283333
+parameters/idle/BlendSpace2D/current_delta = 0.0131733
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.0703499, 0.752577)
 parameters/idle/BlendSpace2D/0/current_length = 0.8
-parameters/idle/BlendSpace2D/0/current_position = 0.623378
-parameters/idle/BlendSpace2D/0/current_delta = 0.00694444
+parameters/idle/BlendSpace2D/0/current_position = 0.283333
+parameters/idle/BlendSpace2D/0/current_delta = 0.0131733
 parameters/idle/BlendSpace2D/1/current_length = 0.8
 parameters/idle/BlendSpace2D/1/current_position = 0.0489433
 parameters/idle/BlendSpace2D/1/current_delta = 0.00694444
@@ -2137,12 +2137,12 @@ parameters/idle/BlendSpace2D/7/current_length = 0.8
 parameters/idle/BlendSpace2D/7/current_position = 0.600369
 parameters/idle/BlendSpace2D/7/current_delta = 0.00694444
 parameters/idle/TimeScale/current_length = 0.8
-parameters/idle/TimeScale/current_position = 0.623378
-parameters/idle/TimeScale/current_delta = 0.00694444
+parameters/idle/TimeScale/current_position = 0.283333
+parameters/idle/TimeScale/current_delta = 0.0131733
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.8
-parameters/idle/output/current_position = 0.623378
-parameters/idle/output/current_delta = 0.00694444
+parameters/idle/output/current_position = 0.283333
+parameters/idle/output/current_delta = 0.0131733
 parameters/run/current_length = null
 parameters/run/current_position = null
 parameters/run/current_delta = null
@@ -2181,44 +2181,44 @@ parameters/run/TimeScale/scale = 1.0
 parameters/run/output/current_length = null
 parameters/run/output/current_position = null
 parameters/run/output/current_delta = null
-parameters/sword_attack/current_length = null
-parameters/sword_attack/current_position = null
-parameters/sword_attack/current_delta = null
-parameters/sword_attack/BlendSpace2D/current_length = Vector2(0, 0)
-parameters/sword_attack/BlendSpace2D/current_position = Vector2(0, 0)
-parameters/sword_attack/BlendSpace2D/current_delta = Vector2(0, 0)
-parameters/sword_attack/BlendSpace2D/blend_position = Vector2(0, 0)
-parameters/sword_attack/BlendSpace2D/0/current_length = null
-parameters/sword_attack/BlendSpace2D/0/current_position = null
-parameters/sword_attack/BlendSpace2D/0/current_delta = null
-parameters/sword_attack/BlendSpace2D/1/current_length = null
-parameters/sword_attack/BlendSpace2D/1/current_position = null
-parameters/sword_attack/BlendSpace2D/1/current_delta = null
-parameters/sword_attack/BlendSpace2D/2/current_length = null
-parameters/sword_attack/BlendSpace2D/2/current_position = null
-parameters/sword_attack/BlendSpace2D/2/current_delta = null
-parameters/sword_attack/BlendSpace2D/3/current_length = null
-parameters/sword_attack/BlendSpace2D/3/current_position = null
-parameters/sword_attack/BlendSpace2D/3/current_delta = null
-parameters/sword_attack/BlendSpace2D/4/current_length = null
-parameters/sword_attack/BlendSpace2D/4/current_position = null
-parameters/sword_attack/BlendSpace2D/4/current_delta = null
-parameters/sword_attack/BlendSpace2D/5/current_length = null
-parameters/sword_attack/BlendSpace2D/5/current_position = null
-parameters/sword_attack/BlendSpace2D/5/current_delta = null
-parameters/sword_attack/BlendSpace2D/6/current_length = null
-parameters/sword_attack/BlendSpace2D/6/current_position = null
-parameters/sword_attack/BlendSpace2D/6/current_delta = null
-parameters/sword_attack/BlendSpace2D/7/current_length = null
-parameters/sword_attack/BlendSpace2D/7/current_position = null
-parameters/sword_attack/BlendSpace2D/7/current_delta = null
-parameters/sword_attack/TimeScale/current_length = 1.0
-parameters/sword_attack/TimeScale/current_position = 1.0
-parameters/sword_attack/TimeScale/current_delta = 1.0
-parameters/sword_attack/TimeScale/scale = 1.0
-parameters/sword_attack/output/current_length = null
-parameters/sword_attack/output/current_position = null
-parameters/sword_attack/output/current_delta = null
+parameters/sword_attack_1/current_length = null
+parameters/sword_attack_1/current_position = null
+parameters/sword_attack_1/current_delta = null
+parameters/sword_attack_1/BlendSpace2D/current_length = Vector2(0, 0)
+parameters/sword_attack_1/BlendSpace2D/current_position = Vector2(0, 0)
+parameters/sword_attack_1/BlendSpace2D/current_delta = Vector2(0, 0)
+parameters/sword_attack_1/BlendSpace2D/blend_position = Vector2(0, 0)
+parameters/sword_attack_1/BlendSpace2D/0/current_length = null
+parameters/sword_attack_1/BlendSpace2D/0/current_position = null
+parameters/sword_attack_1/BlendSpace2D/0/current_delta = null
+parameters/sword_attack_1/BlendSpace2D/1/current_length = null
+parameters/sword_attack_1/BlendSpace2D/1/current_position = null
+parameters/sword_attack_1/BlendSpace2D/1/current_delta = null
+parameters/sword_attack_1/BlendSpace2D/2/current_length = null
+parameters/sword_attack_1/BlendSpace2D/2/current_position = null
+parameters/sword_attack_1/BlendSpace2D/2/current_delta = null
+parameters/sword_attack_1/BlendSpace2D/3/current_length = null
+parameters/sword_attack_1/BlendSpace2D/3/current_position = null
+parameters/sword_attack_1/BlendSpace2D/3/current_delta = null
+parameters/sword_attack_1/BlendSpace2D/4/current_length = null
+parameters/sword_attack_1/BlendSpace2D/4/current_position = null
+parameters/sword_attack_1/BlendSpace2D/4/current_delta = null
+parameters/sword_attack_1/BlendSpace2D/5/current_length = null
+parameters/sword_attack_1/BlendSpace2D/5/current_position = null
+parameters/sword_attack_1/BlendSpace2D/5/current_delta = null
+parameters/sword_attack_1/BlendSpace2D/6/current_length = null
+parameters/sword_attack_1/BlendSpace2D/6/current_position = null
+parameters/sword_attack_1/BlendSpace2D/6/current_delta = null
+parameters/sword_attack_1/BlendSpace2D/7/current_length = null
+parameters/sword_attack_1/BlendSpace2D/7/current_position = null
+parameters/sword_attack_1/BlendSpace2D/7/current_delta = null
+parameters/sword_attack_1/TimeScale/current_length = 1.0
+parameters/sword_attack_1/TimeScale/current_position = 1.0
+parameters/sword_attack_1/TimeScale/current_delta = 1.0
+parameters/sword_attack_1/TimeScale/scale = 1.0
+parameters/sword_attack_1/output/current_length = null
+parameters/sword_attack_1/output/current_position = null
+parameters/sword_attack_1/output/current_delta = null
 script = ExtResource("3_65hso")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animation/AnimationTree"]
@@ -2229,7 +2229,7 @@ libraries = {
 "hit": SubResource("AnimationLibrary_4g6m1"),
 "idle": ExtResource("3_x68ir"),
 "run": SubResource("AnimationLibrary_3myrk"),
-"sword_attack": SubResource("AnimationLibrary_nnlnq")
+"sword_attack_1": SubResource("AnimationLibrary_nnlnq")
 }
 
 [node name="InputComponent" parent="." instance=ExtResource("3_l52s8")]
@@ -2249,7 +2249,7 @@ script = ExtResource("5_dos0p")
 [node name="run" type="Node2D" parent="StateMachine"]
 script = ExtResource("8_kbly6")
 
-[node name="sword_attack" type="Node2D" parent="StateMachine"]
+[node name="sword_attack_1" type="Node2D" parent="StateMachine"]
 script = ExtResource("9_vd5ou")
 
 [node name="hit" type="Node2D" parent="StateMachine"]
