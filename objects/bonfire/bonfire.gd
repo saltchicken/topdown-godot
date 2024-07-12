@@ -1,8 +1,10 @@
-extends Interactable
+extends StaticBody2D
 
 @export var initial_state: State
 @onready var state_machine = $StateMachine
 @onready var area_2d: Area2D = $Area2D
+
+signal interact
 
 
 # Called when the node enters the scene tree for the first time.
@@ -10,13 +12,15 @@ func _ready() -> void:
 	#add_to_group("Bonfires") # TODO: Find a better way for game_manager to know of its existence.
 	area_2d.body_entered.connect(bonfire_body_entered)
 	area_2d.body_exited.connect(bonfire_body_exited)
+	
+	interact.connect(on_interact)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	pass
-	
-func interact():
+
+func on_interact():
 	if is_bonfire_on():
 		print("Bonfire is already lit")
 	else:

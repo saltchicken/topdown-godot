@@ -1,8 +1,7 @@
-[gd_scene load_steps=18 format=3 uid="uid://bspgte3mfuy0r"]
+[gd_scene load_steps=17 format=3 uid="uid://bspgte3mfuy0r"]
 
 [ext_resource type="Script" path="res://objects/chest/chest.gd" id="1_llsbc"]
 [ext_resource type="Texture2D" uid="uid://djppdb7cnqtgq" path="res://objects/chest/chest_spritesheet.png" id="2_shb6y"]
-[ext_resource type="PackedScene" uid="uid://bek4hocunujtq" path="res://components/interactable_component/interactable_component.tscn" id="3_333vu"]
 [ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="3_sor80"]
 [ext_resource type="Script" path="res://objects/chest/states/closed_state.gd" id="4_j7j2v"]
 [ext_resource type="Script" path="res://objects/chest/states/open_state.gd" id="5_npled"]
@@ -142,8 +141,6 @@ parameters/open/current_delta = null
 parameters/opening/current_length = null
 parameters/opening/current_position = null
 parameters/opening/current_delta = null
-
-[node name="InteractableComponent" parent="." instance=ExtResource("3_333vu")]
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_sor80")

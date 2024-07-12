@@ -1,4 +1,4 @@
-extends Interactable
+extends StaticBody2D
 class_name Chest
 
 @export var item: ItemData
@@ -9,10 +9,16 @@ class_name Chest
 
 @export var initial_state : State
 
-func interact():
+signal interact
+
+
+func _ready():
+	interact.connect(on_interact)
+
+func on_interact():
 	print("interacting with chest")
 	open_chest()
-		
+	
 func open_chest():
 	if state_machine.current_state.name == 'closed':
 		state_machine.current_state.state_transition.emit(state_machine.current_state, 'opening')

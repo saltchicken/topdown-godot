@@ -1,8 +1,9 @@
-[gd_scene load_steps=28 format=3 uid="uid://cxncyww8qag7b"]
+[gd_scene load_steps=29 format=3 uid="uid://cxncyww8qag7b"]
 
 [ext_resource type="Texture2D" uid="uid://bnmvr6c7bo4oh" path="res://objects/bonfire/bonfire.png" id="1_a6ptv"]
 [ext_resource type="Script" path="res://objects/bonfire/bonfire.gd" id="1_l4mkk"]
 [ext_resource type="Texture2D" uid="uid://bddvfc2ucvrra" path="res://objects/bonfire/bonfire_off.png" id="2_03uex"]
+[ext_resource type="PackedScene" uid="uid://bek4hocunujtq" path="res://components/interactable_component/interactable_component.tscn" id="4_r66gm"]
 [ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="4_t7lc4"]
 [ext_resource type="Script" path="res://objects/bonfire/states/off_state.gd" id="5_32o3t"]
 [ext_resource type="Script" path="res://objects/bonfire/states/on_state.gd" id="6_b3p32"]
@@ -170,6 +171,8 @@ sprite_frames = SubResource("SpriteFrames_bgdhw")
 animation = &"on"
 autoplay = "on"
 frame_progress = 0.0629705
+
+[node name="InteractableComponent" parent="." instance=ExtResource("4_r66gm")]
 
 [node name="StateMachine" type="Node2D" parent="."]
 script = ExtResource("4_t7lc4")

@@ -14,5 +14,6 @@ func _physics_process(delta: float) -> void:
 func interact():
 	var bodies = get_overlapping_bodies()
 	for body in bodies:
-		if body is Interactable:
-			body.interact()
+		var interactable_component = body.get_node_or_null("InteractableComponent")
+		if interactable_component:
+			interactable_component.interact()
