@@ -4,7 +4,10 @@ extends Area2D
 @onready var value
 var Random = RANDOM.new()
 
+signal collect
+
 func _ready() -> void:
+	collect.connect(on_collect)
 	var choice = Random.weighted_random([75, 20, 5])
 	match choice:
 		0:
@@ -19,7 +22,7 @@ func _ready() -> void:
 		_:
 			print('ERROR: not implemented')
 	
-func collect():
+func on_collect():
 	queue_free()
 	
 

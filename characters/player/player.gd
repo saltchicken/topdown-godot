@@ -74,9 +74,9 @@ func on_use():
 	if interact_component: # TODO: Interact with the closest one
 		interact_component.interact()
 		
-func on_collect(object_name, value):
-	if object_name == "Coins":
-		coin_count += value
+func on_collect(collectable):
+	if collectable is Coins:
+		coin_count += collectable.value
 	
 		
 func save():
