@@ -61,9 +61,7 @@ func load_game():
 		
 		match node_data["name"]:
 			"Player":
-				print('loading player')
 				var player = get_node("/root/Gameplay/Player")
-				print(player)
 				player.position.x = node_data["pos_x"]
 				player.position.y = node_data["pos_y"]
 				player.coin_count = node_data["coin_count"]
