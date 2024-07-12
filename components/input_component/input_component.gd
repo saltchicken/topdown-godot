@@ -55,6 +55,8 @@ func parse_input_action(current_state) -> void:
 		owner.attack_1.emit()
 	if dash:
 		owner.dash.emit()
+	if use:
+		owner.use.emit()
 		
 
 func parse_input_direction(current_state) -> void:

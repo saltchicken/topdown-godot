@@ -17,6 +17,7 @@ signal hit
 signal death
 signal attack_1
 signal attack_2
+signal use
 
 func _ready() -> void:
 	idle.connect(on_idle)
@@ -26,6 +27,7 @@ func _ready() -> void:
 	death.connect(on_death)
 	attack_1.connect(on_attack_1)
 	attack_2.connect(on_attack_2)
+	use.connect(on_use)
 	
 func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
@@ -60,6 +62,12 @@ func on_attack_1():
 	
 func on_attack_2():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_2')
+	
+func on_use():
+	var interact_component = get_node_or_null("InteractComponent")
+	if interact_component: # TODO: Interact with the closest one
+		interact_component.interact()
+		
 
 
 	
