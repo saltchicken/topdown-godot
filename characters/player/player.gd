@@ -12,6 +12,8 @@ class_name Player extends CharacterBody2D
 
 @onready var coin_count = 0.0
 
+@onready var pause_menu_node = get_node("PauseMenu")
+
 
 signal idle
 signal moving
@@ -22,6 +24,7 @@ signal attack_1
 signal attack_2
 signal use
 signal collect
+signal pause_menu
 
 func _ready() -> void:
 	add_to_group('Persist')
@@ -34,6 +37,7 @@ func _ready() -> void:
 	attack_2.connect(on_attack_2)
 	use.connect(on_use)
 	collect.connect(on_collect)
+	pause_menu.connect(on_pause_menu)
 	
 func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
@@ -44,6 +48,7 @@ func disable():
 		input_component.disable()
 		
 func enable():
+	print('player enabled')
 	var input_components = find_children('InputComponent')
 	for input_component in input_components:
 		input_component.enable()
@@ -77,6 +82,12 @@ func on_use():
 func on_collect(collectable):
 	if collectable is Coins:
 		coin_count += collectable.value
+		
+func on_pause_menu():
+	if pause_menu_node.visible:
+		pause_menu_node.close_pause_menu()
+	else:
+		pause_menu_node.open_pause_menu()
 	
 		
 func save():
