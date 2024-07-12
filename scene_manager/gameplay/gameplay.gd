@@ -15,7 +15,8 @@ func _ready() -> void:
 	load_player()
 	
 	if SceneManager.should_load_game:
-		SceneManager.load_game("user://savegame.save")
+		#Global.load_game("user://savegame.save")
+		Global.load_game()
 	
 	var game_manager
 	#if player.load_scene:

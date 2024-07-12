@@ -21,6 +21,8 @@ func interact():
 		print("Bonfire is already lit")
 	else:
 		turn_bonfire_on()
+	print("Saving game")
+	Global.save_game()
 	
 func turn_bonfire_on():
 	if state_machine.current_state.name == 'off':

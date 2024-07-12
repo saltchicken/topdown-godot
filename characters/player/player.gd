@@ -10,6 +10,9 @@ class_name Player extends CharacterBody2D
 
 @export var i_frames: float = 0.5
 
+@onready var coin_count = 0.0
+
+
 signal idle
 signal moving
 signal dash
@@ -18,8 +21,10 @@ signal death
 signal attack_1
 signal attack_2
 signal use
+signal collect
 
 func _ready() -> void:
+	add_to_group('Persist')
 	idle.connect(on_idle)
 	moving.connect(on_moving)
 	dash.connect(on_dash)
@@ -28,6 +33,7 @@ func _ready() -> void:
 	attack_1.connect(on_attack_1)
 	attack_2.connect(on_attack_2)
 	use.connect(on_use)
+	collect.connect(on_collect)
 	
 func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
@@ -67,6 +73,23 @@ func on_use():
 	var interact_component = get_node_or_null("InteractComponent")
 	if interact_component: # TODO: Interact with the closest one
 		interact_component.interact()
+		
+func on_collect(object_name, value):
+	if object_name == "Coins":
+		coin_count += value
+	
+		
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"name" : name,
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"coin_count" : coin_count
+	}
+	return save_dict
+	
+	
 		
 
 

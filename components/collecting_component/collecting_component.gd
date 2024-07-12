@@ -1,7 +1,5 @@
 extends Area2D
 
-@onready var count_coins = 0
-
 func _physics_process(_delta: float) -> void:
 	var areas = get_overlapping_areas()
 	for area in areas:
@@ -11,6 +9,5 @@ func _physics_process(_delta: float) -> void:
 
 func collect_coins(coins):
 	coins.collect()
-	count_coins += coins.value
-	print(count_coins)
+	owner.collect.emit(coins.name, coins.value)
 	
