@@ -1,7 +1,6 @@
 extends State
 
 func Enter():
-	#print("entering idle")
 	animation.play(self.name)
 	animation.set_direction(self.name, input.previous_direction)
 	
@@ -9,12 +8,12 @@ func Exit():
 	pass
 	
 func Update(_delta:float):
-	#print("updating idle")
 	input.parse_input_action(self)
-	input.parse_input_direction(self)
-	
+	if input.direction:
+		owner.moving.emit()
 	
 	animation.set_direction(self.name, input.previous_direction)
+	state_movement()
 	
 func state_movement():
 	#owner.velocity.x = move_toward(owner.velocity.x, 0, DECELERATION_SPEED)
