@@ -1,7 +1,7 @@
 extends Interactable
 class_name Chest
 
-#@export var item: ItemData
+@export var item: ItemData
 @onready var item_taken = false
 @onready var state_machine = $StateMachine
 @onready var animation_tree = $AnimationTree

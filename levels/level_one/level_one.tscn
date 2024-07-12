@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=4 uid="uid://de87suv6kg5db"]
+[gd_scene load_steps=11 format=4 uid="uid://de87suv6kg5db"]
 
 [ext_resource type="Script" path="res://scene_manager/gameplay/scripts/level.gd" id="1_w0a4h"]
 [ext_resource type="Texture2D" uid="uid://fjuy5toi0an4" path="res://levels/level_one/decor_16x16_grass.png" id="2_8qbdq"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://21p5dukixl7i" path="res://objects/coins/coins.tscn" id="5_oc7vd"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://objects/bonfire/bonfire.tscn" id="6_im08k"]
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://objects/chest/chest.tscn" id="7_56a2l"]
+[ext_resource type="Resource" uid="uid://dgt3l6gwvif0n" path="res://items/equipment/weapons/iron_sword/iron_sword.tres" id="8_2lmux"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2kwp"]
 resource_name = "grasslands"
@@ -75,3 +76,4 @@ position = Vector2(-344, -153)
 
 [node name="Chest" parent="." instance=ExtResource("7_56a2l")]
 position = Vector2(-245, -86)
+item = ExtResource("8_2lmux")

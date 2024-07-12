@@ -1,6 +1,13 @@
 extends Node
 
 
+var dialogue_node = preload("res://text/dialogue_panel/dialogue_panel.tscn")
+func dialogue(parent_node, text_array: Array):
+	var dialogue_instance = dialogue_node.instantiate()
+	parent_node.add_child(dialogue_instance)
+	dialogue_instance.set_text(text_array)
+	dialogue_instance.main()
+
 
 func save_game():
 	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
