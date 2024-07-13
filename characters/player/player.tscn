@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://characters/player/states/dash.gd" id="16_2sl7n"]
 [ext_resource type="PackedScene" uid="uid://j8mce13gumtk" path="res://components/interact_component/interact_component.tscn" id="20_d53nx"]
 [ext_resource type="PackedScene" uid="uid://dt1k1o6u0yqlq" path="res://components/profile_component/profile_component.tscn" id="22_fc5td"]
-[ext_resource type="PackedScene" uid="uid://bp62iki7b7wd7" path="res://components/profile_component/inventory_subcomponent/inventory_component.tscn" id="22_jf1t5"]
+[ext_resource type="PackedScene" uid="uid://bp62iki7b7wd7" path="res://components/profile_component/inventory_subcomponent/inventory_subcomponent.tscn" id="22_jf1t5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6evst"]
 radius = 5.0
