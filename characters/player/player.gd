@@ -5,10 +5,10 @@ class_name Player extends CharacterBody2D
 @export var run_speed: float = 300
 @onready var state_machine = get_node("StateMachine")
 @onready var pause_menu_node = get_node("PauseMenu")
+@onready var profile = get_node("ProfileComponent")
 
 @onready var collision
 @export var i_frames: float = 0.5
-@onready var coin_count = 0.0
 
 signal idle
 signal moving
@@ -22,7 +22,6 @@ signal collect
 signal pause_menu
 
 func _ready() -> void:
-	add_to_group('Persist')
 	idle.connect(on_idle)
 	moving.connect(on_moving)
 	dash.connect(on_dash)
@@ -76,26 +75,10 @@ func on_use():
 		
 func on_collect(collectable):
 	if collectable is Coins:
-		coin_count += collectable.value
+		profile.coins += collectable.value
 		
 func on_pause_menu():
 	if pause_menu_node.visible:
 		pause_menu_node.close_pause_menu()
 	else:
 		pause_menu_node.open_pause_menu()
-	
-func save():
-	var save_dict = {
-		"filename" : get_scene_file_path(),
-		"name" : name,
-		"pos_x" : position.x,
-		"pos_y" : position.y,
-		"coin_count" : coin_count
-	}
-	return save_dict
-	
-	
-		
-
-
-	

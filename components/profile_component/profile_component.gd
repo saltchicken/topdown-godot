@@ -18,8 +18,19 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var exp_needed = level_mapping.experience_needed_for_next_level(experience)
-	prints("need for next level:", exp_needed)
-	
-	prints("Level: ", level)
+	add_to_group('Persist')
+	#var exp_needed = level_mapping.experience_needed_for_next_level(experience)
+	#prints("need for next level:", exp_needed)
+	#
+	#prints("Level: ", level)
 	pass
+	
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"name" : owner.name,
+		"pos_x" : owner.position.x,
+		"pos_y" : owner.position.y,
+		"coins" : coins
+	}
+	return save_dict
