@@ -1,8 +1,5 @@
 extends CanvasLayer
 
-@onready var tabs: Array = [%InventoryMenu, %SpellsMenu, %QuestMenu, %SystemMenu]
-@onready var selected_tab = %InventoryMenu
-
 func _ready():
 	self.visible = false
 	get_node('BlurRect').set_size(get_viewport().get_visible_rect().size)

@@ -8,7 +8,7 @@ func Exit():
 	pass
 	
 func Update(_delta:float):
-	input.parse_input_action(self)
+	input.parse_input_action()
 	animation.set_direction(self.name, input.direction)
 	
 	if !input.direction:

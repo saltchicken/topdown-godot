@@ -10,7 +10,7 @@ func dialogue(parent_node, text_array: Array):
 
 
 func save_game():
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var save_gamed = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
 		prints("Saving", node)
@@ -31,7 +31,7 @@ func save_game():
 		var json_string = JSON.stringify(node_data)
 
 		# Store the save dictionary as a new line in the save file.
-		save_game.store_line(json_string)
+		save_gamed.store_line(json_string)
 		print('saved')
 		
 func load_game():
@@ -48,9 +48,9 @@ func load_game():
 
 	# Load the file line by line and process that dictionary to restore
 	# the object it represents.
-	var save_game = FileAccess.open("user://savegame.save", FileAccess.READ)
-	while save_game.get_position() < save_game.get_length():
-		var json_string = save_game.get_line()
+	var save_gamed = FileAccess.open("user://savegame.save", FileAccess.READ)
+	while save_gamed.get_position() < save_gamed.get_length():
+		var json_string = save_gamed.get_line()
 
 		# Creates the helper class to interact with JSON
 		var json = JSON.new()
@@ -64,7 +64,7 @@ func load_game():
 		# Get the data from the JSON object
 		var node_data = json.get_data()
 		
-		var name = node_data.get("name")
+		#var name = node_data.get("name")
 		
 		match node_data["name"]:
 			"Player":

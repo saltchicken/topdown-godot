@@ -54,7 +54,7 @@ func is_bonfire_on():
 		#print('Game saved')
 		## TODO: Need a bonfire menu
 		#
-func bonfire_body_entered(body):
+func bonfire_body_entered(_body):
 	print('Entered bonfire area')
 	#if body.get_script() == Player:
 		#if state_machine.current_state.name == 'on':
@@ -67,7 +67,7 @@ func bonfire_body_entered(body):
 					#else:
 						#print("Error: Enemy doesn't have run_away method")
 	
-func bonfire_body_exited(body):
+func bonfire_body_exited(_body):
 	print('Exitted bonfire area')
 	#if body.get_script() == Player:
 		#if state_machine.current_state.name == 'on':

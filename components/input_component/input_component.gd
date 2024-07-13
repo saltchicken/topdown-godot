@@ -35,7 +35,7 @@ func _physics_process(_delta: float) -> void:
 		attack = Input.is_action_just_pressed('attack')
 		cast = Input.is_action_just_pressed('cast')
 	
-func parse_input_action(current_state) -> void:
+func parse_input_action() -> void:
 	if attack:
 		owner.attack_1.emit()
 	if dash:

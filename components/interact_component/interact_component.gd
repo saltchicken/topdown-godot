@@ -5,7 +5,7 @@ extends Area2D
 @onready var collision_shape = get_node("CollisionShape2D")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if input.direction:
 		collision_shape.position = input.direction * reach
 	else:

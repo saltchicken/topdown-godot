@@ -8,7 +8,7 @@ func Exit():
 	pass
 	
 func Update(_delta:float):
-	input.parse_input_action(self)
+	input.parse_input_action()
 	if input.direction:
 		owner.moving.emit()
 	
