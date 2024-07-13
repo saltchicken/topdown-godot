@@ -3,17 +3,12 @@ class_name Player extends CharacterBody2D
 @export var initial_state: State
 
 @export var run_speed: float = 300
-
 @onready var state_machine = get_node("StateMachine")
-
-@onready var collision
-
-@export var i_frames: float = 0.5
-
-@onready var coin_count = 0.0
-
 @onready var pause_menu_node = get_node("PauseMenu")
 
+@onready var collision
+@export var i_frames: float = 0.5
+@onready var coin_count = 0.0
 
 signal idle
 signal moving
@@ -89,7 +84,6 @@ func on_pause_menu():
 	else:
 		pause_menu_node.open_pause_menu()
 	
-		
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),

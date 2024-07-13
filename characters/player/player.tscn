@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=3 uid="uid://rf4wl30ejldv"]
+[gd_scene load_steps=129 format=3 uid="uid://rf4wl30ejldv"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_lbwvk"]
 [ext_resource type="PackedScene" uid="uid://cm1wpccpepime" path="res://characters/player/pause_menu/pause_menu.tscn" id="2_1p00w"]
@@ -21,6 +21,8 @@
 [ext_resource type="PackedScene" uid="uid://dnvdfur02sndk" path="res://components/sword_attack_component/sword_attack_component.tscn" id="13_kw1cj"]
 [ext_resource type="Script" path="res://characters/player/states/dash.gd" id="16_2sl7n"]
 [ext_resource type="PackedScene" uid="uid://j8mce13gumtk" path="res://components/interact_component/interact_component.tscn" id="20_d53nx"]
+[ext_resource type="PackedScene" uid="uid://dt1k1o6u0yqlq" path="res://components/profile_component/profile_component.tscn" id="22_fc5td"]
+[ext_resource type="PackedScene" uid="uid://bp62iki7b7wd7" path="res://components/profile_component/inventory_subcomponent/inventory_component.tscn" id="22_jf1t5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6evst"]
 radius = 5.0
@@ -3957,8 +3959,8 @@ root_node = NodePath("../Sprites/CharacterBase")
 tree_root = SubResource("AnimationNodeStateMachine_07n6f")
 anim_player = NodePath("AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.0815801
-parameters/current_delta = 0.00724333
+parameters/current_position = 0.0471059
+parameters/current_delta = 0.00694444
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -4010,15 +4012,15 @@ parameters/hit/current_length = null
 parameters/hit/current_position = null
 parameters/hit/current_delta = null
 parameters/idle/current_length = 0.8
-parameters/idle/current_position = 0.0815801
-parameters/idle/current_delta = 0.00724333
+parameters/idle/current_position = 0.0471059
+parameters/idle/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/current_length = 0.8
-parameters/idle/BlendSpace2D/current_position = 0.0815801
-parameters/idle/BlendSpace2D/current_delta = 0.00724333
+parameters/idle/BlendSpace2D/current_position = 0.0471059
+parameters/idle/BlendSpace2D/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.0703499, 0.752577)
 parameters/idle/BlendSpace2D/0/current_length = 0.8
-parameters/idle/BlendSpace2D/0/current_position = 0.0815801
-parameters/idle/BlendSpace2D/0/current_delta = 0.00724333
+parameters/idle/BlendSpace2D/0/current_position = 0.0471059
+parameters/idle/BlendSpace2D/0/current_delta = 0.00694444
 parameters/idle/BlendSpace2D/1/current_length = 0.8
 parameters/idle/BlendSpace2D/1/current_position = 0.0489433
 parameters/idle/BlendSpace2D/1/current_delta = 0.00694444
@@ -4041,12 +4043,12 @@ parameters/idle/BlendSpace2D/7/current_length = 0.8
 parameters/idle/BlendSpace2D/7/current_position = 0.600369
 parameters/idle/BlendSpace2D/7/current_delta = 0.00694444
 parameters/idle/TimeScale/current_length = 0.8
-parameters/idle/TimeScale/current_position = 0.0815801
-parameters/idle/TimeScale/current_delta = 0.00724333
+parameters/idle/TimeScale/current_position = 0.0471059
+parameters/idle/TimeScale/current_delta = 0.00694444
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.8
-parameters/idle/output/current_position = 0.0815801
-parameters/idle/output/current_delta = 0.00724333
+parameters/idle/output/current_position = 0.0471059
+parameters/idle/output/current_delta = 0.00694444
 parameters/run/current_length = null
 parameters/run/current_position = null
 parameters/run/current_delta = null
@@ -4227,3 +4229,7 @@ disabled = true
 
 [node name="InteractComponent" parent="." node_paths=PackedStringArray("input") instance=ExtResource("20_d53nx")]
 input = NodePath("../InputComponent")
+
+[node name="ProfileComponent" parent="." instance=ExtResource("22_fc5td")]
+
+[node name="InventoryComponent" parent="ProfileComponent" instance=ExtResource("22_jf1t5")]
