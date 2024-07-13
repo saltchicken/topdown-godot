@@ -28,6 +28,7 @@ func _ready() -> void:
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),
+		"node_path" : get_path(),
 		"name" : name,
 		"coins" : coins
 	}

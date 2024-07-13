@@ -63,16 +63,21 @@ func load_game():
 
 		# Get the data from the JSON object
 		var node_data = json.get_data()
+		#print(node_data)
 		
-		#var name = node_data.get("name")
+		var node_name = node_data.get("name")
+		var node_path = node_data.get("node_path")
 		
-		match node_data["name"]:
+		if node_name == null or node_path == null:
+			prints("Node saved incorrectly:", parse_result)
+		
+		match node_name:
 			"Player":
-				var player = get_node("/root/Gameplay/Player")
+				var player = get_node(node_path)
 				player.position.x = node_data["pos_x"]
 				player.position.y = node_data["pos_y"]
 			"ProfileComponent":
-				var player_profile = get_node("/root/Gameplay/Player/ProfileComponent")
+				var player_profile = get_node(node_path)
 				player_profile.coins = node_data["coins"]
 			_:
 				print("Not implemented for loading")

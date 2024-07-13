@@ -87,6 +87,7 @@ func on_pause_menu():
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),
+		"node_path" : get_path(),
 		"name" : name,
 		"pos_x" : position.x,
 		"pos_y" : position.y
