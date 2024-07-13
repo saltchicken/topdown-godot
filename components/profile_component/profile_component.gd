@@ -28,9 +28,7 @@ func _ready() -> void:
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),
-		"name" : owner.name,
-		"pos_x" : owner.position.x,
-		"pos_y" : owner.position.y,
+		"name" : name,
 		"coins" : coins
 	}
 	return save_dict

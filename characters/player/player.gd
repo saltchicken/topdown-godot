@@ -22,6 +22,7 @@ signal collect
 signal pause_menu
 
 func _ready() -> void:
+	add_to_group('Persist')
 	idle.connect(on_idle)
 	moving.connect(on_moving)
 	dash.connect(on_dash)
@@ -82,3 +83,12 @@ func on_pause_menu():
 		pause_menu_node.close_pause_menu()
 	else:
 		pause_menu_node.open_pause_menu()
+		
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"name" : name,
+		"pos_x" : position.x,
+		"pos_y" : position.y
+	}
+	return save_dict

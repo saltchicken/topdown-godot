@@ -71,7 +71,9 @@ func load_game():
 				var player = get_node("/root/Gameplay/Player")
 				player.position.x = node_data["pos_x"]
 				player.position.y = node_data["pos_y"]
-				player.profile.coins = node_data["coins"]
+			"ProfileComponent":
+				var player_profile = get_node("/root/Gameplay/Player/ProfileComponent")
+				player_profile.coins = node_data["coins"]
 			_:
 				print("Not implemented for loading")
 			
