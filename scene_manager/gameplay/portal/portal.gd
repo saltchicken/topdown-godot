@@ -5,13 +5,15 @@ signal player_entered()
 #@export var push_distance:int = 16	## how far into the room the player should be pushed upon entry
 @export var path_to_new_scene: String
 @export var target_portal: String
-@export var move_position: Vector2 = Vector2.ZERO
 
 func _ready():
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:
+		return
+	if player_entered.get_connections().size() == 0:
+		print('Portal not connected yet from level')
 		return
 	print("Player entered")
 	player_entered.emit(self)	

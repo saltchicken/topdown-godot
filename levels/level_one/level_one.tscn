@@ -58,4 +58,3 @@ item = ExtResource("8_2lmux")
 position = Vector2(-800, -159)
 path_to_new_scene = "res://levels/level_two/level_two.tscn"
 target_portal = "LevelTwoEast"
-move_position = Vector2(100, 0)

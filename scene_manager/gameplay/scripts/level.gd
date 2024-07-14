@@ -60,7 +60,7 @@ func init_scene() -> void:
 	if data != null and player != null:
 		for portal in portals:
 			if portal.name == data.target_portal:
-				player.position = portal.global_position + portal.move_position
+				player.position = portal.global_position
 		#player.position = data.position_in_new_scene
 
 # Emitted at end of SceneManager.on_content_finished_loading
@@ -76,8 +76,6 @@ func on_player_entered_portal(portal:Portal) -> void:
 	player.disable()
 	data = LevelDataHandoff.new()
 	data.target_portal = portal.target_portal
-	data.move_position = portal.move_position
-	#data.move_dir = portal.get_move_dir()
 	
 func connect_portals() -> void:
 	for portal in portals:
