@@ -1,9 +1,17 @@
 extends Node
 
 @onready var audio = get_node("Audio").get_children()
+var current_song = null
 
 func play_song(track_number):
 	audio[track_number].play()
+	current_song = track_number
+	
+func stop_song():
+	if current_song != null:
+		audio[current_song].stop()
+	else:
+		push_warning("Song is not playing")
 
 var dialogue_node = preload("res://text/dialogue_panel/dialogue_panel.tscn")
 func dialogue(parent_node, text_array: Array):
