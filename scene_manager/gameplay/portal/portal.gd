@@ -4,9 +4,8 @@ signal player_entered()
 
 #@export var push_distance:int = 16	## how far into the room the player should be pushed upon entry
 @export var path_to_new_scene: String
-@export var position_in_new_scene: Vector2 = Vector2.ZERO
-
-#@export var entry_door_name:String	## name of the door we're entering through in the next room
+@export var target_portal: String
+@export var move_position: Vector2 = Vector2.ZERO
 
 func _ready():
 	body_entered.connect(_on_body_entered)

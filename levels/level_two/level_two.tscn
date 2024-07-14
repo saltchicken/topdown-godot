@@ -15,6 +15,8 @@ tile_set = ExtResource("1_l8ls3")
 
 [node name="Portals" type="Node" parent="."]
 
-[node name="Portal" parent="Portals" instance=ExtResource("2_hsnp4")]
+[node name="LevelTwoEast" parent="Portals" instance=ExtResource("2_hsnp4")]
 position = Vector2(1632, 0)
 path_to_new_scene = "res://levels/level_one/level_one.tscn"
+target_portal = "LevelOneWest"
+move_position = Vector2(-100, 0)
