@@ -1,5 +1,7 @@
 extends Node
 
+@onready var current_profile = null
+
 @onready var audio = get_node("Audio").get_children()
 var current_song = null
 
@@ -21,6 +23,9 @@ func dialogue(parent_node, text_array: Array):
 	dialogue_instance.main()
 
 func save_game():
+	if current_profile == null:
+		push_error("Current profile not set")
+		return
 	var save_gamed = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
@@ -40,6 +45,9 @@ func save_game():
 		save_gamed.store_line(json_string)
 		
 func load_game():
+	if current_profile == null:
+		push_error("Current profile not set")
+		return
 	if not FileAccess.file_exists("user://savegame.save"):
 		return # Error! We don't have a save to load.
 

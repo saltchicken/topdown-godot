@@ -1,7 +1,7 @@
 [gd_scene load_steps=130 format=4 uid="uid://rf4wl30ejldv"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_lbwvk"]
-[ext_resource type="PackedScene" uid="uid://cm1wpccpepime" path="res://characters/player/pause_menu/pause_menu.tscn" id="2_1p00w"]
+[ext_resource type="PackedScene" uid="uid://cm1wpccpepime" path="res://menus/pause_menu/pause_menu.tscn" id="2_1p00w"]
 [ext_resource type="Texture2D" uid="uid://dpopakrdchjc5" path="res://characters/player/animation/run_sheet.png" id="2_7ixhf"]
 [ext_resource type="Texture2D" uid="uid://cfj72abslexwc" path="res://characters/player/animation/sword_swing1.png" id="2_66tmu"]
 [ext_resource type="Texture2D" uid="uid://cb0arcdwc8qpr" path="res://characters/player/animation/idle_sheet.png" id="2_287s8"]
@@ -3964,8 +3964,8 @@ root_node = NodePath("../Sprites/CharacterBase")
 tree_root = SubResource("AnimationNodeStateMachine_07n6f")
 anim_player = NodePath("AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.147465
-parameters/current_delta = 0.006583
+parameters/current_position = 0.159416
+parameters/current_delta = 0.00666667
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -4017,15 +4017,15 @@ parameters/hit/current_length = null
 parameters/hit/current_position = null
 parameters/hit/current_delta = null
 parameters/idle/current_length = 0.8
-parameters/idle/current_position = 0.147465
-parameters/idle/current_delta = 0.006583
+parameters/idle/current_position = 0.159416
+parameters/idle/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/current_length = 0.8
-parameters/idle/BlendSpace2D/current_position = 0.147465
-parameters/idle/BlendSpace2D/current_delta = 0.006583
+parameters/idle/BlendSpace2D/current_position = 0.159416
+parameters/idle/BlendSpace2D/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.0703499, 0.752577)
 parameters/idle/BlendSpace2D/0/current_length = 0.8
-parameters/idle/BlendSpace2D/0/current_position = 0.147465
-parameters/idle/BlendSpace2D/0/current_delta = 0.006583
+parameters/idle/BlendSpace2D/0/current_position = 0.159416
+parameters/idle/BlendSpace2D/0/current_delta = 0.00666667
 parameters/idle/BlendSpace2D/1/current_length = 0.8
 parameters/idle/BlendSpace2D/1/current_position = 0.0489433
 parameters/idle/BlendSpace2D/1/current_delta = 0.00694444
@@ -4048,12 +4048,12 @@ parameters/idle/BlendSpace2D/7/current_length = 0.8
 parameters/idle/BlendSpace2D/7/current_position = 0.600369
 parameters/idle/BlendSpace2D/7/current_delta = 0.00694444
 parameters/idle/TimeScale/current_length = 0.8
-parameters/idle/TimeScale/current_position = 0.147465
-parameters/idle/TimeScale/current_delta = 0.006583
+parameters/idle/TimeScale/current_position = 0.159416
+parameters/idle/TimeScale/current_delta = 0.00666667
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.8
-parameters/idle/output/current_position = 0.147465
-parameters/idle/output/current_delta = 0.006583
+parameters/idle/output/current_position = 0.159416
+parameters/idle/output/current_delta = 0.00666667
 parameters/run/current_length = null
 parameters/run/current_position = null
 parameters/run/current_delta = null

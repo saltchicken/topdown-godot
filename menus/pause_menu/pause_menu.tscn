@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cm1wpccpepime"]
 
-[ext_resource type="Script" path="res://characters/player/pause_menu/pause_menu.gd" id="1_getxs"]
-[ext_resource type="Shader" path="res://characters/player/pause_menu/pause_menu_blur.gdshader" id="2_hxhow"]
+[ext_resource type="Script" path="res://menus/pause_menu/pause_menu.gd" id="1_getxs"]
+[ext_resource type="Shader" path="res://menus/pause_menu/pause_menu_blur.gdshader" id="2_hxhow"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tnhip"]
 shader = ExtResource("2_hxhow")

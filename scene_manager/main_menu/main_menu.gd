@@ -23,7 +23,8 @@ func _on_button_button_up(button):
 			#custom_change_scene(scene_instance)
 			#queue_free()
 			SceneManager.should_load_game = false
-			SceneManager.swap_scenes("res://scene_manager/gameplay/gameplay.tscn",get_tree().root,self,"fade_to_black")
+			#SceneManager.swap_scenes("res://scene_manager/gameplay/gameplay.tscn",get_tree().root,self,"fade_to_black")
+			SceneManager.swap_scenes("res://menus/profile_creation_menu/profile_creation.tscn",get_tree().root,self,"fade_to_black")
 			
 		"Continue":
 			#custom_change_scene(scene_instance)
