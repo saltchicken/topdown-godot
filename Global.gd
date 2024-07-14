@@ -1,5 +1,9 @@
 extends Node
 
+@onready var audio = get_node("Audio").get_children()
+
+func play_song(track_number):
+	audio[track_number].play()
 
 var dialogue_node = preload("res://text/dialogue_panel/dialogue_panel.tscn")
 func dialogue(parent_node, text_array: Array):

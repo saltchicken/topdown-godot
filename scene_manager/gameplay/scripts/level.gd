@@ -17,6 +17,7 @@ var data:LevelDataHandoff
 @onready var gameplay = get_parent().get_parent() # TODO: Better way to reference or not need this at all
 
 @onready var timers = {}
+
 #@onready var red_slime_timer = Timer.new()
 #@onready var green_slime_timer = Timer.new()
 
@@ -82,6 +83,7 @@ func start_scene() -> void:
 	player.enable()
 	print("Start scene")
 	_connect_to_doors()
+	Global.play_song(0)
 
 # signal emitted by Door, # disables doors and players, create handoff data to pass to the new scene (if new scene is a Level)
 func _on_player_entered_door(_door:Door) -> void:

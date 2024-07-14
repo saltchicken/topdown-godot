@@ -1,9 +1,12 @@
 extends State
 
+@export var sfx : AudioStreamPlayer
+
 func _ready():
 	animation.animation_finished.connect(_on_animation_tree_animation_finished)
 
 func Enter():
+	sfx.play()
 	animation.play(self.name)
 	animation.set_direction(self.name, input.previous_direction)
 	

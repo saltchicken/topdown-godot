@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b6i0txd0rso7w"]
+
+[ext_resource type="Script" path="res://Global.gd" id="1_ddqc4"]
+[ext_resource type="AudioStream" uid="uid://cqcgosynatdjy" path="res://audio/music/DungeonCave.wav" id="2_rld3a"]
+
+[node name="Global" type="Node2D"]
+script = ExtResource("1_ddqc4")
+
+[node name="Audio" type="Node" parent="."]
+process_mode = 3
+
+[node name="DungeonCave" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("2_rld3a")
+volume_db = -6.558
