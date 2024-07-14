@@ -45,6 +45,7 @@ func parse_input_action() -> void:
 
 func disable():
 	input_disabled = true
+	direction = Vector2.ZERO
 	
 func enable():
 	input_disabled = false
