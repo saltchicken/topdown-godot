@@ -127,7 +127,6 @@ func _on_content_finished_loading(incoming_scene) -> void:
 	# ex: do some setup before player gains control (I'm using it to position the player)
 	
 	if incoming_scene.has_method("init_scene"):
-		print('init scene')
 		incoming_scene.init_scene()
 	
 	# probably not necssary since we split our _content_finished_loading but it won't hurt to have an extra check

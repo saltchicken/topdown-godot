@@ -1288,18 +1288,23 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("3_soycc")]
+visible = false
 state_machine = NodePath("../StateMachine")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("4_t0g18")]
+visible = false
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+visible = false
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_x5ehx")
 
 [node name="ImpactAttackCollision" parent="." instance=ExtResource("7_k8rnk")]
+visible = false
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("animation") instance=ExtResource("2_egpls")]
+visible = false
 animation = NodePath("../Animation/AnimationTree")
 
 [node name="wander" type="Node2D" parent="StateMachine"]

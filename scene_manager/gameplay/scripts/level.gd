@@ -11,15 +11,10 @@ var MAX_ENEMIES = 1000
 var ENEMIES_COUNT = 0
 
 var player:Player
-@onready var doors = find_children("*", "Door")
+@onready var portals = get_node("Portals").get_children()
 var data:LevelDataHandoff
 
 @onready var gameplay = get_parent().get_parent() # TODO: Better way to reference or not need this at all
-
-@onready var timers = {}
-
-#@onready var red_slime_timer = Timer.new()
-#@onready var green_slime_timer = Timer.new()
 
 func _ready() -> void:
 	player = gameplay.player
@@ -31,9 +26,6 @@ func _ready() -> void:
 	#register_bonfires()
 	#check_known_bonfires()
 	
-	#create_timer_for_enemy(preload('res://characters/enemies/red_slime/red_slime.tscn'), 'red_slime', 0.25)
-	#create_timer_for_enemy(preload('res://characters/enemies/green_slime/green_slime.tscn'), 'green_slime', 1.0)
-	
 	# This block is here to allow us to test current scene without needing the SceneManager to call these :) 
 	if data == null:
 		init_scene()
@@ -43,17 +35,7 @@ func set_player_position():
 	#if player.load_location:
 		#player.global_position = player.load_location
 	#else:
-	push_warning("Using default 0,0 for player position")
-	
-func create_timer_for_enemy(enemy, key, wait_time):
-	var timer = Timer.new()
-	add_child(timer)
-	timers[key] = timer
-	timer.wait_time = wait_time
-	timer.timeout.connect(spawn_mob.bind(enemy))
-	timer.start()
-	
-		
+	push_warning("Using default 0,0 for player position")	
 
 ## When a class implements this, SceneManager.on_content_finished_loading will invoke it
 ## to receive this data and pass it to the next scene
@@ -69,42 +51,41 @@ func receive_data(_data):
 	# act only on the data you want to receive and process :) 
 	if _data is LevelDataHandoff:
 		data = _data
-		# process data here if need be, for this we just need to receive it but only if it's of the correct data type
 	else:
 		push_warning("Level %s is receiving data it cannot process" % name)
 
 # Emitted in the middle of SceneManager.on_content_finished_loading
 func init_scene() -> void:
 	print("Init scene")
-	#init_player_location()
+	if data != null and player != null:
+		player.position = data.position_in_new_scene
 
 # Emitted at end of SceneManager.on_content_finished_loading
 func start_scene() -> void:
 	player.enable()
 	print("Start scene")
-	_connect_to_doors()
+	connect_portals()
 	Global.play_song(0)
 
 # signal emitted by Door, # disables doors and players, create handoff data to pass to the new scene (if new scene is a Level)
-func _on_player_entered_door(_door:Door) -> void:
-	_disconnect_from_doors()
+func on_player_entered_portal(portal:Portal) -> void:
+	disconnect_portals()
 	player.disable()
-	#data = LevelDataHandoff.new()
-	#data.entry_door_name = door.entry_door_name
-	#data.move_dir = door.get_move_dir()
-		
-
-# connects to all door signals in level
-func _connect_to_doors() -> void:
-	for door in doors:
-		if not door.player_entered_door.is_connected(_on_player_entered_door):
-			door.player_entered_door.connect(_on_player_entered_door)
-
-# disconnect from all door signals in level			
-func _disconnect_from_doors() -> void:
-	for door in doors:
-		if door.player_entered_door.is_connected(_on_player_entered_door):
-			door.player_entered_door.disconnect(_on_player_entered_door)
+	data = LevelDataHandoff.new()
+	data.position_in_new_scene = portal.position_in_new_scene
+	#data.move_dir = portal.get_move_dir()
+	
+func connect_portals() -> void:
+	for portal in portals:
+		if not portal.player_entered.is_connected(on_player_entered_portal):
+			portal.player_entered.connect(on_player_entered_portal)
+			#print_debug("Connected %s" % portal.name)
+				
+func disconnect_portals() -> void:
+	for portal in portals:
+		if portal.player_entered.is_connected(on_player_entered_portal):
+			portal.player_entered.disconnect(on_player_entered_portal)
+			#print_debug("Disconnected %s" % portal.name)
 			
 #func register_bonfires():
 	#for bonfire in get_tree().get_nodes_in_group("Bonfires"):
@@ -129,20 +110,20 @@ func _disconnect_from_doors() -> void:
 		#for timer in timers.keys():
 				#timers[timer].start()
 			
-func spawn_mob(mob):
-	#var enemy_type = rng.randi_range(0, 1)
-	#var enemy = enemy_scenes[enemy_type].instantiate()
-	ENEMIES_COUNT += 1
-	var mob_instance = mob.instantiate()
-	player.path_follow.progress_ratio = randf()
-	mob_instance.global_position = player.path_follow.global_position
-	add_child(mob_instance)
-	mob_instance.add_to_group("Enemies")
-	
-# TODO: Not being used. Move to utility or something
-func calculate_random_position_at_range(range_magnitude):
-	var direction = rng.randf_range(0.0, 6.283)
-	var x = range_magnitude * cos(direction)
-	var y = range_magnitude * sin(direction)
-	return Vector2(x, y)
+#func spawn_mob(mob):
+	##var enemy_type = rng.randi_range(0, 1)
+	##var enemy = enemy_scenes[enemy_type].instantiate()
+	#ENEMIES_COUNT += 1
+	#var mob_instance = mob.instantiate()
+	#player.path_follow.progress_ratio = randf()
+	#mob_instance.global_position = player.path_follow.global_position
+	#add_child(mob_instance)
+	#mob_instance.add_to_group("Enemies")
+	#
+## TODO: Not being used. Move to utility or something
+#func calculate_random_position_at_range(range_magnitude):
+	#var direction = rng.randf_range(0.0, 6.283)
+	#var x = range_magnitude * cos(direction)
+	#var y = range_magnitude * sin(direction)
+	#return Vector2(x, y)
 			

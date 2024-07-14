@@ -1,10 +1,12 @@
-class_name Door extends Area2D
+class_name Portal extends Area2D
 
-signal player_entered_door(door:Door,transition_type:String)
+signal player_entered()
 
 #@export var push_distance:int = 16	## how far into the room the player should be pushed upon entry
-@export var path_to_new_scene:String	## scene we want to load when touchign this door
-@export var entry_door_name:String	## name of the door we're entering through in the next room
+@export var path_to_new_scene: String
+@export var position_in_new_scene: Vector2 = Vector2.ZERO
+
+#@export var entry_door_name:String	## name of the door we're entering through in the next room
 
 func _ready():
 	body_entered.connect(_on_body_entered)
@@ -12,12 +14,12 @@ func _ready():
 func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:
 		return
-	print("Player entered door")
-	player_entered_door.emit(self)	
+	print("Player entered")
+	player_entered.emit(self)	
 	var gameplay_node:Gameplay = get_tree().root.get_node('Gameplay')
 	var unload:Node = gameplay_node.current_level	# we're now responsible for tracking this
 	SceneManager.swap_scenes(path_to_new_scene, gameplay_node.level_holder, unload, "fade_to_black")
-	queue_free()
+	#queue_free()
 	
 # // UTILITY FUNCTIONS //
 ## returns the starting location of the player based on this door's location and the 

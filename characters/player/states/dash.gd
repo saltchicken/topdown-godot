@@ -10,7 +10,6 @@ func Enter():
 	animation.play(self.name)
 	dash_direction = input.previous_direction
 	animation.set_direction(self.name, dash_direction)
-	print(owner)
 	owner.set_collision_layer_value(1, false)
 	owner.set_collision_mask_value(1, false)
 	owner.set_collision_mask_value(2, false)
