@@ -17,22 +17,12 @@ var _load_scene_into:Node	## internal - Node into which we're loading the new sc
 var _scene_to_unload:Node	## internal - Node we're unloading. In almost all cases, SceneManager will be used to swap between two scenes - after all that it the primary focus. However, passing in [code]null[/code] for the scene to unload will skip the unloading process and simply add the new scene. This isn't recommended, as it can have some adverse affects depending on how it is used, but it does work. Use with caution :)
 var _loading_in_progress:bool = false	## internal - used to block SceneManager from attempting to load two things at the same time
 
-#var player: Player
-
 @onready var should_load_game = false;
 
-## Currently only being used to connect to required, internal signals
 func _ready() -> void:
 	_content_invalid.connect(_on_content_invalid)
 	_content_failed_to_load.connect(_on_content_failed_to_load)
-	_content_finished_loading.connect(_on_content_finished_loading)
-	
-	#load_player()
-	#
-#func load_player() -> void:
-	#player = preload("res://characters/player/player.tscn").instantiate()
-	#add_child(player)
-	
+	_content_finished_loading.connect(_on_content_finished_loading)	
 
 func _add_loading_screen(transition_type:String="fade_to_black"):
 	_transition = "no_to_transition" if transition_type == "no_transition" else transition_type

@@ -17,13 +17,9 @@ func _ready() -> void:
 	if SceneManager.should_load_game:
 		#Global.load_game("user://savegame.save")
 		Global.load_game()
-	
-	var game_manager
-	#if player.load_scene:
-		#game_manager = load(player.load_scene).instantiate()
-	#else:
-	push_warning("Loading the default scene")
-	game_manager = load("res://levels/level_one/level_one.tscn").instantiate()
+	else:
+		push_warning("Loading the default scene")
+	var game_manager = load("res://levels/level_one/level_one.tscn").instantiate()
 	level_holder.add_child(game_manager)
 	current_level = level_holder.get_child(0) as Level
 	
