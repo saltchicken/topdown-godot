@@ -13,6 +13,7 @@ func _process(delta: float) -> void:
 
 func save():
 	var save_dict = {
+		"name" : name,
 		"test" : "test_saved"
 	}
 	return save_dict

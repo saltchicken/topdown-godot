@@ -63,22 +63,37 @@ func save_world(temp: bool = false):
 	var saved_game_file_path
 	if !temp:
 		saved_game_file_path = profiles_dir + current_profile + "/world.save"
+		######################################################################
+		# This block creates a new world save if one does not exist
+		if not FileAccess.file_exists(saved_game_file_path):
+			var world_save = FileAccess.open(saved_game_file_path, FileAccess.WRITE)
+			var level_data = current_level.call("save")
+			prints("LevelData:", level_data)
+			world_save.store_line(JSON.stringify(level_data))
+			world_save.close()
+			return
+		######################################################################	
 	else:
 		saved_game_file_path = profiles_dir + current_profile + "/temp_world.save"
-	######################################################################
-	# This block creates a new world save if one does not exist
-	if not FileAccess.file_exists(saved_game_file_path):
-		var world_save = FileAccess.open(saved_game_file_path, FileAccess.WRITE)
-		var level_data = current_level.call("save")
-		prints("LevelData:", level_data)
-		world_save.store_line(JSON.stringify(level_data))
-		world_save.close()
-		return
-	######################################################################	
+
 	
 	# This block iterates through the existing world save and makes the array `lines` that we can edit
 	######################################################################
-	var saved_game = FileAccess.open(saved_game_file_path, FileAccess.READ)
+	var saved_game
+	if FileAccess.file_exists(profiles_dir + current_profile + "/temp_world.save"):
+		print('#################temp existed')
+		saved_game = FileAccess.open(profiles_dir + current_profile + "/temp_world.save", FileAccess.READ)
+	else:
+		print("################temp didn't exist")
+		if not FileAccess.file_exists(profiles_dir + current_profile + "/world.save"):
+			print('twas null')
+			var world_save = FileAccess.open(profiles_dir + current_profile + "/world.save", FileAccess.WRITE)
+			var level_data = current_level.call("save")
+			prints("LevelData:", level_data)
+			world_save.store_line(JSON.stringify(level_data))
+			world_save.close()
+		saved_game = FileAccess.open(profiles_dir + current_profile + "/world.save", FileAccess.READ)
+	#var saved_game = FileAccess.open(saved_game_file_path, FileAccess.READ)
 	var line_to_modify = null
 	var lines = []
 	
@@ -121,7 +136,7 @@ func save_world(temp: bool = false):
 		
 func load_game():
 	var level_to_load_path = load_player_profile()
-	load_world()
+	#load_world()
 	return level_to_load_path
 	
 func load_player_profile():
@@ -189,9 +204,31 @@ func load_player_profile():
 				#continue
 			#new_object.set(i, node_data[i])
 
-func load_world():
-	var saved_game_file_path = profiles_dir + current_profile + "/world.save"
+func load_world(level_to_load, temp:bool = false):
+	var saved_game_file_path
+	if !temp:
+		saved_game_file_path = profiles_dir + current_profile + "/world.save"
+	else:
+		saved_game_file_path = profiles_dir + current_profile + "/temp_world.save"
 	if not FileAccess.file_exists(saved_game_file_path):
 		push_error("That world save does not exist")
 		return # Error! We don't have a save to load.
+	var saved_game = FileAccess.open(saved_game_file_path, FileAccess.READ)
+	while saved_game.get_position() < saved_game.get_length():
+		var json_string = saved_game.get_line()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+		
+		var line_data = json.get_data()
+		if line_data['name'] == level_to_load: # ALERT Verify that these are comparing the correct values
+			print("FOUND THE CURRENT LEVEL NAME FOR INIT SCENE")
+			return line_data
+
+
+func remove_temp_world():
+	var temp_world_file_path = profiles_dir + current_profile + "/temp_world.save"
+	DirAccess.remove_absolute(temp_world_file_path)
 	

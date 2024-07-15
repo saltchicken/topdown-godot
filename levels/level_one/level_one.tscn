@@ -62,6 +62,7 @@ position = Vector2(-344, -153)
 y_sort_enabled = true
 
 [node name="Slimes" type="Node2D" parent="Enemies"]
+y_sort_enabled = true
 
 [node name="RedSlime" parent="Enemies/Slimes" instance=ExtResource("4_omtx2")]
 position = Vector2(43, -89)

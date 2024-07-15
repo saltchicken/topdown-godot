@@ -57,11 +57,34 @@ func receive_data(_data):
 # Emitted in the middle of SceneManager.on_content_finished_loading
 func init_scene() -> void:
 	print("Init scene")
+	init_level(name)
 	if data != null and player != null:
 		for portal in portals:
 			if portal.name == data.target_portal:
 				player.position = portal.global_position
 		#player.position = data.position_in_new_scene
+	
+
+func init_level(level_name):
+	var level_data_from_load
+	if data:
+		#Load from temp world save created by transition
+		level_data_from_load = Global.load_world(level_name, true)	
+	else:
+		#Load from permanent world save
+		level_data_from_load = Global.load_world(level_name, false)
+	
+	print(level_data_from_load)
+	if level_data_from_load != null:
+		var level_chests = self.get_node("Chests").get_children()
+		for chest in level_data_from_load["chests"].keys():
+			for level_chest in level_chests:
+				if level_data_from_load["chests"][chest]["name"] == level_chest.name:
+					print("FOUND CHEST FOR INIT LEVEL")
+					#print(level_chest.get_node("StateMachine/" +  level_data_from_load["chests"][chest]["current_state"]))
+					#level_chest.initial_state = level_chest.get_node("StateMachine/" +  level_data_from_load["chests"][chest]["current_state"])
+					level_chest.state_machine.current_state.state_transition.emit(level_chest.state_machine.current_state, level_data_from_load["chests"][chest]["current_state"])
+		
 
 # Emitted at end of SceneManager.on_content_finished_loading
 func start_scene() -> void:

@@ -19,7 +19,7 @@ func _on_body_entered(body: Node2D) -> void:
 	player_entered.emit(self)	
 	var gameplay_node:Gameplay = get_tree().root.get_node('Gameplay')
 	var unload:Node = gameplay_node.current_level	# we're now responsible for tracking this
-	Global.save_world(true)
+	Global.save_world(true) #TODO: Better place to put this for other scene swaps not using this and a better way to track.
 	SceneManager.swap_scenes(path_to_new_scene, gameplay_node.level_holder, unload, "fade_to_black")
 	#queue_free()
 	

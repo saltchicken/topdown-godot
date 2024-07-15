@@ -36,6 +36,7 @@ func load_existing_profiles():
 func on_load_button_pressed(label):
 	SceneManager.should_load_game = true
 	Global.current_profile = label.text
+	Global.remove_temp_world() # TODO: This is a little hacky. Possibly do this on exit of the game, but maybe leave in a check to make sure it happened.
 	SceneManager.swap_scenes("res://scene_manager/gameplay/gameplay.tscn",get_tree().root,self,"fade_to_black")
 		
 func on_delete_button_pressed(label):
