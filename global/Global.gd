@@ -23,6 +23,8 @@ func dialogue(parent_node, text_array: Array):
 	dialogue_instance.set_text(text_array)
 	dialogue_instance.main()
 
+
+# TODO Make backup saves in case of corruption
 func save_game():
 	save_player_profile()
 	save_world()

@@ -30,7 +30,7 @@ func save():
 		"pos_x" : position.x,
 		"pos_y" : position.y,
 		"current_state" : state_machine.current_state.name,
-		"item" : item.get_path(),
+		#"item" : item.get_path(), # TODO: Do we want to save the item in the chest? If there is no item this crashes save (null object and all that)
 		"item_taken" : item_taken
 	}
 	return save_dict
