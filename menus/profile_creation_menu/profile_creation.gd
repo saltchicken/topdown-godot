@@ -2,16 +2,16 @@ extends CanvasLayer
 
 @onready var profile_name_line_edit = get_node("Panel/VBoxContainer/LineEdit")
 
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	profile_name_line_edit.text_submitted.connect(on_text_submit)
 
 func on_text_submit(text):
 	if text.length() >= 4:
 		if profile_name_validation(text):
-			Global.current_profile = text
-			var error = create_profile(Global.current_profile)
+			var error = create_profile(text)
 			if !error:
+				Global.current_profile = text
+				SceneManager.should_load_game = false
 				SceneManager.swap_scenes("res://scene_manager/gameplay/gameplay.tscn",get_tree().root,self,"fade_to_black")
 			else:
 				push_error(error)

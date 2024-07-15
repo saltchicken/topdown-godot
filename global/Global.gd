@@ -27,7 +27,10 @@ func save_game():
 	if current_profile == null:
 		push_error("Current profile not set")
 		return
-	var save_gamed = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	var saved_game_file_path = profiles_dir + current_profile + "/savegame.save"
+	prints("File path", saved_game_file_path)
+	var saved_game = FileAccess.open(saved_game_file_path, FileAccess.WRITE)
+	prints("saved game", saved_game)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
 		prints("Saving", node)
@@ -43,13 +46,14 @@ func save_game():
 			
 		var node_data = node.call("save")
 		var json_string = JSON.stringify(node_data)
-		save_gamed.store_line(json_string)
+		saved_game.store_line(json_string)
 		
 func load_game():
 	if current_profile == null:
 		push_error("Current profile not set")
 		return
-	if not FileAccess.file_exists("user://savegame.save"):
+	var saved_game_file_path = profiles_dir + current_profile + "/savegame.save"
+	if not FileAccess.file_exists(saved_game_file_path):
 		return # Error! We don't have a save to load.
 
 	# We need to revert the game state so we're not cloning objects
@@ -60,9 +64,9 @@ func load_game():
 	#for i in save_nodes:
 		#i.queue_free()
 
-	var save_gamed = FileAccess.open("user://savegame.save", FileAccess.READ)
-	while save_gamed.get_position() < save_gamed.get_length():
-		var json_string = save_gamed.get_line()
+	var saved_game = FileAccess.open(saved_game_file_path, FileAccess.READ)
+	while saved_game.get_position() < saved_game.get_length():
+		var json_string = saved_game.get_line()
 		var json = JSON.new()
 		var parse_result = json.parse(json_string)
 		if not parse_result == OK:

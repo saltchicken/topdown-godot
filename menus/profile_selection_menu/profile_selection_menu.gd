@@ -9,6 +9,9 @@ signal confirmation_dialog_closed
 var confirmation
 
 func _ready() -> void:
+	load_existing_profiles()
+	
+func load_existing_profiles():
 	for profile in existing_profiles:
 		var container = HBoxContainer.new()
 		
@@ -18,15 +21,22 @@ func _ready() -> void:
 		label.autowrap_mode = TextServer.AUTOWRAP_OFF
 		container.add_child(label)
 		
-		var button = Button.new()
-		button.text = "Delete"
-		button.pressed.connect(on_delete_button_pressed.bind(label))
-		container.add_child(button)
+		var load_button = Button.new()
+		load_button.text = "Load"
+		load_button.pressed.connect(on_load_button_pressed.bind(label))
+		container.add_child(load_button)
 		
-		
-		
+		var delete_button = Button.new()
+		delete_button.text = "Delete"
+		delete_button.pressed.connect(on_delete_button_pressed.bind(label))
+		container.add_child(delete_button)
+	
 		profile_container.add_child(container)
 		
+func on_load_button_pressed(label):
+	SceneManager.should_load_game = true
+	Global.current_profile = label.text
+	SceneManager.swap_scenes("res://scene_manager/gameplay/gameplay.tscn",get_tree().root,self,"fade_to_black")
 		
 func on_delete_button_pressed(label):
 	confirmation = null
@@ -37,8 +47,13 @@ func on_delete_button_pressed(label):
 	await confirmation_dialog_closed
 	if confirmation:
 		print("Delete %s" % profile_to_be_deleted)
+		delete_profile(profile_to_be_deleted)
+		SceneManager.swap_scenes("res://menus/profile_selection_menu/profile_selection_menu.tscn",get_tree().root,self,"fade_to_black")
 	else:
 		print("Don't delete %s" % profile_to_be_deleted)
+
+func delete_profile(profile_name):
+	DirAccess.remove_absolute(Global.profiles_dir + profile_name)
 
 func get_existing_profiles():
 	var profiles = []
