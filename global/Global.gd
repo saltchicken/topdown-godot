@@ -55,10 +55,16 @@ func save_player_profile():
 		saved_game.store_line(json_string)
 	saved_game.close() # TODO: Is this necessary or does FileAccess handle this automatically
 		
-func save_world():
+func save_world(temp: bool = false):
+	if current_profile == null:
+		push_error("Current profile not set")
+		return
 	var current_level = get_node('/root/Gameplay').current_level
-	var saved_game_file_path = profiles_dir + current_profile + "/world.save"
-	
+	var saved_game_file_path
+	if !temp:
+		saved_game_file_path = profiles_dir + current_profile + "/world.save"
+	else:
+		saved_game_file_path = profiles_dir + current_profile + "/temp_world.save"
 	######################################################################
 	# This block creates a new world save if one does not exist
 	if not FileAccess.file_exists(saved_game_file_path):
