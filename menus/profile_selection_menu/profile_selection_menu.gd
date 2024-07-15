@@ -53,7 +53,20 @@ func on_delete_button_pressed(label):
 		print("Don't delete %s" % profile_to_be_deleted)
 
 func delete_profile(profile_name):
-	DirAccess.remove_absolute(Global.profiles_dir + profile_name)
+	var directory_to_remove = Global.profiles_dir + profile_name
+	var dir = DirAccess.open(directory_to_remove)
+	if dir:
+		dir.list_dir_begin()
+		var file_name = dir.get_next()
+		while file_name != "":
+			DirAccess.remove_absolute(directory_to_remove + '/' + file_name)
+			file_name = dir.get_next()
+	else:
+		push_error("Unable to open profile directory")
+	var error = DirAccess.remove_absolute(Global.profiles_dir + profile_name)
+	print("Deleting %s" % Global.profiles_dir + profile_name + '/')
+	if error:
+		push_error(error)
 
 func get_existing_profiles():
 	var profiles = []
