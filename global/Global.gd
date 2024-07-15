@@ -114,7 +114,9 @@ func save_world():
 	#######################################################################
 		
 func load_game():
-	load_player_profile()
+	var level_to_load_path = load_player_profile()
+	load_world()
+	return level_to_load_path
 	
 func load_player_profile():
 	if current_profile == null:
@@ -149,17 +151,22 @@ func load_player_profile():
 		
 		if node_name == null or node_path == null:
 			prints("Node saved incorrectly:", parse_result)
+			
+		var current_level # NOTE This is a little dirty, but it extracts the current level the player saved.
 		
 		match node_name:
 			"Player":
 				var player = get_node(node_path)
 				player.position.x = node_data["pos_x"]
 				player.position.y = node_data["pos_y"]
+				current_level = node_data["current_level"]
 			"ProfileComponent":
 				var player_profile = get_node(node_path)
 				player_profile.coins = node_data["coins"]
 			_:
 				print("Not implemented for loading")
+				
+		return current_level
 			
 			
 		
@@ -174,3 +181,10 @@ func load_player_profile():
 			#if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				#continue
 			#new_object.set(i, node_data[i])
+
+func load_world():
+	var saved_game_file_path = profiles_dir + current_profile + "/world.save"
+	if not FileAccess.file_exists(saved_game_file_path):
+		push_error("That world save does not exist")
+		return # Error! We don't have a save to load.
+	

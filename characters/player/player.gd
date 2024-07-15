@@ -84,12 +84,13 @@ func on_pause_menu():
 		pause_menu_node.close_pause_menu()
 	else:
 		pause_menu_node.open_pause_menu()
-		
+
 func save():
 	var save_dict = {
 		"filename" : get_scene_file_path(),
 		"node_path" : get_path(),
 		"name" : name,
+		"current_level" : get_node('/root/Gameplay').current_level.get_scene_file_path(),
 		"pos_x" : position.x,
 		"pos_y" : position.y
 	}

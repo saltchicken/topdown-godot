@@ -24,14 +24,17 @@ path_to_new_scene = "res://levels/level_one/level_one.tscn"
 target_portal = "LevelOneWest"
 
 [node name="Chests" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Chest" parent="Chests" instance=ExtResource("4_tt2bi")]
 position = Vector2(1397, 46)
 item = ExtResource("5_yc0x7")
 
 [node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Bonfires" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Bonfire" parent="Bonfires" instance=ExtResource("5_5t3w3")]
 position = Vector2(1436, -98)
