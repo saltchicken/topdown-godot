@@ -133,7 +133,8 @@ func load_player_profile():
 	#var save_nodes = get_tree().get_nodes_in_group("PlayerProfilePersist")
 	#for i in save_nodes:
 		#i.queue_free()
-
+	var current_level # NOTE This is a little dirty, but it extracts the current level the player saved.
+	
 	var saved_game = FileAccess.open(saved_game_file_path, FileAccess.READ)
 	while saved_game.get_position() < saved_game.get_length():
 		var json_string = saved_game.get_line()
@@ -152,7 +153,7 @@ func load_player_profile():
 		if node_name == null or node_path == null:
 			prints("Node saved incorrectly:", parse_result)
 			
-		var current_level # NOTE This is a little dirty, but it extracts the current level the player saved.
+		
 		
 		match node_name:
 			"Player":
@@ -166,7 +167,7 @@ func load_player_profile():
 			_:
 				print("Not implemented for loading")
 				
-		return current_level
+	return current_level
 			
 			
 		
