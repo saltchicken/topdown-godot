@@ -27,11 +27,11 @@ func save_game():
 	if current_profile == null:
 		push_error("Current profile not set")
 		return
-	var saved_game_file_path = profiles_dir + current_profile + "/savegame.save"
+	var saved_game_file_path = profiles_dir + current_profile + "/player_profile.save"
 	prints("File path", saved_game_file_path)
 	var saved_game = FileAccess.open(saved_game_file_path, FileAccess.WRITE)
 	prints("saved game", saved_game)
-	var save_nodes = get_tree().get_nodes_in_group("Persist")
+	var save_nodes = get_tree().get_nodes_in_group("PlayerProfilePersist")
 	for node in save_nodes:
 		prints("Saving", node)
 		# Check the node is an instanced scene so it can be instanced again during load.
@@ -52,7 +52,7 @@ func load_game():
 	if current_profile == null:
 		push_error("Current profile not set")
 		return
-	var saved_game_file_path = profiles_dir + current_profile + "/savegame.save"
+	var saved_game_file_path = profiles_dir + current_profile + "/player_profile.save"
 	if not FileAccess.file_exists(saved_game_file_path):
 		return # Error! We don't have a save to load.
 
@@ -60,7 +60,7 @@ func load_game():
 	# during loading. This will vary wildly depending on the needs of a
 	# project, so take care with this step.
 	# For our example, we will accomplish this by deleting saveable objects.
-	#var save_nodes = get_tree().get_nodes_in_group("Persist")
+	#var save_nodes = get_tree().get_nodes_in_group("PlayerProfilePersist")
 	#for i in save_nodes:
 		#i.queue_free()
 

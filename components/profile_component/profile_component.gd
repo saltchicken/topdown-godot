@@ -18,7 +18,7 @@ extends Node
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	add_to_group('Persist')
+	add_to_group('PlayerProfilePersist')
 	#var exp_needed = level_mapping.experience_needed_for_next_level(experience)
 	#prints("need for next level:", exp_needed)
 	#
