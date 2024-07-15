@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=4 uid="uid://de87suv6kg5db"]
 
-[ext_resource type="Script" path="res://scene_manager/gameplay/scripts/level.gd" id="1_w0a4h"]
+[ext_resource type="Script" path="res://levels/level_one/level_one.gd" id="1_uh01o"]
 [ext_resource type="TileSet" uid="uid://dr6ra261j83j1" path="res://tilemaps/grasslands.tres" id="2_ej3jd"]
 [ext_resource type="PackedScene" uid="uid://dbcfk118nxkn7" path="res://objects/tree/tree.tscn" id="3_t5xyq"]
 [ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="4_omtx2"]
@@ -11,7 +11,7 @@
 
 [node name="LevelOne" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_w0a4h")
+script = ExtResource("1_uh01o")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1

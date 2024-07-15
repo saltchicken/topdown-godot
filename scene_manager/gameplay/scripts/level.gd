@@ -21,7 +21,7 @@ func _ready() -> void:
 	#add_child(player)
 	player.disable()
 	#player.visible = false
-	set_player_position()
+	#set_player_position()
 	
 	#register_bonfires()
 	#check_known_bonfires()
@@ -31,11 +31,11 @@ func _ready() -> void:
 		init_scene()
 		start_scene()
 		
-func set_player_position():
-	#if player.load_location:
-		#player.global_position = player.load_location
-	#else:
-	push_warning("Using default 0,0 for player position")	
+#func set_player_position():
+	##if player.load_location:
+		##player.global_position = player.load_location
+	##else:
+	#push_warning("Using default 0,0 for player position")	
 
 ## When a class implements this, SceneManager.on_content_finished_loading will invoke it
 ## to receive this data and pass it to the next scene
