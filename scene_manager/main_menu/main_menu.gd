@@ -31,7 +31,10 @@ func _on_button_button_up(button):
 			# TODO: Better way of handling load game when continuing
 			push_warning("Loading has not been handled yet")
 			SceneManager.should_load_game = true
-			SceneManager.swap_scenes("res://scene_manager/gameplay/gameplay.tscn",get_tree().root,self,"fade_to_black")
+			#SceneManager.swap_scenes("res://scene_manager/gameplay/gameplay.tscn",get_tree().root,self,"fade_to_black")
+			SceneManager.swap_scenes("res://menus/profile_selection_menu/profile_selection_menu.tscn",get_tree().root,self,"fade_to_black")
+
+			
 			#queue_free()
 			
 		"Exit To Deskop":

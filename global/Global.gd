@@ -1,5 +1,6 @@
 extends Node
 
+@onready var profiles_dir = "user://profiles/"
 @onready var current_profile = null
 
 @onready var audio = get_node("Audio").get_children()
