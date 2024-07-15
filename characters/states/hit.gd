@@ -11,7 +11,7 @@ func Enter(attack: Attack):
 func Update(_delta:float):
 	if owner.collision:
 		var collision_body = owner.collision.get_collider()
-		if collision_body.state_machine.current_state.name != 'deflect':
+		if collision_body.state_machine.current_state.name != 'deflect' and collision_body is CharacterBody2D: # TODO: Make sure the the collision body is able to accept a deflect
 			collision_body.deflect.emit(owner.velocity.normalized())
 	state_movement()
 	

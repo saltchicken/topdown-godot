@@ -24,6 +24,10 @@ func dialogue(parent_node, text_array: Array):
 	dialogue_instance.main()
 
 func save_game():
+	save_player_profile()
+	save_world()
+	
+func save_player_profile():
 	if current_profile == null:
 		push_error("Current profile not set")
 		return
@@ -47,8 +51,70 @@ func save_game():
 		var node_data = node.call("save")
 		var json_string = JSON.stringify(node_data)
 		saved_game.store_line(json_string)
+	saved_game.close() # TODO: Is this necessary or does FileAccess handle this automatically
+		
+func save_world():
+	var current_level = get_node('/root/Gameplay').current_level
+	var saved_game_file_path = profiles_dir + current_profile + "/world.save"
+	
+	######################################################################
+	# This block creates a new world save if one does not exist
+	if not FileAccess.file_exists(saved_game_file_path):
+		var world_save = FileAccess.open(saved_game_file_path, FileAccess.WRITE)
+		var level_data = current_level.call("save")
+		prints("LevelData:", level_data)
+		world_save.store_line(JSON.stringify(level_data))
+		world_save.close()
+		return
+	######################################################################	
+	
+	# This block iterates through the existing world save and makes the array `lines` that we can edit
+	######################################################################
+	var saved_game = FileAccess.open(saved_game_file_path, FileAccess.READ)
+	var line_to_modify = null
+	var lines = []
+	
+	var line_count = 0
+	while saved_game.get_position() < saved_game.get_length():
+		var json_string = saved_game.get_line()
+		var json = JSON.new()
+		var parse_result = json.parse(json_string)
+		if not parse_result == OK:
+			print("JSON Parse Error: ", json.get_error_message(), " in ", json_string, " at line ", json.get_error_line())
+			continue
+		
+		var line_data = json.get_data()
+		if line_data['name'] == current_level.name: # ALERT Verify that these are comparing the correct values
+			print("FOUND THE CURRENT LEVEL NAME")
+			line_to_modify = line_count
+		
+		lines.append(json_string)
+		line_count += 1
+	#######################################################################
+	
+	# Now overwrite the line we found that already has an entry for the current level
+	#######################################################################
+	var level_data = current_level.call("save")
+	if line_to_modify != null:
+		lines[line_to_modify] = JSON.stringify(level_data)
+	else:
+		lines.append(JSON.stringify(level_data))
+		
+	saved_game.close()
+	#######################################################################
+	
+	# Overwrite the world file with the newly modified one
+	#######################################################################	
+	var world_save = FileAccess.open(saved_game_file_path, FileAccess.WRITE)
+	for line in lines:
+		world_save.store_line(line)
+	world_save.close()
+	#######################################################################
 		
 func load_game():
+	load_player_profile()
+	
+func load_player_profile():
 	if current_profile == null:
 		push_error("Current profile not set")
 		return
@@ -106,4 +172,3 @@ func load_game():
 			#if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
 				#continue
 			#new_object.set(i, node_data[i])
-			
