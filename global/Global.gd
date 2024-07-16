@@ -85,6 +85,8 @@ func save_world(temp: bool = false):
 		saved_game = FileAccess.open(profiles_dir + current_profile + "/temp_world.save", FileAccess.READ)
 	else:
 		print("################temp didn't exist")
+		# TODO: MAke this a function to reduce duplicate code
+		##############################################
 		if not FileAccess.file_exists(profiles_dir + current_profile + "/world.save"):
 			print('twas null')
 			var world_save = FileAccess.open(profiles_dir + current_profile + "/world.save", FileAccess.WRITE)
@@ -92,6 +94,7 @@ func save_world(temp: bool = false):
 			prints("LevelData:", level_data)
 			world_save.store_line(JSON.stringify(level_data))
 			world_save.close()
+		####################################################
 		saved_game = FileAccess.open(profiles_dir + current_profile + "/world.save", FileAccess.READ)
 	#var saved_game = FileAccess.open(saved_game_file_path, FileAccess.READ)
 	var line_to_modify = null
@@ -223,8 +226,7 @@ func load_world(level_to_load, temp:bool = false):
 			continue
 		
 		var line_data = json.get_data()
-		if line_data['name'] == level_to_load: # ALERT Verify that these are comparing the correct values
-			print("FOUND THE CURRENT LEVEL NAME FOR INIT SCENE")
+		if line_data['name'] == level_to_load:
 			return line_data
 
 

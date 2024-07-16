@@ -52,8 +52,8 @@ func _load_content(content_path:String) -> void:
 	await _loading_screen.transition_in_complete
 	
 	# Remove the child from the scene to unload to prevent it from being freed. Wait for transition to be complete
-	if _scene_to_unload is Level:	
-		_scene_to_unload.remove_child(_scene_to_unload.player)	
+	#if _scene_to_unload is Level:	
+		#_scene_to_unload.remove_child(_scene_to_unload.player)	
 		
 	_content_path = content_path
 	var loader = ResourceLoader.load_threaded_request(content_path)
