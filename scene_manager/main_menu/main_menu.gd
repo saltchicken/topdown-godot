@@ -13,10 +13,10 @@ func _ready():
 func _on_button_button_up(button):
 	match button.text:
 		"New Game":
-			SceneManager.swap_scenes("res://menus/profile_creation_menu/profile_creation.tscn",get_tree().root,self,"fade_to_black")
+			SceneManager.swap_scenes("res://menus/profile_creation_menu/profile_creation.tscn",get_tree().root,self,"no_transition")
 		
 		"Continue":
-			SceneManager.swap_scenes("res://menus/profile_selection_menu/profile_selection_menu.tscn",get_tree().root,self,"fade_to_black")
+			SceneManager.swap_scenes("res://menus/profile_selection_menu/profile_selection_menu.tscn",get_tree().root,self,"no_transition")
 			
 		"Exit To Deskop":
 			get_tree().quit()

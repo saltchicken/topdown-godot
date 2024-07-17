@@ -4,6 +4,7 @@ extends CanvasLayer
 
 func _ready() -> void:
 	profile_name_line_edit.text_submitted.connect(on_text_submit)
+	$Panel/BackButton.pressed.connect(func(): SceneManager.swap_scenes("res://scene_manager/main_menu/main_menu.tscn",get_tree().root,self,"no_transition"))
 
 func on_text_submit(text):
 	if text.length() >= 4:
