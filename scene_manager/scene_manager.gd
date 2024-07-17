@@ -79,7 +79,7 @@ func _monitor_load_status() -> void:
 			return
 		ResourceLoader.THREAD_LOAD_IN_PROGRESS:
 			if is_instance_valid(_loading_screen):
-				print(load_progress)
+				print_debug(load_progress)
 				_loading_screen.update_bar(load_progress[0] * 100) # 0.1
 		ResourceLoader.THREAD_LOAD_FAILED:
 			_content_failed_to_load.emit(_content_path)
