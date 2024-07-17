@@ -48,7 +48,7 @@ func on_delete_button_pressed(label):
 	await confirmation_dialog_closed
 	if confirmation:
 		delete_profile(profile_to_be_deleted)
-		SceneManager.swap_scenes("res://menus/profile_selection_menu/profile_selection_menu.tscn",get_tree().root,self,"fade_to_black")
+		SceneManager.swap_scenes("res://menus/profile_selection_menu/profile_selection_menu.tscn",get_tree().root,self,"no_transition")
 	else:
 		print("Don't delete %s" % profile_to_be_deleted)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c68qbqplp85hw"]
+[gd_scene load_steps=9 format=3 uid="uid://c68qbqplp85hw"]
 
 [ext_resource type="Script" path="res://scene_manager/loading_screen/loading_screen.gd" id="1_6udv1"]
 
@@ -67,11 +67,61 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_7otmb"]
+resource_name = "no_to_transition"
+length = 0.2
+step = 0.2
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"report_midpoint"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Control/Panel:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_gc3lb"]
+resource_name = "no_from_transition"
+length = 0.1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Control/Panel:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jlnlq"]
 _data = {
 "RESET": SubResource("Animation_n6fon"),
 "fade_from_black": SubResource("Animation_ijyen"),
-"fade_to_black": SubResource("Animation_2val5")
+"fade_to_black": SubResource("Animation_2val5"),
+"no_from_transition": SubResource("Animation_gc3lb"),
+"no_to_transition": SubResource("Animation_7otmb")
 }
 
 [node name="LoadingScreen" type="CanvasLayer"]
