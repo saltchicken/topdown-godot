@@ -1,0 +1,44 @@
+[gd_scene load_steps=5 format=3 uid="uid://b1kunl044yulu"]
+
+[ext_resource type="Script" path="res://scene_manager/gameplay/scripts/level.gd" id="1_62npy"]
+[ext_resource type="Shader" path="res://levels/level_one/lighting.gdshader" id="2_wfphl"]
+[ext_resource type="Script" path="res://levels/level_one/lighting.gd" id="3_ot5lq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gcfre"]
+shader = ExtResource("2_wfphl")
+shader_parameter/lights = null
+shader_parameter/number_of_lights = 1
+shader_parameter/modulate_color = Color(0, 0, 0, 0.533333)
+shader_parameter/light_radius = 256.0
+shader_parameter/band_radius = 192.0
+shader_parameter/band_strength = 0.75
+
+[node name="LevelParent" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("1_62npy")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_gcfre")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_ot5lq")
+
+[node name="Portals" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Trees" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Chests" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Bonfires" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Enemies" type="Node2D" parent="."]
+y_sort_enabled = true
