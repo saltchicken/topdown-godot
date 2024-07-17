@@ -77,7 +77,7 @@ item = ExtResource("8_2lmux")
 [node name="Bonfires" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Bonfire" parent="Bonfires" groups=["light"] instance=ExtResource("6_im08k")]
+[node name="Bonfire" parent="Bonfires" instance=ExtResource("6_im08k")]
 position = Vector2(-344, -153)
 
 [node name="Enemies" type="Node2D" parent="."]

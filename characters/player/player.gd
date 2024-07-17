@@ -38,13 +38,13 @@ func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
 	
 func disable():
-	print_debug("Player Disabled")
+	#print_debug("Player Disabled")
 	var input_components = find_children('InputComponent')
 	for input_component in input_components:
 		input_component.disable()
 		
 func enable():
-	print_debug("Player Enabled")
+	#print_debug("Player Enabled")
 	var input_components = find_children('InputComponent')
 	for input_component in input_components:
 		input_component.enable()

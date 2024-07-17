@@ -34,9 +34,7 @@ func save_player_profile():
 		push_error("Current profile not set")
 		return
 	var saved_game_file_path = profiles_dir + current_profile + "/player_profile.save"
-	prints("File path", saved_game_file_path)
 	var saved_game = FileAccess.open(saved_game_file_path, FileAccess.WRITE)
-	prints("saved game", saved_game)
 	var save_nodes = get_tree().get_nodes_in_group("PlayerProfilePersist")
 	for node in save_nodes:
 		prints("Saving", node)
@@ -68,7 +66,6 @@ func save_world(temp: bool = false):
 		if not FileAccess.file_exists(saved_game_file_path):
 			var world_save = FileAccess.open(saved_game_file_path, FileAccess.WRITE)
 			var level_data = current_level.call("save")
-			prints("LevelData:", level_data)
 			world_save.store_line(JSON.stringify(level_data))
 			world_save.close()
 			return
@@ -81,17 +78,13 @@ func save_world(temp: bool = false):
 	######################################################################
 	var saved_game
 	if FileAccess.file_exists(profiles_dir + current_profile + "/temp_world.save"):
-		print('#################temp existed')
 		saved_game = FileAccess.open(profiles_dir + current_profile + "/temp_world.save", FileAccess.READ)
 	else:
-		print("################temp didn't exist")
 		# TODO: MAke this a function to reduce duplicate code
 		##############################################
 		if not FileAccess.file_exists(profiles_dir + current_profile + "/world.save"):
-			print('twas null')
 			var world_save = FileAccess.open(profiles_dir + current_profile + "/world.save", FileAccess.WRITE)
 			var level_data = current_level.call("save")
-			prints("LevelData:", level_data)
 			world_save.store_line(JSON.stringify(level_data))
 			world_save.close()
 		####################################################
@@ -110,8 +103,7 @@ func save_world(temp: bool = false):
 			continue
 		
 		var line_data = json.get_data()
-		if line_data['name'] == current_level.name: # ALERT Verify that these are comparing the correct values
-			print("FOUND THE CURRENT LEVEL NAME")
+		if line_data['name'] == current_level.name:
 			line_to_modify = line_count
 		
 		lines.append(json_string)

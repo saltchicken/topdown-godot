@@ -13,9 +13,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if not body is Player:
 		return
 	if player_entered.get_connections().size() == 0:
-		print('Portal not connected yet from level')
+		#print('Portal not connected yet from level')
 		return
-	print("Player entered")
+	#print("Player entered")
 	player_entered.emit(self)	
 	var gameplay_node:Gameplay = get_tree().root.get_node('Gameplay')
 	var unload:Node = gameplay_node.current_level	# we're now responsible for tracking this

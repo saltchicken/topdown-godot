@@ -9,6 +9,7 @@ signal interact
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group('light')
 	#add_to_group("Bonfires") # TODO: Find a better way for game_manager to know of its existence.
 	area_2d.body_entered.connect(bonfire_body_entered)
 	area_2d.body_exited.connect(bonfire_body_exited)
@@ -55,7 +56,7 @@ func is_bonfire_on():
 		## TODO: Need a bonfire menu
 		#
 func bonfire_body_entered(_body):
-	print('Entered bonfire area')
+	print_debug('Entered bonfire area')
 	#if body.get_script() == Player:
 		#if state_machine.current_state.name == 'on':
 			#for enemy in get_tree().get_nodes_in_group("Enemies"):
@@ -68,7 +69,7 @@ func bonfire_body_entered(_body):
 						#print("Error: Enemy doesn't have run_away method")
 	
 func bonfire_body_exited(_body):
-	print('Exitted bonfire area')
+	print_debug('Exitted bonfire area')
 	#if body.get_script() == Player:
 		#if state_machine.current_state.name == 'on':
 			#for enemy in get_tree().get_nodes_in_group("Enemies"):

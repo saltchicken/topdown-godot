@@ -30,6 +30,5 @@ func check_for_player():
 func check_if_reached_target_position():
 	var target_distance = global_position.distance_to(target_position)
 	if target_distance <= arrival_radius:
-		print('reached')
 		target_position = null
 		direction = Vector2.ZERO

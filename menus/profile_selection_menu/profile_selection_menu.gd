@@ -47,7 +47,6 @@ func on_delete_button_pressed(label):
 	confirmation_dialog.visible = true
 	await confirmation_dialog_closed
 	if confirmation:
-		print("Delete %s" % profile_to_be_deleted)
 		delete_profile(profile_to_be_deleted)
 		SceneManager.swap_scenes("res://menus/profile_selection_menu/profile_selection_menu.tscn",get_tree().root,self,"fade_to_black")
 	else:
@@ -65,7 +64,6 @@ func delete_profile(profile_name):
 	else:
 		push_error("Unable to open profile directory")
 	var error = DirAccess.remove_absolute(Global.profiles_dir + profile_name)
-	print("Deleting %s" % Global.profiles_dir + profile_name + '/')
 	if error:
 		push_error(error)
 

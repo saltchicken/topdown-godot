@@ -20,7 +20,7 @@ func _ready() -> void:
 			get_node('Sprite2D').frame_coords = Vector2i(2,0)
 			value = 20
 		_:
-			print('ERROR: not implemented')
+			push_error('ERROR: not implemented')
 	
 func on_collect():
 	queue_free()

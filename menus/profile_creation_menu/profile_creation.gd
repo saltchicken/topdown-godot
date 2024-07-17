@@ -42,16 +42,13 @@ func create_profile(profile_name):
 	
 func check_if_profile_exists(profile_name):
 	var profile_path = Global.profiles_dir + profile_name
-	prints("Checking for path", profile_path)
 	var dir = DirAccess.open(Global.profiles_dir)
 	if dir:
 		dir.list_dir_begin()
 		var file_name = dir.get_next()
 		while file_name != "":
 			if dir.current_is_dir():
-				print("Checking: %s" % file_name)
 				if file_name == profile_name:
-					print("Profile Found")
 					return true
 			else:
 				push_error("There shouldn't be any files in %s. Found: %s" % [Global.profiles_dir, profile_path])

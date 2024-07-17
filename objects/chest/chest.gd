@@ -16,7 +16,6 @@ func _ready():
 	interact.connect(on_interact)
 
 func on_interact():
-	print("interacting with chest")
 	open_chest()
 	
 func open_chest():
