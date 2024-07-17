@@ -36,6 +36,15 @@ alignment = 1
 [node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
 layout_mode = 2
 
+[node name="BackButton" type="Button" parent="Panel"]
+layout_mode = 0
+offset_left = 11.0
+offset_top = 605.0
+offset_right = 56.0
+offset_bottom = 636.0
+text = "Back
+"
+
 [node name="ConfirmationDialog" type="ConfirmationDialog" parent="."]
 title = "Delete?"
 initial_position = 2

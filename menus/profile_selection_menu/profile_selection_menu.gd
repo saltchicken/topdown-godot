@@ -10,6 +10,7 @@ var confirmation
 
 func _ready() -> void:
 	load_existing_profiles()
+	$Panel/BackButton.pressed.connect(func(): SceneManager.swap_scenes("res://scene_manager/main_menu/main_menu.tscn",get_tree().root,self,"no_transition"))
 	
 func load_existing_profiles():
 	for profile in existing_profiles:
