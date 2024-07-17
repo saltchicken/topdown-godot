@@ -1,7 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://de87suv6kg5db"]
+[gd_scene load_steps=12 format=4 uid="uid://de87suv6kg5db"]
 
 [ext_resource type="Script" path="res://levels/level_one/level_one.gd" id="1_uh01o"]
 [ext_resource type="TileSet" uid="uid://dr6ra261j83j1" path="res://tilemaps/grasslands.tres" id="2_ej3jd"]
+[ext_resource type="Shader" path="res://levels/level_one/lighting.gdshader" id="2_yx6wq"]
+[ext_resource type="Script" path="res://levels/level_one/lighting.gd" id="3_bpvs0"]
 [ext_resource type="PackedScene" uid="uid://dbcfk118nxkn7" path="res://objects/tree/tree.tscn" id="3_t5xyq"]
 [ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="4_omtx2"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://objects/bonfire/bonfire.tscn" id="6_im08k"]
@@ -9,9 +11,26 @@
 [ext_resource type="Resource" uid="uid://dgt3l6gwvif0n" path="res://items/equipment/weapons/iron_sword/iron_sword.tres" id="8_2lmux"]
 [ext_resource type="PackedScene" uid="uid://cdr3pvm4h3tgy" path="res://scene_manager/gameplay/portal/portal.tscn" id="9_s4kei"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1outp"]
+shader = ExtResource("2_yx6wq")
+shader_parameter/lights = null
+shader_parameter/number_of_lights = 1
+shader_parameter/modulate_color = Color(0, 0, 0.403922, 0.431373)
+
 [node name="LevelOne" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_uh01o")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+material = SubResource("ShaderMaterial_1outp")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("3_bpvs0")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 z_index = -1
@@ -55,7 +74,7 @@ item = ExtResource("8_2lmux")
 [node name="Bonfires" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Bonfire" parent="Bonfires" instance=ExtResource("6_im08k")]
+[node name="Bonfire" parent="Bonfires" groups=["light"] instance=ExtResource("6_im08k")]
 position = Vector2(-344, -153)
 
 [node name="Enemies" type="Node2D" parent="."]
