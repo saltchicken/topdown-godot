@@ -23,6 +23,7 @@ signal pause_menu
 
 func _ready() -> void:
 	add_to_group('PlayerProfilePersist')
+	add_to_group('light')
 	idle.connect(on_idle)
 	moving.connect(on_moving)
 	dash.connect(on_dash)

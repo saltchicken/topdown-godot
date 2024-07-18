@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://levels/level_one/level_one.gd" id="1_uh01o"]
 [ext_resource type="TileSet" uid="uid://dr6ra261j83j1" path="res://tilemaps/grasslands.tres" id="2_ej3jd"]
-[ext_resource type="Shader" path="res://levels/level_one/lighting.gdshader" id="2_yx6wq"]
-[ext_resource type="Script" path="res://levels/level_one/lighting.gd" id="3_bpvs0"]
+[ext_resource type="Shader" path="res://components/light_component/light_canvas/lighting.gdshader" id="2_yx6wq"]
+[ext_resource type="Script" path="res://components/light_component/light_canvas/lighting.gd" id="3_bpvs0"]
 [ext_resource type="PackedScene" uid="uid://dbcfk118nxkn7" path="res://objects/tree/tree.tscn" id="3_t5xyq"]
 [ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="4_omtx2"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://objects/bonfire/bonfire.tscn" id="6_im08k"]

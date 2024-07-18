@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://b1kunl044yulu"]
 
 [ext_resource type="Script" path="res://scene_manager/gameplay/scripts/level.gd" id="1_62npy"]
-[ext_resource type="Shader" path="res://levels/level_one/lighting.gdshader" id="2_wfphl"]
-[ext_resource type="Script" path="res://levels/level_one/lighting.gd" id="3_ot5lq"]
+[ext_resource type="Shader" path="res://components/light_component/light_canvas/lighting.gdshader" id="2_wfphl"]
+[ext_resource type="Script" path="res://components/light_component/light_canvas/lighting.gd" id="3_ot5lq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gcfre"]
 shader = ExtResource("2_wfphl")
