@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://c51aunuj7lbes"]
+[gd_scene load_steps=3 format=3 uid="uid://c51aunuj7lbes"]
 
 [ext_resource type="Script" path="res://scene_manager/gameplay/gameplay.gd" id="1_uvbtb"]
+[ext_resource type="PackedScene" uid="uid://cece6o3kjy3ef" path="res://utility/gametime/gametime.tscn" id="2_jhbtr"]
 
 [node name="Gameplay" type="Node2D"]
 y_sort_enabled = true
@@ -8,3 +9,5 @@ script = ExtResource("1_uvbtb")
 
 [node name="LevelHolder" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="Gametime" parent="." instance=ExtResource("2_jhbtr")]

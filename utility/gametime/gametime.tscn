@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cece6o3kjy3ef"]
+
+[ext_resource type="Script" path="res://utility/gametime/gametime.gd" id="1_tkrbl"]
+
+[node name="Gametime" type="Node2D"]
+script = ExtResource("1_tkrbl")
