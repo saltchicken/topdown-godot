@@ -8,6 +8,8 @@ uniform float light_radius = 192.0;
 uniform float band_radius = 128.0;
 uniform float band_strength = 0.3;
 
+uniform float seconds = 0.0;
+
 float distance_to_light(vec2 coords) {
 	float dist = 10000.0;
 	
@@ -21,7 +23,8 @@ float distance_to_light(vec2 coords) {
 }
 
 vec4 modulate(vec4 color, float distance_to_light) {
-	vec4 modulated = color * modulate_color;
+	vec4 tod = vec4(modulate_color.xyz, seconds);
+	vec4 modulated = color * tod;
 	
 	if (distance_to_light > light_radius) {
 		return modulated;

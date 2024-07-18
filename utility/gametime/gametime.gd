@@ -1,9 +1,9 @@
 extends Node
 
-@export var game_time_multiplier = 100000
+@export var game_time_multiplier = 1
 @onready var time_elapsed: float = 0.0
-@onready var current_day: int = 1
 @onready var current_hour: int = 1
+@onready var current_day: int = 1
 @onready var current_month: int = 1
 @onready var current_year: int = 1
 		
@@ -26,7 +26,7 @@ func time_tick(delta):
 		current_month = 1
 
 func _process(delta):
-	prints(current_hour, current_day, current_month, current_year)
+	#prints(current_hour, current_day, current_month, current_year)
 	time_tick(delta)
 
 func save():

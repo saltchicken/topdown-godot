@@ -19,6 +19,7 @@ shader_parameter/modulate_color = Color(0, 0, 0, 0.533333)
 shader_parameter/light_radius = 256.0
 shader_parameter/band_radius = 192.0
 shader_parameter/band_strength = 0.75
+shader_parameter/seconds = 0.0
 
 [node name="LevelOne" type="Node2D"]
 y_sort_enabled = true
