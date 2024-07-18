@@ -180,6 +180,13 @@ func load_player_profile():
 			"ProfileComponent":
 				var player_profile = get_node(node_path)
 				player_profile.coins = node_data["coins"]
+			"Gametime":
+				var gametime = get_node('/root/Gameplay/Gametime')
+				gametime.time_elapsed = node_data["time_elapsed"]
+				gametime.current_hour = node_data["current_hour"]
+				gametime.current_day = node_data["current_day"]
+				gametime.current_month = node_data["current_month"]
+				gametime.current_year = node_data["current_year"]
 			_:
 				print("Not implemented for loading")
 				
