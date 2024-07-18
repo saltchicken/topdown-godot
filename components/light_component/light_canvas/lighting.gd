@@ -17,13 +17,14 @@ func _process(delta: float) -> void:
 	material.set_shader_parameter("lights", lights_dict["positions"])
 	material.set_shader_parameter("light_radiuses", lights_dict["radiuses"])
 	var seconds = gametime.time_elapsed + (gametime.current_hour - 1) * 3600
-	var scaled_seconds = seconds / 86400.0
-	var limited_seconds = scaled_seconds - 0.5
+	#var scaled_seconds = seconds / 86400.0
+	var scaled_seconds = seconds / 43200.0
+	var limited_seconds = scaled_seconds
 	var tod_seconds
-	if limited_seconds < 0.0:
-		tod_seconds = abs(limited_seconds * 2)
+	if limited_seconds < 1.0:
+		tod_seconds = 1.0 - limited_seconds
 	else:
-		tod_seconds = limited_seconds * 2
+		tod_seconds = limited_seconds - 1.0
 	material.set_shader_parameter("seconds", tod_seconds)
 	#print(tod_seconds)
 
