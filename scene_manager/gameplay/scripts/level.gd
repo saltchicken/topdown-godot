@@ -75,6 +75,8 @@ func init_level(level_name):
 		level_data_from_load = Global.load_world(level_name, false)
 	
 	#print(level_data_from_load)
+	for key in level_data_from_load.keys():
+		print(key)
 	if level_data_from_load != null:
 		var level_chests = self.get_node("Chests").get_children()
 		for chest in level_data_from_load["chests"].keys():
