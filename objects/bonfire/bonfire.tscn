@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://cxncyww8qag7b"]
+[gd_scene load_steps=31 format=3 uid="uid://cxncyww8qag7b"]
 
 [ext_resource type="Texture2D" uid="uid://bnmvr6c7bo4oh" path="res://objects/bonfire/bonfire.png" id="1_a6ptv"]
 [ext_resource type="Script" path="res://objects/bonfire/bonfire.gd" id="1_l4mkk"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="4_t7lc4"]
 [ext_resource type="Script" path="res://objects/bonfire/states/off_state.gd" id="5_32o3t"]
 [ext_resource type="Script" path="res://objects/bonfire/states/on_state.gd" id="6_b3p32"]
+[ext_resource type="AudioStream" uid="uid://dgkotgiw4dra1" path="res://audio/sfx/bonfire_on.wav" id="9_y7rvv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_t33u7"]
 radius = 4.0
@@ -183,8 +184,9 @@ script = ExtResource("4_t7lc4")
 [node name="off" type="Node2D" parent="StateMachine"]
 script = ExtResource("5_32o3t")
 
-[node name="on" type="Node2D" parent="StateMachine"]
+[node name="on" type="Node2D" parent="StateMachine" node_paths=PackedStringArray("sfx")]
 script = ExtResource("6_b3p32")
+sfx = NodePath("../../Audio/AudioStreamPlayer2D")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 8
@@ -192,3 +194,9 @@ collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_rhulh")
+
+[node name="Audio" type="Node" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+stream = ExtResource("9_y7rvv")
+attenuation = 3.9493
