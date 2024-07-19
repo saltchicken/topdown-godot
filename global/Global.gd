@@ -7,6 +7,8 @@ extends Node
 var current_song = null
 
 func play_song(track_number):
+	if track_number == current_song:
+		return
 	audio[track_number].play()
 	current_song = track_number
 	

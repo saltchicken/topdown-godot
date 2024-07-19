@@ -37,6 +37,13 @@ func get_lights():
 	var lights = get_tree().get_nodes_in_group("light")
 	for light in lights:
 		var light_component = light.get_node_or_null("LightComponent")
+		var light_state = light.get_node_or_null("StateMachine")
+		if !light_state:
+			continue
+		else:
+			if light_state.current_state.name != "on":
+				if light is not Player:
+					continue
 		if light_component != null:
 			lights_dict["positions"].append(light.get_global_transform_with_canvas().origin)
 			lights_dict["radiuses"].append(light_component.radius)
