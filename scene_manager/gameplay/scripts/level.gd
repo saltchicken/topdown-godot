@@ -83,6 +83,11 @@ func init_level(level_name):
 					#print(level_chest.get_node("StateMachine/" +  level_data_from_load["chests"][chest]["current_state"]))
 					#level_chest.initial_state = level_chest.get_node("StateMachine/" +  level_data_from_load["chests"][chest]["current_state"])
 					level_chest.state_machine.current_state.state_transition.emit(level_chest.state_machine.current_state, level_data_from_load["chests"][chest]["current_state"])
+		var level_bonfires = self.get_node("Bonfires").get_children()
+		for bonfire in level_data_from_load["bonfires"].keys():
+			for level_bonfire in level_bonfires:
+				if level_data_from_load["bonfires"][bonfire]["name"] == level_bonfire.name:
+					level_bonfire.state_machine.current_state.state_transition.emit(level_bonfire.state_machine.current_state, level_data_from_load["bonfires"][bonfire]["current_state"])
 		
 
 # Emitted at end of SceneManager.on_content_finished_loading
@@ -118,6 +123,7 @@ func save():
 		
 	var trees = save_trees()
 	var chests = save_chests()
+	var bonfires = save_bonfires()
 		
 	var save_dict = {
 		"filename" : get_scene_file_path(),
@@ -125,7 +131,7 @@ func save():
 		"name" : name,
 		"trees" : trees,
 		"chests" : chests,
-		#"bonfires" : bonfires,
+		"bonfires" : bonfires,
 		#"enemies" : enemies
 	}
 	return save_dict
@@ -140,6 +146,12 @@ func save_chests():
 	var save_dict = {}
 	for chest in $Chests.get_children():
 		save_dict[chest.name] = chest.save()
+	return save_dict
+	
+func save_bonfires():
+	var save_dict = {}
+	for bonfire in $Bonfires.get_children():
+		save_dict[bonfire.name] = bonfire.save()
 	return save_dict
 			
 #func register_bonfires():

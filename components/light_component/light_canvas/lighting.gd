@@ -39,9 +39,10 @@ func get_lights():
 		var light_component = light.get_node_or_null("LightComponent")
 		var light_state = light.get_node_or_null("StateMachine")
 		if !light_state:
+			push_error("%s did not have statemachine" % light.name)
 			continue
 		else:
-			if light_state.current_state.name != "on":
+			if light_state.current_state.name != "on": # TODO: Handle checking if light object is on better. Also the Player reference is dirty.
 				if light is not Player:
 					continue
 		if light_component != null:

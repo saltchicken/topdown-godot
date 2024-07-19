@@ -38,6 +38,17 @@ func is_bonfire_on():
 		return true
 	else:
 		return false
+		
+func save():
+	var save_dict = {
+		"filename" : get_scene_file_path(),
+		"parent" : get_parent().get_path(),
+		"name" : name,
+		"pos_x" : position.x,
+		"pos_y" : position.y,
+		"current_state" : state_machine.current_state.name,
+	}
+	return save_dict
 
 
 #func use():
