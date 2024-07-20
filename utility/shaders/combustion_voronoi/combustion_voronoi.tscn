@@ -25,5 +25,5 @@ script = SubResource("GDScript_u584u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 material = SubResource("ShaderMaterial_mhmxa")
-offset_right = 2173.0
-offset_bottom = 649.0
+offset_right = 566.0
+offset_bottom = 386.0
