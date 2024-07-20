@@ -1,11 +1,30 @@
-[gd_scene load_steps=3 format=3 uid="uid://bi1kb3nr003yp"]
+[gd_scene load_steps=6 format=3 uid="uid://bi1kb3nr003yp"]
 
 [ext_resource type="Script" path="res://scene_manager/main_menu/main_menu.gd" id="1_tljp8"]
 [ext_resource type="Theme" uid="uid://e1rx8rawxhv8" path="res://scene_manager/main_menu/main_menu_theme.tres" id="2_l026q"]
+[ext_resource type="Texture2D" uid="uid://q343hi5h3w3e" path="res://objects/tree/tree.png" id="3_fnxor"]
+[ext_resource type="Shader" path="res://scene_manager/main_menu/sliding_background.gdshader" id="3_rygb8"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2pqal"]
+shader = ExtResource("3_rygb8")
+shader_parameter/scroll_speed = 0.05
+shader_parameter/angle_degrees = 45.0
+shader_parameter/repeat_x = 5.0
+shader_parameter/repeat_y = 5.0
+shader_parameter/tint = Color(0.32549, 0.494118, 0.12549, 0.803922)
 
 [node name="main_menu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_tljp8")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_2pqal")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_fnxor")
 
 [node name="Panel" type="Panel" parent="."]
 anchors_preset = 8
