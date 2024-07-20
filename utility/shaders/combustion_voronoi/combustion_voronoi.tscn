@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://c3xw7xhfc5ubr"]
+
+[ext_resource type="Shader" path="res://utility/shaders/combustion_voronoi/combustion_voronoi.gdshader" id="1_v1lgu"]
+
+[sub_resource type="GDScript" id="GDScript_u584u"]
+script/source = "extends Node2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mhmxa"]
+shader = ExtResource("1_v1lgu")
+shader_parameter/speed = 1.0
+
+[node name="CombustionVoronoi" type="Node2D"]
+script = SubResource("GDScript_u584u")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_mhmxa")
+offset_right = 2173.0
+offset_bottom = 649.0
