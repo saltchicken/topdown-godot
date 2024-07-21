@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://bercw3h2rg4lp"]
+
+[ext_resource type="Shader" path="res://utility/shaders/motion_lines/motion_lines.gdshader" id="1_3f1vk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ckg3x"]
+shader = ExtResource("1_3f1vk")
+shader_parameter/speedScale = 16.0
+shader_parameter/clipPosition = 0.2
+
+[node name="MotionLines" type="ColorRect"]
+material = SubResource("ShaderMaterial_ckg3x")
+custom_minimum_size = Vector2(100, 100)
+offset_right = 656.0
+offset_bottom = 440.0
