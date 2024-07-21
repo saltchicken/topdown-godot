@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctx4yy08c3rf8"]
+
+[ext_resource type="Texture2D" uid="uid://dt3ox0hxvrlyc" path="res://objects/floating_rock/floating_rock_base.png" id="1_raeak"]
+[ext_resource type="Texture2D" uid="uid://csd21vs2f0a6r" path="res://objects/floating_rock/floating_rock_top.png" id="2_lx0vk"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7sbc"]
+radius = 25.0
+height = 330.0
+
+[node name="FloatingRock" type="StaticBody2D"]
+
+[node name="Base" type="Sprite2D" parent="."]
+position = Vector2(0, -161)
+texture = ExtResource("1_raeak")
+
+[node name="Top" type="Sprite2D" parent="."]
+position = Vector2(0, -178)
+texture = ExtResource("2_lx0vk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_d7sbc")
