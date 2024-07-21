@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://du4h5dc1naua7"]
+
+[ext_resource type="Shader" path="res://utility/shaders/electric_grid/electric_grid.gdshader" id="1_7r2i7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5b5yi"]
+shader = ExtResource("1_7r2i7")
+shader_parameter/color = Color(0.38, 0.57, 1, 1)
+shader_parameter/zoom = 10.0
+
+[node name="ElectricGrid" type="ColorRect"]
+material = SubResource("ShaderMaterial_5b5yi")
+custom_minimum_size = Vector2(100, 100)
+offset_right = 1151.0
+offset_bottom = 646.0
