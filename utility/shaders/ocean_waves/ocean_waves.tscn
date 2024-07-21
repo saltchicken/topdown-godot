@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://tuv0ialmyq38"]
+
+[ext_resource type="Shader" path="res://utility/shaders/ocean_waves/ocean_waves.gdshader" id="1_uflug"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uqynt"]
+shader = ExtResource("1_uflug")
+
+[node name="OceanWaves" type="ColorRect"]
+material = SubResource("ShaderMaterial_uqynt")
+custom_minimum_size = Vector2(100, 100)
+offset_right = 1089.0
+offset_bottom = 627.0
