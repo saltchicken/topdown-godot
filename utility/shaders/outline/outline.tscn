@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://bcvhfa5tvcoyc"]
+
+[ext_resource type="Shader" path="res://utility/shaders/outline/outline.gdshader" id="1_d3awd"]
+[ext_resource type="Texture2D" uid="uid://bldnmkgtryva6" path="res://items/equipment/weapons/iron_sword/iron_sword_icon.png" id="2_2kph0"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5gp7r"]
+shader = ExtResource("1_d3awd")
+shader_parameter/thickness = 1.32
+shader_parameter/ring_count = 16
+shader_parameter/ring_offset = null
+shader_parameter/outline_color = Color(0, 0, 0.568627, 1)
+shader_parameter/border_clipping_fix = true
+shader_parameter/aspect_ratio = 1.0
+shader_parameter/square_border = false
+shader_parameter/offset = null
+shader_parameter/max_or_add = false
+
+[node name="Outline" type="Node2D"]
+
+[node name="ColorRect" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_5gp7r")
+offset_right = 560.0
+offset_bottom = 377.0
+texture = ExtResource("2_2kph0")
