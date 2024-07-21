@@ -1,0 +1,26 @@
+[gd_scene load_steps=5 format=3 uid="uid://tpbmf05n5xor"]
+
+[ext_resource type="Shader" path="res://utility/shaders/foliage_wind_shader/foliage_wind_shader.gdshader" id="1_de126"]
+[ext_resource type="Texture2D" uid="uid://q343hi5h3w3e" path="res://objects/tree/tree.png" id="2_yrytj"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hcgvm"]
+seamless = true
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_br6um"]
+shader = ExtResource("1_de126")
+shader_parameter/pixel_mode = true
+shader_parameter/pixel_amount = 32.0
+shader_parameter/distortion = 0.01
+shader_parameter/texture_noise_system = true
+shader_parameter/noise_speed = 1.0
+shader_parameter/noise_direction = -1
+shader_parameter/worley_noise_system = false
+shader_parameter/worley_cell_density = 10.0
+shader_parameter/worley_speed = 2.0
+shader_parameter/edge_and_mask = false
+shader_parameter/alpha_value = 1.0
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_hcgvm")
+
+[node name="FoliageWindShader" type="TextureRect"]
+material = SubResource("ShaderMaterial_br6um")
+texture = ExtResource("2_yrytj")
