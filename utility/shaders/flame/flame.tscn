@@ -5,9 +5,7 @@
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1x7fa"]
 shader = ExtResource("1_wui3e")
 
-[node name="Flame" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_1x7fa")
 offset_right = 2082.0
 offset_bottom = 727.0

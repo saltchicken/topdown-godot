@@ -21,9 +21,7 @@ shader_parameter/speech_sim = true
 shader_parameter/speech_intensity = 0.8
 shader_parameter/progress = 1.0
 
-[node name="Waveform" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_je2tv")
 offset_right = 1021.0
 offset_bottom = 567.0

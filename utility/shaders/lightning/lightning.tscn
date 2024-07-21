@@ -14,9 +14,7 @@ shader_parameter/glow_thickness = 0.08
 shader_parameter/glow_color = Color(0.2, 0, 0.8, 0)
 shader_parameter/alpha = 1.0
 
-[node name="Lightning" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_nnfsx")
 offset_right = 922.0
 offset_bottom = 514.0

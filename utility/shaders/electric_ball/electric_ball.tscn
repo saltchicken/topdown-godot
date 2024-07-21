@@ -19,9 +19,7 @@ shader_parameter/time_scale = 1.0
 shader_parameter/noise = SubResource("NoiseTexture2D_h3pa4")
 shader_parameter/noise2 = SubResource("NoiseTexture2D_qsi0v")
 
-[node name="ElectricBall" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_v0nig")
 offset_right = 745.0
 offset_bottom = 573.0

@@ -10,9 +10,7 @@ shader_parameter/color1 = Vector3(0.005, 0.045, 0.075)
 shader_parameter/color2 = Vector3(0.033, 0.07, 0.03)
 shader_parameter/m3 = Basis(0.65, 1.12, -1.43, -1.75, 0.65, -0.3, 0.3, 1.4, 1.22)
 
-[node name="ProteanClouds" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_aub7a")
 offset_right = 2063.0
 offset_bottom = 699.0

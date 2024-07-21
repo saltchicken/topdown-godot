@@ -16,9 +16,7 @@ shader_parameter/dist = 31.68
 shader_parameter/roughness = 0.33
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_6k5g2")
 
-[node name="MoonPhase" type="Node2D"]
-
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect"]
 material = SubResource("ShaderMaterial_byen4")
 offset_right = 662.0
 offset_bottom = 622.0
