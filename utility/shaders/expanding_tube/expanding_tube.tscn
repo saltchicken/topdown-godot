@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b531q01b3kv5y"]
+
+[ext_resource type="Shader" path="res://utility/shaders/expanding_tube/expanding_tube.gdshader" id="1_aethk"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xabuc"]
+shader = ExtResource("1_aethk")
+shader_parameter/whiteness = 0.0
+shader_parameter/l = 2000.0
+shader_parameter/balls = PackedFloat32Array(0.145, 0.545)
+shader_parameter/basic_wid_s = 0.01
+
+[node name="ExpandingTube" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_xabuc")
+offset_right = 988.0
+offset_bottom = 459.0
