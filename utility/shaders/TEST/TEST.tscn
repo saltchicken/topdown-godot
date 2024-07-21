@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://co06f7o0orty5"]
+
+[ext_resource type="Shader" path="res://utility/shaders/TEST/TEST.gdshader" id="1_vbirb"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_74wsw"]
+shader = ExtResource("1_vbirb")
+
+[node name="Test" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_74wsw")
+offset_left = -5.0
+offset_top = -5.0
+offset_right = 5.0
+offset_bottom = 5.0
