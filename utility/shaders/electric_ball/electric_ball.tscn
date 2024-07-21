@@ -1,0 +1,27 @@
+[gd_scene load_steps=7 format=3 uid="uid://ddtktwfvno5dj"]
+
+[ext_resource type="Shader" path="res://utility/shaders/electric_ball/electric_ball.gdshader" id="1_r3ixc"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_177mx"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_h3pa4"]
+noise = SubResource("FastNoiseLite_177mx")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_o3nbk"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qsi0v"]
+noise = SubResource("FastNoiseLite_o3nbk")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v0nig"]
+shader = ExtResource("1_r3ixc")
+shader_parameter/brightness = 2.5
+shader_parameter/time_scale = 1.0
+shader_parameter/noise = SubResource("NoiseTexture2D_h3pa4")
+shader_parameter/noise2 = SubResource("NoiseTexture2D_qsi0v")
+
+[node name="ElectricBall" type="Node2D"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_v0nig")
+offset_right = 745.0
+offset_bottom = 573.0
