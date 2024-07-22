@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctx4yy08c3rf8"]
+[gd_scene load_steps=5 format=3 uid="uid://ctx4yy08c3rf8"]
 
-[ext_resource type="Texture2D" uid="uid://dt3ox0hxvrlyc" path="res://objects/floating_rock/floating_rock_base.png" id="1_raeak"]
-[ext_resource type="Texture2D" uid="uid://csd21vs2f0a6r" path="res://objects/floating_rock/floating_rock_top.png" id="2_lx0vk"]
+[ext_resource type="Texture2D" uid="uid://bg6uechk555gw" path="res://objects/floating_rock/floating_rock_base.png" id="1_raeak"]
+[ext_resource type="Texture2D" uid="uid://ban4slifd0b0t" path="res://objects/floating_rock/floating_rock_top.png" id="2_lx0vk"]
+[ext_resource type="Script" path="res://objects/floating_rock/floating_rock_top.gd" id="3_5pfoi"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d7sbc"]
 radius = 25.0
@@ -14,8 +15,9 @@ position = Vector2(0, -161)
 texture = ExtResource("1_raeak")
 
 [node name="Top" type="Sprite2D" parent="."]
-position = Vector2(0, -178)
+position = Vector2(0, -285)
 texture = ExtResource("2_lx0vk")
+script = ExtResource("3_5pfoi")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708
