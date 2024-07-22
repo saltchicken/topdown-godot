@@ -10,7 +10,7 @@ class_name InputComponent
 @onready var interact: bool
 @onready var sneak: bool
 @onready var dash: bool
-@onready var attack: bool
+@onready var action: bool
 @onready var cast: bool
 
 #func _ready():
@@ -32,11 +32,11 @@ func _physics_process(_delta: float) -> void:
 		interact = Input.is_action_just_pressed('interact')
 		sneak = Input.is_action_pressed('sneak')
 		dash = Input.is_action_just_pressed('dash')
-		attack = Input.is_action_just_pressed('attack')
+		action = Input.is_action_just_pressed('action')
 		cast = Input.is_action_just_pressed('cast')
 	
 func parse_input_action() -> void:
-	if attack:
+	if action:
 		owner.attack_1.emit()
 	if dash:
 		owner.dash.emit()

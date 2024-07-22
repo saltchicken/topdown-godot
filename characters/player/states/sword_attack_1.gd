@@ -15,7 +15,7 @@ func Exit():
 	
 func Update(_delta:float):
 	state_movement()
-	if input.attack:
+	if input.action:
 		owner.attack_2.emit()
 		
 func state_movement():
