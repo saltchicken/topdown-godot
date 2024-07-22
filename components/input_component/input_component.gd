@@ -37,7 +37,7 @@ func _physics_process(_delta: float) -> void:
 	
 func parse_input_action() -> void:
 	if action:
-		owner.attack_1.emit()
+		owner.action.emit()
 	if dash:
 		owner.dash.emit()
 	if interact:

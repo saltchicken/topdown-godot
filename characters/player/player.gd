@@ -15,8 +15,7 @@ signal moving
 signal dash
 signal hit
 signal death
-signal attack_1
-signal attack_2
+signal action
 signal interact
 signal collect
 signal pause_menu
@@ -29,8 +28,7 @@ func _ready() -> void:
 	dash.connect(on_dash)
 	hit.connect(on_hit)
 	death.connect(on_death)
-	attack_1.connect(on_attack_1)
-	attack_2.connect(on_attack_2)
+	action.connect(on_action)
 	interact.connect(on_interact)
 	collect.connect(on_collect)
 	pause_menu.connect(on_pause_menu)
@@ -65,11 +63,11 @@ func on_hit(attack_object : Attack):
 func on_death():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 	
-func on_attack_1():
-	state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_1')
-	
-func on_attack_2():
-	state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_2')
+func on_action():
+	if state_machine.current_state.name != 'sword_attack_1':
+		state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_1')
+	elif state_machine.current_state.name == 'sword_attack_1':
+		state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_2')
 	
 func on_interact():
 	var interact_component = get_node_or_null("InteractComponent")

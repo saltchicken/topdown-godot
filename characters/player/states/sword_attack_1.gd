@@ -16,7 +16,7 @@ func Exit():
 func Update(_delta:float):
 	state_movement()
 	if input.action:
-		owner.attack_2.emit()
+		owner.action.emit()
 		
 func state_movement():
 	owner.velocity = Vector2(0.0, 0.0)
