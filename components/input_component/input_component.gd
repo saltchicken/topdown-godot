@@ -12,6 +12,7 @@ class_name InputComponent
 @onready var dash: bool
 @onready var action: bool
 @onready var cast: bool
+@onready var use: bool
 
 #func _ready():
 	#for i in range(10):
@@ -34,10 +35,13 @@ func _physics_process(_delta: float) -> void:
 		dash = Input.is_action_just_pressed('dash')
 		action = Input.is_action_just_pressed('action')
 		cast = Input.is_action_just_pressed('cast')
+		use = Input.is_action_just_pressed('use')
 	
 func parse_input_action() -> void:
 	if action:
 		owner.action.emit()
+	if use:
+		owner.use.emit()
 	if dash:
 		owner.dash.emit()
 	if interact:

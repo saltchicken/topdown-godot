@@ -17,6 +17,7 @@ signal hit
 signal death
 signal action
 signal interact
+signal use
 signal collect
 signal pause_menu
 
@@ -30,6 +31,7 @@ func _ready() -> void:
 	death.connect(on_death)
 	action.connect(on_action)
 	interact.connect(on_interact)
+	use.connect(on_use)
 	collect.connect(on_collect)
 	pause_menu.connect(on_pause_menu)
 	
@@ -73,6 +75,9 @@ func on_interact():
 	var interact_component = get_node_or_null("InteractComponent")
 	if interact_component: # TODO: Interact with the closest one
 		interact_component.interact()
+		
+func on_use():
+	print_debug('Use has not been implemented yet')
 		
 func on_collect(collectable):
 	if collectable is Coins:
