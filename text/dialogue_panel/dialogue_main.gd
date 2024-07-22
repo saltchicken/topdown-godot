@@ -20,7 +20,7 @@ func _ready():
 	panel.hide()
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("use"):
+	if Input.is_action_just_pressed("interact"):
 		if !line_complete:
 			tween.kill()
 			label.visible_ratio = 1

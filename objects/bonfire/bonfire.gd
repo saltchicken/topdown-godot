@@ -51,7 +51,7 @@ func save():
 	return save_dict
 
 
-#func use():
+#func interact():
 	#if state_machine.current_state.name == 'off':
 		#state_machine.current_state.state_transition.emit(state_machine.current_state, 'on')
 		#var player = get_tree().get_first_node_in_group('Players') # TODO: Better way to reference character
@@ -61,7 +61,7 @@ func save():
 			#player.bonfire_menu.known_bonfires.append(self.data.get_path())
 		#area_2d.body_entered.emit(player)
 	#if state_machine.current_state.name == 'on':
-		## TODO: This should be called no matter what state the bonfire is used. Though this should be handled with bonfire menu unless auto save is needed
+		## TODO: This should be called no matter what state the bonfire is interactd. Though this should be handled with bonfire menu unless auto save is needed
 		#SceneManager.save_game(self)
 		#print('Game saved')
 		## TODO: Need a bonfire menu
