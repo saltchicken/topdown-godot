@@ -1,6 +1,7 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dr6ra261j83j1"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dr6ra261j83j1"]
 
 [ext_resource type="Texture2D" uid="uid://fjuy5toi0an4" path="res://tilemaps/assets/decor_16x16_grass.png" id="1_6q2lb"]
+[ext_resource type="Texture2D" uid="uid://dytk1q2b6gkog" path="res://tilemaps/assets/water7.png" id="2_stkk6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c2kwp"]
 resource_name = "grasslands"
@@ -26,5 +27,24 @@ texture = ExtResource("1_6q2lb")
 2:4/0 = 0
 3:4/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wglnf"]
+texture = ExtResource("2_stkk6")
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+1:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 3.75, 8, 3.875, 8, 8, -8, 8)
+3:2/0 = 0
+
 [resource]
+physics_layer_0/collision_layer = 31
+physics_layer_0/collision_mask = 31
 sources/0 = SubResource("TileSetAtlasSource_c2kwp")
+sources/1 = SubResource("TileSetAtlasSource_wglnf")
