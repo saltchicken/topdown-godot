@@ -28,6 +28,7 @@ func save():
 		"filename" : get_scene_file_path(),
 		"node_path" : get_path(),
 		"name" : name,
-		"coins" : coins
+		"coins" : coins,
+		"experience" : experience
 	}
 	return save_dict

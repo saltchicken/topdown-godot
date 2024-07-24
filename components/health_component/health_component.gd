@@ -28,6 +28,8 @@ func damage(attack: Attack):
 				print('set to death')
 				#state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 				owner.death.emit()
+				if attack.attacker is Player:
+					attack.attacker.profile.experience += owner.experience
 			else:
 				hit_indicator(owner, str(attack.attack_damage))
 				owner.hit.emit(attack)

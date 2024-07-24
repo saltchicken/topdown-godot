@@ -1113,6 +1113,7 @@ collision_layer = 2
 collision_mask = 15
 script = ExtResource("1_amajc")
 initial_state = NodePath("StateMachine/idle")
+experience = 50
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 rotation = 1.5708

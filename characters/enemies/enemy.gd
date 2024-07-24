@@ -1,6 +1,7 @@
 class_name Enemy extends CharacterBody2D
 
 @export var initial_state : State
+@export var experience : int = 5
 
 @onready var collision
 

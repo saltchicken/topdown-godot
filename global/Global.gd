@@ -182,6 +182,7 @@ func load_player_profile():
 			"ProfileComponent":
 				var player_profile = get_node(node_path)
 				player_profile.coins = node_data["coins"]
+				player_profile.experience = node_data["experience"]
 			"Gametime":
 				var gametime = get_node('/root/Gameplay/Gametime')
 				gametime.time_elapsed = node_data["time_elapsed"]
