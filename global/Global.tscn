@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://b6i0txd0rso7w"]
+[gd_scene load_steps=4 format=3 uid="uid://b6i0txd0rso7w"]
 
 [ext_resource type="Script" path="res://global/Global.gd" id="1_ddqc4"]
 [ext_resource type="AudioStream" uid="uid://cqcgosynatdjy" path="res://audio/music/DungeonCave.wav" id="2_rld3a"]
+[ext_resource type="AudioStream" uid="uid://bhcmgbivhvwom" path="res://audio/music/2.wav" id="3_2ufnk"]
 
 [node name="Global" type="Node2D"]
 script = ExtResource("1_ddqc4")
@@ -12,3 +13,6 @@ process_mode = 3
 [node name="DungeonCave" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("2_rld3a")
 volume_db = -6.558
+
+[node name="2" type="AudioStreamPlayer" parent="Audio"]
+stream = ExtResource("3_2ufnk")

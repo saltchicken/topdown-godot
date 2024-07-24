@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://ctx4yy08c3rf8" path="res://objects/floating_rock/floating_rock.tscn" id="9_w61mh"]
 
 [node name="LevelParent" instance=ExtResource("1_e1v3i")]
+song = 2
 
 [node name="Parallax2D" type="Parallax2D" parent="." index="0"]
 z_index = -1
@@ -63,7 +64,6 @@ position = Vector2(-281, -141)
 
 [node name="RedSlime" parent="Enemies" index="0" instance=ExtResource("8_wikpg")]
 position = Vector2(273, -198)
-experience = 50
 
 [node name="FloatingRock" parent="." index="9" instance=ExtResource("9_w61mh")]
 position = Vector2(-320, -350)

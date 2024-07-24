@@ -7,14 +7,16 @@ extends Node
 var current_song = null
 
 func play_song(track_number):
+	if track_number == 0:
+		return
 	if track_number == current_song:
 		return
-	audio[track_number].play()
+	audio[track_number - 1].play()
 	current_song = track_number
 	
 func stop_song():
 	if current_song != null:
-		audio[current_song].stop()
+		audio[current_song - 1].stop()
 	else:
 		push_warning("Song is not playing")
 

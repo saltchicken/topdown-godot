@@ -5,6 +5,8 @@ class_name Level extends Node2D
 ## You will note that because Levels "want" to pass data between them, they implement
 ## the optional methods [method get_data] and [method receive_data]
 
+@export var song : int = 0
+
 var rng = RandomNumberGenerator.new()
 
 var MAX_ENEMIES = 1000
@@ -97,7 +99,7 @@ func start_scene() -> void:
 	player.enable()
 	print("Start scene")
 	connect_portals()
-	Global.play_song(0)
+	Global.play_song(song)
 
 # signal emitted by Door, # disables doors and players, create handoff data to pass to the new scene (if new scene is a Level)
 func on_player_entered_portal(portal:Portal) -> void:
