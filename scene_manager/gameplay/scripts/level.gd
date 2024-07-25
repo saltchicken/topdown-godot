@@ -66,7 +66,7 @@ func init_scene() -> void:
 				player.position = portal.global_position
 				player.disable()
 				player.teleport_in()
-				await get_tree().create_timer(2.0).timeout
+				await get_tree().create_timer(1.0).timeout
 				player.enable()
 		#player.position = data.position_in_new_scene
 	

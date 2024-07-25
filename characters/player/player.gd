@@ -104,6 +104,7 @@ func save():
 	
 func teleport_out():
 	var teleport_shader = preload("res://characters/player/teleport.gdshader")
+	get_node("Audio/TeleportOut").play()
 	sprite.material = ShaderMaterial.new()
 	sprite.material.shader = teleport_shader
 	sprite.material.set_shader_parameter("noise_density", 60)
@@ -119,6 +120,7 @@ func teleport_out():
 
 func teleport_in():
 	var tween = get_tree().create_tween()
+	get_node("Audio/TeleportIn").play()
 	tween.tween_method(
 		func(value): sprite.material.set_shader_parameter("progress", value),
 		1.0,
