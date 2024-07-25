@@ -33,4 +33,4 @@ func _drop_data(_at_position, data):
 		else:
 			item.reparent(data.get_parent())
 	data.reparent(self)
-	change_inventory.emit()
+	change_inventory.emit(data)

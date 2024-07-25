@@ -1,8 +1,10 @@
 extends Node
 
+@onready var pause_menu_node = get_node("PauseMenu")
+@onready var inventory_menu = get_node("PauseMenu/MenuTabs/Inventory/InventoryMenu")
 @onready var saved_position = Vector2.ZERO
-@onready var inventory = {}
-@onready var equipment = {}
+#@onready var inventory = {}
+#@onready var equipment = {}
 
 @onready var current_item = null
 @onready var current_weapon = null
@@ -21,6 +23,7 @@ extends Node
 
 func _ready() -> void:
 	add_to_group('PlayerProfilePersist')
+	print(inventory_menu)
 	#var exp_needed = level_mapping.experience_needed_for_next_level(experience)
 	#prints("need for next level:", exp_needed)
 	#

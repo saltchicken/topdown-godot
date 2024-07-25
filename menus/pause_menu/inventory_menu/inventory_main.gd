@@ -1,6 +1,6 @@
 extends Node
 
-#@onready var player = get_owner().get_owner() # TODO: Better way to reference player for applying equipment modifiers
+@onready var player = get_owner().get_owner() # TODO: Better way to reference player for applying equipment modifiers
 @onready var pause_menu = get_owner()
 @onready var inventory_tab = get_parent()
 
@@ -51,8 +51,8 @@ func select_new_slot(previous_slot, new_slot):
 func _ready() -> void:
 	add_to_group('Persist')
 	#set_purse_text()
-	#for slot in item_and_equipment_slots:
-		#slot.change_inventory.connect(inventory_changed.bind(slot))
+	for slot in item_and_equipment_slots:
+		slot.change_inventory.connect(inventory_changed.bind(slot))
 		
 	item_and_equipment_slots[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
@@ -101,8 +101,9 @@ func _process(_delta):
 #func save_purse():
 	#return player.purse
 	
-#func inventory_changed(slot):
-	#print('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
+func inventory_changed(item, slot):
+	print('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
+	print(item)
 	#update_stats.emit()
 	
 func load_item_into_inventory(path_to_item, slot_index):
@@ -110,6 +111,7 @@ func load_item_into_inventory(path_to_item, slot_index):
 	item.init(load(path_to_item))
 	#var item_index = _get_first_open_slot()
 	#%Inventory.get_child(slot_index).add_child(item)
+	#player.profile.inventory[slot_index] = path_to_item
 	item_slots[slot_index].add_child(item)
 	
 func load_item_into_equipment(path_to_item, slot_index):

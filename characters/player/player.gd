@@ -4,8 +4,8 @@ class_name Player extends CharacterBody2D
 
 @export var run_speed: float = 300
 @onready var state_machine = get_node("StateMachine")
-@onready var pause_menu_node = get_node("PauseMenu")
 @onready var profile = get_node("ProfileComponent")
+@onready var pause_menu_node = profile.get_node("PauseMenu")
 
 @onready var collision
 @export var i_frames: float = 0.5
