@@ -102,8 +102,9 @@ func _process(_delta):
 	#return player.purse
 	
 func inventory_changed(item, slot):
-	print('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
-	print(item)
+	print_debug('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
+	print_debug(item.data.resource_path)
+	print_debug(item.data.name)
 	#update_stats.emit()
 	
 func load_item_into_inventory(path_to_item, slot_index):
