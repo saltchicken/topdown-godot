@@ -16,7 +16,10 @@ func _on_body_entered(body: Node2D) -> void:
 		#print('Portal not connected yet from level')
 		return
 	#print("Player entered")
-	player_entered.emit(self)	
+	player_entered.emit(self)
+	body.teleport_out()
+	await get_tree().create_timer(2.0).timeout
+	
 	var gameplay_node:Gameplay = get_tree().root.get_node('Gameplay')
 	var unload:Node = gameplay_node.current_level	# we're now responsible for tracking this
 	Global.save_world(true) #TODO: Better place to put this for other scene swaps not using this and a better way to track.

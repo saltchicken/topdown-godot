@@ -10,6 +10,8 @@ class_name Player extends CharacterBody2D
 @onready var collision
 @export var i_frames: float = 0.5
 
+@onready var sprite = get_node("Animation/Sprites/CharacterBase")
+
 signal idle
 signal moving
 signal dash
@@ -39,13 +41,13 @@ func _physics_process(delta: float) -> void:
 	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
 	
 func disable():
-	#print_debug("Player Disabled")
+	print_debug("Player Disabled")
 	var input_components = find_children('InputComponent')
 	for input_component in input_components:
 		input_component.disable()
 		
 func enable():
-	#print_debug("Player Enabled")
+	print_debug("Player Enabled")
 	var input_components = find_children('InputComponent')
 	for input_component in input_components:
 		input_component.enable()
@@ -99,3 +101,29 @@ func save():
 		"pos_y" : position.y
 	}
 	return save_dict
+	
+func teleport_out():
+	var teleport_shader = preload("res://characters/player/teleport.gdshader")
+	sprite.material = ShaderMaterial.new()
+	sprite.material.shader = teleport_shader
+	sprite.material.set_shader_parameter("noise_density", 60)
+	sprite.material.set_shader_parameter("beam_size", 0.117)
+	#sprite.material.set_shader_parameter("color", Vector4(0.0, 1.02, 1.2,1.0))
+	var tween = get_tree().create_tween()
+	tween.tween_method(
+		func(value): sprite.material.set_shader_parameter("progress", value),
+		0.0,
+		1.0,
+		1.0
+	)
+
+func teleport_in():
+	var tween = get_tree().create_tween()
+	tween.tween_method(
+		func(value): sprite.material.set_shader_parameter("progress", value),
+		1.0,
+		0.0,
+		1.0
+	)
+	await tween.finished
+	sprite.material = null

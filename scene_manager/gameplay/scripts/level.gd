@@ -64,6 +64,10 @@ func init_scene() -> void:
 		for portal in portals:
 			if portal.name == data.target_portal:
 				player.position = portal.global_position
+				player.disable()
+				player.teleport_in()
+				await get_tree().create_timer(2.0).timeout
+				player.enable()
 		#player.position = data.position_in_new_scene
 	
 
@@ -96,8 +100,8 @@ func init_level(level_name):
 
 # Emitted at end of SceneManager.on_content_finished_loading
 func start_scene() -> void:
-	player.enable()
 	print("Start scene")
+	player.enable()
 	connect_portals()
 	Global.play_song(song)
 
