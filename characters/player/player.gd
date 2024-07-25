@@ -20,6 +20,7 @@ signal death
 signal action
 signal interact
 signal use
+signal cast
 signal collect
 signal pause_menu
 
@@ -34,6 +35,7 @@ func _ready() -> void:
 	action.connect(on_action)
 	interact.connect(on_interact)
 	use.connect(on_use)
+	cast.connect(on_cast)
 	collect.connect(on_collect)
 	pause_menu.connect(on_pause_menu)
 	
@@ -79,7 +81,14 @@ func on_interact():
 		interact_component.interact()
 		
 func on_use():
-	print_debug('Use has not been implemented yet')
+	if profile.current_item != null:
+		print_debug('Use has not been implemented yet')
+		#profile.current_item.use()
+		
+func on_cast():
+	if profile.current_spell != null:
+		print_debug('Cast has not been implemented yet')
+		#profile.current_spell.cast()
 		
 func on_collect(collectable):
 	if collectable is Coins:

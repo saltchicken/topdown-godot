@@ -4,6 +4,10 @@ extends Node
 @onready var inventory = {}
 @onready var equipment = {}
 
+@onready var current_item = null
+@onready var current_weapon = null
+@onready var current_spell = null
+
 @onready var level_mapping = PlayerLevelMapping.new()
 @onready var experience = 0
 @onready var level: int = 0:
