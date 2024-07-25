@@ -82,9 +82,11 @@ func on_interact():
 		interact_component.interact()
 		
 func on_use():
-	if profile.current_item != null:
-		print_debug('Use has not been implemented yet')
+	if profile.inventory_menu.current_item != null:
+		print(profile.inventory_menu.current_item)
 		#profile.current_item.use()
+	else:
+		print("Current item is null")
 		
 func on_cast():
 	if profile.current_spell != null:

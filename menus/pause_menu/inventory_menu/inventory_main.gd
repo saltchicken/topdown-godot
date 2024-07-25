@@ -15,6 +15,7 @@ extends Node
 #
 @onready var weapon_slot = get_node('Equipment/WeaponSlot')
 @onready var current_weapon: get = _get_current_weapon
+@onready var current_item: get = _get_current_item
 #
 #@onready var purse_label = get_node('PurseLabel')
 #
@@ -44,6 +45,18 @@ func _get_current_weapon():
 		return null
 	elif child_count == 1:
 		return weapon_slot.get_children()[0].data
+	else:
+		print('Issue with get_current_weapon. Return null for safety')
+		return null
+		
+func _get_current_item():
+	if selected_slot >= item_slots.size():
+		return null
+	var child_count = item_slots[selected_slot].get_child_count()
+	if child_count == 0:
+		return null
+	elif child_count == 1:
+		return item_slots[selected_slot].get_children()[0].data
 	else:
 		print('Issue with get_current_weapon. Return null for safety')
 		return null
