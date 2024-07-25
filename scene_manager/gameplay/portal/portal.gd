@@ -6,6 +6,8 @@ signal player_entered()
 @export var path_to_new_scene: String
 @export var target_portal: String
 
+@export var teleport: bool = false
+
 func _ready():
 	body_entered.connect(_on_body_entered)
 
@@ -17,8 +19,10 @@ func _on_body_entered(body: Node2D) -> void:
 		return
 	#print("Player entered")
 	player_entered.emit(self)
-	body.teleport_out()
-	await get_tree().create_timer(1.0).timeout
+	
+	if teleport:
+		body.teleport_out()
+		await get_tree().create_timer(1.0).timeout
 	
 	var gameplay_node:Gameplay = get_tree().root.get_node('Gameplay')
 	var unload:Node = gameplay_node.current_level	# we're now responsible for tracking this
