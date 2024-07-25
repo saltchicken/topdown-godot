@@ -33,6 +33,9 @@ func save():
 		"node_path" : get_path(),
 		"name" : name,
 		"coins" : coins,
-		"experience" : experience
+		"experience" : experience,
+		"current_item" : current_item,
+		"current_weapon" : current_weapon,
+		"current_spell" : current_spell
 	}
 	return save_dict
