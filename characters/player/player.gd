@@ -70,6 +70,7 @@ func on_death():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 	
 func on_action():
+	print(profile.inventory_menu.current_weapon)
 	if state_machine.current_state.name != 'sword_attack_1':
 		state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_1')
 	elif state_machine.current_state.name == 'sword_attack_1':

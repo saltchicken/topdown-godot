@@ -13,8 +13,8 @@ extends Node
 @onready var inventory_size = item_slots.size()
 @onready var inventory_and_equipment_size = item_and_equipment_slots.size()
 #
-#@onready var weapon_slot = get_node('Equipment/WeaponSlot')
-#@onready var current_weapon: get = _get_current_weapon
+@onready var weapon_slot = get_node('Equipment/WeaponSlot')
+@onready var current_weapon: get = _get_current_weapon
 #
 #@onready var purse_label = get_node('PurseLabel')
 #
@@ -38,15 +38,15 @@ func select_new_slot(previous_slot, new_slot):
 	item_and_equipment_slots[previous_slot].add_theme_stylebox_override('panel', style_box)
 	item_and_equipment_slots[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 
-#func _get_current_weapon():
-	#var child_count = weapon_slot.get_child_count()
-	#if child_count == 0:
-		#return null
-	#elif child_count == 1:
-		#return weapon_slot.get_children()[0].data
-	#else:
-		#print('Issue with get_current_weapon. Return null for safety')
-		#return null
+func _get_current_weapon():
+	var child_count = weapon_slot.get_child_count()
+	if child_count == 0:
+		return null
+	elif child_count == 1:
+		return weapon_slot.get_children()[0].data
+	else:
+		print('Issue with get_current_weapon. Return null for safety')
+		return null
 
 func _ready() -> void:
 	add_to_group('Persist')
@@ -57,7 +57,7 @@ func _ready() -> void:
 	item_and_equipment_slots[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
-	load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tres", 0)
+	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tres", 0)
 	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tres", 1)
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 	
@@ -80,23 +80,7 @@ func _process(_delta):
 			else:
 				selected_slot += 2
 				
-#func save():
-	#var save_dict = {
-		#"node_name" : self.name,
-		#"inventory" : SceneManager.save_slots_to_dict(item_slots),
-		#"equipment" : SceneManager.save_slots_to_dict(equipment_slots),
-		#"purse"		: save_purse()
-	#}
-	#return save_dict
-	
-#func load(node_data):
-	#for item in node_data['inventory'].keys():
-		#load_item_into_inventory(item, node_data['inventory'][item])
-	#for item in node_data['equipment'].keys():
-		#load_item_into_equipment(item, node_data['equipment'][item])
-	#update_stats.emit()
-	## TODO: Remember to apply equipment modifiers and that this may not be working properly
-	#player.purse = node_data["purse"]
+
 	
 #func save_purse():
 	#return player.purse

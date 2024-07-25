@@ -26,6 +26,16 @@ func dialogue(parent_node, text_array: Array):
 	parent_node.add_child(dialogue_instance)
 	dialogue_instance.set_text(text_array)
 	dialogue_instance.main()
+	
+func save_slots_to_dict(slot_array):
+	var dict = {}
+	for i in range(slot_array.size()):
+		var slot = slot_array[i]
+		if slot.get_child_count() > 0:
+			var entity = slot.get_child(0)
+			if entity:
+				dict[entity.data.get_path()] = i
+	return dict
 
 
 # TODO Make backup saves in case of corruption
@@ -186,8 +196,9 @@ func load_player_profile():
 				player_profile.coins = node_data["coins"]
 				player_profile.experience = node_data["experience"]
 				player_profile.current_item = node_data["current_item"]
-				player_profile.current_weapon = node_data["current_weapon"]
-				player_profile.current_spell = node_data["current_spell"]
+				player_profile.load_inventory(node_data)
+				#player_profile.current_weapon = node_data["current_weapon"]
+				#player_profile.current_spell = node_data["current_spell"]
 			"Gametime":
 				var gametime = get_node('/root/Gameplay/Gametime')
 				gametime.time_elapsed = node_data["time_elapsed"]
