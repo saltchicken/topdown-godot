@@ -60,6 +60,7 @@ tile_set = ExtResource("2_vargg")
 position = Vector2(-200, -311)
 path_to_new_scene = "res://levels/level_one/level_one.tscn"
 target_portal = "LevelOneWest"
+teleport = true
 
 [node name="Tree" parent="Trees" index="0" instance=ExtResource("4_s1c8l")]
 position = Vector2(-71, -293)

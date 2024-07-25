@@ -62,9 +62,9 @@ func init_scene() -> void:
 	init_level(name)
 	if data != null and player != null:
 		for portal in portals:
-			if portal.name == data.target_portal:
+			if portal.name == data.sending_portal.target_portal:
 				player.position = portal.global_position
-				if portal.teleport:
+				if data.sending_portal.teleport:
 					#player.disable()
 					player.teleport_in()
 					await get_tree().create_timer(1.0).timeout
@@ -111,7 +111,7 @@ func on_player_entered_portal(portal:Portal) -> void:
 	disconnect_portals()
 	player.disable()
 	data = LevelDataHandoff.new()
-	data.target_portal = portal.target_portal
+	data.sending_portal = portal
 	
 func connect_portals() -> void:
 	for portal in portals:
