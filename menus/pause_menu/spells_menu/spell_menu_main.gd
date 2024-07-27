@@ -11,7 +11,19 @@ extends Node
 @onready var selected_style_box = preload('res://menus/pause_menu/highlighted_item_slot.tres')
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
+@onready var current_spell: get = _get_current_spell
+
 #signal update_stats
+
+func _get_current_spell():
+	var child_count = spell_slots[selected_slot].get_child_count()
+	if child_count == 0:
+		return null
+	elif child_count == 1:
+		return spell_slots[selected_slot].get_children()[0].data
+	else:
+		print('Issue with get_current_spell. Return null for safety')
+		return null
 
 func _set_selected_slot(new_value):
 	var previous_slot = selected_slot

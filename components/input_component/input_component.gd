@@ -46,6 +46,8 @@ func parse_input_action() -> void:
 		owner.dash.emit()
 	if interact:
 		owner.interact.emit()
+	if cast:
+		owner.cast.emit()
 
 func disable():
 	input_disabled = true

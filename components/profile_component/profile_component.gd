@@ -2,6 +2,7 @@ extends Node
 
 @onready var pause_menu_node = get_node("PauseMenu")
 @onready var inventory_menu = get_node("PauseMenu/MenuTabs/Inventory/InventoryMenu")
+@onready var spell_menu = get_node("PauseMenu/MenuTabs/Spells/SpellsMenu")
 @onready var saved_position = Vector2.ZERO
 
 @onready var level_mapping = PlayerLevelMapping.new()
