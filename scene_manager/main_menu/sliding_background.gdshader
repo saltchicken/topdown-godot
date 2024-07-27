@@ -10,11 +10,11 @@ void fragment() {
 	float angle_rad = radians(angle_degrees);
 	vec2 direction = vec2(cos(angle_rad), sin(angle_rad));
 	vec2 offset_uv = UV - (TIME * scroll_speed * direction);
-	
+
 	vec2 scaled_uv = vec2(fract(offset_uv.x * repeat_x), fract(offset_uv.y * repeat_y));
 	vec2 texelSize = vec2(1.0) / vec2(textureSize(TEXTURE, 0));
 	vec2 snappedUV = round(scaled_uv / texelSize) * texelSize;
-	
+
 	COLOR = texture(TEXTURE, snappedUV) * tint;
 }
 
