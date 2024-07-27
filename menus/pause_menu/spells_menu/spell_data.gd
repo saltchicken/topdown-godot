@@ -19,5 +19,10 @@ enum Type {ATTACK, BUFF, HEAL, AURA}
 @export var y_offset: float
 @export var positional_offset: float
 
-func cast():
-	print_debug(name, " spell not implemented yet")
+func cast(owner):
+	var current_spell = load(resource_path.get_basename() + ".tscn").instantiate()
+	current_spell.caster = owner
+	owner.get_node('/root/Gameplay').current_level.add_child(current_spell) # TODO: Is there a better way to get the current level
+	current_spell.position = owner.position + owner.direction * current_spell.stats.positional_offset * current_spell.stats.position_not_centered # TODO: Clean this up
+	current_spell.position.y -= current_spell.stats.y_offset
+	

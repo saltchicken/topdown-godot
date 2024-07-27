@@ -52,6 +52,8 @@ states/casted/position = Vector2(347, 83)
 
 [node name="Whirlwind" instance=ExtResource("1_36jb2")]
 scale = Vector2(2, 2)
+collision_layer = 0
+collision_mask = 2
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_gs4fi")

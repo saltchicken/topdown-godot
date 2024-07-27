@@ -7,6 +7,10 @@ class_name Player extends CharacterBody2D
 @onready var profile = get_node("ProfileComponent")
 @onready var pause_menu_node = profile.get_node("PauseMenu")
 
+@onready var direction: get = _get_direction # TODO: Should be a better way to get direction for spell casting
+func _get_direction():
+	return get_node("InputComponent").previous_direction
+
 @onready var collision
 @export var i_frames: float = 0.5
 
@@ -26,7 +30,7 @@ signal pause_menu
 
 func _ready() -> void:
 	add_to_group('PlayerProfilePersist')
-	add_to_group('light')
+	#add_to_group('light')
 	idle.connect(on_idle)
 	moving.connect(on_moving)
 	dash.connect(on_dash)
@@ -91,7 +95,7 @@ func on_use():
 func on_cast():
 	var current_spell = profile.spell_menu.current_spell
 	if profile.spell_menu.current_spell != null:
-		current_spell.cast()
+		current_spell.cast(self)
 	else:
 		print("Current spell is null")
 		#profile.current_spell.cast()

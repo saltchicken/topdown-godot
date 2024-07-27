@@ -5,7 +5,7 @@ class_name InputComponent
 
 @onready var direction: Vector2
 @onready var joystick_direction: Vector2
-@onready var previous_direction: Vector2
+@onready var previous_direction: Vector2 = Vector2(0.0, 1.0) # TODO: This shouldn't be needed. This just needs to be set to the default idle position so that spell has direction when referring to the caster.
 #@onready var direction_release_smoothing: Array[Vector2] = []
 @onready var interact: bool
 @onready var sneak: bool

@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://components/steering_component/los_raycast/los_raycast.gd" id="1_e57tv"]
 
 [node name="LosRaycast" type="Area2D"]
+collision_layer = 0
 script = ExtResource("1_e57tv")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
