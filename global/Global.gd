@@ -196,6 +196,7 @@ func load_player_profile():
 				player_profile.coins = node_data["coins"]
 				player_profile.experience = node_data["experience"]
 				player_profile.load_inventory(node_data)
+				player_profile.load_spells(node_data)
 			"Gametime":
 				var gametime = get_node('/root/Gameplay/Gametime')
 				gametime.time_elapsed = node_data["time_elapsed"]
