@@ -11,4 +11,4 @@ script = ExtResource("1_uvbtb")
 y_sort_enabled = true
 
 [node name="Gametime" parent="." instance=ExtResource("2_jhbtr")]
-game_time_multiplier = 10000
+game_time_multiplier = 1000

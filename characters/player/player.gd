@@ -89,8 +89,9 @@ func on_use():
 		print("Current item is null")
 		
 func on_cast():
+	var current_spell = profile.spell_menu.current_spell
 	if profile.spell_menu.current_spell != null:
-		print_debug('Cast has not been implemented yet')
+		current_spell.cast()
 	else:
 		print("Current spell is null")
 		#profile.current_spell.cast()

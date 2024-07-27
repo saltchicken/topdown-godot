@@ -18,3 +18,6 @@ enum Type {ATTACK, BUFF, HEAL, AURA}
 @export var position_not_centered: int
 @export var y_offset: float
 @export var positional_offset: float
+
+func cast():
+	print_debug(name, " spell not implemented yet")
