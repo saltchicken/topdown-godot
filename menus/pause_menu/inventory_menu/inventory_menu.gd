@@ -16,12 +16,30 @@ extends Node
 @onready var weapon_slot = get_node('Equipment/WeaponSlot')
 @onready var current_weapon: get = _get_current_weapon
 @onready var current_item: get = _get_current_item
+
+@onready var selection_menu = preload("selection_menu/selection_menu.tscn").instantiate()
 #
 #@onready var purse_label = get_node('PurseLabel')
 #
 @onready var selected_slot: int = 0: set = _set_selected_slot
 
 #signal update_stats
+
+func _ready() -> void:
+	add_to_group('Persist')
+	#set_purse_text()
+	for slot in item_and_equipment_slots:
+		slot.change_inventory.connect(inventory_changed.bind(slot))
+		
+	item_and_equipment_slots[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
+	
+	selection_menu.visible = false
+	add_child(selection_menu)
+	
+	# THIS IS FOR TESTING A DEFAULT ITEM
+	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tres", 0)
+	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tres", 1)
+	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 
 func _set_selected_slot(new_value):
 	var previous_slot = selected_slot
@@ -61,37 +79,36 @@ func _get_current_item():
 		print('Issue with get_current_weapon. Return null for safety')
 		return null
 
-func _ready() -> void:
-	add_to_group('Persist')
-	#set_purse_text()
-	for slot in item_and_equipment_slots:
-		slot.change_inventory.connect(inventory_changed.bind(slot))
-		
-	item_and_equipment_slots[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
-	
-	# THIS IS FOR TESTING A DEFAULT ITEM
-	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tres", 0)
-	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tres", 1)
-	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
+
 	
 func _process(_delta):
 	if pause_menu.visible and inventory_tab.visible:
-		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
-			selected_slot -= 1
-		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
-			selected_slot += 1
-		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
-			if selected_slot <= inventory_size:
-				@warning_ignore("integer_division")
-				selected_slot -= inventory_size / 2
-			else:
-				selected_slot -= 2
-		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
-			if selected_slot < inventory_size:
-				@warning_ignore("integer_division")
-				selected_slot += inventory_size / 2
-			else:
-				selected_slot += 2
+		if selection_menu.visible == false:
+			if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
+				selected_slot -= 1
+			if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
+				selected_slot += 1
+			if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
+				if selected_slot <= inventory_size:
+					@warning_ignore("integer_division")
+					selected_slot -= inventory_size / 2
+				else:
+					selected_slot -= 2
+			if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
+				if selected_slot < inventory_size:
+					@warning_ignore("integer_division")
+					selected_slot += inventory_size / 2
+				else:
+					selected_slot += 2
+					
+			if Input.is_action_just_pressed('slot_select_confirm'):
+				selection_menu.global_position = item_and_equipment_slots[selected_slot].global_position
+				selection_menu.visible = true
+		else:
+			# SelectionMenu is visible
+			if Input.is_action_just_pressed("slot_select_back"):
+				selection_menu.visible = false
+			
 				
 
 	

@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://enhpd1rbdbxq"]
+
+[ext_resource type="Script" path="res://menus/pause_menu/inventory_menu/selection_menu/selection_menu.gd" id="1_rqy61"]
+
+[node name="SelectionMenu" type="Node2D"]
+script = ExtResource("1_rqy61")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="EquipButton" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Equip"
+
+[node name="DropButton" type="Button" parent="PanelContainer/HBoxContainer"]
+layout_mode = 2
+text = "Drop"
