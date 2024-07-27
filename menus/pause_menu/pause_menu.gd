@@ -13,5 +13,6 @@ func open_pause_menu():
 	get_tree().paused = true
 	
 func close_pause_menu():
+	get_node("MenuTabs/Inventory/InventoryMenu").close_selection_menu()
 	self.visible = false
 	get_tree().paused = false

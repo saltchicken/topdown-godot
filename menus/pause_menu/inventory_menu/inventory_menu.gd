@@ -102,16 +102,26 @@ func _process(_delta):
 					selected_slot += 2
 					
 			if Input.is_action_just_pressed('slot_select_confirm'):
-				selection_menu.global_position = item_and_equipment_slots[selected_slot].global_position
-				selection_menu.visible = true
+				open_selection_menu()
 		else:
 			# SelectionMenu is visible
+			if Input.is_action_just_pressed("slot_select_confirm"):
+				selection_menu.buttons[selection_menu.selected_button].pressed.emit()
 			if Input.is_action_just_pressed("slot_select_back"):
-				selection_menu.visible = false
+				close_selection_menu()
+			if Input.is_action_just_pressed("up"):
+				selection_menu.selected_button -= 1
+			if Input.is_action_just_pressed("down"):
+				selection_menu.selected_button += 1
 			
 				
-
+func open_selection_menu():
+	selection_menu.global_position = item_and_equipment_slots[selected_slot].global_position
+	selection_menu.selected_button = 0
+	selection_menu.visible = true
 	
+func close_selection_menu():
+	selection_menu.visible = false
 #func save_purse():
 	#return player.purse
 	
