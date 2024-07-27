@@ -116,7 +116,8 @@ func _process(_delta):
 			
 				
 func open_selection_menu():
-	selection_menu.global_position = item_and_equipment_slots[selected_slot].global_position
+	selection_menu.global_position = item_and_equipment_slots[selected_slot].global_position + Vector2(item_and_equipment_slots[selected_slot].size.x, 0.0)
+	print()
 	selection_menu.selected_button = 0
 	selection_menu.visible = true
 	
