@@ -1,4 +1,4 @@
-func process(parent, delta):
+func process_position(parent, delta):
 	parent.position += parent.cast_direction * delta * parent.stats.cast_speed
 	var bodies = parent.get_overlapping_bodies()
 	if bodies:

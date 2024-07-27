@@ -85,6 +85,15 @@ position = Vector2(-281, -141)
 [node name="RedSlime" parent="Enemies" index="0" instance=ExtResource("8_wikpg")]
 position = Vector2(273, -198)
 
+[node name="RedSlime2" parent="Enemies" index="1" instance=ExtResource("8_wikpg")]
+position = Vector2(241, -178)
+
+[node name="RedSlime3" parent="Enemies" index="2" instance=ExtResource("8_wikpg")]
+position = Vector2(237, -211)
+
+[node name="RedSlime4" parent="Enemies" index="3" instance=ExtResource("8_wikpg")]
+position = Vector2(285, -164)
+
 [node name="FloatingRock" parent="." index="10" instance=ExtResource("9_w61mh")]
 position = Vector2(-320, -350)
 scale = Vector2(0.177709, 0.177709)

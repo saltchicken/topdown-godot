@@ -27,7 +27,7 @@ func _process(delta: float) -> void:
 	scene_script.process_position(self, delta)
 
 func _on_hitbox_area_entered(area):
-	if area is HitboxComponent and area.owner != caster:
+	if area is HitboxComponent: # and area.owner != caster: # NOTE: This isn't needed with proper collision layer
 		var hitbox : HitboxComponent = area
 		
 		var attack = Attack.new()
