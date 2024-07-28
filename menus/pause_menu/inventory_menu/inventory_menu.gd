@@ -172,7 +172,7 @@ func input_move_item():
 	if Input.is_action_just_pressed('slot_select_confirm'):
 		# TODO: Make sure that the move is valid or else cancel
 		
-		if check_if_item_in_slot(selected_move_slot):
+		if check_if_item_in_slot(selected_move_slot) or !check_if_valid_move_slot(selected_move_slot, item_to_be_moved):
 			cancel_item_move()
 		exit_move_mode()
 			
@@ -202,6 +202,15 @@ func check_if_item_in_slot(slot_index):
 		return true
 	else:
 		return false
+		
+func check_if_valid_move_slot(slot_index, item):
+	if item_and_equipment_slots[slot_index].type == ItemData.Type.MAIN:
+		return true
+	if item_and_equipment_slots[slot_index].type == item.data.type:
+		return true
+	else:
+		return false
+	
 	
 	
 func input_selection_menu():
