@@ -22,6 +22,10 @@ extends Node
 #@onready var purse_label = get_node('PurseLabel')
 #
 @onready var selected_slot: int = 0: set = _set_selected_slot
+@onready var initial_moved_from_slot = null
+@onready var moving_item = false
+@onready var item_to_be_moved = null
+@onready var selected_move_slot: int = -1: set = _set_selected_move_slot # TODO: Maybe use null instead of -1. May be a better way for initial value using selected slot
 
 #signal update_stats
 
@@ -42,6 +46,9 @@ func _ready() -> void:
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 
 func _set_selected_slot(new_value):
+	if moving_item == true: # TODO: Needed because setting the selected slot to where it was before moving was bugged.
+		selected_slot = new_value
+		return
 	var previous_slot = selected_slot
 	if new_value < 0:
 		selected_slot = 0
@@ -53,9 +60,39 @@ func _set_selected_slot(new_value):
 		selected_slot = new_value
 	select_new_slot(previous_slot, selected_slot)
 	
+func _set_selected_move_slot(new_value):
+	if new_value == -1: # TODO: Needed from set selected_move_slot to -1 to reinitialize. Should be a better way. Only a problem in equipment slots
+		return 
+	var previous_move_slot
+	if selected_move_slot != -1:
+		previous_move_slot = selected_move_slot
+		if new_value < 0:
+			selected_move_slot = 0
+		elif new_value >= inventory_size and previous_move_slot < inventory_size:
+			selected_move_slot = 24
+		elif new_value >= inventory_and_equipment_size:
+			selected_move_slot = inventory_and_equipment_size - 1
+		else:
+			selected_move_slot = new_value
+	else:
+		selected_move_slot = new_value
+		previous_move_slot = new_value
+	select_new_move_slot(previous_move_slot, selected_move_slot)
+	#print(selected_move_slot)
+	#print(previous_move_slot)
+	
 func select_new_slot(previous_slot, new_slot):
 	item_and_equipment_slots[previous_slot].add_theme_stylebox_override('panel', style_box)
 	item_and_equipment_slots[new_slot].add_theme_stylebox_override('panel', selected_style_box)
+	
+func select_new_move_slot(previous_move_slot, new_slot):
+	# TODO: Add some additional display to show that move selection is on
+	if previous_move_slot != new_slot:
+		item_and_equipment_slots[previous_move_slot].add_theme_stylebox_override('panel', style_box)
+		item_and_equipment_slots[new_slot].add_theme_stylebox_override('panel', selected_style_box)
+		item_and_equipment_slots[previous_move_slot].remove_child(item_to_be_moved)
+		item_and_equipment_slots[new_slot].add_child(item_to_be_moved)
+		
 
 func _get_current_weapon():
 	var child_count = weapon_slot.get_child_count()
@@ -83,39 +120,84 @@ func _get_current_item():
 	
 func _process(_delta):
 	if pause_menu.visible and inventory_tab.visible:
-		if selection_menu.visible == false:
-			if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
-				selected_slot -= 1
-			if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
-				selected_slot += 1
-			if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
-				if selected_slot <= inventory_size:
-					@warning_ignore("integer_division")
-					selected_slot -= inventory_size / 2
-				else:
-					selected_slot -= 2
-			if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
-				if selected_slot < inventory_size:
-					@warning_ignore("integer_division")
-					selected_slot += inventory_size / 2
-				else:
-					selected_slot += 2
-					
-			if Input.is_action_just_pressed('slot_select_confirm'):
-				if item_and_equipment_slots[selected_slot].get_children().size() > 0:
-					open_selection_menu()
-				else:
-					print_debug("This slot is empty")
+		if selection_menu.visible == false and moving_item == false:
+			input_slot_selection()
+		elif selection_menu.visible == false and moving_item == true:
+			input_move_item()
 		else:
-			# SelectionMenu is visible
-			if Input.is_action_just_pressed("slot_select_confirm"):
-				selection_menu.buttons[selection_menu.selected_button].pressed.emit()
-			if Input.is_action_just_pressed("slot_select_back"):
-				close_selection_menu()
-			if Input.is_action_just_pressed("up"):
-				selection_menu.selected_button -= 1
-			if Input.is_action_just_pressed("down"):
-				selection_menu.selected_button += 1
+			input_selection_menu()
+				
+func input_slot_selection():
+	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
+		selected_slot -= 1
+	if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
+		selected_slot += 1
+	if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
+		if selected_slot <= inventory_size:
+			@warning_ignore("integer_division")
+			selected_slot -= inventory_size / 2
+		else:
+			selected_slot -= 2
+	if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
+		if selected_slot < inventory_size:
+			@warning_ignore("integer_division")
+			selected_slot += inventory_size / 2
+		else:
+			selected_slot += 2
+			
+	if Input.is_action_just_pressed('slot_select_confirm'):
+		if item_and_equipment_slots[selected_slot].get_children().size() > 0:
+			open_selection_menu()
+		else:
+			print_debug("This slot is empty")
+			
+func input_move_item():
+	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
+		selected_move_slot -= 1
+	if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
+		selected_move_slot += 1
+	if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
+		if selected_move_slot <= inventory_size:
+			@warning_ignore("integer_division")
+			selected_move_slot -= inventory_size / 2
+		else:
+			selected_move_slot -= 2
+	if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
+		if selected_move_slot < inventory_size:
+			@warning_ignore("integer_division")
+			selected_move_slot += inventory_size / 2
+		else:
+			selected_move_slot += 2
+			
+	if Input.is_action_just_pressed('slot_select_confirm'):
+		selected_slot = selected_move_slot
+		selected_move_slot = -1 # TODO: Probably set selected_move_slot to -1 to reinitialize. Should be a better way. Only a problem in equipment slots
+		initial_moved_from_slot = null
+		moving_item = false
+		item_to_be_moved = null
+			
+	if Input.is_action_just_pressed('slot_select_back'):
+		item_and_equipment_slots[selected_move_slot].remove_child(item_to_be_moved)
+		item_and_equipment_slots[initial_moved_from_slot].add_child(item_to_be_moved)
+		selected_slot = selected_move_slot
+		selected_move_slot = -1 # TODO: Probably set selected_move_slot to -1 to reinitialize. Should be a better way. Only a problem in equipment slots
+		initial_moved_from_slot = null
+		moving_item = false
+		item_to_be_moved = null
+			
+	# TODO: Remember to return to the previous selected_slot
+			
+func input_selection_menu():
+	if Input.is_action_just_pressed("slot_select_confirm"):
+		selection_menu.buttons[selection_menu.selected_button].pressed.emit()
+	if Input.is_action_just_pressed("slot_select_back"):
+		close_selection_menu()
+	if Input.is_action_just_pressed("up"):
+		selection_menu.selected_button -= 1
+	if Input.is_action_just_pressed("down"):
+		selection_menu.selected_button += 1
+	
+	
 			
 				
 func open_selection_menu():
