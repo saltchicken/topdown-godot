@@ -102,7 +102,10 @@ func _process(_delta):
 					selected_slot += 2
 					
 			if Input.is_action_just_pressed('slot_select_confirm'):
-				open_selection_menu()
+				if item_and_equipment_slots[selected_slot].get_children().size() > 0:
+					open_selection_menu()
+				else:
+					print_debug("This slot is empty")
 		else:
 			# SelectionMenu is visible
 			if Input.is_action_just_pressed("slot_select_confirm"):
@@ -117,7 +120,6 @@ func _process(_delta):
 				
 func open_selection_menu():
 	selection_menu.global_position = item_and_equipment_slots[selected_slot].global_position + Vector2(item_and_equipment_slots[selected_slot].size.x, 0.0)
-	print()
 	selection_menu.selected_button = 0
 	selection_menu.visible = true
 	
