@@ -42,7 +42,7 @@ func _ready() -> void:
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tres", 0)
-	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tres", 1)
+	load_item_into_inventory("res://items/equipment/weapons/bow/bow.tres", 1)
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 
 func _set_selected_slot(new_value):
@@ -170,23 +170,40 @@ func input_move_item():
 			selected_move_slot += 2
 			
 	if Input.is_action_just_pressed('slot_select_confirm'):
-		selected_slot = selected_move_slot
-		selected_move_slot = -1 # TODO: Probably set selected_move_slot to -1 to reinitialize. Should be a better way. Only a problem in equipment slots
-		initial_moved_from_slot = null
-		moving_item = false
-		item_to_be_moved = null
+		# TODO: Make sure that the move is valid or else cancel
+		
+		if check_if_item_in_slot(selected_move_slot):
+			cancel_item_move()
+		exit_move_mode()
 			
 	if Input.is_action_just_pressed('slot_select_back'):
-		item_and_equipment_slots[selected_move_slot].remove_child(item_to_be_moved)
-		item_and_equipment_slots[initial_moved_from_slot].add_child(item_to_be_moved)
-		selected_slot = selected_move_slot
-		selected_move_slot = -1 # TODO: Probably set selected_move_slot to -1 to reinitialize. Should be a better way. Only a problem in equipment slots
-		initial_moved_from_slot = null
-		moving_item = false
-		item_to_be_moved = null
+		cancel_item_move()
+		exit_move_mode()
+		
 			
 	# TODO: Remember to return to the previous selected_slot
-			
+	
+func cancel_item_move():
+	item_and_equipment_slots[selected_move_slot].remove_child(item_to_be_moved)
+	item_and_equipment_slots[initial_moved_from_slot].add_child(item_to_be_moved)
+	
+	
+
+func exit_move_mode():
+	selected_slot = selected_move_slot
+	selected_move_slot = -1 # TODO: Probably set selected_move_slot to -1 to reinitialize. Should be a better way. Only a problem in equipment slots
+	initial_moved_from_slot = null
+	moving_item = false
+	item_to_be_moved = null
+	
+
+func check_if_item_in_slot(slot_index):
+	if item_and_equipment_slots[slot_index].get_children().size() > 1:
+		return true
+	else:
+		return false
+	
+	
 func input_selection_menu():
 	if Input.is_action_just_pressed("slot_select_confirm"):
 		selection_menu.buttons[selection_menu.selected_button].pressed.emit()
