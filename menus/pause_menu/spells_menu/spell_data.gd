@@ -9,6 +9,7 @@ enum Type {ATTACK, BUFF, HEAL, AURA}
 @export var element: Element
 @export var type: Type
 @export var name: String
+@export var cost: int = 30
 @export_multiline var description: String
 @export var texture: Texture2D
 @export var attack_damage: int

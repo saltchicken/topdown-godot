@@ -16,6 +16,8 @@ func _get_direction():
 
 @onready var sprite = get_node("Animation/Sprites/CharacterBase")
 
+@onready var mana_component = get_node("ManaComponent")
+
 signal idle
 signal moving
 signal dash
@@ -95,7 +97,11 @@ func on_use():
 func on_cast():
 	var current_spell = profile.spell_menu.current_spell
 	if profile.spell_menu.current_spell != null:
-		current_spell.cast(self)
+		if mana_component.mana >= current_spell.cost:
+			mana_component.spend_mana(current_spell.cost)
+			current_spell.cast(self)
+		else:
+			print_debug("Not enough mana")
 	else:
 		print("Current spell is null")
 		#profile.current_spell.cast()

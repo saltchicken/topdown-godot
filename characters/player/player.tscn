@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=4 uid="uid://rf4wl30ejldv"]
+[gd_scene load_steps=138 format=4 uid="uid://rf4wl30ejldv"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_lbwvk"]
 [ext_resource type="PackedScene" uid="uid://cm1wpccpepime" path="res://menus/pause_menu/pause_menu.tscn" id="2_1p00w"]
@@ -27,6 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://dt1k1o6u0yqlq" path="res://components/profile_component/profile_component.tscn" id="22_fc5td"]
 [ext_resource type="PackedScene" uid="uid://d3pu7tsmtkxp0" path="res://components/light_component/light_component.tscn" id="22_hfhot"]
 [ext_resource type="PackedScene" uid="uid://bp62iki7b7wd7" path="res://components/profile_component/inventory_subcomponent/inventory_subcomponent.tscn" id="22_jf1t5"]
+[ext_resource type="PackedScene" uid="uid://c5kuuqttcapcq" path="res://components/mana_component/mana_component.tscn" id="24_fsr47"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6evst"]
 radius = 5.0
@@ -3970,8 +3971,9 @@ shape = SubResource("CapsuleShape2D_6evst")
 [node name="PauseMenu" parent="ProfileComponent" instance=ExtResource("2_1p00w")]
 visible = false
 
-[node name="Hud" parent="ProfileComponent" node_paths=PackedStringArray("health_component") instance=ExtResource("5_ex5vg")]
+[node name="Hud" parent="ProfileComponent" node_paths=PackedStringArray("health_component", "mana_component") instance=ExtResource("5_ex5vg")]
 health_component = NodePath("../../HealthComponent")
+mana_component = NodePath("../../ManaComponent")
 
 [node name="Animation" type="Node2D" parent="."]
 
@@ -3990,15 +3992,15 @@ scale = Vector2(1.03125, 1)
 texture = ExtResource("2_287s8")
 hframes = 8
 vframes = 8
-frame = 36
+frame = 35
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 root_node = NodePath("../Sprites/CharacterBase")
 tree_root = SubResource("AnimationNodeStateMachine_07n6f")
 anim_player = NodePath("AnimationPlayer")
 parameters/current_length = 0.8
-parameters/current_position = 0.424778
-parameters/current_delta = 0.00833333
+parameters/current_position = 0.353448
+parameters/current_delta = 0.00857658
 parameters/End/current_length = null
 parameters/End/current_position = null
 parameters/End/current_delta = null
@@ -4050,15 +4052,15 @@ parameters/hit/current_length = null
 parameters/hit/current_position = null
 parameters/hit/current_delta = null
 parameters/idle/current_length = 0.8
-parameters/idle/current_position = 0.424778
-parameters/idle/current_delta = 0.00833333
+parameters/idle/current_position = 0.353448
+parameters/idle/current_delta = 0.00857658
 parameters/idle/BlendSpace2D/current_length = 0.8
-parameters/idle/BlendSpace2D/current_position = 0.424778
-parameters/idle/BlendSpace2D/current_delta = 0.00833333
+parameters/idle/BlendSpace2D/current_position = 0.353448
+parameters/idle/BlendSpace2D/current_delta = 0.00857658
 parameters/idle/BlendSpace2D/blend_position = Vector2(0.0703499, 0.752577)
 parameters/idle/BlendSpace2D/0/current_length = 0.8
-parameters/idle/BlendSpace2D/0/current_position = 0.424778
-parameters/idle/BlendSpace2D/0/current_delta = 0.00833333
+parameters/idle/BlendSpace2D/0/current_position = 0.353448
+parameters/idle/BlendSpace2D/0/current_delta = 0.00857658
 parameters/idle/BlendSpace2D/1/current_length = 0.8
 parameters/idle/BlendSpace2D/1/current_position = 0.0489433
 parameters/idle/BlendSpace2D/1/current_delta = 0.00694444
@@ -4081,12 +4083,12 @@ parameters/idle/BlendSpace2D/7/current_length = 0.8
 parameters/idle/BlendSpace2D/7/current_position = 0.600369
 parameters/idle/BlendSpace2D/7/current_delta = 0.00694444
 parameters/idle/TimeScale/current_length = 0.8
-parameters/idle/TimeScale/current_position = 0.424778
-parameters/idle/TimeScale/current_delta = 0.00833333
+parameters/idle/TimeScale/current_position = 0.353448
+parameters/idle/TimeScale/current_delta = 0.00857658
 parameters/idle/TimeScale/scale = 1.0
 parameters/idle/output/current_length = 0.8
-parameters/idle/output/current_position = 0.424778
-parameters/idle/output/current_delta = 0.00833333
+parameters/idle/output/current_position = 0.353448
+parameters/idle/output/current_delta = 0.00857658
 parameters/run/current_length = null
 parameters/run/current_position = null
 parameters/run/current_delta = null
@@ -4266,6 +4268,8 @@ health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 shape = SubResource("CapsuleShape2D_a7yr6")
+
+[node name="ManaComponent" parent="." instance=ExtResource("24_fsr47")]
 
 [node name="HealthComponent" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("11_dyhpn")]
 state_machine = NodePath("../StateMachine")
