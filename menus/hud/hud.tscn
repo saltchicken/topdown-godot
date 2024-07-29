@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://mavt6u8jc2su"]
+
+[ext_resource type="Script" path="res://menus/hud/hud.gd" id="1_icixe"]
+[ext_resource type="Shader" path="res://menus/hud/liquid_guage.gdshader" id="2_b66pg"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lrict"]
+shader = ExtResource("2_b66pg")
+shader_parameter/fillValue = 0.5
+shader_parameter/color_subtract = Color(0, 1, 1, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4w8qk"]
+shader = ExtResource("2_b66pg")
+shader_parameter/fillValue = 0.5
+shader_parameter/color_subtract = Color(1, 0.807843, 0, 0)
+
+[node name="Hud" type="CanvasLayer"]
+script = ExtResource("1_icixe")
+
+[node name="HealthGauge" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_lrict")
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -150.0
+offset_right = 150.0
+grow_vertical = 0
+
+[node name="ManaGauge" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_4w8qk")
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -150.0
+offset_top = -150.0
+grow_horizontal = 0
+grow_vertical = 0

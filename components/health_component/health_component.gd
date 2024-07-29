@@ -2,7 +2,14 @@ class_name HealthComponent extends Node2D
 
 @export var MAX_HEALTH := 100.0
 @export var state_machine: FiniteStateMachine
-var health : float
+var health : float : set = _set_health
+
+signal health_update
+
+func _set_health(new_value):
+	health = new_value
+	health_update.emit()
+	
 
 var i_frames = 0.0
 
