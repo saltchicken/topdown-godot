@@ -19,6 +19,7 @@ func _set_selected_option(new_value):
 
 
 signal option_selected
+signal complete
 
 func _ready():
 	panel.hide()
@@ -59,6 +60,7 @@ func main():
 func finish():
 	panel.hide()
 	await get_tree().create_timer(0.05).timeout
+	complete.emit()
 	get_tree().paused = false
 	queue_free()
 	#finished_dialogue.emit()

@@ -17,6 +17,8 @@ func on_interact():
 	option_panel = Global.option_panel(self, ["Yes", "No"])
 	option_panel.option_selected.connect(on_option_selected)
 	option_panel.main()
+	await option_panel.complete
+	print_debug("Option panel completed")
 	
 func on_option_selected(option):
 	print_debug(option + " selected")
