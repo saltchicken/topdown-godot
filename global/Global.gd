@@ -27,6 +27,14 @@ func dialogue(parent_node, text_array: Array):
 	dialogue_instance.set_text(text_array)
 	dialogue_instance.main()
 	
+var option_panel_node = preload("res://text/option_panel/option_panel.tscn")
+func option_panel(parent_node, option_array: Array):
+	var option_panel_instance = option_panel_node.instantiate()
+	parent_node.add_child(option_panel_instance)
+	option_panel_instance.set_options(option_array)
+	#option_panel_instance.main()
+	return option_panel_instance
+	
 func save_slots_to_dict(slot_array):
 	var dict = {}
 	for i in range(slot_array.size()):
