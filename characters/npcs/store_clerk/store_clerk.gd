@@ -10,7 +10,7 @@ func _ready():
 	interact.connect(on_interact)
 
 func on_interact():
-	dialogue_panel = Global.dialogue(self, ["Well hello there"])
+	dialogue_panel = Global.dialogue(self, ["Well hello there", "How can I help you"])
 	dialogue_panel.main()
 	await dialogue_panel.complete
 	# TODO: Will this cause problems instantiating too many options?
@@ -18,7 +18,6 @@ func on_interact():
 	option_panel.option_selected.connect(on_option_selected)
 	option_panel.main()
 	await option_panel.complete
-	print_debug("Option panel completed")
 	
 func on_option_selected(option):
 	print_debug(option + " selected")

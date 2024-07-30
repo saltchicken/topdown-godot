@@ -35,6 +35,7 @@ func set_options(option_array: Array):
 		button.pressed.connect(on_button_pressed.bind(button))
 		button_container.add_child(button)
 		options.append(button)
+	await get_tree().create_timer(0.05).timeout
 	selected_option = 0
 		
 
