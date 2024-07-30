@@ -17,5 +17,3 @@ void fragment() {
 
 	COLOR = texture(TEXTURE, snappedUV) * tint;
 }
-
-

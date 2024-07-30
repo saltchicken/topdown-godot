@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://cn1ugx36kidb1"]
+
+[ext_resource type="Script" path="res://characters/npcs/store_clerk/store_clerk.gd" id="1_6tgru"]
+[ext_resource type="Texture2D" uid="uid://davded4rqi06r" path="res://characters/npcs/store_clerk/animation/idle_sheet.png" id="1_jonp3"]
+[ext_resource type="PackedScene" uid="uid://bek4hocunujtq" path="res://components/interactable_component/interactable_component.tscn" id="3_l78fv"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qb288"]
+radius = 5.13085
+height = 16.0
+
+[node name="StoreClerk" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("1_6tgru")
+
+[node name="Animation" type="Node2D" parent="."]
+
+[node name="Sprites" type="Node2D" parent="Animation"]
+
+[node name="BaseCharacter" type="Sprite2D" parent="Animation/Sprites"]
+position = Vector2(-0.5, -9)
+scale = Vector2(1.03125, 0.921)
+texture = ExtResource("1_jonp3")
+hframes = 8
+vframes = 8
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+scale = Vector2(1.3643, 0.919452)
+shape = SubResource("CapsuleShape2D_qb288")
+
+[node name="InteractableComponent" parent="." instance=ExtResource("3_l78fv")]
