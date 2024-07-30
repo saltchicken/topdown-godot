@@ -82,21 +82,22 @@ func init_level(level_name):
 		level_data_from_load = Global.load_world(level_name, false)
 	
 	#print(level_data_from_load)
-	for key in level_data_from_load.keys():
-		print(key)
 	if level_data_from_load != null:
-		var level_chests = self.get_node("Chests").get_children()
-		for chest in level_data_from_load["chests"].keys():
-			for level_chest in level_chests:
-				if level_data_from_load["chests"][chest]["name"] == level_chest.name:
-					#print(level_chest.get_node("StateMachine/" +  level_data_from_load["chests"][chest]["current_state"]))
-					#level_chest.initial_state = level_chest.get_node("StateMachine/" +  level_data_from_load["chests"][chest]["current_state"])
-					level_chest.state_machine.current_state.state_transition.emit(level_chest.state_machine.current_state, level_data_from_load["chests"][chest]["current_state"])
-		var level_bonfires = self.get_node("Bonfires").get_children()
-		for bonfire in level_data_from_load["bonfires"].keys():
-			for level_bonfire in level_bonfires:
-				if level_data_from_load["bonfires"][bonfire]["name"] == level_bonfire.name:
-					level_bonfire.state_machine.current_state.state_transition.emit(level_bonfire.state_machine.current_state, level_data_from_load["bonfires"][bonfire]["current_state"])
+		for key in level_data_from_load.keys():
+			print(key)
+		if level_data_from_load != null:
+			var level_chests = self.get_node("Chests").get_children()
+			for chest in level_data_from_load["chests"].keys():
+				for level_chest in level_chests:
+					if level_data_from_load["chests"][chest]["name"] == level_chest.name:
+						#print(level_chest.get_node("StateMachine/" +  level_data_from_load["chests"][chest]["current_state"]))
+						#level_chest.initial_state = level_chest.get_node("StateMachine/" +  level_data_from_load["chests"][chest]["current_state"])
+						level_chest.state_machine.current_state.state_transition.emit(level_chest.state_machine.current_state, level_data_from_load["chests"][chest]["current_state"])
+			var level_bonfires = self.get_node("Bonfires").get_children()
+			for bonfire in level_data_from_load["bonfires"].keys():
+				for level_bonfire in level_bonfires:
+					if level_data_from_load["bonfires"][bonfire]["name"] == level_bonfire.name:
+						level_bonfire.state_machine.current_state.state_transition.emit(level_bonfire.state_machine.current_state, level_data_from_load["bonfires"][bonfire]["current_state"])
 		
 
 # Emitted at end of SceneManager.on_content_finished_loading

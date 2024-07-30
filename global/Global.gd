@@ -25,7 +25,8 @@ func dialogue(parent_node, text_array: Array):
 	var dialogue_instance = dialogue_node.instantiate()
 	parent_node.add_child(dialogue_instance)
 	dialogue_instance.set_text(text_array)
-	dialogue_instance.main()
+	#dialogue_instance.main()
+	return dialogue_instance
 	
 var option_panel_node = preload("res://text/option_panel/option_panel.tscn")
 func option_panel(parent_node, option_array: Array):

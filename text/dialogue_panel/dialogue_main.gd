@@ -16,6 +16,8 @@ var current_line: int = 0
 @onready var line_complete: bool = false
 @onready var tween
 
+signal complete
+
 func _ready():
 	panel.hide()
 	
@@ -75,6 +77,7 @@ func main():
 func finish():
 	panel.hide()
 	await get_tree().create_timer(0.05).timeout
+	complete.emit()
 	get_tree().paused = false
 	queue_free()
 	#finished_dialogue.emit()
