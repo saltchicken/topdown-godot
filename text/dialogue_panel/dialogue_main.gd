@@ -21,6 +21,8 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed("interact"):
+		if tween == null:
+			return
 		if !line_complete:
 			tween.kill()
 			label.visible_ratio = 1
@@ -64,6 +66,7 @@ func type():
 	
 func main():
 	panel.show()
+	await get_tree().create_timer(0.05).timeout
 	type()
 		
 #func start_timer():
@@ -71,6 +74,7 @@ func main():
 	
 func finish():
 	panel.hide()
+	await get_tree().create_timer(0.05).timeout
 	get_tree().paused = false
 	queue_free()
 	#finished_dialogue.emit()
