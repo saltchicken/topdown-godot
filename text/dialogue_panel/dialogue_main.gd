@@ -13,41 +13,48 @@ var current_line: int = 0
 
 @onready var letter_per_second = 30.0
 
+@onready var input_ready = false
 @onready var line_complete: bool = false
 @onready var tween
 
 signal complete
 
-func _ready():
-	panel.hide()
+#func _ready():
+	#panel.hide()
 	
 func _process(_delta):
-	if Input.is_action_just_pressed("interact"):
-		if tween == null:
-			return
-		if !line_complete:
-			tween.kill()
-			label.visible_ratio = 1
-			line_complete = true
-		else:
-			current_line += 1
-			line_complete = false
-			type()
-		
-		#current_line += 1
-		#timer.stop()
-		#type()
-		#start_timer()
-		#finish()
+	if visible:
+		if Input.is_action_just_released('interact'):
+			input_ready = true
+		if Input.is_action_just_pressed("interact") and input_ready:
+			input_ready = false
+			if tween == null:
+				return
+			if !line_complete:
+				tween.kill()
+				label.visible_ratio = 1
+				line_complete = true
+			else:
+				current_line += 1
+				line_complete = false
+				type()
+			
+			#current_line += 1
+			#timer.stop()
+			#type()
+			#start_timer()
+			#finish()
 
 func set_text(text_array: Array):
 	story_text = text_array
+	get_tree().paused = true
+	await get_tree().create_timer(0.05).timeout
+	type()
 	
 func set_complete_line():
 	line_complete = true
 
 func type():
-	get_tree().paused = true
 	if current_line < story_text.size():
 		#var lines = round((story_text[current_line].length()/1.0))
 		#print("Lines: '%s'" %lines)
@@ -65,21 +72,22 @@ func type():
 		#panel.size.y = label.size.y + lines * 4 + 5
 	else:
 		finish()
+
 	
-func main():
-	panel.show()
-	await get_tree().create_timer(0.05).timeout
-	type()
-		
-#func start_timer():
-	#timer.start()
+func reset():
+	current_line = 0
+	story_text = [""] # NOTE: This probably isn't needed
+	label.text = ""
+	line_complete = false
 	
 func finish():
-	panel.hide()
+	#panel.hide()
+	reset()
+	hide()
 	await get_tree().create_timer(0.05).timeout
 	complete.emit()
 	get_tree().paused = false
-	queue_free()
+	#queue_free()
 	#finished_dialogue.emit()
 	
 #func _on_timer_timeout():

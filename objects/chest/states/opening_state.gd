@@ -18,8 +18,7 @@ func Update(_delta:float):
 func _on_animation_tree_animation_finished(anim_name):
 	if anim_name == self.name:
 		if character_body.item and !character_body.item_taken:
-			var dialogue = Global.dialogue(self, ["You received a %s" %character_body.item.name])
-			dialogue.main()
+			Global.dialogue_panel(self, ["You received a %s" %character_body.item.name])
 			print('Still need to implement receiving the item')
 			#character_body.player.inventory.collect_item(character_body.item.resource_path)
 			#character_body.item_taken = true

@@ -2,6 +2,7 @@ extends CanvasLayer
 
 @onready var panel = get_node('PanelContainer')
 @onready var button_container = get_node('PanelContainer/VBoxContainer')
+@onready var receive_input = false
 
 var options = []
 @onready var selected_option: int = 0: set = _set_selected_option
@@ -21,8 +22,8 @@ func _set_selected_option(new_value):
 signal option_selected
 signal complete
 
-func _ready():
-	panel.hide()
+#func _ready():
+	#panel.hide()
 		
 func on_button_pressed(button):
 	option_selected.emit(button.text)
@@ -35,25 +36,27 @@ func set_options(option_array: Array):
 		button.pressed.connect(on_button_pressed.bind(button))
 		button_container.add_child(button)
 		options.append(button)
-	await get_tree().create_timer(0.05).timeout
+	#await get_tree().create_timer(0.05).timeout
 	selected_option = 0
 		
 
 func _process(_delta):
-	if Input.is_action_just_pressed("slot_select_confirm"):
-		options[selected_option].pressed.emit()
-	if Input.is_action_just_pressed("slot_select_back"):
-		print_debug("Cancelled the Option Panel")
-		finish()
-	if Input.is_action_just_pressed("up"):
-		selected_option -= 1
-	if Input.is_action_just_pressed("down"):
-		selected_option += 1
+	if visible:
+		if Input.is_action_just_pressed("slot_select_confirm"):
+			options[selected_option].pressed.emit()
+		if Input.is_action_just_pressed("slot_select_back"):
+			print_debug("Cancelled the Option Panel")
+			finish()
+		if Input.is_action_just_pressed("up"):
+			selected_option -= 1
+		if Input.is_action_just_pressed("down"):
+			selected_option += 1
 	
 func main():
-	await get_tree().create_timer(0.05).timeout
+	print('set visible')
 	get_tree().paused = true
-	panel.show()
+	show()
+	#await get_tree().create_timer(0.15).timeout
 		
 #func start_timer():
 	#timer.start()

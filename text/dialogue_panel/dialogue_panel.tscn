@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://text/dialogue_panel/dialogue_main.gd" id="1_nuqvp"]
 
 [node name="DialogueLayer" type="CanvasLayer"]
-process_mode = 2
+process_mode = 3
 script = ExtResource("1_nuqvp")
 
 [node name="Panel" type="Panel" parent="."]

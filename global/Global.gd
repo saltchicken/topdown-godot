@@ -20,21 +20,32 @@ func stop_song():
 	else:
 		push_warning("Song is not playing")
 
-var dialogue_node = preload("res://text/dialogue_panel/dialogue_panel.tscn")
-func dialogue(parent_node, text_array: Array):
-	var dialogue_instance = dialogue_node.instantiate()
-	parent_node.add_child(dialogue_instance)
-	dialogue_instance.set_text(text_array)
-	#dialogue_instance.main()
-	return dialogue_instance
+#var dialogue_node = preload("res://text/dialogue_panel/dialogue_panel.tscn")
+#func dialogue(parent_node, text_array: Array):
+	#var dialogue_instance = dialogue_node.instantiate()
+	#parent_node.add_child(dialogue_instance)
+	#dialogue_instance.set_text(text_array)
+	##dialogue_instance.main()
+	#return dialogue_instance
+	#
+#var option_panel_node = preload("res://text/option_panel/option_panel.tscn")
+#func option_panel(parent_node, option_array: Array):
+	#var option_panel_instance = option_panel_node.instantiate()
+	#parent_node.add_child(option_panel_instance)
+	#option_panel_instance.set_options(option_array)
+	##option_panel_instance.main()
+	#return option_panel_instance
+
+@onready var dialogue_node = get_node("Text/DialogueLayer")	
+func dialogue_panel(parent_node, text_array: Array):
+	dialogue_node.show()
+	dialogue_node.set_text(text_array)
 	
-var option_panel_node = preload("res://text/option_panel/option_panel.tscn")
+@onready var option_node = get_node("Text/OptionPanel")
 func option_panel(parent_node, option_array: Array):
-	var option_panel_instance = option_panel_node.instantiate()
-	parent_node.add_child(option_panel_instance)
-	option_panel_instance.set_options(option_array)
-	#option_panel_instance.main()
-	return option_panel_instance
+	option_node.set_options(option_array)
+	option_node.main()
+	
 	
 func save_slots_to_dict(slot_array):
 	var dict = {}

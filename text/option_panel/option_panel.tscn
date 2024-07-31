@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://text/option_panel/option_panel.gd" id="1_d7lpu"]
 
 [node name="OptionPanel" type="CanvasLayer"]
-process_mode = 2
+process_mode = 3
 script = ExtResource("1_d7lpu")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]

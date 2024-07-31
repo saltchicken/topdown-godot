@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://b6i0txd0rso7w"]
+[gd_scene load_steps=6 format=3 uid="uid://b6i0txd0rso7w"]
 
 [ext_resource type="Script" path="res://global/Global.gd" id="1_ddqc4"]
 [ext_resource type="AudioStream" uid="uid://cqcgosynatdjy" path="res://audio/music/DungeonCave.wav" id="2_rld3a"]
 [ext_resource type="AudioStream" uid="uid://bhcmgbivhvwom" path="res://audio/music/2.wav" id="3_2ufnk"]
+[ext_resource type="PackedScene" uid="uid://dw5m1ascehrdm" path="res://text/option_panel/option_panel.tscn" id="4_aym7y"]
+[ext_resource type="PackedScene" uid="uid://dq452uapq2u1" path="res://text/dialogue_panel/dialogue_panel.tscn" id="5_4767j"]
 
 [node name="Global" type="Node2D"]
 script = ExtResource("1_ddqc4")
@@ -16,3 +18,11 @@ volume_db = -6.558
 
 [node name="2" type="AudioStreamPlayer" parent="Audio"]
 stream = ExtResource("3_2ufnk")
+
+[node name="Text" type="Node2D" parent="."]
+
+[node name="OptionPanel" parent="Text" instance=ExtResource("4_aym7y")]
+visible = false
+
+[node name="DialogueLayer" parent="Text" instance=ExtResource("5_4767j")]
+visible = false
