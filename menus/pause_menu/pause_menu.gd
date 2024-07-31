@@ -6,7 +6,8 @@ func _ready():
 	
 func _process(_delta):
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):
-		owner.pause_menu.emit()
+		if get_tree().paused != true or visible:
+			owner.pause_menu.emit()
 			
 func open_pause_menu():
 	self.visible = true

@@ -14,7 +14,7 @@ func on_interact():
 	dialogue_panel.main()
 	await dialogue_panel.complete
 	# TODO: Will this cause problems instantiating too many options?
-	option_panel = Global.option_panel(self, ["Yes", "No"])
+	option_panel = Global.option_panel(self, ["Shop", "Talk", "Leave"])
 	option_panel.option_selected.connect(on_option_selected)
 	option_panel.main()
 	await option_panel.complete
