@@ -6,6 +6,8 @@ signal interact
 var option_panel
 var dialogue_panel
 
+@onready var input_ready = false
+
 func _ready():
 	interact.connect(on_interact)
 
@@ -17,16 +19,18 @@ func on_interact():
 	#option_panel.main()
 	#await option_panel.complete
 	#print("complete")
-	Global.dialogue_panel(self, ["Hello there here is some more text", "General Kenobi blah blah blah"])
+	#Global.dialogue_panel(self, ["Hello there here is some more text", "General Kenobi blah blah blah"])
+	if Global.option_node.visible or Global.dialogue_node.visible:
+		return
+	Global.option_panel(self, ["Shop", "Talk", "Leave"])
+	Global.option_node.option_selected.connect(on_option_selected)
 	
 func on_option_selected(option):
 	match option:
 		"Shop":
 			open_shop()
 		"Talk":
-			await get_tree().create_timer(0.05).timeout
-			dialogue_panel = Global.dialogue(self, ["Well hello there", "How can I help you"])
-			dialogue_panel.main()
+			Global.dialogue_panel(self, ["Well hello there", "How can I help you"])
 			#await dialogue_panel.complete
 		"Leave":
 			pass

@@ -48,7 +48,7 @@ func _process(_delta):
 func set_text(text_array: Array):
 	story_text = text_array
 	get_tree().paused = true
-	await get_tree().create_timer(0.05).timeout
+	#await get_tree().create_timer(0.05).timeout
 	type()
 	
 func set_complete_line():
@@ -79,6 +79,7 @@ func reset():
 	story_text = [""] # NOTE: This probably isn't needed
 	label.text = ""
 	line_complete = false
+	input_ready = false
 	
 func finish():
 	#panel.hide()

@@ -43,8 +43,8 @@ func dialogue_panel(parent_node, text_array: Array):
 	
 @onready var option_node = get_node("Text/OptionPanel")
 func option_panel(parent_node, option_array: Array):
+	option_node.show()
 	option_node.set_options(option_array)
-	option_node.main()
 	
 	
 func save_slots_to_dict(slot_array):
