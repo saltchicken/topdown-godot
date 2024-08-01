@@ -55,6 +55,7 @@ func set_complete_line():
 	line_complete = true
 
 func type():
+	get_tree().paused = true
 	if current_line < story_text.size():
 		#var lines = round((story_text[current_line].length()/1.0))
 		#print("Lines: '%s'" %lines)
@@ -85,9 +86,11 @@ func finish():
 	#panel.hide()
 	reset()
 	hide()
-	await get_tree().create_timer(0.05).timeout
-	complete.emit()
 	get_tree().paused = false
+	complete.emit()
+	await get_tree().create_timer(0.05).timeout
+	
+	
 	#queue_free()
 	#finished_dialogue.emit()
 	

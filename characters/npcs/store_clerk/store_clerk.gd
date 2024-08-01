@@ -30,6 +30,7 @@ func on_option_selected(option):
 		"Shop":
 			open_shop()
 		"Talk":
+			await Global.option_node.complete
 			process_mode = Node.PROCESS_MODE_DISABLED
 			Global.dialogue_panel(self, ["Well hello there", "How can I help you"])
 			await Global.dialogue_node.complete

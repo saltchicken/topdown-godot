@@ -78,9 +78,11 @@ func reset():
 func finish():
 	reset()
 	hide()
-	await get_tree().create_timer(0.05).timeout
-	complete.emit()
 	get_tree().paused = false
+	complete.emit()
+	await get_tree().create_timer(0.05).timeout
+	
+	
 	#queue_free()
 	#finished_dialogue.emit()
 	
