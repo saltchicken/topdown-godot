@@ -198,5 +198,6 @@ shape = SubResource("CircleShape2D_rhulh")
 [node name="Audio" type="Node" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Audio"]
+process_mode = 3
 stream = ExtResource("9_y7rvv")
 attenuation = 3.9493
