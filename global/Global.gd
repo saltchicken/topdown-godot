@@ -3,7 +3,7 @@ extends Node
 @onready var profiles_dir = "user://profiles/"
 @onready var current_profile = null
 
-@onready var audio = get_node("Audio").get_children()
+@onready var audio = get_node("Audio/BackgroundMusic").get_children()
 var current_song = null
 
 func play_song(track_number):

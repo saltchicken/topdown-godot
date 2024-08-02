@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://b6i0txd0rso7w"]
+[gd_scene load_steps=7 format=3 uid="uid://b6i0txd0rso7w"]
 
 [ext_resource type="Script" path="res://global/Global.gd" id="1_ddqc4"]
 [ext_resource type="AudioStream" uid="uid://cqcgosynatdjy" path="res://audio/music/DungeonCave.wav" id="2_rld3a"]
 [ext_resource type="AudioStream" uid="uid://bhcmgbivhvwom" path="res://audio/music/2.wav" id="3_2ufnk"]
 [ext_resource type="PackedScene" uid="uid://dw5m1ascehrdm" path="res://text/option_panel/option_panel.tscn" id="4_aym7y"]
 [ext_resource type="PackedScene" uid="uid://dq452uapq2u1" path="res://text/dialogue_panel/dialogue_panel.tscn" id="5_4767j"]
+[ext_resource type="AudioStream" uid="uid://bgt7n4j3rutvb" path="res://audio/sfx/pickup_coin.wav" id="6_tv34d"]
 
 [node name="Global" type="Node2D"]
 script = ExtResource("1_ddqc4")
@@ -12,12 +13,19 @@ script = ExtResource("1_ddqc4")
 [node name="Audio" type="Node" parent="."]
 process_mode = 3
 
-[node name="DungeonCave" type="AudioStreamPlayer" parent="Audio"]
+[node name="BackgroundMusic" type="Node" parent="Audio"]
+
+[node name="DungeonCave" type="AudioStreamPlayer" parent="Audio/BackgroundMusic"]
 stream = ExtResource("2_rld3a")
 volume_db = -6.558
 
-[node name="2" type="AudioStreamPlayer" parent="Audio"]
+[node name="2" type="AudioStreamPlayer" parent="Audio/BackgroundMusic"]
 stream = ExtResource("3_2ufnk")
+
+[node name="SFX" type="Node" parent="Audio"]
+
+[node name="CoinCollectSound" type="AudioStreamPlayer2D" parent="Audio/SFX"]
+stream = ExtResource("6_tv34d")
 
 [node name="Text" type="Node2D" parent="."]
 

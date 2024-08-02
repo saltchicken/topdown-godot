@@ -23,6 +23,7 @@ func _ready() -> void:
 			push_error('ERROR: not implemented')
 	
 func on_collect():
+	Global.get_node("Audio/SFX/CoinCollectSound").play()
 	queue_free()
 	
 
