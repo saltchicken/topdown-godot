@@ -1,7 +1,7 @@
 class_name SpellItem
 extends TextureRect
 
-@export var data: SpellData
+@export var data: Spell
 
 func init(node_path: String) -> void:
 	data = load(node_path).instantiate()

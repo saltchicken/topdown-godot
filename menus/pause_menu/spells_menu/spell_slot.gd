@@ -2,7 +2,7 @@ class_name SpellSlot
 extends PanelContainer
 
 signal change_spell
-@export var type: SpellData.Type
+@export var type: Spell.Type
 
 #func init(t: ItemData.Type, cms: Vector2) -> void:
 	#type = t
@@ -10,7 +10,7 @@ signal change_spell
 
 func _can_drop_data(_at_position, data):
 	if data is SpellItem:
-		if type == SpellData.Type.ATTACK: # TODO: What type checking should be done here for spells
+		if type == Spell.Type.ATTACK: # TODO: What type checking should be done here for spells
 			if get_child_count() == 0:
 				return true
 			else:

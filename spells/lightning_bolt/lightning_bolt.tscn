@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://ceaiymghfpydq"]
+[gd_scene load_steps=11 format=3 uid="uid://ceaiymghfpydq"]
 
 [ext_resource type="PackedScene" uid="uid://btbs1qjh7qxw0" path="res://spells/spell_base.tscn" id="1_pqerc"]
+[ext_resource type="Script" path="res://spells/lightning_bolt/lightning_bolt.gd" id="2_43l00"]
 [ext_resource type="Texture2D" uid="uid://c3fjlju8hh42p" path="res://spells/lightning_bolt/lightning_bolt_icon.png" id="2_khp2p"]
 [ext_resource type="Texture2D" uid="uid://cn362hgfguslc" path="res://spells/lightning_bolt/thunder_bolt_spritesheet.png" id="2_vxynr"]
 
@@ -150,13 +151,14 @@ states/casted/position = Vector2(413, 86)
 scale = Vector2(3, 3)
 collision_layer = 0
 collision_mask = 2
+script = ExtResource("2_43l00")
 element = 5
 spell_name = "Lightning Bolt"
-description = "A lightning bolt attack"
+description = "A lightning bolt spell"
 texture = ExtResource("2_khp2p")
 attack_damage = 30
 cast_speed = 10.0
-attack_knockback = 100.0
+attack_knockback = 120.0
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(2, -16)
