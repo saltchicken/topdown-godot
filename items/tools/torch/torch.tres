@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bjms6vwflna81"]
+
+[ext_resource type="Script" path="res://items/ItemData.gd" id="1_ude1p"]
+[ext_resource type="Texture2D" uid="uid://dijcvom2cjk3w" path="res://items/tools/torch/torch.png" id="2_s720g"]
+
+[resource]
+script = ExtResource("1_ude1p")
+type = 6
+name = "Torch"
+description = "A torch that can be used to light your way"
+texture = ExtResource("2_s720g")
+attack_type = 0
+attack_damage = 0
+defense = 0
+speed_modifier = 1.0
+dash_modifier = 1.0

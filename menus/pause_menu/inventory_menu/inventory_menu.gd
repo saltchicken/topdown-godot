@@ -43,6 +43,7 @@ func _ready() -> void:
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tres", 0)
 	load_item_into_inventory("res://items/equipment/weapons/bow/bow.tres", 1)
+	load_item_into_inventory("res://items/tools/torch/torch.tres", 3)
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 
 func _set_selected_slot(new_value):

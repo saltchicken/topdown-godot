@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bldnmkgtryva6"
-path="res://.godot/imported/iron_sword_icon.png-226d0940fabb96a176cb12a4ab6a533d.ctex"
+path="res://.godot/imported/iron_sword.png-8e94ebf19999194f96d8f9f6630aa5ac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/equipment/weapons/iron_sword/iron_sword_icon.png"
-dest_files=["res://.godot/imported/iron_sword_icon.png-226d0940fabb96a176cb12a4ab6a533d.ctex"]
+source_file="res://items/equipment/weapons/iron_sword/iron_sword.png"
+dest_files=["res://.godot/imported/iron_sword.png-8e94ebf19999194f96d8f9f6630aa5ac.ctex"]
 
 [params]
 
