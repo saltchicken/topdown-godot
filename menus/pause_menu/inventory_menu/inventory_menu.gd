@@ -43,7 +43,7 @@ func _ready() -> void:
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tscn", 0)
 	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tscn", 1)
-	#load_item_into_inventory("res://items/tools/torch/torch.tres", 3)
+	#load_item_into_inventory("res://items/tools/torch/torch.tscn", 3)
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 
 func _set_selected_slot(new_value):
@@ -171,7 +171,7 @@ func input_move_item():
 			selected_move_slot += 2
 			
 	if Input.is_action_just_pressed('slot_select_confirm'):
-		# TODO: Make sure that the move is valid or else cancel
+		# TODO: This needs to also implement stacking
 		if !check_if_valid_move_slot(selected_move_slot, item_to_be_moved):
 			cancel_item_move()
 		elif check_if_item_in_slot(selected_move_slot):

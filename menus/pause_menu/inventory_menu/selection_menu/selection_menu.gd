@@ -29,6 +29,10 @@ func set_buttons(item):
 
 func selection_menu_button_pressed(button):
 	match button.text:
+		"EXAMINE":
+			print_debug(button, " matched but not implemented")
+		"USE":
+			inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].get_children()[0].data.use()
 		"EQUIP":
 			print_debug(button, " matched but not implemented")
 		"DROP":
