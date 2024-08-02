@@ -28,7 +28,12 @@ func on_interact():
 func on_option_selected(option):
 	match option:
 		"Shop":
+			await Global.option_node.complete
+			process_mode = Node.PROCESS_MODE_DISABLED
+			await get_tree().create_timer(0.05).timeout # TODO: Don't need this if shop is openned
 			open_shop()
+			#await shop.complete # TODO: Will need this
+			process_mode = Node.PROCESS_MODE_ALWAYS
 		"Talk":
 			await Global.option_node.complete
 			process_mode = Node.PROCESS_MODE_DISABLED
@@ -36,7 +41,10 @@ func on_option_selected(option):
 			await Global.dialogue_node.complete
 			process_mode = Node.PROCESS_MODE_ALWAYS
 		"Leave":
-			pass
+			await Global.option_node.complete
+			process_mode = Node.PROCESS_MODE_DISABLED
+			await get_tree().create_timer(0.05).timeout
+			process_mode = Node.PROCESS_MODE_ALWAYS
 				
 func open_shop():
 	pass
