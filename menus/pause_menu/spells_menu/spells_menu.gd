@@ -52,9 +52,9 @@ func _ready() -> void:
 		#slot.change_spell.connect(spell_changed.bind(slot))
 		
 	# FOR TESTING
-	load_item_into_spell("res://spells/whirlwind/whirlwind.tres", 0)
-	load_item_into_spell("res://spells/fireball/fireball.tres", 1)
-	load_item_into_spell("res://spells/lightning_bolt/lightning_bolt.tres", 4)
+	load_item_into_spell("res://spells/whirlwind/whirlwind.tscn", 0)
+	load_item_into_spell("res://spells/fireball/fireball.tscn", 1)
+	load_item_into_spell("res://spells/lightning_bolt/lightning_bolt.tscn", 4)
 	
 	
 func _process(_delta):
@@ -78,7 +78,7 @@ func _process(_delta):
 	
 func load_item_into_spell(path_to_item, slot_index):
 	var spell := SpellItem.new()
-	spell.init(load(path_to_item))
+	spell.init(path_to_item)
 	#var item_index = _get_first_open_slot()
 	#%Inventory.get_child(slot_index).add_child(item)
 	spell_slots[slot_index].add_child(spell)

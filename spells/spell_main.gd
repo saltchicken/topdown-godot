@@ -1,4 +1,5 @@
-extends Area2D
+class_name Spell
+extends SpellData
 
 @onready var animation_tree = $AnimationTree
 var caster
@@ -7,10 +8,10 @@ var caster
 
 @onready var cast_direction
 
-@export var default_stats: SpellData
-@onready var stats: SpellData = default_stats.duplicate()
+#@export var default_stats: SpellData
+#@onready var stats: SpellData = default_stats.duplicate()
 
-@onready var scene_script = stats.scene_script.new()
+#@onready var scene_script = stats.scene_script.new()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -24,7 +25,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	scene_script.process_position(self, delta)
+	process_position(self, delta)
+	
+func process_position(parent, delta):
+	pass
 
 func _on_hitbox_area_entered(area):
 	if area is HitboxComponent: # and area.owner != caster: # NOTE: This isn't needed with proper collision layer
@@ -32,7 +36,7 @@ func _on_hitbox_area_entered(area):
 		
 		var attack = Attack.new()
 		attack.attacker = caster
-		attack.attack_damage = stats.attack_damage
+		attack.attack_damage = attack_damage
 		
 		hitbox.damage(attack)
 

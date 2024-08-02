@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfb4c45667nrp"]
+[gd_scene load_steps=10 format=3 uid="uid://cfb4c45667nrp"]
 
 [ext_resource type="PackedScene" uid="uid://btbs1qjh7qxw0" path="res://spells/spell_base.tscn" id="1_36jb2"]
+[ext_resource type="Texture2D" uid="uid://cjxw7on6fb6vo" path="res://spells/whirlwind/whirlwind_icon.png" id="2_hej46"]
 [ext_resource type="Texture2D" uid="uid://c6wwevierc8y4" path="res://spells/whirlwind/whirlwind_spritesheet.png" id="3_gs4fi"]
 
 [sub_resource type="Animation" id="Animation_jnuek"]
@@ -54,6 +55,13 @@ states/casted/position = Vector2(347, 83)
 scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 2
+element = 3
+spell_name = "Whirlwind"
+description = "A whirwind attack"
+texture = ExtResource("2_hej46")
+attack_damage = 40
+cast_speed = 30.0
+attack_knockback = 30.0
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_gs4fi")

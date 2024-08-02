@@ -50,4 +50,6 @@ func load_inventory(node_data):
 	#player.purse = node_data["purse"]
 	
 func load_spells(node_data):
+	print(spell_menu.selected_slot)
+	print(node_data["spells_selected_slot"])
 	spell_menu.selected_slot = node_data["spells_selected_slot"]

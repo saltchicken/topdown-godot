@@ -3,8 +3,8 @@ extends TextureRect
 
 @export var data: SpellData
 
-func init(d: SpellData) -> void:
-	data = d
+func init(node_path: String) -> void:
+	data = load(node_path).instantiate()
 	
 func _ready():
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
