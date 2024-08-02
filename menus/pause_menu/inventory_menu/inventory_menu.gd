@@ -41,7 +41,7 @@ func _ready() -> void:
 	add_child(selection_menu)
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
-	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tres", 0)
+	load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tscn", 0)
 	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tscn", 1)
 	#load_item_into_inventory("res://items/tools/torch/torch.tres", 3)
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
@@ -216,7 +216,7 @@ func check_if_valid_move_slot(slot_index, item):
 	
 func input_selection_menu():
 	if Input.is_action_just_pressed("slot_select_confirm"):
-		selection_menu.buttons[selection_menu.selected_button].pressed.emit()
+		selection_menu.button_container.get_children()[selection_menu.selected_button].pressed.emit()
 	if Input.is_action_just_pressed("slot_select_back"):
 		close_selection_menu()
 	if Input.is_action_just_pressed("up"):
@@ -235,6 +235,9 @@ func open_selection_menu(item):
 	
 func close_selection_menu():
 	selection_menu.visible = false
+	for button in selection_menu.button_container.get_children():
+		selection_menu.button_container.remove_child(button)
+		button.queue_free()
 #func save_purse():
 	#return player.purse
 	

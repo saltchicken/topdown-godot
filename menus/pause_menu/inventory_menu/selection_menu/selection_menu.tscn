@@ -12,15 +12,3 @@ offset_bottom = 40.0
 
 [node name="HBoxContainer" type="VBoxContainer" parent="PanelContainer"]
 layout_mode = 2
-
-[node name="EquipButton" type="Button" parent="PanelContainer/HBoxContainer"]
-layout_mode = 2
-text = "Equip"
-
-[node name="DropButton" type="Button" parent="PanelContainer/HBoxContainer"]
-layout_mode = 2
-text = "Drop"
-
-[node name="MoveButton" type="Button" parent="PanelContainer/HBoxContainer"]
-layout_mode = 2
-text = "Move"
