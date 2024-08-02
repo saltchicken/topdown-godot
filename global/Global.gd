@@ -54,7 +54,7 @@ func save_slots_to_dict(slot_array):
 		if slot.get_child_count() > 0:
 			var entity = slot.get_child(0)
 			if entity:
-				dict[entity.data.get_path()] = i
+				dict[entity.data.scene_file_path] = i
 	return dict
 
 

@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=4 uid="uid://b81hojxagpr4s"]
+[gd_scene load_steps=6 format=4 uid="uid://b81hojxagpr4s"]
 
 [ext_resource type="Script" path="res://levels/level_two/level_two.gd" id="1_cboej"]
 [ext_resource type="TileSet" uid="uid://dr6ra261j83j1" path="res://tilemaps/grasslands.tres" id="1_l8ls3"]
 [ext_resource type="PackedScene" uid="uid://cdr3pvm4h3tgy" path="res://scene_manager/gameplay/portal/portal.tscn" id="2_hsnp4"]
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://objects/chest/chest.tscn" id="4_tt2bi"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://objects/bonfire/bonfire.tscn" id="5_5t3w3"]
-[ext_resource type="Resource" uid="uid://dgt3l6gwvif0n" path="res://items/equipment/weapons/iron_sword/iron_sword.tres" id="5_yc0x7"]
 
 [node name="LevelTwo" type="Node2D"]
 y_sort_enabled = true
@@ -28,7 +27,6 @@ y_sort_enabled = true
 
 [node name="Chest" parent="Chests" instance=ExtResource("4_tt2bi")]
 position = Vector2(1397, 46)
-item = ExtResource("5_yc0x7")
 
 [node name="Trees" type="Node2D" parent="."]
 y_sort_enabled = true

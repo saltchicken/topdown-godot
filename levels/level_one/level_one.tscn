@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="4_omtx2"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://objects/bonfire/bonfire.tscn" id="6_im08k"]
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://objects/chest/chest.tscn" id="7_56a2l"]
-[ext_resource type="Resource" uid="uid://dgt3l6gwvif0n" path="res://items/equipment/weapons/iron_sword/iron_sword.tres" id="8_2lmux"]
+[ext_resource type="PackedScene" uid="uid://cm84xg1ts01e8" path="res://items/equipment/weapons/bow/bow.tscn" id="8_q2v2k"]
 [ext_resource type="PackedScene" uid="uid://cdr3pvm4h3tgy" path="res://scene_manager/gameplay/portal/portal.tscn" id="9_s4kei"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_1outp"]
 shader = ExtResource("2_yx6wq")
 shader_parameter/lights = null
+shader_parameter/light_radiuses = null
 shader_parameter/number_of_lights = 1
 shader_parameter/modulate_color = Color(0, 0, 0, 0.533333)
 shader_parameter/light_radius = 256.0
@@ -71,9 +72,11 @@ position = Vector2(16, -144)
 [node name="Chests" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Chest" parent="Chests" instance=ExtResource("7_56a2l")]
+[node name="Chest" parent="Chests" node_paths=PackedStringArray("item") instance=ExtResource("7_56a2l")]
 position = Vector2(-245, -86)
-item = ExtResource("8_2lmux")
+item = NodePath("Bow")
+
+[node name="Bow" parent="Chests/Chest" instance=ExtResource("8_q2v2k")]
 
 [node name="Bonfires" type="Node2D" parent="."]
 y_sort_enabled = true

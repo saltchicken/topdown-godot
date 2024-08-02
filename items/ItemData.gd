@@ -1,11 +1,11 @@
+extends Node2D
 class_name ItemData
-extends Resource
 
 enum Type {HEAD, CHEST, LEGS, FEET, WEAPON, ACCESSORY, MAIN}
 enum attackType {NULL, SWORD, BOW}
 
 @export var type: Type
-@export var name: String
+@export var item_name: String
 @export_multiline var description: String
 @export var texture: Texture2D
 @export var attack_type: attackType = attackType.NULL

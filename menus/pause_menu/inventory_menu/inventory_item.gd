@@ -1,10 +1,10 @@
 class_name InventoryItem
 extends TextureRect
 
-@export var data: ItemData
+@onready var data: ItemData
 
-func init(d: ItemData) -> void:
-	data = d
+func init(node_path: String) -> void:
+	data = load(node_path).instantiate()
 	
 func _ready():
 	expand_mode = TextureRect.EXPAND_IGNORE_SIZE

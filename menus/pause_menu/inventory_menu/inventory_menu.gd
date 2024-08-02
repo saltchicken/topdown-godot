@@ -42,8 +42,8 @@ func _ready() -> void:
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tres", 0)
-	load_item_into_inventory("res://items/equipment/weapons/bow/bow.tres", 1)
-	load_item_into_inventory("res://items/tools/torch/torch.tres", 3)
+	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tscn", 1)
+	#load_item_into_inventory("res://items/tools/torch/torch.tres", 3)
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 
 func _set_selected_slot(new_value):
@@ -240,13 +240,13 @@ func close_selection_menu():
 	
 func inventory_changed(item, slot):
 	print_debug('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
-	print_debug(item.data.resource_path)
+	print_debug(item.data)
 	print_debug(item.data.name)
 	#update_stats.emit()
 	
 func load_item_into_inventory(path_to_item, slot_index):
 	var item := InventoryItem.new()
-	item.init(load(path_to_item))
+	item.init(path_to_item)
 	#var item_index = _get_first_open_slot()
 	#%Inventory.get_child(slot_index).add_child(item)
 	#player.profile.inventory[slot_index] = path_to_item
@@ -254,7 +254,7 @@ func load_item_into_inventory(path_to_item, slot_index):
 	
 func load_item_into_equipment(path_to_item, slot_index):
 	var item := InventoryItem.new()
-	item.init(load(path_to_item))
+	item.init(path_to_item)
 	#var item_index = _get_first_open_slot()
 	#%Inventory.get_child(slot_index).add_child(item)
 	equipment_slots[slot_index].add_child(item)
