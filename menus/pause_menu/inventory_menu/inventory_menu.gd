@@ -41,7 +41,7 @@ func _ready() -> void:
 	add_child(selection_menu)
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
-	load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tscn", 0)
+	#load_item_into_inventory("res://items/equipment/weapons/iron_sword/iron_sword.tscn", 0)
 	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tscn", 1)
 	#load_item_into_inventory("res://items/tools/torch/torch.tres", 3)
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
@@ -172,9 +172,15 @@ func input_move_item():
 			
 	if Input.is_action_just_pressed('slot_select_confirm'):
 		# TODO: Make sure that the move is valid or else cancel
-		
-		if check_if_item_in_slot(selected_move_slot) or !check_if_valid_move_slot(selected_move_slot, item_to_be_moved):
+		if !check_if_valid_move_slot(selected_move_slot, item_to_be_moved):
 			cancel_item_move()
+		elif check_if_item_in_slot(selected_move_slot):
+			if item_and_equipment_slots[selected_move_slot].get_children()[0].data.type == item_and_equipment_slots[initial_moved_from_slot].type or item_and_equipment_slots[initial_moved_from_slot].type == ItemData.Type.MAIN:
+				var item_to_exchange = item_and_equipment_slots[selected_move_slot].get_children()[0]
+				item_and_equipment_slots[selected_move_slot].remove_child(item_to_exchange)
+				item_and_equipment_slots[initial_moved_from_slot].add_child(item_to_exchange)
+			else:
+				cancel_item_move()
 		exit_move_mode()
 			
 	if Input.is_action_just_pressed('slot_select_back'):
