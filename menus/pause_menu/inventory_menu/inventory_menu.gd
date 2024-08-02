@@ -148,7 +148,7 @@ func input_slot_selection():
 			
 	if Input.is_action_just_pressed('slot_select_confirm'):
 		if item_and_equipment_slots[selected_slot].get_children().size() > 0:
-			open_selection_menu()
+			open_selection_menu(item_and_equipment_slots[selected_slot].get_children()[0].data)
 		else:
 			print_debug("This slot is empty")
 			
@@ -227,7 +227,8 @@ func input_selection_menu():
 	
 			
 				
-func open_selection_menu():
+func open_selection_menu(item):
+	selection_menu.set_buttons(item)
 	selection_menu.global_position = item_and_equipment_slots[selected_slot].global_position + Vector2(item_and_equipment_slots[selected_slot].size.x, 0.0)
 	selection_menu.selected_button = 0
 	selection_menu.visible = true

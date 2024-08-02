@@ -17,6 +17,9 @@ func _set_selected_button(new_value):
 func _ready() -> void:
 	for button in buttons:
 		button.pressed.connect(selection_menu_button_pressed.bind(button))
+		
+func set_buttons(item):
+	print(item)
 
 func selection_menu_button_pressed(button):
 	match button.name:
