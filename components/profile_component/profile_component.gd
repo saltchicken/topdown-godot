@@ -2,6 +2,7 @@ extends Node
 
 @onready var pause_menu_node = get_node("PauseMenu")
 @onready var inventory_menu = get_node("PauseMenu/MenuTabs/Inventory/InventoryMenu")
+@onready var toolbelt = get_node("Hud").get_node("ToolBelt")
 @onready var spell_menu = get_node("PauseMenu/MenuTabs/Spells/SpellsMenu")
 @onready var saved_position = Vector2.ZERO
 
@@ -34,6 +35,7 @@ func save():
 		"experience" : experience,
 		"inventory" : Global.save_slots_to_dict(inventory_menu.item_slots),
 		"equipment" : Global.save_slots_to_dict(inventory_menu.equipment_slots),
+		"toolbelt" : Global.save_slots_to_dict(toolbelt.toolbelt_slots),
 		"inventory_selected_slot" : inventory_menu.selected_slot,
 		"spells_selected_slot" : spell_menu.selected_slot
 	}
@@ -48,6 +50,10 @@ func load_inventory(node_data):
 	#update_stats.emit()
 	# TODO: Remember to apply equipment modifiers and that this may not be working properly
 	#player.purse = node_data["purse"]
+	
+func load_toolbelt(node_data):
+	for item in node_data['toolbelt'].keys():
+		toolbelt.load_item_into_toolbelt(item, node_data["toolbelt"][item])
 	
 func load_spells(node_data):
 	print(spell_menu.selected_slot)

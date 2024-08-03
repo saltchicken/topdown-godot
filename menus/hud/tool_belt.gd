@@ -39,6 +39,11 @@ func select_new_slot(previous_slot, new_slot):
 	toolbelt_slots[previous_slot].add_theme_stylebox_override('panel', style_box)
 	toolbelt_slots[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
+func load_item_into_toolbelt(path_to_item, slot_index):
+	var item := InventoryItem.new()
+	item.init(path_to_item)
+	toolbelt_slots[slot_index].add_child(item)
+	
 func _ready() -> void:
 	toolbelt_slots[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 
