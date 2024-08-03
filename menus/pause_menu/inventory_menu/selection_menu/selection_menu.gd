@@ -19,26 +19,38 @@ func _set_selected_button(new_value):
 #func _ready() -> void:
 	#for button in buttons:
 		#button.pressed.connect(selection_menu_button_pressed.bind(button))
+
+func _create_button(text):
+	var button = Button.new()
+	button.text = text
+	button_container.add_child(button)
+	button.pressed.connect(selection_menu_button_pressed.bind(button))
+	
 		
 func set_buttons(item):
-	for action in item.menu_actions:
-		var button = Button.new()
-		button.text = ItemData.MenuActions.keys()[action]
-		button_container.add_child(button)
-		button.pressed.connect(selection_menu_button_pressed.bind(button))
+	if item.get_node_or_null("Use"):
+		_create_button("Use")
+	_create_button("Move")
+	_create_button("Drop")
+		
+	#for action in item.menu_actions:
+		#var button = Button.new()
+		#button.text = ItemData.MenuActions.keys()[action]
+		#button_container.add_child(button)
+		#button.pressed.connect(selection_menu_button_pressed.bind(button))
 
 func selection_menu_button_pressed(button):
 	match button.text:
-		"EXAMINE":
+		"Examine":
 			print_debug(button, " matched but not implemented")
-		"USE":
-			inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].get_children()[0].data.use(self)
+		"Use":
+			inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].get_children()[0].data.get_node("Use").use(self)
 			inventory_menu.close_selection_menu()
-		"EQUIP":
+		"Equip":
 			print_debug(button, " matched but not implemented")
-		"DROP":
+		"Drop":
 			print_debug(button, " matched but not implemented")
-		"MOVE":
+		"Move":
 			inventory_menu.item_to_be_moved = inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].get_children()[0]
 			inventory_menu.close_selection_menu()
 			inventory_menu.initial_moved_from_slot = inventory_menu.selected_slot
