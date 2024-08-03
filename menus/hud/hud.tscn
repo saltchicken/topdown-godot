@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://mavt6u8jc2su"]
+[gd_scene load_steps=7 format=3 uid="uid://mavt6u8jc2su"]
 
 [ext_resource type="Script" path="res://menus/hud/hud.gd" id="1_icixe"]
 [ext_resource type="Shader" path="res://menus/hud/liquid_guage.gdshader" id="2_b66pg"]
+[ext_resource type="Script" path="res://menus/hud/tool_belt.gd" id="3_3cvv3"]
+[ext_resource type="Script" path="res://menus/pause_menu/inventory_menu/inventory_slot.gd" id="3_abdmg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrict"]
 shader = ExtResource("2_b66pg")
@@ -36,3 +38,67 @@ offset_left = -150.0
 offset_top = -150.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="ToolBelt" type="HBoxContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -338.0
+offset_top = -73.0
+offset_right = 338.0
+offset_bottom = -9.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("3_3cvv3")
+
+[node name="PanelContainer" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer2" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer3" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer4" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer5" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer6" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer7" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer8" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer9" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
+
+[node name="PanelContainer10" type="PanelContainer" parent="ToolBelt"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+script = ExtResource("3_abdmg")
