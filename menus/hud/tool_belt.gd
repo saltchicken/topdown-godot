@@ -3,6 +3,8 @@ extends HBoxContainer
 @onready var selected_slot: int = 0: set = _set_selected_slot
 @onready var toolbelt_slots = get_children()
 
+@onready var current_item: get = _get_current_item
+
 @onready var style_box = preload('res://menus/pause_menu/item_slot.tres')
 @onready var selected_style_box = preload('res://menus/pause_menu/highlighted_item_slot.tres')
 
@@ -20,6 +22,18 @@ func _set_selected_slot(new_value):
 		selected_slot = new_value
 	select_new_slot(previous_slot, selected_slot)
 # Called when the node enters the scene tree for the first time.
+
+func _get_current_item():
+	if selected_slot >= toolbelt_slots.size():
+		return null
+	var child_count = toolbelt_slots[selected_slot].get_child_count()
+	if child_count == 0:
+		return null
+	elif child_count == 1:
+		return toolbelt_slots[selected_slot].get_children()[0].data
+	else:
+		print('Issue with get_current_weapon. Return null for safety')
+		return null
 
 func select_new_slot(previous_slot, new_slot):
 	toolbelt_slots[previous_slot].add_theme_stylebox_override('panel', style_box)

@@ -6,6 +6,7 @@ class_name Player extends CharacterBody2D
 @onready var state_machine = get_node("StateMachine")
 @onready var profile = get_node("ProfileComponent")
 @onready var pause_menu_node = profile.get_node("PauseMenu")
+@onready var toolbelt = profile.get_node("Hud").get_node("ToolBelt")
 
 @onready var direction: get = _get_direction # TODO: Should be a better way to get direction for spell casting
 func _get_direction():
@@ -88,8 +89,8 @@ func on_interact():
 		interact_component.interact()
 		
 func on_use():
-	if profile.inventory_menu.current_item != null:
-		print(profile.inventory_menu.current_item)
+	if toolbelt.current_item != null:
+		print(toolbelt.current_item)
 		#profile.current_item.use()
 	else:
 		print("Current item is null")
