@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://mavt6u8jc2su"]
+[gd_scene load_steps=7 format=3 uid="uid://mavt6u8jc2su"]
 
 [ext_resource type="Script" path="res://menus/hud/hud.gd" id="1_icixe"]
 [ext_resource type="Shader" path="res://menus/hud/liquid_guage.gdshader" id="2_b66pg"]
+[ext_resource type="Script" path="res://menus/hud/tool_belt.gd" id="3_3cvv3"]
 [ext_resource type="Script" path="res://menus/pause_menu/inventory_menu/inventory_slot.gd" id="3_abdmg"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lrict"]
@@ -50,6 +51,7 @@ offset_right = 338.0
 offset_bottom = -9.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("3_3cvv3")
 
 [node name="PanelContainer" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
