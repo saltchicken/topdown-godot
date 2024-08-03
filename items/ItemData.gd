@@ -9,7 +9,7 @@ enum MenuActions {USE, EQUIP, DROP, EXAMINE, MOVE}
 @export var item_name: String
 @export_multiline var description: String
 @export var texture: Texture2D
-@export_enum("USE", "EQUIP", "DROP", "EXAMINE", "MOVE") var menu_actions : PackedInt32Array = [MenuActions.MOVE, MenuActions.DROP]
+@export_enum("USE", "EQUIP", "DROP", "EXAMINE", "MOVE") var menu_actions : PackedInt32Array
 @export var attack_type: attackType = attackType.NULL
 
 @export var attack_damage: int

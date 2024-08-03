@@ -32,7 +32,8 @@ func selection_menu_button_pressed(button):
 		"EXAMINE":
 			print_debug(button, " matched but not implemented")
 		"USE":
-			inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].get_children()[0].data.use()
+			inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].get_children()[0].data.use(self)
+			inventory_menu.close_selection_menu()
 		"EQUIP":
 			print_debug(button, " matched but not implemented")
 		"DROP":
