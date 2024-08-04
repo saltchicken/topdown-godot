@@ -258,6 +258,7 @@ script = ExtResource("3_edo73")
 type = 4
 
 [node name="PurseLabel" type="Label" parent="."]
+layout_mode = 0
 offset_left = -515.0
 offset_top = -188.0
 offset_right = -462.0

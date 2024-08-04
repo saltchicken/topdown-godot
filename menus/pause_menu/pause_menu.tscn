@@ -37,7 +37,7 @@ layout_mode = 2
 metadata/_tab_index = 0
 
 [node name="InventoryMenu" parent="MenuTabs/Inventory" instance=ExtResource("3_0ycix")]
-position = Vector2(-65.5, -80.5)
+layout_mode = 1
 
 [node name="Stats" type="RichTextLabel" parent="MenuTabs"]
 visible = false
