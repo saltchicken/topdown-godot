@@ -3,6 +3,8 @@ extends TextureRect
 
 @onready var data: ItemData
 
+signal collect
+
 func init(node_path: String) -> void:
 	data = load(node_path).instantiate()
 	
@@ -12,6 +14,8 @@ func _ready():
 	if data:
 		texture = data.texture
 		tooltip_text = "%s\n%s" % [data.name, data.description]
+		
+	collect.connect(on_collect)
 
 func _get_drag_data(at_position: Vector2):
 	set_drag_preview(make_drag_preview(at_position))
@@ -30,3 +34,6 @@ func make_drag_preview(at_position: Vector2):
 	c.add_child(t)
 	
 	return c
+		
+func on_collect():
+	print("Collect this item")

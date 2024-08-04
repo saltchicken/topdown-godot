@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6f6ukhgclrvr"]
+[gd_scene load_steps=3 format=3 uid="uid://b6f6ukhgclrvr"]
 
 [ext_resource type="Script" path="res://components/collectable_component/collectable_component.gd" id="1_1janv"]
 
-[node name="CollectableComponent" type="Node2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_mo3c1"]
+
+[node name="CollectableComponent" type="Area2D"]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_1janv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_mo3c1")

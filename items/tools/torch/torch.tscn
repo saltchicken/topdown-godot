@@ -12,3 +12,6 @@ description = "A torch for lighting the way"
 texture = ExtResource("1_wkk8j")
 
 [node name="Use" parent="." instance=ExtResource("3_lpphq")]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_wkk8j")

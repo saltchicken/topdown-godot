@@ -14,3 +14,5 @@ enum attackType {NULL, SWORD, BOW}
 @export var defense: int
 @export var speed_modifier: float = 1.0
 @export var dash_modifier: float = 1.0
+
+	

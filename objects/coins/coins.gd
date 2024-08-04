@@ -1,5 +1,5 @@
 class_name Coins
-extends Area2D
+extends Node2D
 
 @onready var value
 var Random = RANDOM.new()

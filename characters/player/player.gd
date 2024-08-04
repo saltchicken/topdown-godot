@@ -114,6 +114,8 @@ func on_cast():
 func on_collect(collectable):
 	if collectable is Coins:
 		profile.coins += collectable.value
+	else:
+		print_debug("This hasn't been implemented yet")
 		
 func on_pause_menu():
 	if pause_menu_node.visible:
