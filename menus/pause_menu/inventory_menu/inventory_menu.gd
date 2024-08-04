@@ -12,6 +12,8 @@ const COLUMN = 1
 @onready var style_box = preload('res://menus/pause_menu/item_slot.tres')
 @onready var selected_style_box = preload('res://menus/pause_menu/highlighted_item_slot.tres')
 
+@onready var inventory_rows = [4,5,6] # TODO: More sophisticated way of determining which rows in slots can hold inventory.
+
 @onready var slots = []
 func _create_slot_array():
 	for row in get_node("Equipment").get_children():
@@ -283,8 +285,14 @@ func inventory_changed(item, slot):
 	#item_slots[slot_index].add_child(item)
 	
 func load_item_into_slot(path_to_item, slot_vector):
-	var item := InventoryItem.new()
-	item.init(path_to_item)
+	var item: InventoryItem
+	if path_to_item is String:
+		item = InventoryItem.new()
+		item.init(path_to_item)
+	elif path_to_item is InventoryItem:
+		item = path_to_item
+	else:
+		push_error("Error with load_item_into_slot")
 	print("loading into ")
 	print(slot_vector)
 	slots[slot_vector[ROW]][slot_vector[COLUMN]].add_child(item)
@@ -296,15 +304,17 @@ func load_item_into_slot(path_to_item, slot_vector):
 	##%Inventory.get_child(slot_index).add_child(item)
 	#equipment_slots[slot_index].add_child(item)
 
-#func collect_item(item):
-	##print(get_first_open_slot())
-	#load_item_into_inventory(item, get_first_open_slot())
+func collect_item(item):
+	print(get_first_open_slot())
+	load_item_into_slot(item, get_first_open_slot())
+	#print(item)
 	
-#func get_first_open_slot():
-	#for i in item_slots.size():
-		#if item_slots[i].get_child_count() == 0:
-			#return i
-	#return -1 # TODO: Better error handling for when inventory is full
+func get_first_open_slot():
+	for row_index in inventory_rows:
+		for slot_index in slots[row_index].size():
+			if slots[row_index][slot_index].get_child_count() == 0:
+				return [row_index, slot_index]
+	return -1 # TODO: Better error handling for when inventory is full
 	
 func is_in_inventory(): # TODO: Implement 
 	pass

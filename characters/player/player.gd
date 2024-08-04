@@ -114,7 +114,11 @@ func on_cast():
 func on_collect(collectable):
 	if collectable is Coins:
 		profile.coins += collectable.value
+	elif collectable is InventoryItem:
+		get_node('/root/Gameplay').current_level.remove_child(collectable)
+		profile.inventory_menu.collect_item(collectable)
 	else:
+		print(collectable)
 		print_debug("This hasn't been implemented yet")
 		
 func on_pause_menu():

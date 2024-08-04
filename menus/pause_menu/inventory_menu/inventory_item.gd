@@ -36,4 +36,7 @@ func make_drag_preview(at_position: Vector2):
 	return c
 		
 func on_collect():
-	print("Collect this item")
+	var collectable_component = get_node("CollectableComponent")
+	remove_child(collectable_component)
+	collectable_component.queue_free()
+	print_debug("Does this texture rect of the item need to do anything")
