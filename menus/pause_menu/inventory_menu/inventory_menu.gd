@@ -305,16 +305,18 @@ func load_item_into_slot(path_to_item, slot_vector):
 	#equipment_slots[slot_index].add_child(item)
 
 func collect_item(item):
-	print(get_first_open_slot())
-	load_item_into_slot(item, get_first_open_slot())
-	#print(item)
+	var first_open_slot = get_first_open_slot()
+	if first_open_slot != null:
+		load_item_into_slot(item, first_open_slot)
+	else:
+		print_debug("There is no available slot. Implement logic here")
 	
 func get_first_open_slot():
 	for row_index in inventory_rows:
 		for slot_index in slots[row_index].size():
 			if slots[row_index][slot_index].get_child_count() == 0:
 				return [row_index, slot_index]
-	return -1 # TODO: Better error handling for when inventory is full
+	return null
 	
 func is_in_inventory(): # TODO: Implement 
 	pass
