@@ -1,11 +1,7 @@
 extends Node
 
-
-@onready var on = false
-
 func use(parent):
 	var player
-	print(parent)
 	match parent.name:
 		"Player":
 			player = parent
@@ -14,10 +10,5 @@ func use(parent):
 		_:
 			push_error("Use component not implemented for this parent")
 			return
-
-	if on:
-		player.remove_from_group("light")
-		on = false
-	else:
-		player.add_to_group("light")
-		on = true
+	
+	owner.use(player)
