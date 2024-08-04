@@ -69,8 +69,8 @@ func _ready() -> void:
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_slot("res://items/equipment/weapons/iron_sword/iron_sword.tscn", [4, 1])
-	#load_item_into_inventory("res://items/equipment/weapons/bow/bow.tscn", 1)
-	#load_item_into_inventory("res://items/tools/torch/torch.tscn", 3)
+	#load_item_into_slot("res://items/equipment/weapons/bow/bow.tscn", [4, 2])
+	#load_item_into_slot("res://items/tools/torch/torch.tscn", [4,3])
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
 
 func _set_selected_slot(vector):
