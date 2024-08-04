@@ -52,7 +52,7 @@ func selection_menu_button_pressed(button):
 		"Equip":
 			print_debug(button, " matched but not implemented")
 		"Drop":
-			print_debug(button, " matched but not implemented")
+			inventory_menu.drop_item()
 		"Move":
 			inventory_menu.item_to_be_moved = inventory_menu.slots[inventory_menu.selected_slot[ROW]][inventory_menu.selected_slot[COLUMN]].get_children()[0]
 			inventory_menu.close_selection_menu()

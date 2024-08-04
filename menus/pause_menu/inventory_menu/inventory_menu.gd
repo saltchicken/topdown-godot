@@ -308,6 +308,13 @@ func load_item_into_slot(path_to_item, slot_vector):
 	
 func is_in_inventory(): # TODO: Implement 
 	pass
+	
+func drop_item():
+	var item_to_drop = slots[selected_slot[ROW]][selected_slot[COLUMN]].get_children()[0]
+	slots[selected_slot[ROW]][selected_slot[COLUMN]].remove_child(item_to_drop)
+	item_to_drop.global_position = player.global_position - Vector2(0.0, -100.0)
+	item_to_drop.size = Vector2(32.0, 32.0)
+	owner.get_node('/root/Gameplay').current_level.add_child(item_to_drop)
 
 #func set_purse_text():
 	#purse_label.text = 'Purse: %s' % str(player.purse)
