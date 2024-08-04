@@ -7,28 +7,103 @@
 [node name="InventoryMenu" type="Control"]
 process_mode = 2
 layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 576.0
+offset_top = 324.0
+offset_right = -576.0
+offset_bottom = -324.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_n7uo5")
 
+[node name="Equipment" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.5
+offset_left = -50.0
+offset_top = -220.0
+offset_right = 50.0
+offset_bottom = -16.0
+grow_horizontal = 2
+
+[node name="Head" type="HBoxContainer" parent="Equipment"]
+layout_mode = 2
+
+[node name="HeadSlot" type="PanelContainer" parent="Equipment/Head"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+
+[node name="NeckSlot" type="PanelContainer" parent="Equipment/Head"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 6
+
+[node name="Torso" type="HBoxContainer" parent="Equipment"]
+layout_mode = 2
+
+[node name="ChestSlot" type="PanelContainer" parent="Equipment/Torso"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 1
+
+[node name="WaistSlot" type="PanelContainer" parent="Equipment/Torso"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 2
+
+[node name="Weapons" type="HBoxContainer" parent="Equipment"]
+layout_mode = 2
+
+[node name="PrimaryWeaponSlot" type="PanelContainer" parent="Equipment/Weapons"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 5
+
+[node name="SecondaryWeaponSlot" type="PanelContainer" parent="Equipment/Weapons"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 5
+
+[node name="Legs" type="HBoxContainer" parent="Equipment"]
+layout_mode = 2
+
+[node name="LegsSlot" type="PanelContainer" parent="Equipment/Legs"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 3
+
+[node name="FeetSlot" type="PanelContainer" parent="Equipment/Legs"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 4
+
 [node name="Inventory" type="VBoxContainer" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 5
 anchor_left = 0.5
-anchor_top = 0.5
 anchor_right = 0.5
-anchor_bottom = 0.5
 offset_left = -338.0
-offset_top = 62.0
+offset_top = 21.0
 offset_right = 338.0
-offset_bottom = 194.0
+offset_bottom = 153.0
 grow_horizontal = 2
-grow_vertical = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Inventory"]
 layout_mode = 2
@@ -176,91 +251,10 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
-[node name="Equipment" type="VBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -180.0
-offset_right = 50.0
-offset_bottom = 24.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Head" type="HBoxContainer" parent="Equipment"]
-layout_mode = 2
-
-[node name="HeadSlot" type="PanelContainer" parent="Equipment/Head"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-
-[node name="NeckSlot" type="PanelContainer" parent="Equipment/Head"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="Torso" type="HBoxContainer" parent="Equipment"]
-layout_mode = 2
-
-[node name="ChestSlot" type="PanelContainer" parent="Equipment/Torso"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 1
-
-[node name="WaistSlot" type="PanelContainer" parent="Equipment/Torso"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 2
-
-[node name="Weapons" type="HBoxContainer" parent="Equipment"]
-layout_mode = 2
-
-[node name="PrimaryWeaponSlot" type="PanelContainer" parent="Equipment/Weapons"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 5
-
-[node name="SecondaryWeaponSlot" type="PanelContainer" parent="Equipment/Weapons"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 5
-
-[node name="Legs" type="HBoxContainer" parent="Equipment"]
-layout_mode = 2
-
-[node name="LegsSlot" type="PanelContainer" parent="Equipment/Legs"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 3
-
-[node name="FeetSlot" type="PanelContainer" parent="Equipment/Legs"]
-custom_minimum_size = Vector2(48, 48)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 4
-
 [node name="PurseLabel" type="Label" parent="."]
 layout_mode = 0
-offset_left = -515.0
-offset_top = -188.0
-offset_right = -462.0
-offset_bottom = -165.0
+offset_left = -307.0
+offset_top = -133.0
+offset_right = -254.0
+offset_bottom = -110.0
 text = "Purse: "
