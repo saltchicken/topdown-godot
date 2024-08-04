@@ -4,262 +4,262 @@
 [ext_resource type="StyleBox" uid="uid://vuano8fvn3vo" path="res://menus/pause_menu/item_slot.tres" id="2_q6u6v"]
 [ext_resource type="Script" path="res://menus/pause_menu/inventory_menu/inventory_slot.gd" id="3_edo73"]
 
-[node name="InventoryMenu" type="Node2D"]
+[node name="InventoryMenu" type="Control"]
 process_mode = 2
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_n7uo5")
 
-[node name="Inventory" type="GridContainer" parent="."]
-offset_left = 154.0
-offset_top = 148.0
-offset_right = 966.0
-offset_bottom = 330.0
-columns = 12
+[node name="Inventory" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -338.0
+offset_top = 62.0
+offset_right = 338.0
+offset_bottom = 194.0
+grow_horizontal = 2
+grow_vertical = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Inventory"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Inventory"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Inventory/VBoxContainer"]
-layout_mode = 2
-
-[node name="PanelContainer" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer2" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer3" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer4" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer5" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer6" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer7" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer8" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer9" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer10" type="PanelContainer" parent="Inventory/HBoxContainer"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Inventory"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer2" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer3" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer4" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer5" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer6" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer7" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer8" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer9" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="PanelContainer10" type="PanelContainer" parent="Inventory/HBoxContainer2"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 7
+
+[node name="Equipment" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -180.0
+offset_right = 50.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Head" type="HBoxContainer" parent="Equipment"]
+layout_mode = 2
+
+[node name="HeadSlot" type="PanelContainer" parent="Equipment/Head"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+
+[node name="NeckSlot" type="PanelContainer" parent="Equipment/Head"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 6
 
-[node name="PanelContainer2" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer3" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer4" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer5" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer6" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer7" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer8" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer9" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer10" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer11" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer12" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="HBoxContainer2" type="HBoxContainer" parent="Inventory/VBoxContainer"]
+[node name="Torso" type="HBoxContainer" parent="Equipment"]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
+[node name="ChestSlot" type="PanelContainer" parent="Equipment/Torso"]
+custom_minimum_size = Vector2(48, 48)
 layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer2" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer3" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer4" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer5" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer6" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer7" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer8" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer9" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer10" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer11" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="PanelContainer12" type="PanelContainer" parent="Inventory/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(64, 64)
-layout_mode = 2
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 6
-
-[node name="Equipment" type="Panel" parent="."]
-offset_left = 130.0
-offset_top = 368.0
-offset_right = 416.0
-offset_bottom = 564.0
-
-[node name="HeadSlot" type="PanelContainer" parent="Equipment"]
-layout_mode = 0
-offset_left = 67.0
-offset_top = 27.0
-offset_right = 107.0
-offset_bottom = 67.0
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-
-[node name="WeaponSlot" type="PanelContainer" parent="Equipment"]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 27.0
-offset_right = 217.0
-offset_bottom = 67.0
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 4
-
-[node name="ChestSlot" type="PanelContainer" parent="Equipment"]
-layout_mode = 0
-offset_left = 67.0
-offset_top = 69.0
-offset_right = 107.0
-offset_bottom = 109.0
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 1
 
-[node name="AccessorySlot" type="PanelContainer" parent="Equipment"]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 69.0
-offset_right = 217.0
-offset_bottom = 109.0
-theme_override_styles/panel = ExtResource("2_q6u6v")
-script = ExtResource("3_edo73")
-type = 5
-
-[node name="LegsSlot" type="PanelContainer" parent="Equipment"]
-layout_mode = 0
-offset_left = 67.0
-offset_top = 111.0
-offset_right = 107.0
-offset_bottom = 151.0
+[node name="WaistSlot" type="PanelContainer" parent="Equipment/Torso"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 2
 
-[node name="FeetSlot" type="PanelContainer" parent="Equipment"]
-layout_mode = 0
-offset_left = 177.0
-offset_top = 111.0
-offset_right = 217.0
-offset_bottom = 151.0
+[node name="Weapons" type="HBoxContainer" parent="Equipment"]
+layout_mode = 2
+
+[node name="PrimaryWeaponSlot" type="PanelContainer" parent="Equipment/Weapons"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 5
+
+[node name="SecondaryWeaponSlot" type="PanelContainer" parent="Equipment/Weapons"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 5
+
+[node name="Legs" type="HBoxContainer" parent="Equipment"]
+layout_mode = 2
+
+[node name="LegsSlot" type="PanelContainer" parent="Equipment/Legs"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 3
 
+[node name="FeetSlot" type="PanelContainer" parent="Equipment/Legs"]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+theme_override_styles/panel = ExtResource("2_q6u6v")
+script = ExtResource("3_edo73")
+type = 4
+
 [node name="PurseLabel" type="Label" parent="."]
-offset_left = 723.0
-offset_top = 427.0
-offset_right = 776.0
-offset_bottom = 450.0
+offset_left = -515.0
+offset_top = -188.0
+offset_right = -462.0
+offset_bottom = -165.0
 text = "Purse: "

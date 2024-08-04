@@ -1,5 +1,8 @@
 extends Node2D
 
+const ROW = 0
+const COLUMN = 1
+
 @onready var button_container = get_node('PanelContainer/HBoxContainer')
 #@onready var buttons = get_node('PanelContainer/HBoxContainer').get_children()
 @onready var selected_button: int = 0: set = _set_selected_button
@@ -51,11 +54,11 @@ func selection_menu_button_pressed(button):
 		"Drop":
 			print_debug(button, " matched but not implemented")
 		"Move":
-			inventory_menu.item_to_be_moved = inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].get_children()[0]
+			inventory_menu.item_to_be_moved = inventory_menu.slots[inventory_menu.selected_slot[ROW]][inventory_menu.selected_slot[COLUMN]].get_children()[0]
 			inventory_menu.close_selection_menu()
 			inventory_menu.initial_moved_from_slot = inventory_menu.selected_slot
 			inventory_menu.moving_item = true
-			inventory_menu.selected_move_slot = inventory_menu.selected_slot
+			#inventory_menu.selected_move_slot = inventory_menu.selected_slot
 			#inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].remove_child(inventory_menu.item_to_be_moved)
 		_:
 			print_debug(button.text, " not implemented")

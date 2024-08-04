@@ -1,7 +1,7 @@
 extends Node2D
 class_name ItemData
 
-enum Type {HEAD, CHEST, LEGS, FEET, WEAPON, ACCESSORY, MAIN}
+enum Type {HEAD, CHEST, WAIST, LEGS, FEET, WEAPON, NECK, MAIN}
 enum attackType {NULL, SWORD, BOW}
 
 @export var type: Type

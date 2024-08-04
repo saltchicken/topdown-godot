@@ -5,9 +5,8 @@
 
 [node name="Bow" type="Node2D"]
 script = ExtResource("1_78wy5")
-type = 4
+type = 5
 description = "A trusty bow"
 texture = ExtResource("2_uoj5y")
-menu_actions = PackedInt32Array(0, 2, 4)
 attack_type = 2
 attack_damage = 15

@@ -57,58 +57,58 @@ script = ExtResource("3_3cvv3")
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer2" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer3" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer4" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer5" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer6" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer7" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer8" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer9" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7
 
 [node name="PanelContainer10" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 script = ExtResource("3_abdmg")
-type = 6
+type = 7

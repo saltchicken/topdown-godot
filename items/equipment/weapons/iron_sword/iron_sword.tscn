@@ -5,7 +5,7 @@
 
 [node name="IronSword" type="Node2D"]
 script = ExtResource("1_fv8gl")
-type = 4
+type = 5
 item_name = "Iron Sword"
 description = "An iron sword"
 texture = ExtResource("2_dqnjn")

@@ -47,14 +47,25 @@ func option_panel(parent_node, option_array: Array):
 	option_node.set_options(option_array)
 	
 	
+#func save_slots_to_dict(slot_array):
+	#var dict = {}
+	#for i in range(slot_array.size()):
+		#var slot = slot_array[i]
+		#if slot.get_child_count() > 0:
+			#var entity = slot.get_child(0)
+			#if entity:
+				#dict[entity.data.scene_file_path] = i
+	#return dict
+	
 func save_slots_to_dict(slot_array):
 	var dict = {}
-	for i in range(slot_array.size()):
-		var slot = slot_array[i]
-		if slot.get_child_count() > 0:
-			var entity = slot.get_child(0)
-			if entity:
-				dict[entity.data.scene_file_path] = i
+	for row in range(slot_array.size()):
+		for column in range(slot_array[row].size()):
+			var slot = slot_array[row][column]
+			if slot.get_child_count() > 0:
+				var entity = slot.get_child(0)
+				if entity:
+					dict[entity.data.scene_file_path] = [row,column]
 	return dict
 
 
@@ -215,9 +226,9 @@ func load_player_profile():
 				var player_profile = get_node(node_path)
 				player_profile.coins = node_data["coins"]
 				player_profile.experience = node_data["experience"]
-				player_profile.load_inventory(node_data) # NOTE: Also handles equipment load
-				player_profile.load_toolbelt(node_data)
-				player_profile.load_spells(node_data)
+				player_profile.load_items(node_data) # NOTE: Also handles equipment load
+				#player_profile.load_toolbelt(node_data)
+				#player_profile.load_spells(node_data)
 			"Gametime":
 				var gametime = get_node('/root/Gameplay/Gametime')
 				gametime.time_elapsed = node_data["time_elapsed"]
