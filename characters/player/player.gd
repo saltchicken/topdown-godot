@@ -89,11 +89,15 @@ func on_interact():
 		interact_component.interact()
 		
 func on_use():
-	if toolbelt.current_item != null:
-		print(toolbelt.current_item)
-		#profile.current_item.use()
+	var current_item = toolbelt.current_item
+	if current_item != null:
+		var use_component = current_item.get_node_or_null("Use")
+		if use_component != null:
+			use_component.use(self)
+		else:
+			print_debug("Current item does not have a use component")
 	else:
-		print("Current item is null")
+		print_debug("Current item is null")
 		
 func on_cast():
 	var current_spell = profile.spell_menu.current_spell
