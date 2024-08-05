@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://v6stwwbnygen"]
+
+[ext_resource type="Script" path="res://items/consumables/potions/health_potion/health_potion.gd" id="1_bw2ga"]
+[ext_resource type="Texture2D" uid="uid://brwx53noqrhao" path="res://items/consumables/potions/health_potion/health_potion.png" id="2_5sjpg"]
+[ext_resource type="PackedScene" uid="uid://cr0bppx0jviy8" path="res://items/components/use/use.tscn" id="3_lyib0"]
+
+[node name="Potion" type="Node2D"]
+script = ExtResource("1_bw2ga")
+type = 7
+item_name = "Health Potion"
+description = "A potion of health"
+texture = ExtResource("2_5sjpg")
+attack_damage = 40
+
+[node name="Use" parent="." instance=ExtResource("3_lyib0")]

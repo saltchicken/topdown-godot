@@ -82,7 +82,7 @@ func _ready() -> void:
 	#load_item_into_slot("res://items/equipment/weapons/iron_sword/iron_sword.tscn", [4, 1])
 	#load_item_into_slot("res://items/equipment/weapons/bow/bow.tscn", [4, 2])
 	#load_item_into_slot("res://items/tools/torch/torch.tscn", [4,3])
-	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
+	#load_item_into_slot("res://items/consumables/potions/health_potion/health_potion.tscn", [4, 5])
 	
 func _process(_delta):
 	if pause_menu.visible and inventory_tab.visible:

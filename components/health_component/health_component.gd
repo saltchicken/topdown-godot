@@ -7,6 +7,8 @@ var health : float : set = _set_health
 signal health_update
 
 func _set_health(new_value):
+	if new_value > MAX_HEALTH:
+		new_value = MAX_HEALTH
 	health = new_value
 	health_update.emit()
 	
@@ -23,6 +25,9 @@ func i_frame_handler(delta):
 	i_frames -= delta
 	if i_frames < 0.0:
 		i_frames = 0.0
+		
+func add_health(health_to_add):
+	health += health_to_add
 
 func damage(attack: Attack):
 	if health <= 0:
