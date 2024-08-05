@@ -49,10 +49,6 @@ func _get_current_weapon():
 @onready var initial_moved_from_slot = null
 @onready var moving_item = false
 @onready var item_to_be_moved = null
-#@onready var selected_move_slot: Vector2i: set = _set_selected_move_slot
-#@onready var selected_move_slot: Vector2i
-
-#signal update_stats
 
 func _ready() -> void:
 	add_to_group('Persist')
@@ -64,7 +60,6 @@ func _ready() -> void:
 			slot.change_inventory.connect(inventory_changed.bind(slot))
 		
 	select_new_slot(selected_slot, selected_slot)
-	#item_and_equipment_slots[selected_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 	selection_menu.visible = false
 	add_child(selection_menu)
@@ -81,56 +76,17 @@ func _set_selected_slot(vector):
 	if vector[ROW] >= slots.size(): vector[ROW] = slots.size() - 1
 	if vector[COLUMN] >= slots[vector[ROW]].size(): vector[COLUMN] = slots[vector[ROW]].size() - 1
 	
-	
 	# TODO When slot selection is on the right hand side then even the selection out
 	
-	#if vector[ROW] != selected_slot[ROW]:
-		#if selected_slot[COLUMN] > slots[selected_slot[ROW]].size() / 2:
-			#vector[COLUMN] = round(slots[vector[ROW]].size() / 2)
-			
-	
-	#if vector[COLUMN] >= slots[vector[ROW]].size():
-		#vector[COLUMN] = slots[vector[ROW]].size()
 	if moving_item == false:	
 		select_new_slot(selected_slot, vector) # selected_slot is the previous slot
 	else:
 		select_new_move_slot(selected_slot, vector)
 	selected_slot = vector
-	#selected_move_slot = vector # TODO: Can probably delete this and selected_move_slot
 	
-
 func select_new_slot(previous_vector, vector):
 	slots[previous_vector[ROW]][previous_vector[COLUMN]].add_theme_stylebox_override('panel', style_box)
 	slots[vector[ROW]][vector[COLUMN]].add_theme_stylebox_override('panel', selected_style_box)
-		
-	
-	#if moving_item == true: # TODO: Needed because setting the selected slot to where it was before moving was bugged.
-		#selected_slot = new_value
-		#return
-
-	
-#func _set_selected_move_slot(new_value):
-	#if new_value == -1: # TODO: Needed from set selected_move_slot to -1 to reinitialize. Should be a better way. Only a problem in equipment slots
-		#return 
-	#var previous_move_slot
-	#if selected_move_slot != -1:
-		#previous_move_slot = selected_move_slot
-		#if new_value < 0:
-			#selected_move_slot = 0
-		#elif new_value >= inventory_size and previous_move_slot < inventory_size:
-			#selected_move_slot = 24
-		#elif new_value >= inventory_and_equipment_size:
-			#selected_move_slot = inventory_and_equipment_size - 1
-		#else:
-			#selected_move_slot = new_value
-	#else:
-		#selected_move_slot = new_value
-		#previous_move_slot = new_value
-	#select_new_move_slot(previous_move_slot, selected_move_slot)
-	##print(selected_move_slot)
-	##print(previous_move_slot)
-	
-
 	
 func select_new_move_slot(previous_move_slot, new_slot):
 	# TODO: Add some additional display to show that move selection is on
@@ -139,23 +95,6 @@ func select_new_move_slot(previous_move_slot, new_slot):
 		slots[new_slot[ROW]][new_slot[COLUMN]].add_theme_stylebox_override('panel', selected_style_box)
 		slots[previous_move_slot[ROW]][previous_move_slot[COLUMN]].remove_child(item_to_be_moved)
 		slots[new_slot[ROW]][new_slot[COLUMN]].add_child(item_to_be_moved)
-		
-
-
-		
-#func _get_current_item():
-	#if selected_slot >= item_slots.size():
-		#return null
-	#var child_count = item_slots[selected_slot].get_child_count()
-	#if child_count == 0:
-		#return null
-	#elif child_count == 1:
-		#return item_slots[selected_slot].get_children()[0].data
-	#else:
-		#print('Issue with get_current_weapon. Return null for safety')
-		#return null
-
-
 	
 func _process(_delta):
 	if pause_menu.visible and inventory_tab.visible:
@@ -210,23 +149,27 @@ func input_move_item():
 		cancel_item_move()
 		exit_move_mode()
 		
-			
 	# TODO: Remember to return to the previous selected_slot
+	
+func input_selection_menu():
+	if Input.is_action_just_pressed("slot_select_confirm"):
+		selection_menu.button_container.get_children()[selection_menu.selected_button].pressed.emit()
+	if Input.is_action_just_pressed("slot_select_back"):
+		close_selection_menu()
+	if Input.is_action_just_pressed("up"):
+		selection_menu.selected_button -= 1
+	if Input.is_action_just_pressed("down"):
+		selection_menu.selected_button += 1
 	
 func cancel_item_move():
 	slots[selected_slot[ROW]][selected_slot[COLUMN]].remove_child(item_to_be_moved)
 	slots[initial_moved_from_slot[ROW]][initial_moved_from_slot[COLUMN]].add_child(item_to_be_moved)
 	
-	
-
 func exit_move_mode():
-	#selected_slot = selected_move_slot
-	#selected_move_slot = -1 # TODO: Probably set selected_move_slot to -1 to reinitialize. Should be a better way. Only a problem in equipment slots
 	initial_moved_from_slot = null
 	moving_item = false
 	item_to_be_moved = null
 	
-
 func check_if_item_in_slot(slot_index):
 	if slots[slot_index[ROW]][slot_index[COLUMN]].get_children().size() > 1:
 		return true
@@ -241,21 +184,6 @@ func check_if_valid_move_slot(slot_vector, item):
 	else:
 		return false
 	
-	
-	
-func input_selection_menu():
-	if Input.is_action_just_pressed("slot_select_confirm"):
-		selection_menu.button_container.get_children()[selection_menu.selected_button].pressed.emit()
-	if Input.is_action_just_pressed("slot_select_back"):
-		close_selection_menu()
-	if Input.is_action_just_pressed("up"):
-		selection_menu.selected_button -= 1
-	if Input.is_action_just_pressed("down"):
-		selection_menu.selected_button += 1
-	
-	
-			
-				
 func open_selection_menu(item):
 	selection_menu.set_buttons(item)
 	selection_menu.global_position = slots[selected_slot[ROW]][selected_slot[COLUMN]].global_position + Vector2(slots[selected_slot[ROW]][selected_slot[COLUMN]].size.x, 0.0)
@@ -267,8 +195,6 @@ func close_selection_menu():
 	for button in selection_menu.button_container.get_children():
 		selection_menu.button_container.remove_child(button)
 		button.queue_free()
-#func save_purse():
-	#return player.purse
 	
 func inventory_changed(item, slot):
 	print_debug('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
