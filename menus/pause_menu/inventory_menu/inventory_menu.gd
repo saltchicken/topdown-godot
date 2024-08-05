@@ -46,6 +46,20 @@ func _get_current_weapon():
 #@onready var purse_label = get_node('PurseLabel')
 #
 @onready var selected_slot: Vector2i = Vector2i(4,0): set = _set_selected_slot
+func _set_selected_slot(vector):
+	if vector[ROW] < 0: vector[ROW] = 0
+	if vector[COLUMN] < 0: vector[COLUMN] = 0
+	if vector[ROW] >= slots.size(): vector[ROW] = slots.size() - 1
+	if vector[COLUMN] >= slots[vector[ROW]].size(): vector[COLUMN] = slots[vector[ROW]].size() - 1
+	
+	# TODO When slot selection is on the right hand side then even the selection out
+	
+	if moving_item == false:	
+		select_new_slot(selected_slot, vector) # selected_slot is the previous slot
+	else:
+		select_new_move_slot(selected_slot, vector)
+	selected_slot = vector
+	
 @onready var initial_moved_from_slot = null
 @onready var moving_item = false
 @onready var item_to_be_moved = null
@@ -69,20 +83,15 @@ func _ready() -> void:
 	#load_item_into_slot("res://items/equipment/weapons/bow/bow.tscn", [4, 2])
 	#load_item_into_slot("res://items/tools/torch/torch.tscn", [4,3])
 	#load_item_into_inventory("res://resources/items/leather_boots.tres", 5)
-
-func _set_selected_slot(vector):
-	if vector[ROW] < 0: vector[ROW] = 0
-	if vector[COLUMN] < 0: vector[COLUMN] = 0
-	if vector[ROW] >= slots.size(): vector[ROW] = slots.size() - 1
-	if vector[COLUMN] >= slots[vector[ROW]].size(): vector[COLUMN] = slots[vector[ROW]].size() - 1
 	
-	# TODO When slot selection is on the right hand side then even the selection out
-	
-	if moving_item == false:	
-		select_new_slot(selected_slot, vector) # selected_slot is the previous slot
-	else:
-		select_new_move_slot(selected_slot, vector)
-	selected_slot = vector
+func _process(_delta):
+	if pause_menu.visible and inventory_tab.visible:
+		if selection_menu.visible == false and moving_item == false:
+			input_slot_selection()
+		elif selection_menu.visible == false and moving_item == true:
+			input_move_item()
+		else:
+			input_selection_menu()
 	
 func select_new_slot(previous_vector, vector):
 	slots[previous_vector[ROW]][previous_vector[COLUMN]].add_theme_stylebox_override('panel', style_box)
@@ -96,15 +105,6 @@ func select_new_move_slot(previous_move_slot, new_slot):
 		slots[previous_move_slot[ROW]][previous_move_slot[COLUMN]].remove_child(item_to_be_moved)
 		slots[new_slot[ROW]][new_slot[COLUMN]].add_child(item_to_be_moved)
 	
-func _process(_delta):
-	if pause_menu.visible and inventory_tab.visible:
-		if selection_menu.visible == false and moving_item == false:
-			input_slot_selection()
-		elif selection_menu.visible == false and moving_item == true:
-			input_move_item()
-		else:
-			input_selection_menu()
-				
 func input_slot_selection():
 	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
 		selected_slot[COLUMN] -= 1
