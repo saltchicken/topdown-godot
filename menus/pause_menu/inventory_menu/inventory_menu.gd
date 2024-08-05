@@ -276,14 +276,6 @@ func inventory_changed(item, slot):
 	print_debug(item.data.name)
 	#update_stats.emit()
 	
-#func load_item_into_inventory(path_to_item, slot_index):
-	#var item := InventoryItem.new()
-	#item.init(path_to_item)
-	##var item_index = _get_first_open_slot()
-	##%Inventory.get_child(slot_index).add_child(item)
-	##player.profile.inventory[slot_index] = path_to_item
-	#item_slots[slot_index].add_child(item)
-	
 func load_item_into_slot(path_to_item, slot_vector):
 	var item: InventoryItem
 	if path_to_item is String:
@@ -296,13 +288,6 @@ func load_item_into_slot(path_to_item, slot_vector):
 	print("loading into ")
 	print(slot_vector)
 	slots[slot_vector[ROW]][slot_vector[COLUMN]].add_child(item)
-	
-#func load_item_into_equipment(path_to_item, slot_index):
-	#var item := InventoryItem.new()
-	#item.init(path_to_item)
-	##var item_index = _get_first_open_slot()
-	##%Inventory.get_child(slot_index).add_child(item)
-	#equipment_slots[slot_index].add_child(item)
 
 func collect_item(item):
 	var first_open_slot = get_first_open_slot()
@@ -317,9 +302,16 @@ func get_first_open_slot():
 			if slots[row_index][slot_index].get_child_count() == 0:
 				return [row_index, slot_index]
 	return null
-	
-func is_in_inventory(): # TODO: Implement 
-	pass
+
+# NOTE: Has not been tested
+func is_in_inventory(item): # TODO: Implement
+	var existing_slots = []
+	for row_index in inventory_rows:
+		for slot_index in slots[row_index].size():
+			if slots[row_index][slot_index].get_child_count() > 0:
+				if item == slots[row_index][slot_index].data:
+					existing_slots.append([row_index, slot_index])
+	return existing_slots
 	
 func drop_item():
 	var item = slots[selected_slot[ROW]][selected_slot[COLUMN]].get_children()[0]
