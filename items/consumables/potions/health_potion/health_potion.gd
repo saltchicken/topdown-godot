@@ -4,7 +4,6 @@ extends ItemData
 
 
 func use(player, item_slot):
-	print(owner)
 	var health_component = player.get_node_or_null("HealthComponent")
 	if health_component != null:
 		health_component.add_health(attack_damage) # TODO: Do not use attack_damage. ItemData needs to be rewritten with a variable for universal magnituded
