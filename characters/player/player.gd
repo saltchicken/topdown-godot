@@ -19,6 +19,10 @@ func _get_direction():
 
 @onready var mana_component = get_node("ManaComponent")
 
+@onready var current_weapon: get = _get_current_weapon
+func _get_current_weapon():
+	return profile.inventory_menu.current_weapon
+
 signal idle
 signal moving
 signal dash
@@ -77,11 +81,18 @@ func on_death():
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 	
 func on_action():
-	print(profile.inventory_menu.current_weapon)
-	if state_machine.current_state.name != 'sword_attack_1':
-		state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_1')
-	elif state_machine.current_state.name == 'sword_attack_1':
-		state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_2')
+	if current_weapon == null:
+		print("No weapon selected")
+		return
+	print(Weapon.attackType.keys()[current_weapon.attack_type])
+	match Weapon.attackType.keys()[current_weapon.attack_type]:
+		"SWORD":
+			if state_machine.current_state.name != 'sword_attack_1':
+				state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_1')
+			elif state_machine.current_state.name == 'sword_attack_1':
+				state_machine.current_state.state_transition.emit(state_machine.current_state, 'sword_attack_2')
+		_:
+			print("That weapon type has not been implemented")
 	
 func on_interact():
 	var interact_component = get_node_or_null("InteractComponent")
