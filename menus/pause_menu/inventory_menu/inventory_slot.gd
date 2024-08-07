@@ -19,6 +19,20 @@ func add_item(path_to_item):
 		push_error("Error with load_item_into_slot")
 		return
 	add_child(item)
+	
+func is_valid_move_slot(item):
+	if type == ItemData.Type.MAIN:
+		return true
+	if type == item.data.type:
+		return true
+	else:
+		return false
+		
+func is_item_in_slot():
+	if get_children().size() > 1:
+		return true
+	else:
+		return false
 
 func _can_drop_data(_at_position, data):
 	if data is InventoryItem:

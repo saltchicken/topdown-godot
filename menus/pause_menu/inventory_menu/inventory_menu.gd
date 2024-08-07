@@ -134,10 +134,11 @@ func input_move_item():
 			
 	if Input.is_action_just_pressed('slot_select_confirm'):
 		# TODO: This needs to also implement stacking
-		if !check_if_valid_move_slot(selected_slot, item_to_be_moved):
+		var selected_slot = get_slot(selected_slot)
+		if !selected_slot.is_valid_move_slot(item_to_be_moved):
 			cancel_item_move()
-		elif check_if_item_in_slot(selected_slot):
-			var selected_slot = get_slot(selected_slot)
+		elif selected_slot.is_item_in_slot():
+			
 			var initial_moved_from_slot = get_slot(initial_moved_from_slot)
 			if selected_slot.get_children()[0].data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
 				var item_to_exchange = selected_slot.get_children()[0]
@@ -172,21 +173,6 @@ func exit_move_mode():
 	initial_moved_from_slot = null
 	moving_item = false
 	item_to_be_moved = null
-	
-func check_if_item_in_slot(slot_vector):
-	if get_slot(slot_vector).get_children().size() > 1:
-		return true
-	else:
-		return false
-		
-func check_if_valid_move_slot(slot_vector, item):
-	var slot = get_slot(slot_vector)
-	if slot.type == ItemData.Type.MAIN:
-		return true
-	if slot.type == item.data.type:
-		return true
-	else:
-		return false
 	
 func open_selection_menu(item):
 	selection_menu.set_buttons(item)
