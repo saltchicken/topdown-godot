@@ -58,7 +58,8 @@ func save():
 		
 func load_items(node_data):
 	for item in node_data["items"]:
-		inventory_menu.load_item_into_slot(item, node_data["items"][item])
+		var slot = node_data["items"][item]
+		inventory_menu.get_slot(slot).add_item(item)
 	inventory_menu.selected_slot = Vector2i(node_data["items_selected_slot"][0], node_data["items_selected_slot"][1])
 	
 func load_spells(node_data):

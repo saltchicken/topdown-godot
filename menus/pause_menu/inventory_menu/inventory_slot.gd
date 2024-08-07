@@ -7,6 +7,18 @@ signal change_inventory
 #func init(t: ItemData.Type, cms: Vector2) -> void:
 	#type = t
 	#custom_minimum_size = cms
+	
+func add_item(path_to_item):
+	var item: InventoryItem
+	if path_to_item is String:
+		item = InventoryItem.new()
+		item.init(path_to_item)
+	elif path_to_item is InventoryItem:
+		item = path_to_item
+	else:
+		push_error("Error with load_item_into_slot")
+		return
+	add_child(item)
 
 func _can_drop_data(_at_position, data):
 	if data is InventoryItem:

@@ -202,25 +202,15 @@ func inventory_changed(item, slot):
 	print_debug(item.data.name)
 	#update_stats.emit()
 	
-func load_item_into_slot(path_to_item, slot_vector):
-	var item: InventoryItem
-	if path_to_item is String:
-		item = InventoryItem.new()
-		item.init(path_to_item)
-	elif path_to_item is InventoryItem:
-		item = path_to_item
-	else:
-		push_error("Error with load_item_into_slot")
-	print("loading into ")
-	print(slot_vector)
-	slots[slot_vector[ROW]][slot_vector[COLUMN]].add_child(item)
-
 func collect_item(item):
 	var first_open_slot = get_first_open_slot()
 	if first_open_slot != null:
-		load_item_into_slot(item, first_open_slot)
+		get_slot(first_open_slot).add_item(item)
 	else:
 		print_debug("There is no available slot. Implement logic here")
+		
+func get_slot(slot_vector):
+	return slots[slot_vector[ROW]][slot_vector[COLUMN]]
 	
 func get_first_open_slot():
 	for row_index in inventory_rows:
