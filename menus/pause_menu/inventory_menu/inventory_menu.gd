@@ -94,16 +94,16 @@ func _process(_delta):
 			input_selection_menu()
 	
 func select_new_slot(previous_vector, vector):
-	slots[previous_vector[ROW]][previous_vector[COLUMN]].add_theme_stylebox_override('panel', style_box)
-	slots[vector[ROW]][vector[COLUMN]].add_theme_stylebox_override('panel', selected_style_box)
+	get_slot(previous_vector).add_theme_stylebox_override('panel', style_box)
+	get_slot(vector).add_theme_stylebox_override('panel', selected_style_box)
 	
 func select_new_move_slot(previous_move_slot, new_slot):
 	# TODO: Add some additional display to show that move selection is on
 	if previous_move_slot != new_slot:
-		slots[previous_move_slot[ROW]][previous_move_slot[COLUMN]].add_theme_stylebox_override('panel', style_box)
-		slots[new_slot[ROW]][new_slot[COLUMN]].add_theme_stylebox_override('panel', selected_style_box)
-		slots[previous_move_slot[ROW]][previous_move_slot[COLUMN]].remove_child(item_to_be_moved)
-		slots[new_slot[ROW]][new_slot[COLUMN]].add_child(item_to_be_moved)
+		get_slot(previous_move_slot).add_theme_stylebox_override('panel', style_box)
+		get_slot(new_slot).add_theme_stylebox_override('panel', selected_style_box)
+		get_slot(previous_move_slot).remove_child(item_to_be_moved)
+		get_slot(new_slot).add_child(item_to_be_moved)
 	
 func input_slot_selection():
 	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
@@ -116,8 +116,9 @@ func input_slot_selection():
 		selected_slot[ROW] += 1
 			
 	if Input.is_action_just_pressed('slot_select_confirm'):
-		if slots[selected_slot[ROW]][selected_slot[COLUMN]].get_children().size() > 0:
-			open_selection_menu(slots[selected_slot[ROW]][selected_slot[COLUMN]].get_children()[0].data)
+		var selected_slot = get_slot(selected_slot)
+		if selected_slot.get_children().size() > 0:
+			open_selection_menu(selected_slot.get_children()[0].data)
 		else:
 			print_debug("This slot is empty")
 			
@@ -136,10 +137,12 @@ func input_move_item():
 		if !check_if_valid_move_slot(selected_slot, item_to_be_moved):
 			cancel_item_move()
 		elif check_if_item_in_slot(selected_slot):
-			if slots[selected_slot[ROW]][selected_slot[COLUMN]].get_children()[0].data.type == slots[initial_moved_from_slot[ROW]][initial_moved_from_slot[COLUMN]].type or slots[initial_moved_from_slot[ROW]][initial_moved_from_slot[COLUMN]].type == ItemData.Type.MAIN:
-				var item_to_exchange = slots[selected_slot[ROW]][selected_slot[COLUMN]].get_children()[0]
-				slots[selected_slot[ROW]][selected_slot[COLUMN]].remove_child(item_to_exchange)
-				slots[initial_moved_from_slot[ROW]][initial_moved_from_slot[COLUMN]].add_child(item_to_exchange)
+			var selected_slot = get_slot(selected_slot)
+			var initial_moved_from_slot = get_slot(initial_moved_from_slot)
+			if selected_slot.get_children()[0].data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
+				var item_to_exchange = selected_slot.get_children()[0]
+				selected_slot.remove_child(item_to_exchange)
+				initial_moved_from_slot.add_child(item_to_exchange)
 			else:
 				cancel_item_move()
 		exit_move_mode()
@@ -230,8 +233,9 @@ func is_in_inventory(item): # TODO: Implement
 	return existing_slots
 	
 func drop_item():
-	var item = slots[selected_slot[ROW]][selected_slot[COLUMN]].get_children()[0]
-	slots[selected_slot[ROW]][selected_slot[COLUMN]].remove_child(item)
+	var selected_slot = get_slot(selected_slot)
+	var item = selected_slot.get_children()[0]
+	selected_slot.remove_child(item)
 	#var item = item_to_drop.data
 	#item_to_drop.queue_free()
 	item.global_position = player.global_position - Vector2(0.0, -100.0)
