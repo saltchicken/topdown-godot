@@ -165,31 +165,33 @@ func input_selection_menu():
 		selection_menu.selected_button += 1
 	
 func cancel_item_move():
-	slots[selected_slot[ROW]][selected_slot[COLUMN]].remove_child(item_to_be_moved)
-	slots[initial_moved_from_slot[ROW]][initial_moved_from_slot[COLUMN]].add_child(item_to_be_moved)
+	get_slot(selected_slot).remove_child(item_to_be_moved)
+	get_slot(initial_moved_from_slot).add_child(item_to_be_moved)
 	
 func exit_move_mode():
 	initial_moved_from_slot = null
 	moving_item = false
 	item_to_be_moved = null
 	
-func check_if_item_in_slot(slot_index):
-	if slots[slot_index[ROW]][slot_index[COLUMN]].get_children().size() > 1:
+func check_if_item_in_slot(slot_vector):
+	if get_slot(slot_vector).get_children().size() > 1:
 		return true
 	else:
 		return false
 		
 func check_if_valid_move_slot(slot_vector, item):
-	if slots[slot_vector[ROW]][slot_vector[COLUMN]].type == ItemData.Type.MAIN:
+	var slot = get_slot(slot_vector)
+	if slot.type == ItemData.Type.MAIN:
 		return true
-	if slots[slot_vector[ROW]][slot_vector[COLUMN]].type == item.data.type:
+	if slot.type == item.data.type:
 		return true
 	else:
 		return false
 	
 func open_selection_menu(item):
 	selection_menu.set_buttons(item)
-	selection_menu.global_position = slots[selected_slot[ROW]][selected_slot[COLUMN]].global_position + Vector2(slots[selected_slot[ROW]][selected_slot[COLUMN]].size.x, 0.0)
+	var selected_slot = get_slot(selected_slot)
+	selection_menu.global_position = selected_slot.global_position + Vector2(selected_slot.size.x, 0.0)
 	selection_menu.selected_button = 0
 	selection_menu.visible = true
 	
