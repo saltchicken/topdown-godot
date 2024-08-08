@@ -78,6 +78,9 @@ func _ready() -> void:
 	selection_menu.visible = false
 	add_child(selection_menu)
 	
+	selection_menu.move.connect(_on_move)
+	selection_menu.use.connect(_on_use)
+	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_slot("res://items/equipment/weapons/iron_sword/iron_sword.tscn", [4, 1])
 	#load_item_into_slot("res://items/equipment/weapons/bow/bow.tscn", [4, 2])
@@ -92,6 +95,17 @@ func _process(_delta):
 			input_move_item()
 		else:
 			input_selection_menu()
+
+func _on_use():
+	close_selection_menu()
+	var item_slot = get_slot(selected_slot)
+	item_slot.get_children()[0].data.get_node("Use").use(self, item_slot)
+	
+func _on_move():
+	close_selection_menu()
+	item_to_be_moved = get_slot(selected_slot).get_children()[0]
+	initial_moved_from_slot = selected_slot
+	moving_item = true
 	
 func select_new_slot(previous_vector, vector):
 	get_slot(previous_vector).add_theme_stylebox_override('panel', style_box)

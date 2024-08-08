@@ -9,6 +9,9 @@ const COLUMN = 1
 
 @onready var inventory_menu = get_parent()
 
+signal use
+signal move
+
 func _set_selected_button(new_value):
 	var button_container_children = button_container.get_children()
 	if new_value < 0:
@@ -41,19 +44,12 @@ func selection_menu_button_pressed(button):
 		"Examine":
 			print_debug(button, " matched but not implemented")
 		"Use":
-			var item_slot = inventory_menu.slots[inventory_menu.selected_slot[ROW]][inventory_menu.selected_slot[COLUMN]]
-			item_slot.get_children()[0].data.get_node("Use").use(self, item_slot)
-			inventory_menu.close_selection_menu()
+			use.emit()
 		"Equip":
 			print_debug(button, " matched but not implemented")
 		"Drop":
 			inventory_menu.drop_item()
 		"Move":
-			inventory_menu.item_to_be_moved = inventory_menu.slots[inventory_menu.selected_slot[ROW]][inventory_menu.selected_slot[COLUMN]].get_children()[0]
-			inventory_menu.close_selection_menu()
-			inventory_menu.initial_moved_from_slot = inventory_menu.selected_slot
-			inventory_menu.moving_item = true
-			#inventory_menu.selected_move_slot = inventory_menu.selected_slot
-			#inventory_menu.item_and_equipment_slots[inventory_menu.selected_slot].remove_child(inventory_menu.item_to_be_moved)
+			move.emit()
 		_:
 			print_debug(button.text, " not implemented")

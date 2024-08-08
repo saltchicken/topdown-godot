@@ -5,8 +5,8 @@ func use(parent, item_slot):
 	match parent.name:
 		"Player":
 			player = parent
-		"SelectionMenu":
-			player = parent.get_parent().get_owner().get_owner()
+		"InventoryMenu":
+			player = parent.get_owner().get_owner()
 		_:
 			push_error("Use component not implemented for this parent")
 			return
