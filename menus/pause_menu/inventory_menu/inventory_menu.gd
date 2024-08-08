@@ -80,6 +80,7 @@ func _ready() -> void:
 	
 	selection_menu.move.connect(_on_move)
 	selection_menu.use.connect(_on_use)
+	selection_menu.close.connect(_on_close)
 	
 	# THIS IS FOR TESTING A DEFAULT ITEM
 	#load_item_into_slot("res://items/equipment/weapons/iron_sword/iron_sword.tscn", [4, 1])
@@ -94,7 +95,7 @@ func _process(_delta):
 		elif selection_menu.visible == false and moving_item == true:
 			input_move_item()
 		else:
-			input_selection_menu()
+			pass
 
 func _on_use():
 	close_selection_menu()
@@ -106,6 +107,9 @@ func _on_move():
 	item_to_be_moved = get_slot(selected_slot).get_children()[0]
 	initial_moved_from_slot = selected_slot
 	moving_item = true
+	
+func _on_close():
+	close_selection_menu()
 	
 func select_new_slot(previous_vector, vector):
 	get_slot(previous_vector).add_theme_stylebox_override('panel', style_box)
@@ -167,17 +171,7 @@ func input_move_item():
 		cancel_item_move()
 		exit_move_mode()
 		
-	# TODO: Remember to return to the previous selected_slot
-	
-func input_selection_menu():
-	if Input.is_action_just_pressed("slot_select_confirm"):
-		selection_menu.button_container.get_children()[selection_menu.selected_button].pressed.emit()
-	if Input.is_action_just_pressed("slot_select_back"):
-		close_selection_menu()
-	if Input.is_action_just_pressed("up"):
-		selection_menu.selected_button -= 1
-	if Input.is_action_just_pressed("down"):
-		selection_menu.selected_button += 1
+	# TODO: Remember to return to the previous selected_slot	
 	
 func cancel_item_move():
 	get_slot(selected_slot).remove_child(item_to_be_moved)
