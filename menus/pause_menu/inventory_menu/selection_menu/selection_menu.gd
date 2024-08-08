@@ -35,12 +35,6 @@ func set_buttons(item):
 		_create_button("Use")
 	_create_button("Move")
 	_create_button("Drop")
-		
-	#for action in item.menu_actions:
-		#var button = Button.new()
-		#button.text = ItemData.MenuActions.keys()[action]
-		#button_container.add_child(button)
-		#button.pressed.connect(selection_menu_button_pressed.bind(button))
 
 func selection_menu_button_pressed(button):
 	match button.text:

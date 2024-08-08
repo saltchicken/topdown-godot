@@ -1,4 +1,4 @@
-extends ItemData
+extends Tool
 
 @onready var on = false
 

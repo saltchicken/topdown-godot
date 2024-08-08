@@ -84,7 +84,7 @@ func on_action():
 	if current_weapon == null:
 		print("No weapon selected")
 		return
-	print(Weapon.attackType.keys()[current_weapon.attack_type])
+	#print(Weapon.attackType.keys()[current_weapon.attack_type])
 	match Weapon.attackType.keys()[current_weapon.attack_type]:
 		"SWORD":
 			if state_machine.current_state.name != 'sword_attack_1':
