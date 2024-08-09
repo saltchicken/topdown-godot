@@ -110,6 +110,8 @@ func on_selection_menu_action(action):
 			close_selection_menu()
 		"Drop":
 			drop_item()
+		_:
+			push_error(action, " not implemented yet")
 	
 	
 func select_new_slot(previous_vector, vector):

@@ -59,16 +59,4 @@ func set_buttons(item):
 	_create_button("Drop")
 
 func selection_menu_button_pressed(button):
-	match button.text:
-		"Examine":
-			print_debug(button, " matched but not implemented")
-		"Use":
-			action.emit(button.text)
-		"Equip":
-			print_debug(button, " matched but not implemented")
-		"Drop":
-			action.emit(button.text)
-		"Move":
-			action.emit(button.text)
-		_:
-			print_debug(button.text, " not implemented")
+	action.emit(button.text)
