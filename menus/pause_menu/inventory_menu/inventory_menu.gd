@@ -14,9 +14,6 @@ const COLUMN = 1
 
 @onready var inventory_rows = [4,5,6] # TODO: More sophisticated way of determining which rows in slots can hold inventory.
 
-var move_input_enabled = false
-var input_enabled = false
-
 @onready var slots = []
 func _create_slot_array():
 	for row in get_node("Equipment").get_children():
@@ -96,48 +93,41 @@ func _process(_delta):
 		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'): selected_slot[ROW] -= 1
 		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'): selected_slot[ROW] += 1
 		if moving_item == false:
-			if Input.is_action_just_released("slot_select_confirm") or Input.is_action_just_released("inventory"): input_enabled = true
-			if input_enabled:
 				if Input.is_action_just_pressed('slot_select_confirm'):
 					var selected_slot = get_slot(selected_slot)
 					if selected_slot.get_children().size() > 0:
+						#await get_tree().process_frame # TODO: Is this one needed for selection menu
 						open_selection_menu(selected_slot.get_children()[0].data)
 					else:
 						print_debug("This slot is empty")
-					input_enabled = false
 		else:
-			if Input.is_action_just_released("slot_select_confirm"): move_input_enabled = true
-			if move_input_enabled:
-				if Input.is_action_just_pressed('slot_select_confirm'):
-					# TODO: This needs to also implement stacking
-					var selected_slot = get_slot(selected_slot)
-					if !selected_slot.is_valid_move_slot(item_to_be_moved):
-						cancel_item_move()
-					elif selected_slot.is_item_in_slot():
-						var initial_moved_from_slot = get_slot(initial_moved_from_slot)
-						if selected_slot.get_children()[0].data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
-							var item_to_exchange = selected_slot.get_children()[0]
-							selected_slot.remove_child(item_to_exchange)
-							initial_moved_from_slot.add_child(item_to_exchange)
-						else:
-							cancel_item_move()
-					exit_move_mode()
-					move_input_enabled = false
-						
-				if Input.is_action_just_pressed('slot_select_back'):
+			if Input.is_action_just_pressed('slot_select_confirm'):
+				# TODO: This needs to also implement stacking
+				var selected_slot = get_slot(selected_slot)
+				if !selected_slot.is_valid_move_slot(item_to_be_moved):
 					cancel_item_move()
-					exit_move_mode()
-					move_input_enabled = false
+				elif selected_slot.is_item_in_slot():
+					var initial_moved_from_slot = get_slot(initial_moved_from_slot)
+					if selected_slot.get_children()[0].data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
+						var item_to_exchange = selected_slot.get_children()[0]
+						selected_slot.remove_child(item_to_exchange)
+						initial_moved_from_slot.add_child(item_to_exchange)
+					else:
+						cancel_item_move()
+				exit_move_mode()
+					
+			if Input.is_action_just_pressed('slot_select_back'):
+				cancel_item_move()
+				exit_move_mode()
 				
 			# TODO: Remember to return to the previous selected_slot	
 
 func on_selection_menu_action(action):
 	match action:
 		"Use":
-			close_selection_menu()
 			var item_slot = get_slot(selected_slot)
 			item_slot.get_children()[0].data.get_node("Use").use(self, item_slot)
-			input_enabled = false
+			close_selection_menu()
 		"Move":
 			close_selection_menu()
 			item_to_be_moved = get_slot(selected_slot).get_children()[0]
@@ -147,6 +137,8 @@ func on_selection_menu_action(action):
 			close_selection_menu()
 		"Drop":
 			drop_item()
+			close_selection_menu()
+			
 		_:
 			push_error(action, " not implemented yet")
 	
@@ -168,6 +160,7 @@ func cancel_item_move():
 	get_slot(initial_moved_from_slot).add_child(item_to_be_moved)
 	
 func exit_move_mode():
+	await get_tree().process_frame
 	initial_moved_from_slot = null
 	moving_item = false
 	item_to_be_moved = null
@@ -180,7 +173,7 @@ func open_selection_menu(item):
 	selection_menu.visible = true
 	
 func close_selection_menu():
-	input_enabled = true
+	await get_tree().process_frame
 	selection_menu.visible = false
 	for button in selection_menu.button_container.get_children():
 		selection_menu.button_container.remove_child(button)
