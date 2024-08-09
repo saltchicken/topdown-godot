@@ -67,7 +67,7 @@ func selection_menu_button_pressed(button):
 		"Equip":
 			print_debug(button, " matched but not implemented")
 		"Drop":
-			inventory_menu.drop_item()
+			action.emit(button.text)
 		"Move":
 			action.emit(button.text)
 		_:

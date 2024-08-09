@@ -108,6 +108,8 @@ func on_selection_menu_action(action):
 			moving_item = true
 		"Close":
 			close_selection_menu()
+		"Drop":
+			drop_item()
 	
 	
 func select_new_slot(previous_vector, vector):
