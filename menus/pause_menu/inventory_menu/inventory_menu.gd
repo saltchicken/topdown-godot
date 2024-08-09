@@ -205,6 +205,7 @@ func open_selection_menu(item):
 	selection_menu.visible = true
 	
 func close_selection_menu():
+	input_enabled = true
 	selection_menu.visible = false
 	for button in selection_menu.button_container.get_children():
 		selection_menu.button_container.remove_child(button)
