@@ -9,8 +9,6 @@ const COLUMN = 1
 
 @onready var inventory_menu = get_parent()
 
-@onready var input_enabled = false
-
 signal action
 
 func _set_selected_button(new_value):
@@ -25,25 +23,14 @@ func _set_selected_button(new_value):
 	
 func _process(_delta):
 	if visible:
-		if Input.is_action_just_released('slot_select_confirm'):
-			input_enabled = true
-		if input_enabled:
-			if Input.is_action_just_pressed("slot_select_confirm"):
-				button_container.get_children()[selected_button].pressed.emit()
-				input_enabled = false
-			if Input.is_action_just_pressed("slot_select_back"):
-				action.emit("Close")
-				input_enabled = false
-			if Input.is_action_just_pressed("up"):
-				selected_button -= 1
-			if Input.is_action_just_pressed("down"):
-				selected_button += 1
-	#else:
-		#input_enabled = false
-
-#func _ready() -> void:
-	#for button in buttons:
-		#button.pressed.connect(selection_menu_button_pressed.bind(button))
+		if Input.is_action_just_pressed("slot_select_confirm"):
+			button_container.get_children()[selected_button].pressed.emit()
+		if Input.is_action_just_pressed("slot_select_back"):
+			action.emit("Close")
+		if Input.is_action_just_pressed("up"):
+			selected_button -= 1
+		if Input.is_action_just_pressed("down"):
+			selected_button += 1
 
 func _create_button(text):
 	var button = Button.new()

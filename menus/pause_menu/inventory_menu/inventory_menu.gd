@@ -138,7 +138,6 @@ func on_selection_menu_action(action):
 		"Drop":
 			drop_item()
 			close_selection_menu()
-			
 		_:
 			push_error(action, " not implemented yet")
 	
