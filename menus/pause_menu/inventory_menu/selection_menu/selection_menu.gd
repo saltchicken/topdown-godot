@@ -11,9 +11,7 @@ const COLUMN = 1
 
 @onready var input_enabled = false
 
-signal use
-signal move
-signal close
+signal action
 
 func _set_selected_button(new_value):
 	var button_container_children = button_container.get_children()
@@ -34,7 +32,7 @@ func _process(_delta):
 				button_container.get_children()[selected_button].pressed.emit()
 				input_enabled = false
 			if Input.is_action_just_pressed("slot_select_back"):
-				close.emit()
+				action.emit("Close")
 				input_enabled = false
 			if Input.is_action_just_pressed("up"):
 				selected_button -= 1
@@ -65,12 +63,12 @@ func selection_menu_button_pressed(button):
 		"Examine":
 			print_debug(button, " matched but not implemented")
 		"Use":
-			use.emit()
+			action.emit(button.text)
 		"Equip":
 			print_debug(button, " matched but not implemented")
 		"Drop":
 			inventory_menu.drop_item()
 		"Move":
-			move.emit()
+			action.emit(button.text)
 		_:
 			print_debug(button.text, " not implemented")
