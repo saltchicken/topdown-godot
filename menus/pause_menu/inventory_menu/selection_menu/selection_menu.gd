@@ -1,4 +1,4 @@
-extends Node2D
+extends CanvasLayer
 
 const ROW = 0
 const COLUMN = 1
@@ -51,7 +51,6 @@ func _create_button(text):
 	button_container.add_child(button)
 	button.pressed.connect(selection_menu_button_pressed.bind(button))
 	
-		
 func set_buttons(item):
 	if item.get_node_or_null("Use"):
 		_create_button("Use")

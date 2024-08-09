@@ -7,12 +7,15 @@ const COLUMN = 1
 @onready var pause_menu = get_owner()
 @onready var inventory_tab = get_parent()
 @onready var toolbelt = get_owner().get_owner().get_node("ProfileComponent/Hud/ToolBelt")
-@onready var selection_menu = preload("selection_menu/selection_menu.tscn").instantiate()
+@onready var selection_menu = Global.get_node("Text/SelectionMenu")
 
 @onready var style_box = preload('res://menus/pause_menu/item_slot.tres')
 @onready var selected_style_box = preload('res://menus/pause_menu/highlighted_item_slot.tres')
 
 @onready var inventory_rows = [4,5,6] # TODO: More sophisticated way of determining which rows in slots can hold inventory.
+
+var move_input_enabled = false
+var input_enabled = false
 
 @onready var slots = []
 func _create_slot_array():
@@ -75,8 +78,8 @@ func _ready() -> void:
 		
 	select_new_slot(selected_slot, selected_slot)
 	
-	selection_menu.visible = false
-	add_child(selection_menu)
+	#selection_menu.visible = false
+	#add_child(selection_menu)
 	
 	selection_menu.action.connect(on_selection_menu_action)
 	
@@ -127,52 +130,61 @@ func select_new_move_slot(previous_move_slot, new_slot):
 		get_slot(new_slot).add_child(item_to_be_moved)
 	
 func input_slot_selection():
-	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
-		selected_slot[COLUMN] -= 1
-	if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
-		selected_slot[COLUMN] += 1
-	if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
-		selected_slot[ROW] -= 1
-	if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
-		selected_slot[ROW] += 1
-			
-	if Input.is_action_just_pressed('slot_select_confirm'):
-		var selected_slot = get_slot(selected_slot)
-		if selected_slot.get_children().size() > 0:
-			open_selection_menu(selected_slot.get_children()[0].data)
-		else:
-			print_debug("This slot is empty")
+	if Input.is_action_just_released("slot_select_confirm") or Input.is_action_just_released("inventory"):
+		input_enabled = true
+	if input_enabled:
+		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
+			selected_slot[COLUMN] -= 1
+		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
+			selected_slot[COLUMN] += 1
+		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
+			selected_slot[ROW] -= 1
+		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
+			selected_slot[ROW] += 1
+				
+		if Input.is_action_just_pressed('slot_select_confirm'):
+			var selected_slot = get_slot(selected_slot)
+			if selected_slot.get_children().size() > 0:
+				open_selection_menu(selected_slot.get_children()[0].data)
+				input_enabled = false
+			else:
+				print_debug("This slot is empty")
 			
 func input_move_item():
-	if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
-		selected_slot[COLUMN] -= 1
-	if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
-		selected_slot[COLUMN] += 1
-	if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
-		selected_slot[ROW] -= 1
-	if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
-		selected_slot[ROW] += 1
-			
-	if Input.is_action_just_pressed('slot_select_confirm'):
-		# TODO: This needs to also implement stacking
-		var selected_slot = get_slot(selected_slot)
-		if !selected_slot.is_valid_move_slot(item_to_be_moved):
-			cancel_item_move()
-		elif selected_slot.is_item_in_slot():
-			
-			var initial_moved_from_slot = get_slot(initial_moved_from_slot)
-			if selected_slot.get_children()[0].data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
-				var item_to_exchange = selected_slot.get_children()[0]
-				selected_slot.remove_child(item_to_exchange)
-				initial_moved_from_slot.add_child(item_to_exchange)
-			else:
+	if Input.is_action_just_released("slot_select_confirm"):
+		move_input_enabled = true
+	if move_input_enabled:
+		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'):
+			selected_slot[COLUMN] -= 1
+		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'):
+			selected_slot[COLUMN] += 1
+		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'):
+			selected_slot[ROW] -= 1
+		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'):
+			selected_slot[ROW] += 1
+				
+		if Input.is_action_just_pressed('slot_select_confirm'):
+			# TODO: This needs to also implement stacking
+			var selected_slot = get_slot(selected_slot)
+			if !selected_slot.is_valid_move_slot(item_to_be_moved):
 				cancel_item_move()
-		exit_move_mode()
-			
-	if Input.is_action_just_pressed('slot_select_back'):
-		print('cancel')
-		cancel_item_move()
-		exit_move_mode()
+			elif selected_slot.is_item_in_slot():
+				
+				var initial_moved_from_slot = get_slot(initial_moved_from_slot)
+				if selected_slot.get_children()[0].data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
+					var item_to_exchange = selected_slot.get_children()[0]
+					selected_slot.remove_child(item_to_exchange)
+					initial_moved_from_slot.add_child(item_to_exchange)
+				else:
+					cancel_item_move()
+			move_input_enabled = false
+			exit_move_mode()
+				
+		if Input.is_action_just_pressed('slot_select_back'):
+			print('cancel')
+			cancel_item_move()
+			move_input_enabled = false
+			exit_move_mode()
 		
 	# TODO: Remember to return to the previous selected_slot	
 	
@@ -188,7 +200,7 @@ func exit_move_mode():
 func open_selection_menu(item):
 	selection_menu.set_buttons(item)
 	var selected_slot = get_slot(selected_slot)
-	selection_menu.global_position = selected_slot.global_position + Vector2(selected_slot.size.x, 0.0)
+	selection_menu.get_node("PanelContainer").global_position = selected_slot.global_position + Vector2(selected_slot.size.x, 0.0)
 	selection_menu.selected_button = 0
 	selection_menu.visible = true
 	
