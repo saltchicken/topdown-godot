@@ -7,6 +7,7 @@
 expand_mode = 1
 stretch_mode = 5
 script = ExtResource("1_fghgc")
+type = 7
 
 [node name="StackNumberPanel" type="Panel" parent="."]
 visible = false

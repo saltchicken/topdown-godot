@@ -8,6 +8,9 @@
 [node name="HealthPotion" instance=ExtResource("1_cdqrr")]
 texture = ExtResource("2_3t7ur")
 script = ExtResource("3_f74ri")
-amount = 0
+amount = 40
+item_name = "Health Potion"
+description = "A potion for healing"
+stackable = true
 
 [node name="Use" parent="." index="2" instance=ExtResource("3_gceux")]

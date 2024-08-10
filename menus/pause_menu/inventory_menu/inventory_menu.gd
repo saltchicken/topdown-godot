@@ -110,10 +110,11 @@ func _process(_delta):
 				if !selected_slot.is_valid_move_slot(item_to_be_moved):
 					cancel_item_move()
 				elif selected_slot.is_item_in_slot_moving():
-					#if item_to_be_moved.data.item_name == selected_slot.get_item().data.item_name and item_to_be_moved.data.stackable:
-						##selected_slot.get_item().data.stack_count += item_to_be_moved.data.stack_count
-						##exit_move_mode()
-					#else:
+					print(item_to_be_moved.item_name)
+					if item_to_be_moved.item_name == selected_slot.get_item().item_name and item_to_be_moved.stackable:
+						selected_slot.get_item().stack_count += item_to_be_moved.stack_count
+						item_to_be_moved.queue_free()
+					else:
 						var initial_moved_from_slot = get_slot(initial_moved_from_slot)
 						if selected_slot.get_item().type == initial_moved_from_slot.type or initial_moved_from_slot.type == InventoryItem.Type.MAIN:
 							var item_to_exchange = selected_slot.get_item()

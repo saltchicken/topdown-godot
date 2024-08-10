@@ -22,7 +22,7 @@ func add_item(path_to_item):
 func is_valid_move_slot(item):
 	if type == InventoryItem.Type.MAIN:
 		return true
-	if type == item.data.type:
+	if type == item.type:
 		return true
 	else:
 		return false

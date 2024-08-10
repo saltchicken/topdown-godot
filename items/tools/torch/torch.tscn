@@ -8,5 +8,7 @@
 [node name="Torch" instance=ExtResource("1_ucwnn")]
 texture = ExtResource("1_wkk8j")
 script = ExtResource("1_ws134")
+item_name = "Torch"
+description = "A torch for lighting the way"
 
 [node name="Use" parent="." index="2" instance=ExtResource("3_lpphq")]

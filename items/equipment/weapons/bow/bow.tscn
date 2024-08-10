@@ -10,3 +10,5 @@ script = ExtResource("1_78wy5")
 attack_type = 2
 attack_damage = 20
 type = 5
+item_name = "Bow"
+description = "A bow for shooting arrows"

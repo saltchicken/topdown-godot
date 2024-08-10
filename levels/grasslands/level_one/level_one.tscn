@@ -105,3 +105,4 @@ environment = SubResource("Environment_dp1ku")
 position = Vector2(-440, -35)
 
 [node name="HealthPotion" parent="." index="13" instance=ExtResource("14_di1u1")]
+type = 0
