@@ -9,8 +9,8 @@ func init(node_path: String) -> void:
 	data = load(node_path).instantiate()
 	
 func _ready():
-	expand_mode = TextureRect.EXPAND_IGNORE_SIZE
-	stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
+	#expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+	#stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	if data:
 		texture = data.texture
 		tooltip_text = "%s\n%s" % [data.name, data.description]

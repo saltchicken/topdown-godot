@@ -8,6 +8,8 @@ extends HBoxContainer
 @onready var style_box = preload('res://menus/pause_menu/item_slot.tres')
 @onready var selected_style_box = preload('res://menus/pause_menu/highlighted_item_slot.tres')
 
+@onready var inventory_item = preload("res://menus/pause_menu/inventory_menu/inventory_item.tscn")
+
 func _set_selected_slot(new_value):
 	#if moving_item == true: # TODO: Needed because setting the selected slot to where it was before moving was bugged.
 		#selected_slot = new_value
@@ -40,7 +42,7 @@ func select_new_slot(previous_slot, new_slot):
 	toolbelt_slots[new_slot].add_theme_stylebox_override('panel', selected_style_box)
 	
 func load_item_into_toolbelt(path_to_item, slot_index):
-	var item := InventoryItem.new()
+	var item := inventory_item.instantiate()
 	item.init(path_to_item)
 	toolbelt_slots[slot_index].add_child(item)
 	

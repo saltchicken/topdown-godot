@@ -4,6 +4,8 @@ extends PanelContainer
 signal change_inventory
 @export var type: ItemData.Type
 
+@onready var inventory_item = preload("res://menus/pause_menu/inventory_menu/inventory_item.tscn")
+
 #func init(t: ItemData.Type, cms: Vector2) -> void:
 	#type = t
 	#custom_minimum_size = cms
@@ -11,7 +13,7 @@ signal change_inventory
 func add_item(path_to_item):
 	var item: InventoryItem
 	if path_to_item is String:
-		item = InventoryItem.new()
+		item = inventory_item.instantiate()
 		item.init(path_to_item)
 	elif path_to_item is InventoryItem:
 		item = path_to_item
