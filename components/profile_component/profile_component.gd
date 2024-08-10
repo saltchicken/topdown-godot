@@ -61,6 +61,7 @@ func load_items(node_data):
 	for item in item_array:
 		var slot = inventory_menu.get_slot(item[1])
 		slot.add_item(item[0])
+		slot.get_item().stack_count = item[2]
 	inventory_menu.selected_slot = Vector2i(node_data["items_selected_slot"][0], node_data["items_selected_slot"][1])
 	#for item in node_data["items"]:
 		#var slot = node_data["items"][item]
