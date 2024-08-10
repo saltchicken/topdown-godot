@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cm84xg1ts01e8"]
+[gd_scene load_steps=4 format=3 uid="uid://cm84xg1ts01e8"]
 
 [ext_resource type="Script" path="res://items/equipment/weapons/bow/bow.gd" id="1_78wy5"]
 [ext_resource type="Texture2D" uid="uid://cfw7vbho84bjs" path="res://items/equipment/weapons/bow/bow.png" id="2_1ksu8"]
+[ext_resource type="PackedScene" uid="uid://b6f6ukhgclrvr" path="res://components/collectable_component/collectable_component.tscn" id="3_g7c87"]
 
 [node name="Bow" type="Node2D"]
 script = ExtResource("1_78wy5")
@@ -10,4 +11,8 @@ attack_damage = 40
 type = 5
 item_name = "Bow"
 description = "A bow for shooting arrows"
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_1ksu8")
+
+[node name="CollectableComponent" parent="." instance=ExtResource("3_g7c87")]

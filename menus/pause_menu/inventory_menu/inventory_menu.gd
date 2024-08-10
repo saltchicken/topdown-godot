@@ -216,16 +216,20 @@ func is_in_inventory(item): # TODO: Implement
 	
 func drop_item():
 	var selected_slot = get_slot(selected_slot)
-	var item = selected_slot.get_item()
-	selected_slot.remove_child(item)
+	var inventory_item = selected_slot.get_item()
+	selected_slot.remove_child(inventory_item)
+	var item = inventory_item.data
+	inventory_item.remove_child(item)
+	
 	#var item = item_to_drop.data
 	#item_to_drop.queue_free()
 	item.global_position = player.global_position - Vector2(0.0, -100.0)
-	item.size = Vector2(32.0, 32.0)
-	var collectable_component = preload("res://components/collectable_component/collectable_component.tscn").instantiate()
-	collectable_component.position = item.size / 2
-	item.add_child(collectable_component)
+	#item.size = Vector2(32.0, 32.0)
+	#var collectable_component = preload("res://components/collectable_component/collectable_component.tscn").instantiate()
+	#collectable_component.position = item.size / 2
+	#item.add_child(collectable_component)
 	owner.get_node('/root/Gameplay').current_level.add_child(item)
+	inventory_item.queue_free()
 
 #func set_purse_text():
 	#purse_label.text = 'Purse: %s' % str(player.purse)

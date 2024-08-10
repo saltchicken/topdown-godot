@@ -1,7 +1,7 @@
 class_name InventoryItem
 extends TextureRect
 
-@onready var data: ItemData
+@export var data: ItemData
 #@onready var stackable := false
 
 @onready var stack_number_panel = get_node("StackNumberPanel")
@@ -19,7 +19,7 @@ func _set_stack_count(new_value):
 		
 	stack_count = new_value
 
-signal collect
+#signal collect
 
 func init(node_path: String) -> void:
 	data = load(node_path).instantiate()
@@ -28,11 +28,11 @@ func _ready():
 	#expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	#stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	if data:
-		texture = data.texture
+		texture = data.get_node("Sprite2D").texture
 		tooltip_text = "%s\n%s" % [data.name, data.description]
 		#stackable = data.stackable
 		
-	collect.connect(on_collect)
+	#collect.connect(on_collect)
 
 func _get_drag_data(at_position: Vector2):
 	set_drag_preview(make_drag_preview(at_position))
@@ -52,7 +52,7 @@ func make_drag_preview(at_position: Vector2):
 	
 	return c
 		
-func on_collect():
-	var collectable_component = get_node("CollectableComponent")
-	remove_child(collectable_component)
-	collectable_component.queue_free()
+#func on_collect():
+	#var collectable_component = get_node("CollectableComponent")
+	#remove_child(collectable_component)
+	#collectable_component.queue_free()

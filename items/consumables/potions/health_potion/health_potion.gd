@@ -3,6 +3,9 @@ extends Potion
 #@export_enum("HEALTH", "MANA") var potion_type
 
 
+
+
+
 func use(player, item_slot):
 	var health_component = player.get_node_or_null("HealthComponent")
 	if health_component != null:

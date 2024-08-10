@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=4 uid="uid://ev2pt4t6olb2"]
+[gd_scene load_steps=15 format=4 uid="uid://ev2pt4t6olb2"]
 
 [ext_resource type="PackedScene" uid="uid://b1kunl044yulu" path="res://levels/level_parent.tscn" id="1_e1v3i"]
 [ext_resource type="Texture2D" uid="uid://dcq6mnnvbbpw2" path="res://levels/grasslands/level_one/grassland_sky.png" id="2_32n1n"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="8_wikpg"]
 [ext_resource type="PackedScene" uid="uid://ctx4yy08c3rf8" path="res://objects/floating_rock/floating_rock.tscn" id="9_w61mh"]
 [ext_resource type="PackedScene" uid="uid://cn1ugx36kidb1" path="res://characters/npcs/store_clerk/store_clerk.tscn" id="13_b1ul8"]
+[ext_resource type="PackedScene" uid="uid://v6stwwbnygen" path="res://items/consumables/potions/health_potion/health_potion.tscn" id="14_di1u1"]
 
 [sub_resource type="Environment" id="Environment_dp1ku"]
 background_mode = 3
@@ -102,3 +103,6 @@ environment = SubResource("Environment_dp1ku")
 
 [node name="StoreClerk" parent="." index="12" instance=ExtResource("13_b1ul8")]
 position = Vector2(-440, -35)
+
+[node name="Potion" parent="." index="13" instance=ExtResource("14_di1u1")]
+position = Vector2(-54, -83)

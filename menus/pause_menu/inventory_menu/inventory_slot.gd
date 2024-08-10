@@ -17,6 +17,9 @@ func add_item(path_to_item):
 		item.init(path_to_item)
 	elif path_to_item is InventoryItem:
 		item = path_to_item
+	elif path_to_item is ItemData:
+		item = inventory_item.instantiate()
+		item.data = path_to_item
 	else:
 		push_error("Error with load_item_into_slot")
 		return

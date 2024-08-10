@@ -125,7 +125,10 @@ func on_cast():
 func on_collect(collectable):
 	if collectable is Coins:
 		profile.coins += collectable.value
-	elif collectable is InventoryItem:
+	elif collectable is InventoryItem:  # TODO: Remove this after refactoring of collect
+		get_node('/root/Gameplay').current_level.remove_child(collectable)
+		profile.inventory_menu.collect_item(collectable)
+	elif collectable is ItemData:
 		get_node('/root/Gameplay').current_level.remove_child(collectable)
 		profile.inventory_menu.collect_item(collectable)
 	else:
