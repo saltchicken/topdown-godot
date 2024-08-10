@@ -49,6 +49,10 @@ func get_item():
 			return child
 	#return find_children('*', "InventoryItem", true, false)[0]
 	
+func combine_stack(item_to_be_moved):
+	get_item().stack_count += item_to_be_moved.stack_count
+	item_to_be_moved.queue_free()
+	
 
 func _can_drop_data(_at_position, data):
 	if data is InventoryItem:
@@ -67,12 +71,15 @@ func _can_drop_data(_at_position, data):
 	else:
 		return false
 	
-func _drop_data(_at_position, data):
+func _drop_data(_at_position, item_to_be_moved):
 	if get_child_count() > 0:
-		var item := get_child(0)
-		if item == data:
+		var item_in_selected_slot := get_child(0)
+		#print("item_in_selected_slot ", item_in_selected_slot, "   item_to_be_moved ", item_to_be_moved)
+		if item_in_selected_slot == item_to_be_moved:
 			return
+		if item_in_selected_slot.item_name == item_to_be_moved.item_name and item_in_selected_slot.stackable:
+			combine_stack(item_to_be_moved)
 		else:
-			item.reparent(data.get_parent())
-	data.reparent(self)
-	change_inventory.emit(data)
+			item_in_selected_slot.reparent(item_to_be_moved.get_parent())
+	item_to_be_moved.reparent(self)
+	#change_inventory.emit(data)

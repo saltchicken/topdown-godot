@@ -112,8 +112,7 @@ func _process(_delta):
 				elif selected_slot.is_item_in_slot_moving():
 					print(item_to_be_moved.item_name)
 					if item_to_be_moved.item_name == selected_slot.get_item().item_name and item_to_be_moved.stackable:
-						selected_slot.get_item().stack_count += item_to_be_moved.stack_count
-						item_to_be_moved.queue_free()
+						selected_slot.combine_stack(item_to_be_moved)
 					else:
 						var initial_moved_from_slot = get_slot(initial_moved_from_slot)
 						if selected_slot.get_item().type == initial_moved_from_slot.type or initial_moved_from_slot.type == InventoryItem.Type.MAIN:
