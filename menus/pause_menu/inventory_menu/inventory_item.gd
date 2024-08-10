@@ -2,6 +2,22 @@ class_name InventoryItem
 extends TextureRect
 
 @onready var data: ItemData
+#@onready var stackable := false
+
+@onready var stack_number_panel = get_node("StackNumberPanel")
+@onready var stack_number_label = get_node("StackNumberPanel/StackNumberLabel")
+@onready var stack_count = 1: set = _set_stack_count
+func _set_stack_count(new_value):
+	if new_value > 1:
+		stack_number_panel.visible = true
+		stack_number_label.text = str(new_value)
+	elif new_value == 1:
+		stack_number_panel.visible = false
+		stack_number_label.text = ""
+	else:
+		push_error("Issue with _set_stack_count. Should never be 0 or lower. New value is: ", new_value)
+		
+	stack_count = new_value
 
 signal collect
 
@@ -14,6 +30,7 @@ func _ready():
 	if data:
 		texture = data.texture
 		tooltip_text = "%s\n%s" % [data.name, data.description]
+		#stackable = data.stackable
 		
 	collect.connect(on_collect)
 
