@@ -115,7 +115,7 @@ func _process(_delta):
 						##exit_move_mode()
 					#else:
 						var initial_moved_from_slot = get_slot(initial_moved_from_slot)
-						if selected_slot.get_item().data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == InventoryItem.Type.MAIN:
+						if selected_slot.get_item().type == initial_moved_from_slot.type or initial_moved_from_slot.type == InventoryItem.Type.MAIN:
 							var item_to_exchange = selected_slot.get_item()
 							selected_slot.remove_child(item_to_exchange)
 							initial_moved_from_slot.add_child(item_to_exchange)
