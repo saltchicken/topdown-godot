@@ -36,7 +36,7 @@ func save():
 		#"inventory" : Global.save_slots_to_dict(inventory_menu.item_slots),
 		#"equipment" : Global.save_slots_to_dict(inventory_menu.equipment_slots),
 		#"toolbelt" : Global.save_slots_to_dict(toolbelt.toolbelt_slots),
-		"items" : Global.save_slots_to_dict(inventory_menu.slots),
+		"items" : Global.save_slots_to_array(inventory_menu.slots),
 		"items_selected_slot" : [inventory_menu.selected_slot.x, inventory_menu.selected_slot.y],
 		"spells_selected_slot" : spell_menu.selected_slot
 	}
@@ -57,10 +57,15 @@ func save():
 		#toolbelt.load_item_into_toolbelt(item, node_data["toolbelt"][item])
 		
 func load_items(node_data):
-	for item in node_data["items"]:
-		var slot = node_data["items"][item]
-		inventory_menu.get_slot(slot).add_item(item)
+	var item_array = node_data["items"]
+	for item in item_array:
+		var slot = inventory_menu.get_slot(item[1])
+		slot.add_item(item[0])
 	inventory_menu.selected_slot = Vector2i(node_data["items_selected_slot"][0], node_data["items_selected_slot"][1])
+	#for item in node_data["items"]:
+		#var slot = node_data["items"][item]
+		#inventory_menu.get_slot(slot).add_item(item)
+	#inventory_menu.selected_slot = Vector2i(node_data["items_selected_slot"][0], node_data["items_selected_slot"][1])
 	
 func load_spells(node_data):
 	print(spell_menu.selected_slot)

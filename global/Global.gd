@@ -62,11 +62,23 @@ func save_slots_to_dict(slot_array):
 	for row in range(slot_array.size()):
 		for column in range(slot_array[row].size()):
 			var slot = slot_array[row][column]
-			if slot.get_child_count() > 0:
+			if slot.get_child_count() > 0: # TODO: Use the slot function to get the child count
 				var entity = slot.get_child(0)
 				if entity:
 					dict[entity.data.scene_file_path] = [row,column]
 	return dict
+	
+func save_slots_to_array(slot_array):
+	var array = []
+	for row in range(slot_array.size()):
+		for column in range(slot_array[row].size()):
+			var slot = slot_array[row][column]
+			if slot.get_child_count() > 0:
+				var entity = slot.get_child(0) # TODO: Use the slot function to get the child count
+				if entity:
+					array.append([entity.data.scene_file_path, [row,column]])
+					#dict[entity.data.scene_file_path] = [row,column]
+	return array
 
 
 # TODO Make backup saves in case of corruption
