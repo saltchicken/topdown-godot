@@ -61,12 +61,52 @@ theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer2" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer2"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer2/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer2/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer3" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
@@ -75,12 +115,52 @@ theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer3"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer3/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer3/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer4" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer4"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer4/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer4/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer5" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
@@ -89,12 +169,52 @@ theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer5"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer5/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer5/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer6" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer6"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer6/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer6/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer7" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
@@ -103,12 +223,52 @@ theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer7"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer7/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer7/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer8" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer8"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer8/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer8/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer9" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
@@ -117,9 +277,49 @@ theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer9"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer9/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer9/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer10" type="PanelContainer" parent="ToolBelt"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("4_q1qij")
 script = ExtResource("3_abdmg")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="ToolBelt/PanelContainer10"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="ToolBelt/PanelContainer10/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="ToolBelt/PanelContainer10/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false

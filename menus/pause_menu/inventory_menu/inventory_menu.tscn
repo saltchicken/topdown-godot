@@ -140,12 +140,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer2" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer2"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer2/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer2/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer3" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -154,12 +194,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer3"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer3/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer3/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer4" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer4"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer4/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer4/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer5" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -168,12 +248,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer5"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer5/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer5/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer6" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer6"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer6/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer6/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer7" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -182,12 +302,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer7"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer7/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer7/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer8" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer8"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer8/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer8/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer9" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
@@ -196,12 +356,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer9"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer9/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer9/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer10" type="PanelContainer" parent="Inventory/HBoxContainer"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer/PanelContainer10"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer/PanelContainer10/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer/PanelContainer10/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="Inventory"]
 layout_mode = 2
@@ -213,12 +413,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer2" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer2"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer2/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer2/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer3" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
@@ -227,12 +467,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer3"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer3/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer3/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer4" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer4"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer4/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer4/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer5" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
@@ -241,12 +521,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer5"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer5/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer5/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer6" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer6"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer6/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer6/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer7" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
@@ -255,12 +575,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer7"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer7/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer7/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer8" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer8"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer8/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer8/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PanelContainer9" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
@@ -269,12 +629,52 @@ theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
 
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer9"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer9/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer9/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
+
 [node name="PanelContainer10" type="PanelContainer" parent="Inventory/HBoxContainer2"]
 custom_minimum_size = Vector2(64, 64)
 layout_mode = 2
 theme_override_styles/panel = ExtResource("2_q6u6v")
 script = ExtResource("3_edo73")
 type = 7
+
+[node name="GridContainer" type="GridContainer" parent="Inventory/HBoxContainer2/PanelContainer10"]
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberPanel" type="Panel" parent="Inventory/HBoxContainer2/PanelContainer10/GridContainer"]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 2
+
+[node name="StackNumberLabel" type="RichTextLabel" parent="Inventory/HBoxContainer2/PanelContainer10/GridContainer/StackNumberPanel"]
+layout_mode = 0
+offset_right = 16.0
+offset_bottom = 16.0
+theme_override_font_sizes/normal_font_size = 12
+bbcode_enabled = true
+text = "[center][/center]"
+scroll_active = false
 
 [node name="PurseLabel" type="Label" parent="."]
 layout_mode = 0

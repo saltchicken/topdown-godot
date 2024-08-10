@@ -38,7 +38,7 @@ func _get_current_weapon():
 	if child_count == 0:
 		return null
 	elif child_count == 1:
-		return weapon_slot.get_children()[0].data
+		return weapon_slot.get_item().data
 	else:
 		print('Issue with get_current_weapon. Return null for safety')
 		return null
@@ -87,6 +87,9 @@ func _ready() -> void:
 	#load_item_into_slot("res://items/consumables/potions/health_potion/health_potion.tscn", [4, 5])
 	
 func _process(_delta):
+	#process_mode =  Node.PROCESS_MODE_DISABLED
+	#process_mode = Node.PROCESS_MODE_WHEN_PAUSED
+	#print('inventory menu processing')
 	if pause_menu.visible and inventory_tab.visible and selection_menu.visible == false:
 		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'): selected_slot[COLUMN] -= 1
 		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'): selected_slot[COLUMN] += 1
@@ -95,9 +98,9 @@ func _process(_delta):
 		if moving_item == false:
 				if Input.is_action_just_pressed('slot_select_confirm'):
 					var selected_slot = get_slot(selected_slot)
-					if selected_slot.get_children().size() > 0:
+					if selected_slot.is_item_in_slot():
 						#await get_tree().process_frame # TODO: Is this one needed for selection menu
-						open_selection_menu(selected_slot.get_children()[0].data)
+						open_selection_menu(selected_slot.get_item().data)
 					else:
 						print_debug("This slot is empty")
 		else:
@@ -106,10 +109,10 @@ func _process(_delta):
 				var selected_slot = get_slot(selected_slot)
 				if !selected_slot.is_valid_move_slot(item_to_be_moved):
 					cancel_item_move()
-				elif selected_slot.is_item_in_slot():
+				elif selected_slot.is_item_in_slot_moving():
 					var initial_moved_from_slot = get_slot(initial_moved_from_slot)
-					if selected_slot.get_children()[0].data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
-						var item_to_exchange = selected_slot.get_children()[0]
+					if selected_slot.get_item().data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
+						var item_to_exchange = selected_slot.get_item()
 						selected_slot.remove_child(item_to_exchange)
 						initial_moved_from_slot.add_child(item_to_exchange)
 					else:
@@ -126,11 +129,11 @@ func on_selection_menu_action(action):
 	match action:
 		"Use":
 			var item_slot = get_slot(selected_slot)
-			item_slot.get_children()[0].data.get_node("Use").use(self, item_slot)
+			item_slot.get_item().data.get_node("Use").use(self, item_slot)
 			close_selection_menu()
 		"Move":
 			close_selection_menu()
-			item_to_be_moved = get_slot(selected_slot).get_children()[0]
+			item_to_be_moved = get_slot(selected_slot).get_item()
 			initial_moved_from_slot = selected_slot
 			moving_item = true
 		"Close":
@@ -213,7 +216,7 @@ func is_in_inventory(item): # TODO: Implement
 	
 func drop_item():
 	var selected_slot = get_slot(selected_slot)
-	var item = selected_slot.get_children()[0]
+	var item = selected_slot.get_item()
 	selected_slot.remove_child(item)
 	#var item = item_to_drop.data
 	#item_to_drop.queue_free()

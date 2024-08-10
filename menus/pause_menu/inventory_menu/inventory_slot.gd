@@ -29,10 +29,27 @@ func is_valid_move_slot(item):
 		return false
 		
 func is_item_in_slot():
-	if get_children().size() > 1:
+	for child in get_children():
+		if child is TextureRect:
+			return true
+	return false
+	
+func is_item_in_slot_moving():
+	var count = 0
+	for child in get_children():
+		if child is TextureRect:
+			count += 1
+	if count > 1:
 		return true
 	else:
 		return false
+		
+func get_item():
+	for child in get_children():
+		if child is TextureRect:
+			return child
+	#return find_children('*', "ItemData", true, false)[0]
+	
 
 func _can_drop_data(_at_position, data):
 	if data is InventoryItem:
