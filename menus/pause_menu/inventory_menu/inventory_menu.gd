@@ -38,7 +38,7 @@ func _get_current_weapon():
 	if child_count == 0:
 		return null
 	elif child_count == 1:
-		return weapon_slot.get_item().data
+		return weapon_slot.get_item()
 	else:
 		print('Issue with get_current_weapon. Return null for safety')
 		return null
@@ -100,7 +100,7 @@ func _process(_delta):
 					var selected_slot = get_slot(selected_slot)
 					if selected_slot.is_item_in_slot():
 						#await get_tree().process_frame # TODO: Is this one needed for selection menu
-						open_selection_menu(selected_slot.get_item().data)
+						open_selection_menu(selected_slot.get_item())
 					else:
 						print_debug("This slot is empty")
 		else:
@@ -110,13 +110,17 @@ func _process(_delta):
 				if !selected_slot.is_valid_move_slot(item_to_be_moved):
 					cancel_item_move()
 				elif selected_slot.is_item_in_slot_moving():
-					var initial_moved_from_slot = get_slot(initial_moved_from_slot)
-					if selected_slot.get_item().data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == ItemData.Type.MAIN:
-						var item_to_exchange = selected_slot.get_item()
-						selected_slot.remove_child(item_to_exchange)
-						initial_moved_from_slot.add_child(item_to_exchange)
-					else:
-						cancel_item_move()
+					#if item_to_be_moved.data.item_name == selected_slot.get_item().data.item_name and item_to_be_moved.data.stackable:
+						##selected_slot.get_item().data.stack_count += item_to_be_moved.data.stack_count
+						##exit_move_mode()
+					#else:
+						var initial_moved_from_slot = get_slot(initial_moved_from_slot)
+						if selected_slot.get_item().data.type == initial_moved_from_slot.type or initial_moved_from_slot.type == InventoryItem.Type.MAIN:
+							var item_to_exchange = selected_slot.get_item()
+							selected_slot.remove_child(item_to_exchange)
+							initial_moved_from_slot.add_child(item_to_exchange)
+						else:
+							cancel_item_move()
 				exit_move_mode()
 					
 			if Input.is_action_just_pressed('slot_select_back'):
@@ -129,7 +133,7 @@ func on_selection_menu_action(action):
 	match action:
 		"Use":
 			var item_slot = get_slot(selected_slot)
-			item_slot.get_item().data.get_node("Use").use(self, item_slot)
+			item_slot.get_item().get_node("Use").use(self, item_slot)
 			close_selection_menu()
 		"Move":
 			close_selection_menu()
@@ -183,8 +187,8 @@ func close_selection_menu():
 	
 func inventory_changed(item, slot):
 	print_debug('%s changed. Is there a way to check where it changed from?' % slot) # TODO: Check where slot changed from
-	print_debug(item.data)
-	print_debug(item.data.name)
+	print_debug(item)
+	print_debug(item.name)
 	#update_stats.emit()
 	
 func collect_item(item):
@@ -216,20 +220,17 @@ func is_in_inventory(item): # TODO: Implement
 	
 func drop_item():
 	var selected_slot = get_slot(selected_slot)
-	var inventory_item = selected_slot.get_item()
-	selected_slot.remove_child(inventory_item)
-	var item = inventory_item.data
-	inventory_item.remove_child(item)
+	var item = selected_slot.get_item()
+	selected_slot.remove_child(item)
 	
 	#var item = item_to_drop.data
 	#item_to_drop.queue_free()
 	item.global_position = player.global_position - Vector2(0.0, -100.0)
-	#item.size = Vector2(32.0, 32.0)
+	item.size = Vector2(32.0, 32.0) # TODO: Why I am setting the size on the drop. Propbably because inventory menu controls resizes it.
 	#var collectable_component = preload("res://components/collectable_component/collectable_component.tscn").instantiate()
 	#collectable_component.position = item.size / 2
 	#item.add_child(collectable_component)
 	owner.get_node('/root/Gameplay').current_level.add_child(item)
-	inventory_item.queue_free()
 
 #func set_purse_text():
 	#purse_label.text = 'Purse: %s' % str(player.purse)

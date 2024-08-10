@@ -104,7 +104,7 @@ func on_use():
 	if current_item != null:
 		var use_component = current_item.get_node_or_null("Use")
 		if use_component != null:
-			use_component.use(self)
+			use_component.use(self, toolbelt.toolbelt_slots[toolbelt.selected_slot])
 		else:
 			print_debug("Current item does not have a use component")
 	else:
@@ -125,10 +125,8 @@ func on_cast():
 func on_collect(collectable):
 	if collectable is Coins:
 		profile.coins += collectable.value
-	elif collectable is InventoryItem:  # TODO: Remove this after refactoring of collect
-		get_node('/root/Gameplay').current_level.remove_child(collectable)
-		profile.inventory_menu.collect_item(collectable)
-	elif collectable is ItemData:
+	elif collectable is InventoryItem:
+		print("Found collectable item")
 		get_node('/root/Gameplay').current_level.remove_child(collectable)
 		profile.inventory_menu.collect_item(collectable)
 	else:

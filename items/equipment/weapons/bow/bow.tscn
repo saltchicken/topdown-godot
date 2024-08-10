@@ -4,7 +4,10 @@
 [ext_resource type="Texture2D" uid="uid://cfw7vbho84bjs" path="res://items/equipment/weapons/bow/bow.png" id="2_1ksu8"]
 [ext_resource type="PackedScene" uid="uid://b6f6ukhgclrvr" path="res://components/collectable_component/collectable_component.tscn" id="3_g7c87"]
 
-[node name="Bow" type="Node2D"]
+[node name="Bow" type="TextureRect"]
+texture = ExtResource("2_1ksu8")
+expand_mode = 1
+stretch_mode = 5
 script = ExtResource("1_78wy5")
 attack_type = 2
 attack_damage = 40
@@ -12,7 +15,37 @@ type = 5
 item_name = "Bow"
 description = "A bow for shooting arrows"
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_1ksu8")
-
 [node name="CollectableComponent" parent="." instance=ExtResource("3_g7c87")]
+
+[node name="StackNumberPanel" type="Panel" parent="."]
+visible = false
+custom_minimum_size = Vector2(16, 16)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="StackNumberLabel" type="Label" parent="StackNumberPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 10
+horizontal_alignment = 1
+vertical_alignment = 1

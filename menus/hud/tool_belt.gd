@@ -32,7 +32,7 @@ func _get_current_item():
 	if child_count == 0:
 		return null
 	elif child_count == 1:
-		return toolbelt_slots[selected_slot].get_children()[0].data
+		return toolbelt_slots[selected_slot].get_item()
 	else:
 		print('Issue with get_current_weapon. Return null for safety')
 		return null

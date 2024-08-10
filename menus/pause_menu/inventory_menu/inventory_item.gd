@@ -1,8 +1,15 @@
 class_name InventoryItem
 extends TextureRect
 
-@export var data: ItemData
-#@onready var stackable := false
+enum Type {HEAD, CHEST, WAIST, LEGS, FEET, WEAPON, NECK, MAIN}
+
+signal collect
+
+@export var type: Type
+@export var item_name: String
+@export_multiline var description: String
+@export var stackable: bool = false
+
 
 @onready var stack_number_panel = get_node("StackNumberPanel")
 @onready var stack_number_label = get_node("StackNumberPanel/StackNumberLabel")
@@ -18,18 +25,15 @@ func _set_stack_count(new_value):
 		push_error("Issue with _set_stack_count. Should never be 0 or lower. New value is: ", new_value)
 		
 	stack_count = new_value
-
-#signal collect
-
-func init(node_path: String) -> void:
-	data = load(node_path).instantiate()
 	
 func _ready():
 	#expand_mode = TextureRect.EXPAND_IGNORE_SIZE
 	#stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
-	if data:
-		texture = data.get_node("Sprite2D").texture
-		tooltip_text = "%s\n%s" % [data.name, data.description]
+	collect.connect(_on_collect)
+	tooltip_text = "%s\n%s" % [item_name, description]
+	size = Vector2(32.0, 32.0)
+	print(size)
+	get_node("CollectableComponent").position = size / 2
 		#stackable = data.stackable
 		
 	#collect.connect(on_collect)
@@ -51,6 +55,9 @@ func make_drag_preview(at_position: Vector2):
 	c.add_child(t)
 	
 	return c
+	
+func _on_collect():
+	print("Collect item")
 		
 #func on_collect():
 	#var collectable_component = get_node("CollectableComponent")

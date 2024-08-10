@@ -1,2 +1,2 @@
 class_name Equipment
-extends ItemData
+extends InventoryItem

@@ -4,7 +4,7 @@ extends PanelContainer
 signal change_spell
 @export var type: Spell.Type
 
-#func init(t: ItemData.Type, cms: Vector2) -> void:
+#func init(t: InventoryItem.Type, cms: Vector2) -> void:
 	#type = t
 	#custom_minimum_size = cms
 

@@ -1,2 +1,2 @@
 class_name Consumable
-extends ItemData
+extends InventoryItem

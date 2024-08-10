@@ -65,7 +65,7 @@ func save_slots_to_dict(slot_array):
 			if slot.get_child_count() > 0: # TODO: Use the slot function to get the child count
 				var entity = slot.get_child(0)
 				if entity:
-					dict[entity.data.scene_file_path] = [row,column]
+					dict[entity.data.scene_file_path] = [row,column] # TODO: This is still needed for spells. Going to have to fix
 	return dict
 	
 func save_slots_to_array(slot_array):
@@ -76,7 +76,7 @@ func save_slots_to_array(slot_array):
 			if slot.get_child_count() > 0:
 				var entity = slot.get_child(0) # TODO: Use the slot function to get the child count
 				if entity:
-					array.append([entity.data.scene_file_path, [row,column], entity.stack_count])
+					array.append([entity.scene_file_path, [row,column], entity.stack_count])
 					#dict[entity.data.scene_file_path] = [row,column]
 	return array
 
