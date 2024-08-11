@@ -192,11 +192,15 @@ func inventory_changed(item, slot):
 	#update_stats.emit()
 	
 func collect_item(item):
-	var first_open_slot = get_first_open_slot()
-	if first_open_slot != null:
-		get_slot(first_open_slot).add_item(item)
+	var existing_slots = is_in_inventory(item)
+	if existing_slots.size() > 0 and item.stackable:
+		get_slot(existing_slots[0]).combine_stack(item)
 	else:
-		print_debug("There is no available slot. Implement logic here")
+		var first_open_slot = get_first_open_slot()
+		if first_open_slot != null:
+			get_slot(first_open_slot).add_item(item)
+		else:
+			print_debug("There is no available slot. Implement logic here")
 		
 func get_slot(slot_vector):
 	return slots[slot_vector[ROW]][slot_vector[COLUMN]]
@@ -210,11 +214,12 @@ func get_first_open_slot():
 
 # NOTE: Has not been tested
 func is_in_inventory(item): # TODO: Implement
+	print("Checking ", item)
 	var existing_slots = []
 	for row_index in inventory_rows:
 		for slot_index in slots[row_index].size():
-			if slots[row_index][slot_index].get_child_count() > 0:
-				if item == slots[row_index][slot_index].data:
+			if slots[row_index][slot_index].is_item_in_slot():
+				if item.item_name == slots[row_index][slot_index].get_item().item_name:
 					existing_slots.append([row_index, slot_index])
 	return existing_slots
 	

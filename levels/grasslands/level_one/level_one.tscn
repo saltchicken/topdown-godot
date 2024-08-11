@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ev2pt4t6olb2"]
+[gd_scene load_steps=16 format=4 uid="uid://ev2pt4t6olb2"]
 
 [ext_resource type="PackedScene" uid="uid://b1kunl044yulu" path="res://levels/level_parent.tscn" id="1_e1v3i"]
 [ext_resource type="Texture2D" uid="uid://dcq6mnnvbbpw2" path="res://levels/grasslands/level_one/grassland_sky.png" id="2_32n1n"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://objects/bonfire/bonfire.tscn" id="7_r3b8b"]
 [ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="8_wikpg"]
 [ext_resource type="PackedScene" uid="uid://ctx4yy08c3rf8" path="res://objects/floating_rock/floating_rock.tscn" id="9_w61mh"]
+[ext_resource type="PackedScene" uid="uid://dt8oual3ihcfm" path="res://items/equipment/weapons/bow/bow.tscn" id="10_8m8dr"]
 [ext_resource type="PackedScene" uid="uid://cn1ugx36kidb1" path="res://characters/npcs/store_clerk/store_clerk.tscn" id="13_b1ul8"]
 [ext_resource type="PackedScene" uid="uid://qsp0oi6l073w" path="res://items/consumables/potions/health_potion/health_potion.tscn" id="14_di1u1"]
 
@@ -106,3 +107,9 @@ position = Vector2(-440, -35)
 
 [node name="HealthPotion" parent="." index="13" instance=ExtResource("14_di1u1")]
 type = 0
+
+[node name="Bow" parent="." index="14" instance=ExtResource("10_8m8dr")]
+offset_left = -63.0
+offset_top = -129.0
+offset_right = -63.0
+offset_bottom = -129.0
