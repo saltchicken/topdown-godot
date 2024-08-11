@@ -11,7 +11,7 @@ var dialogue_panel
 func _ready():
 	interact.connect(on_interact)
 
-func on_interact():
+func on_interact(interactor):
 	print("store clerk interact")
 	# TODO: Will this cause problems instantiating too many options?
 	#option_panel = Global.option_panel(self, ["Shop", "Talk", "Leave"])

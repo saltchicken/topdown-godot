@@ -214,7 +214,7 @@ func get_first_open_slot():
 
 # NOTE: Has not been tested
 func is_in_inventory(item): # TODO: Implement
-	print("Checking ", item)
+	print("FChecking ", item)
 	var existing_slots = []
 	for row_index in inventory_rows:
 		for slot_index in slots[row_index].size():

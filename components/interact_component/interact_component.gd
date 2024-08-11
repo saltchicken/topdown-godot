@@ -16,4 +16,4 @@ func interact():
 	for body in bodies:
 		var interactable_component = body.get_node_or_null("InteractableComponent")
 		if interactable_component:
-			interactable_component.interact()
+			interactable_component.interact(self.get_owner())
