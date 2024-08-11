@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://b1kunl044yulu"]
+[gd_scene load_steps=11 format=3 uid="uid://b1kunl044yulu"]
 
 [ext_resource type="Script" path="res://scene_manager/gameplay/scripts/level.gd" id="1_62npy"]
 [ext_resource type="Shader" path="res://components/light_component/light_canvas/lighting.gdshader" id="2_wfphl"]
 [ext_resource type="Script" path="res://components/light_component/light_canvas/lighting.gd" id="3_ot5lq"]
 [ext_resource type="Texture2D" uid="uid://dfnvxb6mwq7bx" path="res://utility/cursors/tile_highlight32.png" id="4_hagns"]
+[ext_resource type="PackedScene" uid="uid://dw0yjr6x44rvn" path="res://items/placeables/seeds/wheat_seeds/wheat_seeds.tscn" id="5_cv16q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gcfre"]
 shader = ExtResource("2_wfphl")
@@ -24,6 +25,13 @@ texture_region_size = Vector2i(32, 32)
 [sub_resource type="TileSet" id="TileSet_fekql"]
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_hfwqq")
+
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_ke8op"]
+scenes/3/scene = ExtResource("5_cv16q")
+
+[sub_resource type="TileSet" id="TileSet_0taa7"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetScenesCollectionSource_ke8op")
 
 [node name="LevelParent" type="Node2D"]
 y_sort_enabled = true
@@ -57,3 +65,6 @@ y_sort_enabled = true
 
 [node name="TileSelectLayer" type="TileMapLayer" parent="."]
 tile_set = SubResource("TileSet_fekql")
+
+[node name="PlayerObjectLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_0taa7")

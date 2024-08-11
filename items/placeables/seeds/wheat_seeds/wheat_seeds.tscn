@@ -1,0 +1,15 @@
+[gd_scene load_steps=5 format=3 uid="uid://dw0yjr6x44rvn"]
+
+[ext_resource type="PackedScene" uid="uid://bmr1dlmuibodj" path="res://menus/pause_menu/inventory_menu/inventory_item.tscn" id="1_3eesa"]
+[ext_resource type="Script" path="res://items/placeables/seeds/wheat_seeds/wheat_seeds.gd" id="1_54wh2"]
+[ext_resource type="Texture2D" uid="uid://1rj1c5ll3l2f" path="res://items/placeables/seeds/wheat_seeds/wheat_seeds.png" id="2_j3jvi"]
+[ext_resource type="PackedScene" uid="uid://cr0bppx0jviy8" path="res://items/components/use/use.tscn" id="4_8cbb3"]
+
+[node name="WheatSeeds" instance=ExtResource("1_3eesa")]
+texture = ExtResource("2_j3jvi")
+script = ExtResource("1_54wh2")
+item_name = "Wheat Seeds"
+description = "Plant these to grow wheat"
+stackable = true
+
+[node name="Use" parent="." index="2" instance=ExtResource("4_8cbb3")]
