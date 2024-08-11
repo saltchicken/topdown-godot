@@ -1,18 +1,29 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1kunl044yulu"]
+[gd_scene load_steps=8 format=3 uid="uid://b1kunl044yulu"]
 
 [ext_resource type="Script" path="res://scene_manager/gameplay/scripts/level.gd" id="1_62npy"]
 [ext_resource type="Shader" path="res://components/light_component/light_canvas/lighting.gdshader" id="2_wfphl"]
 [ext_resource type="Script" path="res://components/light_component/light_canvas/lighting.gd" id="3_ot5lq"]
+[ext_resource type="Texture2D" uid="uid://dfnvxb6mwq7bx" path="res://utility/cursors/tile_highlight32.png" id="4_hagns"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gcfre"]
 shader = ExtResource("2_wfphl")
 shader_parameter/lights = null
+shader_parameter/light_radiuses = null
 shader_parameter/number_of_lights = 1
 shader_parameter/modulate_color = Color(0, 0, 0, 0.533333)
 shader_parameter/light_radius = 256.0
 shader_parameter/band_radius = 192.0
 shader_parameter/band_strength = 0.75
 shader_parameter/seconds = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hfwqq"]
+texture = ExtResource("4_hagns")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_fekql"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_hfwqq")
 
 [node name="LevelParent" type="Node2D"]
 y_sort_enabled = true
@@ -43,3 +54,6 @@ y_sort_enabled = true
 
 [node name="Enemies" type="Node2D" parent="."]
 y_sort_enabled = true
+
+[node name="TileSelectLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_fekql")
