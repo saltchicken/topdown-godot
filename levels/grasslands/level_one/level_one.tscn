@@ -80,6 +80,11 @@ position = Vector2(-216, -2)
 
 [node name="WheatSeeds" parent="Chests/Chest" index="6" instance=ExtResource("9_r3j46")]
 
+[node name="Chest2" parent="Chests" index="1" instance=ExtResource("5_rbvnx")]
+position = Vector2(-103, -1)
+
+[node name="WheatSeeds" parent="Chests/Chest2" index="6" instance=ExtResource("9_r3j46")]
+
 [node name="Bonfire" parent="Bonfires" index="0" instance=ExtResource("7_r3b8b")]
 position = Vector2(-281, -141)
 
