@@ -67,4 +67,5 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_fekql")
 
 [node name="PlayerObjectLayer" type="TileMapLayer" parent="."]
+z_index = -1
 tile_set = SubResource("TileSet_0taa7")
