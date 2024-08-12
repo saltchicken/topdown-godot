@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddpqyqlouafs"]
+
+[ext_resource type="Script" path="res://items/components/place/place.gd" id="1_cp43s"]
+
+[node name="Place" type="Node2D"]
+visible = false
+script = ExtResource("1_cp43s")

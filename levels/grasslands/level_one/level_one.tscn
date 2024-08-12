@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://objects/chest/chest.tscn" id="5_rbvnx"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://objects/bonfire/bonfire.tscn" id="7_r3b8b"]
 [ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="8_wikpg"]
-[ext_resource type="PackedScene" uid="uid://dw0yjr6x44rvn" path="res://items/placeables/seeds/wheat_seeds/wheat_seeds.tscn" id="9_r3j46"]
+[ext_resource type="PackedScene" uid="uid://dw0yjr6x44rvn" path="res://items/consumables/seed_packet/wheat_seed_packet/wheat_seed_packet.tscn" id="9_r3j46"]
 [ext_resource type="PackedScene" uid="uid://ctx4yy08c3rf8" path="res://objects/floating_rock/floating_rock.tscn" id="9_w61mh"]
 [ext_resource type="PackedScene" uid="uid://cn1ugx36kidb1" path="res://characters/npcs/store_clerk/store_clerk.tscn" id="13_b1ul8"]
 
@@ -23,8 +23,7 @@ glow_strength = 0.93
 glow_blend_mode = 1
 glow_hdr_threshold = 0.4
 
-[node name="LevelParent" instance=ExtResource("1_e1v3i")]
-song = 2
+[node name="LevelOne" instance=ExtResource("1_e1v3i")]
 
 [node name="Parallax2D3" type="Parallax2D" parent="." index="0"]
 scroll_scale = Vector2(0.07, 1)

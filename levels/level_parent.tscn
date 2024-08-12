@@ -4,7 +4,7 @@
 [ext_resource type="Shader" path="res://components/light_component/light_canvas/lighting.gdshader" id="2_wfphl"]
 [ext_resource type="Script" path="res://components/light_component/light_canvas/lighting.gd" id="3_ot5lq"]
 [ext_resource type="Texture2D" uid="uid://dfnvxb6mwq7bx" path="res://utility/cursors/tile_highlight32.png" id="4_hagns"]
-[ext_resource type="PackedScene" uid="uid://dw0yjr6x44rvn" path="res://items/placeables/seeds/wheat_seeds/wheat_seeds.tscn" id="5_cv16q"]
+[ext_resource type="PackedScene" uid="uid://dxcgufvg2pwk5" path="res://items/tile_items/seeds/wheat_seeds/wheat_seeds.tscn" id="5_cv16q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gcfre"]
 shader = ExtResource("2_wfphl")

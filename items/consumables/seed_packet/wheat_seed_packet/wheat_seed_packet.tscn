@@ -1,0 +1,22 @@
+[gd_scene load_steps=7 format=3 uid="uid://dw0yjr6x44rvn"]
+
+[ext_resource type="PackedScene" uid="uid://bmr1dlmuibodj" path="res://menus/pause_menu/inventory_menu/inventory_item.tscn" id="1_bp1rc"]
+[ext_resource type="Texture2D" uid="uid://bku3lsh0hneqm" path="res://items/consumables/seed_packet/wheat_seed_packet/wheat_seed_packet.png" id="2_wgy5k"]
+[ext_resource type="Script" path="res://items/consumables/seed_packet/wheat_seed_packet/wheat_seed_packet.gd" id="3_6drrq"]
+[ext_resource type="PackedScene" uid="uid://cr0bppx0jviy8" path="res://items/components/use/use.tscn" id="4_f6mxs"]
+[ext_resource type="PackedScene" uid="uid://ddpqyqlouafs" path="res://items/components/place/place.tscn" id="5_0mtq3"]
+[ext_resource type="PackedScene" uid="uid://dxcgufvg2pwk5" path="res://items/tile_items/seeds/wheat_seeds/wheat_seeds.tscn" id="6_ieam3"]
+
+[node name="WheatSeeds" instance=ExtResource("1_bp1rc")]
+texture = ExtResource("2_wgy5k")
+script = ExtResource("3_6drrq")
+item_name = "Wheat Seed Packet"
+description = "Packet that contains wheat seeds."
+stackable = true
+
+[node name="Use" parent="." index="2" instance=ExtResource("4_f6mxs")]
+
+[node name="Place" parent="." index="3" node_paths=PackedStringArray("tile_item") instance=ExtResource("5_0mtq3")]
+tile_item = NodePath("WheatSeeds")
+
+[node name="WheatSeeds" parent="Place" index="0" instance=ExtResource("6_ieam3")]

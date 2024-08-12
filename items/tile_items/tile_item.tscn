@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://bf00i8b1jyqd0"]
+
+[node name="TileItem" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]

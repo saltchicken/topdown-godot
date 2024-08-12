@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://dxcgufvg2pwk5"]
+
+[ext_resource type="Script" path="res://items/tile_items/seeds/wheat_seeds/wheat_seeds.gd" id="1_54wh2"]
+[ext_resource type="PackedScene" uid="uid://bf00i8b1jyqd0" path="res://items/tile_items/tile_item.tscn" id="1_fk7q7"]
+[ext_resource type="Texture2D" uid="uid://1rj1c5ll3l2f" path="res://items/tile_items/seeds/wheat_seeds/wheat_seeds.png" id="2_j3jvi"]
+
+[node name="WheatSeeds" instance=ExtResource("1_fk7q7")]
+script = ExtResource("1_54wh2")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_j3jvi")

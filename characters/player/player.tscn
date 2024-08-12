@@ -3992,7 +3992,7 @@ scale = Vector2(1.03125, 1)
 texture = ExtResource("2_287s8")
 hframes = 8
 vframes = 8
-frame = 36
+frame = 37
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 root_node = NodePath("../Sprites/CharacterBase")
