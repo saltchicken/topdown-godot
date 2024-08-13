@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcm54qmvbhtcj"]
+
+[ext_resource type="Script" path="res://components/tile_select_component/tile_select_component.gd" id="1_02o31"]
+
+[node name="TileSelectComponent" type="Node2D"]
+script = ExtResource("1_02o31")

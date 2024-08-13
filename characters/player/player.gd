@@ -22,10 +22,6 @@ func _get_direction():
 @onready var current_weapon: get = _get_current_weapon
 func _get_current_weapon():
 	return profile.inventory_menu.current_weapon
-	
-	
-@onready var current_highlighted_tile_coords = Vector2i(0,0) # TODO: Needed for tile select layer. Clean this up
-	
 
 signal idle
 signal moving
@@ -55,26 +51,7 @@ func _ready() -> void:
 	pause_menu.connect(on_pause_menu)
 	
 func _physics_process(delta: float) -> void:
-	_highlight_select_layer()
 	collision = move_and_collide(velocity * delta) # TODO: Maybe move this to the state_machine's update
-	
-func _highlight_select_layer():
-	var current_level = get_node('/root/Gameplay').current_level
-	if !is_instance_valid(current_level):
-		push_warning("_highlight_select_layer is calling 'current level' which is freed. Probably can fix when this is refactored to be assigned on level load")
-		return
-	var tile_select_layer = current_level.get_node_or_null('TileSelectLayer') # TODOs: This should be set on level load so it doesn't keep getting called. This is inefficient.
-	if tile_select_layer == null:
-		push_error("There is no tile select layer. Should work when using inheritence from level parent")
-		return
-	var tile_map_coords = tile_select_layer.local_to_map(global_position)
-	tile_map_coords += Vector2i(direction)
-	if tile_map_coords != current_highlighted_tile_coords:
-		tile_select_layer.set_cell(current_highlighted_tile_coords, -1, Vector2i(-1,-1), -1)
-		tile_select_layer.set_cell(tile_map_coords, 0, Vector2i(0,0), 0)
-		current_highlighted_tile_coords = tile_map_coords
-	else:
-		pass
 	
 func disable():
 	print_debug("Player Disabled")

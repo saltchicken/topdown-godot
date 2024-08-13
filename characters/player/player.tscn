@@ -1,4 +1,4 @@
-[gd_scene load_steps=138 format=4 uid="uid://rf4wl30ejldv"]
+[gd_scene load_steps=139 format=4 uid="uid://rf4wl30ejldv"]
 
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_lbwvk"]
 [ext_resource type="PackedScene" uid="uid://cm1wpccpepime" path="res://menus/pause_menu/pause_menu.tscn" id="2_1p00w"]
@@ -28,6 +28,7 @@
 [ext_resource type="PackedScene" uid="uid://d3pu7tsmtkxp0" path="res://components/light_component/light_component.tscn" id="22_hfhot"]
 [ext_resource type="PackedScene" uid="uid://bp62iki7b7wd7" path="res://components/profile_component/inventory_subcomponent/inventory_subcomponent.tscn" id="22_jf1t5"]
 [ext_resource type="PackedScene" uid="uid://c5kuuqttcapcq" path="res://components/mana_component/mana_component.tscn" id="24_fsr47"]
+[ext_resource type="PackedScene" uid="uid://bcm54qmvbhtcj" path="res://components/tile_select_component/tile_select_component.tscn" id="29_shkgq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6evst"]
 radius = 5.0
@@ -4102,3 +4103,5 @@ amount = 100
 process_material = SubResource("ParticleProcessMaterial_euehk")
 texture = SubResource("NoiseTexture2D_yvhhh")
 one_shot = true
+
+[node name="TileSelectComponent" parent="." instance=ExtResource("29_shkgq")]
