@@ -8,7 +8,7 @@ extends HBoxContainer
 @onready var style_box = preload('res://menus/pause_menu/item_slot.tres')
 @onready var selected_style_box = preload('res://menus/pause_menu/highlighted_item_slot.tres')
 
-@onready var inventory_item = preload("res://menus/pause_menu/inventory_menu/inventory_item.tscn")
+@onready var inventory_item = preload("res://items/slot_items/inventory_item.tscn")
 
 func _set_selected_slot(new_value):
 	#if moving_item == true: # TODO: Needed because setting the selected slot to where it was before moving was bugged.

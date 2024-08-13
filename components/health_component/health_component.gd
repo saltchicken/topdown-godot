@@ -28,6 +28,9 @@ func i_frame_handler(delta):
 		
 func add_health(health_to_add):
 	health += health_to_add
+	
+func full_health():
+	health = MAX_HEALTH
 
 func damage(attack: Attack):
 	if health <= 0:

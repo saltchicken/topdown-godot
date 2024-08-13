@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbcfk118nxkn7"]
+[gd_scene load_steps=10 format=3 uid="uid://dbcfk118nxkn7"]
 
 [ext_resource type="Script" path="res://objects/tree/tree.gd" id="1_ll1q7"]
-[ext_resource type="Texture2D" uid="uid://q343hi5h3w3e" path="res://objects/tree/tree.png" id="1_wrrpp"]
 [ext_resource type="PackedScene" uid="uid://bgihn1242qk6t" path="res://components/health_component/health_component.tscn" id="2_qyjmv"]
+[ext_resource type="Texture2D" uid="uid://boh8qk3t77w7q" path="res://objects/tree/tree_spritesheet.png" id="2_r7gqw"]
 [ext_resource type="PackedScene" uid="uid://b8vr052ouuvpf" path="res://components/hitbox_component/hitbox_component.tscn" id="2_y2dvs"]
+[ext_resource type="PackedScene" uid="uid://dy04wfary7rnh" path="res://components/state_machine/state_machine.tscn" id="5_bvx2a"]
+[ext_resource type="Script" path="res://objects/tree/states/grown.gd" id="6_erjhx"]
+[ext_resource type="Script" path="res://objects/tree/states/stump.gd" id="7_djtbg"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpiw6"]
 radius = 7.0
@@ -13,28 +16,39 @@ height = 26.0
 radius = 8.0
 height = 28.0
 
-[node name="Tree" type="StaticBody2D"]
+[node name="Tree" type="StaticBody2D" node_paths=PackedStringArray("initial_state")]
 collision_layer = 8
 collision_mask = 15
 script = ExtResource("1_ll1q7")
+initial_state = NodePath("StateMachine/grown")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -18)
-texture = ExtResource("1_wrrpp")
-hframes = 2
+texture = ExtResource("2_r7gqw")
+hframes = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_dpiw6")
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_qyjmv")]
+[node name="HealthComponent" parent="." node_paths=PackedStringArray("state_machine") instance=ExtResource("2_qyjmv")]
 MAX_HEALTH = 30.0
+state_machine = NodePath("../StateMachine")
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_y2dvs")]
+collision_layer = 2
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, 1)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_6jud6")
+
+[node name="StateMachine" parent="." instance=ExtResource("5_bvx2a")]
+
+[node name="grown" type="Node2D" parent="StateMachine"]
+script = ExtResource("6_erjhx")
+
+[node name="stump" type="Node2D" parent="StateMachine"]
+script = ExtResource("7_djtbg")
