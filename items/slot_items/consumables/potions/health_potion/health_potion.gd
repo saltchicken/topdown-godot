@@ -1,11 +1,5 @@
 extends Potion
 
-#@export_enum("HEALTH", "MANA") var potion_type
-
-
-
-
-
 func use(player, item_slot):
 	var health_component = player.get_node_or_null("HealthComponent")
 	if health_component != null:
@@ -13,14 +7,4 @@ func use(player, item_slot):
 		consume_item(item_slot)
 	else:
 		push_error("Target of item use does not have a HealthComponent")
-
-func consume_item(item_slot):
-	var item = item_slot.get_item()
-	if item.stack_count > 1:
-		item.stack_count -= 1
-	elif item.stack_count == 1:
-		item_slot.remove_child(item)
-		item.queue_free()
-	else:
-		push_error("Stack count should not be 0 or lower. Item stack count is ", item.stack_count)
 	
