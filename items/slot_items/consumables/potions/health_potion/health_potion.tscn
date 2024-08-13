@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://qsp0oi6l073w"]
 
-[ext_resource type="PackedScene" uid="uid://bmr1dlmuibodj" path="res://menus/pause_menu/inventory_menu/inventory_item.tscn" id="1_cdqrr"]
-[ext_resource type="Texture2D" uid="uid://brwx53noqrhao" path="res://items/consumables/potions/health_potion/health_potion.png" id="2_3t7ur"]
-[ext_resource type="Script" path="res://items/consumables/potions/health_potion/health_potion.gd" id="3_f74ri"]
+[ext_resource type="PackedScene" uid="uid://bmr1dlmuibodj" path="res://items/slot_items/inventory_item.tscn" id="1_cdqrr"]
+[ext_resource type="Texture2D" uid="uid://brwx53noqrhao" path="res://items/slot_items/consumables/potions/health_potion/health_potion.png" id="2_3t7ur"]
+[ext_resource type="Script" path="res://items/slot_items/consumables/potions/health_potion/health_potion.gd" id="3_f74ri"]
 [ext_resource type="PackedScene" uid="uid://cr0bppx0jviy8" path="res://items/components/use/use.tscn" id="3_gceux"]
 
 [node name="HealthPotion" instance=ExtResource("1_cdqrr")]

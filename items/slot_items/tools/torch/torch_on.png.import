@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfw7vbho84bjs"
-path="res://.godot/imported/bow.png-5d3692a3996d344004d78117f910a5bc.ctex"
+uid="uid://bqjk8ebaoqj3l"
+path="res://.godot/imported/torch_on.png-96757b1b070f70a30a463633f852bc83.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/equipment/weapons/bow/bow.png"
-dest_files=["res://.godot/imported/bow.png-5d3692a3996d344004d78117f910a5bc.ctex"]
+source_file="res://items/slot_items/tools/torch/torch_on.png"
+dest_files=["res://.godot/imported/torch_on.png-96757b1b070f70a30a463633f852bc83.ctex"]
 
 [params]
 

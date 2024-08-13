@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bqjk8ebaoqj3l"
-path="res://.godot/imported/torch_on.png-faacf2fceaa75305f0a9f415ef1896ac.ctex"
+uid="uid://bldnmkgtryva6"
+path="res://.godot/imported/iron_sword.png-16c7fdcb649fab947fc708ded60dcce2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/tools/torch/torch_on.png"
-dest_files=["res://.godot/imported/torch_on.png-faacf2fceaa75305f0a9f415ef1896ac.ctex"]
+source_file="res://items/slot_items/equipment/weapons/iron_sword/iron_sword.png"
+dest_files=["res://.godot/imported/iron_sword.png-16c7fdcb649fab947fc708ded60dcce2.ctex"]
 
 [params]
 

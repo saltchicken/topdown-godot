@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bku3lsh0hneqm"
-path="res://.godot/imported/wheat_seed_packet.png-2fb98c4e01406499f94e9b10fe8a8f98.ctex"
+uid="uid://djmff0ol6mag2"
+path="res://.godot/imported/potions.png-c48912350add6d699b6284a3894fdd93.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/consumables/seed_packet/wheat_seed_packet/wheat_seed_packet.png"
-dest_files=["res://.godot/imported/wheat_seed_packet.png-2fb98c4e01406499f94e9b10fe8a8f98.ctex"]
+source_file="res://items/slot_items/consumables/potions/potions.png"
+dest_files=["res://.godot/imported/potions.png-c48912350add6d699b6284a3894fdd93.ctex"]
 
 [params]
 

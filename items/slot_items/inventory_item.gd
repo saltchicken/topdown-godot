@@ -31,8 +31,7 @@ func _ready():
 	#stretch_mode = TextureRect.STRETCH_KEEP_ASPECT_CENTERED
 	collect.connect(_on_collect)
 	tooltip_text = "%s\n%s" % [item_name, description]
-	size = Vector2(32.0, 32.0)
-	print(size)
+	size = Vector2(32.0, 32.0) # TODO: Revisit this. Is it needed?
 	get_node("CollectableComponent").position = size / 2
 		#stackable = data.stackable
 		

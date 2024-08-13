@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://bxqs6ax1lxi8k"]
 
-[ext_resource type="PackedScene" uid="uid://bmr1dlmuibodj" path="res://menus/pause_menu/inventory_menu/inventory_item.tscn" id="1_ucwnn"]
-[ext_resource type="Texture2D" uid="uid://dijcvom2cjk3w" path="res://items/tools/torch/torch.png" id="1_wkk8j"]
-[ext_resource type="Script" path="res://items/tools/torch/torch.gd" id="1_ws134"]
+[ext_resource type="PackedScene" uid="uid://bmr1dlmuibodj" path="res://items/slot_items/inventory_item.tscn" id="1_ucwnn"]
+[ext_resource type="Texture2D" uid="uid://dijcvom2cjk3w" path="res://items/slot_items/tools/torch/torch.png" id="1_wkk8j"]
+[ext_resource type="Script" path="res://items/slot_items/tools/torch/torch.gd" id="1_ws134"]
 [ext_resource type="PackedScene" uid="uid://cr0bppx0jviy8" path="res://items/components/use/use.tscn" id="3_lpphq"]
 
 [node name="Torch" instance=ExtResource("1_ucwnn")]

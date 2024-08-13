@@ -110,7 +110,7 @@ func _process(_delta):
 				if !selected_slot.is_valid_move_slot(item_to_be_moved):
 					cancel_item_move()
 				elif selected_slot.is_item_in_slot_moving():
-					print(item_to_be_moved.item_name)
+					#print(item_to_be_moved.item_name)
 					if item_to_be_moved.item_name == selected_slot.get_item().item_name and item_to_be_moved.stackable:
 						selected_slot.combine_stack(item_to_be_moved)
 					else:
@@ -213,8 +213,7 @@ func get_first_open_slot():
 	return null
 
 # NOTE: Has not been tested
-func is_in_inventory(item): # TODO: Implement
-	print("FChecking ", item)
+func is_in_inventory(item):
 	var existing_slots = []
 	for row_index in inventory_rows:
 		for slot_index in slots[row_index].size():

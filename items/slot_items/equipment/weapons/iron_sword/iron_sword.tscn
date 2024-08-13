@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsmwq2fdpkht4"]
+
+[ext_resource type="Script" path="res://items/slot_items/equipment/weapons/iron_sword/iron_sword.gd" id="1_fv8gl"]
+[ext_resource type="PackedScene" uid="uid://bmr1dlmuibodj" path="res://items/slot_items/inventory_item.tscn" id="1_viqyo"]
+[ext_resource type="Texture2D" uid="uid://bldnmkgtryva6" path="res://items/slot_items/equipment/weapons/iron_sword/iron_sword.png" id="2_dqnjn"]
+
+[node name="IronSword" instance=ExtResource("1_viqyo")]
+texture = ExtResource("2_dqnjn")
+script = ExtResource("1_fv8gl")
+attack_type = 1
+attack_damage = 45
+type = 5
+item_name = "Iron Sword"
+description = "An iron sword"

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://brwx53noqrhao"
-path="res://.godot/imported/health_potion.png-4025dea17b9d15fe487c181b375b6b68.ctex"
+uid="uid://cfw7vbho84bjs"
+path="res://.godot/imported/bow.png-db118d207420b682b7fb6c1e543f4aa3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/consumables/potions/health_potion/health_potion.png"
-dest_files=["res://.godot/imported/health_potion.png-4025dea17b9d15fe487c181b375b6b68.ctex"]
+source_file="res://items/slot_items/equipment/weapons/bow/bow.png"
+dest_files=["res://.godot/imported/bow.png-db118d207420b682b7fb6c1e543f4aa3.ctex"]
 
 [params]
 

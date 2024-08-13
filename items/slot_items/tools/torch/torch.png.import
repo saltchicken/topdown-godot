@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://djmff0ol6mag2"
-path="res://.godot/imported/potions.png-012c4bdb574788378c37290f0f400df1.ctex"
+uid="uid://dijcvom2cjk3w"
+path="res://.godot/imported/torch.png-8d575d1093a8c4ceacec854b3b08534a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/consumables/potions/potions.png"
-dest_files=["res://.godot/imported/potions.png-012c4bdb574788378c37290f0f400df1.ctex"]
+source_file="res://items/slot_items/tools/torch/torch.png"
+dest_files=["res://.godot/imported/torch.png-8d575d1093a8c4ceacec854b3b08534a.ctex"]
 
 [params]
 

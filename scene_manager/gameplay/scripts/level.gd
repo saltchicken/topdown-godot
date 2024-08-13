@@ -83,8 +83,8 @@ func init_level(level_name):
 	
 	#print(level_data_from_load)
 	if level_data_from_load != null:
-		for key in level_data_from_load.keys():
-			print(key)
+		#for key in level_data_from_load.keys():
+			#print(key)
 		if level_data_from_load != null:
 			var level_chests = self.get_node("Chests").get_children()
 			for chest in level_data_from_load["chests"].keys():

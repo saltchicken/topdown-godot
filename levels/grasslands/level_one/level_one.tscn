@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://ev2pt4t6olb2"]
+[gd_scene load_steps=16 format=4 uid="uid://ev2pt4t6olb2"]
 
 [ext_resource type="PackedScene" uid="uid://b1kunl044yulu" path="res://levels/level_parent.tscn" id="1_e1v3i"]
 [ext_resource type="Texture2D" uid="uid://dcq6mnnvbbpw2" path="res://levels/grasslands/level_one/grassland_sky.png" id="2_32n1n"]
@@ -10,8 +10,9 @@
 [ext_resource type="PackedScene" uid="uid://bspgte3mfuy0r" path="res://objects/chest/chest.tscn" id="5_rbvnx"]
 [ext_resource type="PackedScene" uid="uid://cxncyww8qag7b" path="res://objects/bonfire/bonfire.tscn" id="7_r3b8b"]
 [ext_resource type="PackedScene" uid="uid://crt86hiji50om" path="res://characters/enemies/red_slime/red_slime.tscn" id="8_wikpg"]
-[ext_resource type="PackedScene" uid="uid://dw0yjr6x44rvn" path="res://items/consumables/seed_packet/wheat_seed_packet/wheat_seed_packet.tscn" id="9_r3j46"]
+[ext_resource type="PackedScene" uid="uid://dw0yjr6x44rvn" path="res://items/slot_items/consumables/seed_packet/wheat_seed_packet/wheat_seed_packet.tscn" id="9_r3j46"]
 [ext_resource type="PackedScene" uid="uid://ctx4yy08c3rf8" path="res://objects/floating_rock/floating_rock.tscn" id="9_w61mh"]
+[ext_resource type="PackedScene" uid="uid://dsmwq2fdpkht4" path="res://items/slot_items/equipment/weapons/iron_sword/iron_sword.tscn" id="10_sclki"]
 [ext_resource type="PackedScene" uid="uid://cn1ugx36kidb1" path="res://characters/npcs/store_clerk/store_clerk.tscn" id="13_b1ul8"]
 
 [sub_resource type="Environment" id="Environment_dp1ku"]
@@ -83,7 +84,7 @@ position = Vector2(-216, -2)
 [node name="Chest2" parent="Chests" index="1" instance=ExtResource("5_rbvnx")]
 position = Vector2(-103, -1)
 
-[node name="WheatSeeds" parent="Chests/Chest2" index="6" instance=ExtResource("9_r3j46")]
+[node name="IronSword" parent="Chests/Chest2" index="6" instance=ExtResource("10_sclki")]
 
 [node name="Bonfire" parent="Bonfires" index="0" instance=ExtResource("7_r3b8b")]
 position = Vector2(-281, -141)

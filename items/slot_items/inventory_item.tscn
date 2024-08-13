@@ -1,12 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmr1dlmuibodj"]
 
-[ext_resource type="Script" path="res://menus/pause_menu/inventory_menu/inventory_item.gd" id="1_fghgc"]
-[ext_resource type="PackedScene" uid="uid://b6f6ukhgclrvr" path="res://components/collectable_component/collectable_component.tscn" id="2_3u7qs"]
+[ext_resource type="Script" path="res://items/slot_items/inventory_item.gd" id="1_xclb2"]
+[ext_resource type="PackedScene" uid="uid://b6f6ukhgclrvr" path="res://components/collectable_component/collectable_component.tscn" id="2_dyn8a"]
 
 [node name="InventoryItem" type="TextureRect"]
 expand_mode = 1
 stretch_mode = 5
-script = ExtResource("1_fghgc")
+script = ExtResource("1_xclb2")
 type = 7
 
 [node name="StackNumberPanel" type="Panel" parent="."]
@@ -42,4 +42,4 @@ theme_override_font_sizes/font_size = 10
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="CollectableComponent" parent="." instance=ExtResource("2_3u7qs")]
+[node name="CollectableComponent" parent="." instance=ExtResource("2_dyn8a")]

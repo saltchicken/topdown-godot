@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bldnmkgtryva6"
-path="res://.godot/imported/iron_sword.png-8e94ebf19999194f96d8f9f6630aa5ac.ctex"
+uid="uid://bku3lsh0hneqm"
+path="res://.godot/imported/wheat_seed_packet.png-e036dd7046b6b9e2bf2efd89fc0fefcc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://items/equipment/weapons/iron_sword/iron_sword.png"
-dest_files=["res://.godot/imported/iron_sword.png-8e94ebf19999194f96d8f9f6630aa5ac.ctex"]
+source_file="res://items/slot_items/consumables/seed_packet/wheat_seed_packet/wheat_seed_packet.png"
+dest_files=["res://.godot/imported/wheat_seed_packet.png-e036dd7046b6b9e2bf2efd89fc0fefcc.ctex"]
 
 [params]
 
