@@ -227,6 +227,7 @@ func drop_item():
 	var item = selected_slot.get_item()
 	selected_slot.remove_child(item)
 	var drop_component = player.get_node("Drop")
+	drop_component.add_child(item)
 	drop_component._drop(item)
 
 #func set_purse_text():
