@@ -39,7 +39,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	process_position(self, delta)
 	
-func process_position(parent, delta):
+func process_position(_parent, _delta):
 	pass
 
 func _on_hitbox_area_entered(area):

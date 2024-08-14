@@ -8,7 +8,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var lights_dict = get_lights()
 	#var light_positions = get_light_positions()
 	#print(light_positions)

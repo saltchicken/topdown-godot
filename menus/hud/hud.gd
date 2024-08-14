@@ -21,5 +21,5 @@ func on_mana_update():
 	mana_gauge.material.set_shader_parameter("fillValue", mana_component.mana / mana_component.MAX_MANA)
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass

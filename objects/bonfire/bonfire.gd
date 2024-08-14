@@ -21,7 +21,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func on_interact(interactor):
+func on_interact(_interactor):
 	if is_bonfire_on():
 		print("Bonfire is already lit")
 	else:

@@ -4,7 +4,7 @@ func _ready():
 	self.visible = false
 	get_node('BlurRect').set_size(get_viewport().get_visible_rect().size)
 	
-	get_node("MenuTabs").tab_selected.connect(func(x): print("hello"))
+	get_node("MenuTabs").tab_selected.connect(func(_x): print("hello"))
 	
 func _process(_delta):
 	if Input.is_action_just_pressed('inventory') or Input.is_action_just_pressed('escape'):

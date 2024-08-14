@@ -37,12 +37,12 @@ func stop_song():
 	#return option_panel_instance
 
 @onready var dialogue_node = get_node("Text/DialogueLayer")	
-func dialogue_panel(parent_node, text_array: Array):
+func dialogue_panel(_parent_node, text_array: Array):
 	dialogue_node.show()
 	dialogue_node.set_text(text_array)
 	
 @onready var option_node = get_node("Text/OptionPanel")
-func option_panel(parent_node, option_array: Array):
+func option_panel(_parent_node, option_array: Array):
 	option_node.show()
 	option_node.set_options(option_array)
 	

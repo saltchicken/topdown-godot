@@ -1,4 +1,4 @@
 extends Spell
 
-func process_position(parent, delta):
+func process_position(_parent, _delta):
 	pass
