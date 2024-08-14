@@ -37,7 +37,7 @@ func save():
 		#"equipment" : Global.save_slots_to_dict(inventory_menu.equipment_slots),
 		#"toolbelt" : Global.save_slots_to_dict(toolbelt.toolbelt_slots),
 		"items" : Global.save_slots_to_array(inventory_menu.slots),
-		"items_selected_slot" : [inventory_menu.selected_slot.x, inventory_menu.selected_slot.y],
+		"items_selected_slot" : [inventory_menu._selected_slot.x, inventory_menu._selected_slot.y],
 		"spells_selected_slot" : spell_menu.selected_slot
 	}
 	return save_dict
@@ -62,7 +62,7 @@ func load_items(node_data):
 		var slot = inventory_menu.get_slot(item[1])
 		slot.add_item(item[0])
 		slot.get_item().stack_count = item[2]
-	inventory_menu.selected_slot = Vector2i(node_data["items_selected_slot"][0], node_data["items_selected_slot"][1])
+	inventory_menu._selected_slot = Vector2i(node_data["items_selected_slot"][0], node_data["items_selected_slot"][1])
 	#for item in node_data["items"]:
 		#var slot = node_data["items"][item]
 		#inventory_menu.get_slot(slot).add_item(item)

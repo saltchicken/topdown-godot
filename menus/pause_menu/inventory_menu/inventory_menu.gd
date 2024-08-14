@@ -44,8 +44,9 @@ func _get_current_weapon():
 		return null
 
 #@onready var purse_label = get_node('PurseLabel')
-#
-@onready var selected_slot: Vector2i = Vector2i(4,0): set = _set_selected_slot
+
+@onready var _selected_slot: Vector2i : set = _set_selected_slot
+@onready var selected_slot: InventorySlot
 func _set_selected_slot(vector):
 	if vector[ROW] < 0: vector[ROW] = 0
 	if vector[COLUMN] < 0: vector[COLUMN] = 0
@@ -54,11 +55,13 @@ func _set_selected_slot(vector):
 	
 	# TODO When slot selection is on the right hand side then even the selection out
 	
+	var previous_slot = get_slot(_selected_slot) # selected_slot is the previous slot
+	selected_slot = get_slot(vector)
 	if moving_item == false:	
-		select_new_slot(selected_slot, vector) # selected_slot is the previous slot
+		select_new_slot(previous_slot, selected_slot)
 	else:
-		select_new_move_slot(selected_slot, vector)
-	selected_slot = vector
+		select_new_move_slot(previous_slot, selected_slot)
+	_selected_slot = vector
 	
 @onready var initial_moved_from_slot = null
 @onready var moving_item = false
@@ -72,7 +75,8 @@ func _ready() -> void:
 	for row in slots:
 		for slot in row:
 			slot.change_inventory.connect(inventory_changed.bind(slot))
-		
+	
+	_selected_slot = Vector2i(4,0)	
 	select_new_slot(selected_slot, selected_slot)
 	
 	#selection_menu.visible = false
@@ -91,13 +95,12 @@ func _process(_delta):
 	#process_mode = Node.PROCESS_MODE_WHEN_PAUSED
 	#print('inventory menu processing')
 	if pause_menu.visible and inventory_tab.visible and selection_menu.visible == false:
-		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'): selected_slot[COLUMN] -= 1
-		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'): selected_slot[COLUMN] += 1
-		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'): selected_slot[ROW] -= 1
-		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'): selected_slot[ROW] += 1
+		if Input.is_action_just_pressed('left') or Input.is_action_just_pressed('joystick_left'): _selected_slot[COLUMN] -= 1
+		if Input.is_action_just_pressed('right') or Input.is_action_just_pressed('joystick_right'): _selected_slot[COLUMN] += 1
+		if Input.is_action_just_pressed('up') or Input.is_action_just_pressed('joystick_up'): _selected_slot[ROW] -= 1
+		if Input.is_action_just_pressed('down') or Input.is_action_just_pressed('joystick_down'): _selected_slot[ROW] += 1
 		if moving_item == false:
 				if Input.is_action_just_pressed('slot_select_confirm'):
-					var selected_slot = get_slot(selected_slot)
 					if selected_slot.is_item_in_slot():
 						#await get_tree().process_frame # TODO: Is this one needed for selection menu
 						open_selection_menu(selected_slot.get_item())
@@ -106,7 +109,6 @@ func _process(_delta):
 		else:
 			if Input.is_action_just_pressed('slot_select_confirm'):
 				# TODO: This needs to also implement stacking
-				var selected_slot = get_slot(selected_slot)
 				if !selected_slot.is_valid_move_slot(item_to_be_moved):
 					cancel_item_move()
 				elif selected_slot.is_item_in_slot_moving():
@@ -114,7 +116,6 @@ func _process(_delta):
 					if item_to_be_moved.item_name == selected_slot.get_item().item_name and item_to_be_moved.stackable:
 						selected_slot.combine_stack(item_to_be_moved)
 					else:
-						var initial_moved_from_slot = get_slot(initial_moved_from_slot)
 						if selected_slot.get_item().type == initial_moved_from_slot.type or initial_moved_from_slot.type == InventoryItem.Type.MAIN:
 							var item_to_exchange = selected_slot.get_item()
 							selected_slot.remove_child(item_to_exchange)
@@ -132,12 +133,11 @@ func _process(_delta):
 func on_selection_menu_action(action):
 	match action:
 		"Use":
-			var item_slot = get_slot(selected_slot)
-			item_slot.get_item().get_node("Use").use(self, item_slot)
+			selected_slot.get_item().get_node("Use").use(self, selected_slot)
 			close_selection_menu()
 		"Move":
 			close_selection_menu()
-			item_to_be_moved = get_slot(selected_slot).get_item()
+			item_to_be_moved = selected_slot.get_item()
 			initial_moved_from_slot = selected_slot
 			moving_item = true
 		"Close":
@@ -149,21 +149,21 @@ func on_selection_menu_action(action):
 			push_error(action, " not implemented yet")
 	
 	
-func select_new_slot(previous_vector, vector):
-	get_slot(previous_vector).add_theme_stylebox_override('panel', style_box)
-	get_slot(vector).add_theme_stylebox_override('panel', selected_style_box)
+func select_new_slot(previous_slot, new_slot):
+	previous_slot.add_theme_stylebox_override('panel', style_box)
+	new_slot.add_theme_stylebox_override('panel', selected_style_box)
 	
 func select_new_move_slot(previous_move_slot, new_slot):
 	# TODO: Add some additional display to show that move selection is on
 	if previous_move_slot != new_slot:
-		get_slot(previous_move_slot).add_theme_stylebox_override('panel', style_box)
-		get_slot(new_slot).add_theme_stylebox_override('panel', selected_style_box)
-		get_slot(previous_move_slot).remove_child(item_to_be_moved)
-		get_slot(new_slot).add_child(item_to_be_moved)
+		previous_move_slot.add_theme_stylebox_override('panel', style_box)
+		new_slot.add_theme_stylebox_override('panel', selected_style_box)
+		previous_move_slot.remove_child(item_to_be_moved)
+		new_slot.add_child(item_to_be_moved)
 	
 func cancel_item_move():
-	get_slot(selected_slot).remove_child(item_to_be_moved)
-	get_slot(initial_moved_from_slot).add_child(item_to_be_moved)
+	selected_slot.remove_child(item_to_be_moved)
+	initial_moved_from_slot.add_child(item_to_be_moved)
 	
 func exit_move_mode():
 	await get_tree().process_frame
@@ -173,7 +173,6 @@ func exit_move_mode():
 	
 func open_selection_menu(item):
 	selection_menu.set_buttons(item)
-	var selected_slot = get_slot(selected_slot)
 	selection_menu.get_node("PanelContainer").global_position = selected_slot.global_position + Vector2(selected_slot.size.x, 0.0)
 	selection_menu.selected_button = 0
 	selection_menu.visible = true
@@ -223,7 +222,6 @@ func is_in_inventory(item):
 	return existing_slots
 	
 func drop_item():
-	var selected_slot = get_slot(selected_slot)
 	var item = selected_slot.get_item()
 	selected_slot.remove_child(item)
 	var drop_component = player.get_node("Drop")
