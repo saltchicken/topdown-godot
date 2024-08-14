@@ -6,8 +6,6 @@ class_name Tree_ extends StaticBody2D
 
 @export var experience = 0
 
-@onready var despawn_drop = preload('res://items/slot_items/consumables/chopped_wood/chopped_wood.tscn')
-
 signal death
 signal despawn
 
@@ -26,9 +24,7 @@ func on_death():
 	
 func on_despawn():
 	print("despawning tree")
-	var drop = despawn_drop.instantiate()
-	drop.global_position = global_position
-	get_tree().current_scene.get_node("LevelHolder").get_children()[0].add_child(drop)
+	get_node("Drop").drop_items()
 	queue_free()
 
 

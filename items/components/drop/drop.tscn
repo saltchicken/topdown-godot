@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhx16w3aumnlj"]
+
+[ext_resource type="Script" path="res://items/components/drop/drop.gd" id="1_ksskt"]
+
+[node name="Drop" type="Node2D"]
+script = ExtResource("1_ksskt")

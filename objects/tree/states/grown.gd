@@ -8,7 +8,7 @@ func Enter():
 	pass
 	
 func Exit():
-	print("Drop some wood")
+	pass
 	
 func Update(_delta:float):
 	pass

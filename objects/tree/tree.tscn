@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbcfk118nxkn7"]
+[gd_scene load_steps=12 format=3 uid="uid://dbcfk118nxkn7"]
 
 [ext_resource type="Script" path="res://objects/tree/tree.gd" id="1_ll1q7"]
 [ext_resource type="PackedScene" uid="uid://bgihn1242qk6t" path="res://components/health_component/health_component.tscn" id="2_qyjmv"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dy04wfary7rnh" path="res://components/state_machine/state_machine.tscn" id="5_bvx2a"]
 [ext_resource type="Script" path="res://objects/tree/states/grown.gd" id="6_erjhx"]
 [ext_resource type="Script" path="res://objects/tree/states/stump.gd" id="7_djtbg"]
+[ext_resource type="PackedScene" uid="uid://bhx16w3aumnlj" path="res://items/components/drop/drop.tscn" id="8_stb5q"]
+[ext_resource type="PackedScene" uid="uid://oxwqgqxnquko" path="res://items/slot_items/consumables/chopped_wood/chopped_wood.tscn" id="9_72lio"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpiw6"]
 radius = 7.0
@@ -52,3 +54,7 @@ script = ExtResource("6_erjhx")
 
 [node name="stump" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_djtbg")
+
+[node name="Drop" parent="." instance=ExtResource("8_stb5q")]
+
+[node name="ChoppedWood" parent="Drop" instance=ExtResource("9_72lio")]
