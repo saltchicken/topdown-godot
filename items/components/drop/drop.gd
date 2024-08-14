@@ -14,7 +14,8 @@ func drop_items():
 func _drop(item):
 	remove_child(item)
 	item.global_position = global_position
-	item.size = Vector2(32.0, 32.0) # TODO: Better handling of size forcing
+	if item is InventoryItem:
+		item.size = Vector2(32.0, 32.0) # TODO: Better handling of size forcing
 	_enable_item(item) 
 	get_tree().current_scene.get_node("LevelHolder").get_children()[0].add_child(item) # TODO: Replace this with a call to Global
 	
