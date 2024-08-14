@@ -26,8 +26,8 @@
 [ext_resource type="PackedScene" uid="uid://j8mce13gumtk" path="res://components/interact_component/interact_component.tscn" id="20_d53nx"]
 [ext_resource type="PackedScene" uid="uid://dt1k1o6u0yqlq" path="res://components/profile_component/profile_component.tscn" id="22_fc5td"]
 [ext_resource type="PackedScene" uid="uid://d3pu7tsmtkxp0" path="res://components/light_component/light_component.tscn" id="22_hfhot"]
-[ext_resource type="PackedScene" uid="uid://bp62iki7b7wd7" path="res://components/profile_component/inventory_subcomponent/inventory_subcomponent.tscn" id="22_jf1t5"]
 [ext_resource type="PackedScene" uid="uid://c5kuuqttcapcq" path="res://components/mana_component/mana_component.tscn" id="24_fsr47"]
+[ext_resource type="PackedScene" uid="uid://bhx16w3aumnlj" path="res://items/components/drop/drop.tscn" id="29_n5jjh"]
 [ext_resource type="PackedScene" uid="uid://bcm54qmvbhtcj" path="res://components/tile_select_component/tile_select_component.tscn" id="29_shkgq"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_6evst"]
@@ -3967,8 +3967,6 @@ shape = SubResource("CapsuleShape2D_6evst")
 
 [node name="ProfileComponent" parent="." instance=ExtResource("22_fc5td")]
 
-[node name="InventoryComponent" parent="ProfileComponent" instance=ExtResource("22_jf1t5")]
-
 [node name="PauseMenu" parent="ProfileComponent" instance=ExtResource("2_1p00w")]
 visible = false
 
@@ -3993,7 +3991,7 @@ scale = Vector2(1.03125, 1)
 texture = ExtResource("2_287s8")
 hframes = 8
 vframes = 8
-frame = 39
+frame = 35
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 root_node = NodePath("../Sprites/CharacterBase")
@@ -4105,3 +4103,5 @@ texture = SubResource("NoiseTexture2D_yvhhh")
 one_shot = true
 
 [node name="TileSelectComponent" parent="." instance=ExtResource("29_shkgq")]
+
+[node name="Drop" parent="." instance=ExtResource("29_n5jjh")]
