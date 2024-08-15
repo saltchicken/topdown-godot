@@ -5,6 +5,9 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_vlmfe"]
 radius = 7.07107
 
+[sub_resource type="Animation" id="Animation_yu1dc"]
+length = 0.001
+
 [sub_resource type="Animation" id="Animation_sdqvt"]
 resource_name = "drop_bounce"
 step = 0.05
@@ -20,9 +23,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(0, 0), Vector2(0, 10), Vector2(0, 0), Vector2(0, 7), Vector2(0, 0), Vector2(0, 4), Vector2(0, 0)]
 }
-
-[sub_resource type="Animation" id="Animation_yu1dc"]
-length = 0.001
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vt2wm"]
 _data = {

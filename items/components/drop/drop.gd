@@ -27,8 +27,13 @@ func _drop(item):
 	#_enable_item(item) 
 	item.visible = true
 	get_tree().current_scene.get_node("LevelHolder").get_children()[0].add_child(dropper) # TODO: Replace this with a call to Global
-	dropper.velocity = Vector2(0.0, 200.0).rotated(randf_range(-1.5, 1.5))  * randf_range(0.9, 1.5)
-	#dropper.velocity = owner.velocity.rotated(randf_range(-1.5, 1.5)) * randf_range(0.9, 1.5)
+	if owner is StaticBody2D:
+		dropper.velocity = Vector2(0.0, 100.0).rotated(randf_range(-1.5, 1.5))  * randf_range(0.9, 1.5)
+	elif owner is CharacterBody2D:
+		dropper.velocity = owner.velocity.rotated(randf_range(-1.5, 1.5)) * randf_range(0.9, 1.5)
+	else:
+		push_error("This owner type hasn't been accounted for ", owner, " defaulted to StaticBody2D response")
+		dropper.velocity = Vector2(0.0, 100.0).rotated(randf_range(-1.5, 1.5))  * randf_range(0.9, 1.5)
 	
 	
 	
