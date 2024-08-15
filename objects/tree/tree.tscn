@@ -58,3 +58,5 @@ script = ExtResource("7_djtbg")
 [node name="Drop" parent="." instance=ExtResource("8_stb5q")]
 
 [node name="ChoppedWood" parent="Drop" instance=ExtResource("9_72lio")]
+
+[node name="ChoppedWood2" parent="Drop" instance=ExtResource("9_72lio")]

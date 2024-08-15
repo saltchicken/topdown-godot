@@ -3,6 +3,8 @@ extends Node2D
 @onready var item_to_drop
 @onready var drops = get_children() # TODO: Validate these drops
 
+@onready var dropper_node = preload("res://items/components/drop/dropper/dropper.tscn")
+
 func _ready() -> void:
 	for drop in drops:
 		_disable_item(drop)
@@ -13,11 +15,19 @@ func drop_items():
 	
 func _drop(item):
 	remove_child(item)
-	item.global_position = global_position
+	var dropper = dropper_node.instantiate()
+	dropper.global_position = global_position + Vector2(randf() * 16, randf() * 16)
+	item.position = Vector2(0.0,0.0)
+	dropper.item_to_drop = item
+	dropper.add_child(item)
 	if item is InventoryItem:
 		item.size = Vector2(32.0, 32.0) # TODO: Better handling of size forcing
-	_enable_item(item) 
-	get_tree().current_scene.get_node("LevelHolder").get_children()[0].add_child(item) # TODO: Replace this with a call to Global
+	#_enable_item(item) 
+	item.visible = true
+	get_tree().current_scene.get_node("LevelHolder").get_children()[0].add_child(dropper) # TODO: Replace this with a call to Global
+	dropper.velocity = Vector2(0.0, -10.0).rotated(randf_range(-0.5, 0.5)) * randf_range(0.9, 1.5)
+	#dropper.velocity = owner.velocity.rotated(randf_range(-1.5, 1.5)) * randf_range(0.9, 1.5)
+	
 	
 	
 func _disable_item(item):
