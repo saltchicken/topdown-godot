@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://qg7s6h74a0s5"]
+
+[ext_resource type="Script" path="res://components/defense_profile_component/defense_type/defense_type.gd" id="1_8do2e"]
+
+[node name="DefenseType" type="Node2D"]
+script = ExtResource("1_8do2e")

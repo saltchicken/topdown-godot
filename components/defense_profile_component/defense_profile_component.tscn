@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dgex5xrfllv3t"]
+
+[ext_resource type="Script" path="res://components/defense_profile_component/defense_profile_component.gd" id="1_ohdsj"]
+
+[node name="DefenseProfileComponent" type="Node2D"]
+script = ExtResource("1_ohdsj")

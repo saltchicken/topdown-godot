@@ -4,7 +4,7 @@ class_name HealthComponent extends Node2D
 @export var state_machine: FiniteStateMachine
 var health : float : set = _set_health
 
-@onready var resistances = owner.get_node_or_null("ResistancesComponent")
+@onready var resistances = owner.get_node_or_null("DefenseProfileComponent")
 
 signal health_update
 

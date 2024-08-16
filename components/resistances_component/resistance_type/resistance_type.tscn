@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://qg7s6h74a0s5"]
-
-[ext_resource type="Script" path="res://components/resistances_component/resistance_type/resistance_type.gd" id="1_d122s"]
-
-[node name="ResistanceType" type="Node2D"]
-script = ExtResource("1_d122s")
