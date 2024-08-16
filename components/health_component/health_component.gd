@@ -4,7 +4,7 @@ class_name HealthComponent extends Node2D
 @export var state_machine: FiniteStateMachine
 var health : float : set = _set_health
 
-@onready var resistances = owner.get_node_or_null("Resistances")
+@onready var resistances = owner.get_node_or_null("ResistancesComponent")
 
 signal health_update
 
@@ -36,9 +36,9 @@ func full_health():
 
 func damage(attack: Attack):
 	var damage = attack.attack_damage
-	print(attack.attack.attack_type)
+	#print(attack.attack.attack_type)
 	if resistances != null:
-		print(attack.attacker)
+		damage = resistances.apply(attack)
 	if health <= 0:
 		push_warning("Should be dead already. Emitting despawn. This shouldn't happen")
 		if state_machine.current_state.name != "death":

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dbcfk118nxkn7"]
+[gd_scene load_steps=14 format=3 uid="uid://dbcfk118nxkn7"]
 
 [ext_resource type="Script" path="res://objects/tree/tree.gd" id="1_ll1q7"]
 [ext_resource type="PackedScene" uid="uid://bgihn1242qk6t" path="res://components/health_component/health_component.tscn" id="2_qyjmv"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://objects/tree/states/stump.gd" id="7_djtbg"]
 [ext_resource type="PackedScene" uid="uid://bhx16w3aumnlj" path="res://items/components/drop/drop.tscn" id="8_stb5q"]
 [ext_resource type="PackedScene" uid="uid://oxwqgqxnquko" path="res://items/slot_items/consumables/chopped_wood/chopped_wood.tscn" id="9_72lio"]
+[ext_resource type="PackedScene" uid="uid://dgex5xrfllv3t" path="res://components/resistances_component/resistances_component.tscn" id="10_mqjul"]
+[ext_resource type="PackedScene" uid="uid://qg7s6h74a0s5" path="res://components/resistances_component/resistance_type/resistance_type.tscn" id="11_tgsmj"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpiw6"]
 radius = 7.0
@@ -60,3 +62,10 @@ script = ExtResource("7_djtbg")
 [node name="ChoppedWood" parent="Drop" instance=ExtResource("9_72lio")]
 
 [node name="ChoppedWood2" parent="Drop" instance=ExtResource("9_72lio")]
+
+[node name="ResistancesComponent" parent="." instance=ExtResource("10_mqjul")]
+
+[node name="ResistanceType" parent="ResistancesComponent" instance=ExtResource("11_tgsmj")]
+resistance = 1
+weapon_resistance = 1
+damage_reduction = 75.0

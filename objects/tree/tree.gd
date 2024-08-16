@@ -8,11 +8,13 @@ class_name Tree_ extends StaticBody2D
 
 signal death
 signal despawn
+signal hit
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	death.connect(on_death)
 	despawn.connect(on_despawn)
+	hit.connect(on_hit)
 
 func on_death():
 	print("tree on death called")
@@ -27,7 +29,9 @@ func on_despawn():
 	get_node("Drop").drop_items()
 	queue_free()
 
-
+func on_hit(attack : Attack):
+	print("Tree hit by ", attack.attacker)
+	
 func save():
 	var save_dict = {
 		"name" : name,
