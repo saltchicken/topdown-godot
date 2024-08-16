@@ -65,7 +65,14 @@ script = ExtResource("7_djtbg")
 
 [node name="DefenseProfileComponent" parent="." instance=ExtResource("10_mqjul")]
 
-[node name="DefenseType" parent="DefenseProfileComponent" instance=ExtResource("11_tgsmj")]
-resistance = 1
-weapon_resistance = 1
-damage_reduction = 75.0
+[node name="SwordResistance" parent="DefenseProfileComponent" instance=ExtResource("11_tgsmj")]
+defense_type = 0
+attack_type = 1
+weapon = 1
+modifier = 75.0
+
+[node name="FireWeakness" parent="DefenseProfileComponent" instance=ExtResource("11_tgsmj")]
+defense_type = 1
+attack_type = 2
+spell = 7
+modifier = 100.0

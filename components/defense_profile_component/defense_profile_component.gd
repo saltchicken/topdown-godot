@@ -1,30 +1,37 @@
 extends Node2D
 
-@onready var resistances = get_children()
+@onready var defenses = get_children()
 
 func apply(attack: Attack):
 	var damage = attack.attack_damage
-	var damage_reduction_total = 0.0
+	var modifier_total = 0.0
 	match attack.attack.attack_type:
 		Constants.AttackType.WEAPON:
-			for resistance in resistances:
-				print(attack.attack.weapon_type)
-				print(resistance.weapon_resistance)
-				if attack.attack.weapon_type == resistance.weapon_resistance:
-					damage_reduction_total += resistance.damage_reduction
-			#match attack.attack.weapon_type:
-				#Constants.WeaponType.SWORD:
-					#print("Sword was used")
+			for defense in defenses:
+				if attack.attack.weapon_type == defense.weapon:	
+					if defense.defense_type == 1:
+						modifier_total -= defense.modifier
+					elif defense.defense_type == 0:
+						modifier_total += defense.modifier
+					else:
+						push_error("Unsupported enum in defense_type")
 		Constants.AttackType.SPELL:
-			print("Spell was used")
+			for defense in defenses:
+				if attack.attack.element == defense.spell:
+					if defense.defense_type == 1:
+						modifier_total -= defense.modifier
+					elif defense.defense_type == 0:
+						modifier_total += defense.modifier
+					else:
+						push_error("Unsupported enum in defense_type")
 		Constants.AttackType.CONTACT:
 			print("Contact made")
 			
-	print(damage_reduction_total)
-	var protection = 1.0 - (damage_reduction_total / 100.0)
-	print("Protection ", protection)
-	if protection <= 0.0: # TODO: Add this check to damage in HealthComponent to make sure that negative damage does not heal
-		protection = 0.0
-	damage *= protection
+	print("Modifier Total: ", modifier_total)
+	var damage_modifier = (100.0 - modifier_total) / 100.0
+	print("Damage Modifier ", damage_modifier)
+	if damage_modifier <= 0.0: # TODO: Add this check to damage in HealthComponent to make sure that negative damage does not heal
+		damage_modifier = 0.0
+	damage *= damage_modifier
 	damage = round(damage)
 	return damage

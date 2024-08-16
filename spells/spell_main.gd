@@ -1,11 +1,10 @@
 extends Area2D
 class_name Spell
 
-enum Element {NEUTRAL, FIRE, WATER, EARTH, WIND, ELECTRIC, DARK, LIGHT}
 enum Type {ATTACK, BUFF, HEAL, AURA}
 @export var attack_type: Constants.AttackType
 
-@export var element: Element
+@export var element: Constants.SpellType
 @export var type: Type
 @export var spell_name: String
 @export var cost: int = 30
