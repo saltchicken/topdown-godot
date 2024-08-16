@@ -1,6 +1,7 @@
 extends Node2D
 
 @export var attack_damage := 20
+@export var attack_type : Constants.AttackType = Constants.AttackType.CONTACT
 
 func _physics_process(_delta: float) -> void:
 	if owner.collision:
@@ -9,6 +10,7 @@ func _physics_process(_delta: float) -> void:
 			var attack = Attack.new()
 			attack.attacker = owner
 			attack.attack_damage = attack_damage
+			attack.attack = self
 			body.get_node('HealthComponent').damage(attack)
 				#self.state_machine.current_state.state_transition.emit(self.state_machine.current_state, 'collision_attack')
 		#elif body.get_script() == Enemy:

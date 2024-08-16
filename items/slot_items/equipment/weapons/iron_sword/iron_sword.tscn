@@ -7,7 +7,7 @@
 [node name="IronSword" instance=ExtResource("1_viqyo")]
 texture = ExtResource("2_dqnjn")
 script = ExtResource("1_fv8gl")
-attack_type = 1
+weapon_type = 0
 attack_damage = 45
 type = 5
 item_name = "Iron Sword"

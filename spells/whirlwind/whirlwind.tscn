@@ -57,6 +57,7 @@ scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 2
 script = ExtResource("2_vliu3")
+attack_type = 1
 element = 4
 spell_name = "Whirlwind"
 description = "A whirlwind attack"
@@ -77,18 +78,6 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="." index="2"]
 tree_root = SubResource("AnimationNodeStateMachine_7w7jd")
 anim_player = NodePath("../AnimationPlayer")
-parameters/current_length = 0.0
-parameters/current_position = 0.0
-parameters/current_delta = 0.0
-parameters/End/current_length = null
-parameters/End/current_position = null
-parameters/End/current_delta = null
-parameters/Start/current_length = 0.0
-parameters/Start/current_position = 0.0
-parameters/Start/current_delta = 0.0
-parameters/casted/current_length = 0.4
-parameters/casted/current_position = 0.305931
-parameters/casted/current_delta = 0.00672522
 
 [node name="CollisionShape2D" parent="." index="3"]
 shape = SubResource("CircleShape2D_xy0t3")

@@ -1,7 +1,6 @@
 class_name Weapon
 extends Equipment
 
-enum attackType {NULL, SWORD, BOW}
-
-@export var attack_type: attackType = attackType.NULL
+@onready var attack_type: Constants.AttackType = Constants.AttackType.WEAPON
+@export var weapon_type: Constants.WeaponType
 @export var attack_damage: int = 0

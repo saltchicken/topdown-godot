@@ -36,7 +36,7 @@ func full_health():
 
 func damage(attack: Attack):
 	var damage = attack.attack_damage
-	print(attack.attacker)
+	print(attack.attack.attack_type)
 	if resistances != null:
 		print(attack.attacker)
 	if health <= 0:

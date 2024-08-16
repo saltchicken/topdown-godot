@@ -3,6 +3,7 @@ class_name Spell
 
 enum Element {NEUTRAL, FIRE, WATER, EARTH, WIND, ELECTRIC, DARK, LIGHT}
 enum Type {ATTACK, BUFF, HEAL, AURA}
+@export var attack_type: Constants.AttackType
 
 @export var element: Element
 @export var type: Type
@@ -49,6 +50,7 @@ func _on_hitbox_area_entered(area):
 		var attack = Attack.new()
 		attack.attacker = caster
 		attack.attack_damage = attack_damage
+		attack.attack = self
 		
 		hitbox.damage(attack)
 

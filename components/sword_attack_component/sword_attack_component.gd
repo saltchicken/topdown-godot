@@ -10,5 +10,6 @@ func _on_hitbox_area_entered(area):
 		var attack = Attack.new()
 		attack.attacker = owner
 		attack.attack_damage = owner.current_weapon.attack_damage
+		attack.attack = owner.current_weapon
 		
 		hitbox.damage(attack)

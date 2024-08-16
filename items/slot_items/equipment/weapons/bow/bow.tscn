@@ -7,7 +7,7 @@
 [node name="Bow" instance=ExtResource("1_dcqgq")]
 texture = ExtResource("2_1ksu8")
 script = ExtResource("1_78wy5")
-attack_type = 2
+weapon_type = 1
 attack_damage = 20
 type = 5
 item_name = "Bow"
