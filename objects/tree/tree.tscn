@@ -55,14 +55,20 @@ shape = SubResource("CapsuleShape2D_6jud6")
 [node name="grown" type="Node2D" parent="StateMachine"]
 script = ExtResource("6_erjhx")
 
+[node name="Drop" parent="StateMachine/grown" instance=ExtResource("8_stb5q")]
+
+[node name="ChoppedWood" parent="StateMachine/grown/Drop" instance=ExtResource("9_72lio")]
+
+[node name="ChoppedWood2" parent="StateMachine/grown/Drop" instance=ExtResource("9_72lio")]
+
 [node name="stump" type="Node2D" parent="StateMachine"]
 script = ExtResource("7_djtbg")
 
-[node name="Drop" parent="." instance=ExtResource("8_stb5q")]
+[node name="Drop" parent="StateMachine/stump" instance=ExtResource("8_stb5q")]
 
-[node name="ChoppedWood" parent="Drop" instance=ExtResource("9_72lio")]
+[node name="ChoppedWood" parent="StateMachine/stump/Drop" instance=ExtResource("9_72lio")]
 
-[node name="ChoppedWood2" parent="Drop" instance=ExtResource("9_72lio")]
+[node name="ChoppedWood2" parent="StateMachine/stump/Drop" instance=ExtResource("9_72lio")]
 
 [node name="DefenseProfileComponent" parent="." instance=ExtResource("10_mqjul")]
 

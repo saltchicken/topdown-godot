@@ -22,6 +22,9 @@ func on_death():
 	print("tree on death called")
 	if phases:
 		var index = phases.phases.find(state_machine.current_state)
+		var drop_component = state_machine.current_state.get_node_or_null("Drop")
+		if drop_component:
+			drop_component.drop_items()
 		if index < phases.phases.size() - 1:
 			state_machine.current_state.state_transition.emit(state_machine.current_state, phases.phases[index+1].name)
 		else:
@@ -38,7 +41,7 @@ func on_death():
 	
 func on_despawn():
 	print("despawning tree")
-	get_node("Drop").drop_items()
+	#get_node("Drop").drop_items()
 	queue_free()
 
 func on_hit(attack : Attack):
