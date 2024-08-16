@@ -23,7 +23,7 @@ func apply(attack: Attack):
 	print(damage_reduction_total)
 	var protection = 1.0 - (damage_reduction_total / 100.0)
 	print("Protection ", protection)
-	if protection <= 0.0:
+	if protection <= 0.0: # TODO: Add this check to damage in HealthComponent to make sure that negative damage does not heal
 		protection = 0.0
 	damage *= protection
 	damage = round(damage)
