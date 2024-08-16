@@ -26,7 +26,7 @@ func _drop(item):
 		item.position += Vector2(-16.0, -16.0)
 	#_enable_item(item) 
 	item.visible = true
-	get_tree().current_scene.get_node("LevelHolder").get_children()[0].add_child(dropper) # TODO: Replace this with a call to Global
+	call_deferred("attack_dropper_to_current_scene", dropper)
 	if owner is StaticBody2D:
 		dropper.velocity = Vector2(0.0, 100.0).rotated(randf_range(-1.5, 1.5))  * randf_range(0.9, 1.5)
 	elif owner is CharacterBody2D:
@@ -35,7 +35,9 @@ func _drop(item):
 		push_error("This owner type hasn't been accounted for ", owner, " defaulted to StaticBody2D response")
 		dropper.velocity = Vector2(0.0, 100.0).rotated(randf_range(-1.5, 1.5))  * randf_range(0.9, 1.5)
 	
-	
+
+func attack_dropper_to_current_scene(dropper):
+	get_tree().current_scene.get_node("LevelHolder").get_children()[0].add_child(dropper) # TODO: Replace this with a call to Global
 	
 func _disable_item(item):
 	item.process_mode = Node.PROCESS_MODE_DISABLED

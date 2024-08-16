@@ -3979,9 +3979,6 @@ mana_component = NodePath("../../ManaComponent")
 [node name="Sprites" type="Node2D" parent="Animation"]
 
 [node name="SwordSwing" type="Sprite2D" parent="Animation/Sprites"]
-visible = false
-rotation = 3.14159
-scale = Vector2(-1, 1)
 texture = ExtResource("2_66tmu")
 hframes = 2
 
@@ -3991,7 +3988,7 @@ scale = Vector2(1.03125, 1)
 texture = ExtResource("2_287s8")
 hframes = 8
 vframes = 8
-frame = 38
+frame = 32
 
 [node name="AnimationTree" type="AnimationTree" parent="Animation"]
 root_node = NodePath("../Sprites/CharacterBase")
@@ -4083,10 +4080,9 @@ collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SwordAttackComponent"]
-position = Vector2(0, -16)
-rotation = 1.5708
+position = Vector2(0, 16)
+rotation = 4.71239
 shape = SubResource("CapsuleShape2D_eh0iv")
-disabled = true
 
 [node name="InteractComponent" parent="." node_paths=PackedStringArray("input") instance=ExtResource("20_d53nx")]
 collision_mask = 12
