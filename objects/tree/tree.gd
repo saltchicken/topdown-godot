@@ -6,6 +6,8 @@ class_name Tree_ extends StaticBody2D
 
 @export var experience = 0
 
+@onready var phases = get_node_or_null("PhaseComponent")
+
 signal death
 signal despawn
 signal hit
@@ -18,10 +20,20 @@ func _ready() -> void:
 
 func on_death():
 	print("tree on death called")
-	if state_machine.current_state.name != 'stump':
-				state_machine.current_state.state_transition.emit(state_machine.current_state, 'stump')
+	if phases:
+		var index = phases.phases.find(state_machine.current_state)
+		if index < phases.phases.size() - 1:
+			state_machine.current_state.state_transition.emit(state_machine.current_state, phases.phases[index+1].name)
+		else:
+			despawn.emit()
+	
+	# TODO: The following block should never be called. Here to possibly put in a parent class. Maybe make phases a requirement.
 	else:
-		despawn.emit()
+		print_debug("Bypassing phases in tree")
+		if state_machine.current_state.name != 'stump':
+					state_machine.current_state.state_transition.emit(state_machine.current_state, 'stump')
+		else:
+			despawn.emit()
 	
 	
 func on_despawn():

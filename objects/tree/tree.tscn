@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dbcfk118nxkn7"]
+[gd_scene load_steps=15 format=3 uid="uid://dbcfk118nxkn7"]
 
 [ext_resource type="Script" path="res://objects/tree/tree.gd" id="1_ll1q7"]
 [ext_resource type="PackedScene" uid="uid://bgihn1242qk6t" path="res://components/health_component/health_component.tscn" id="2_qyjmv"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://oxwqgqxnquko" path="res://items/slot_items/consumables/chopped_wood/chopped_wood.tscn" id="9_72lio"]
 [ext_resource type="PackedScene" uid="uid://dgex5xrfllv3t" path="res://components/defense_profile_component/defense_profile_component.tscn" id="10_mqjul"]
 [ext_resource type="PackedScene" uid="uid://qg7s6h74a0s5" path="res://components/defense_profile_component/defense_type/defense_type.tscn" id="11_tgsmj"]
+[ext_resource type="PackedScene" uid="uid://bb30s6aelhj56" path="res://components/phase_component/phase_component.tscn" id="12_xmdqv"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dpiw6"]
 radius = 7.0
@@ -76,3 +77,6 @@ defense_type = 1
 attack_type = 2
 spell = 7
 modifier = 100.0
+
+[node name="PhaseComponent" parent="." node_paths=PackedStringArray("phases") instance=ExtResource("12_xmdqv")]
+phases = [NodePath("../StateMachine/grown"), NodePath("../StateMachine/stump")]
