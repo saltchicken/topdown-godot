@@ -34,12 +34,13 @@ func on_hit(attack : Attack):
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'hit', attack)
 	
 func on_death():
+	get_node("Drop").drop_items()
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'death')
 	
 func on_deflect(direction):
 	state_machine.current_state.state_transition.emit(state_machine.current_state, 'deflect', direction)
 	
 func on_despawn():
-	get_node("Drop").drop_items()
+	#get_node("Drop").drop_items()
 	queue_free()
 	

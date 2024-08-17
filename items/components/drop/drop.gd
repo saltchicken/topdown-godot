@@ -42,7 +42,7 @@ func _drop(item):
 	if owner is StaticBody2D:
 		dropper.velocity = Vector2(0.0, 100.0).rotated(randf_range(-1.5, 1.5))  * randf_range(0.9, 1.5)
 	elif owner is CharacterBody2D:
-		dropper.velocity = owner.velocity.rotated(randf_range(-1.5, 1.5)) * randf_range(0.9, 1.5)
+		dropper.velocity = owner.velocity.rotated(randf_range(-1.0, 1.0)) * randf_range(0.9, 1.5) * 2
 	else:
 		push_error("This owner type hasn't been accounted for ", owner, " defaulted to StaticBody2D response")
 		dropper.velocity = Vector2(0.0, 100.0).rotated(randf_range(-1.5, 1.5))  * randf_range(0.9, 1.5)
