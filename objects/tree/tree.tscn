@@ -56,6 +56,7 @@ shape = SubResource("CapsuleShape2D_6jud6")
 script = ExtResource("6_erjhx")
 
 [node name="Drop" parent="StateMachine/grown" instance=ExtResource("8_stb5q")]
+probability_array = Array[int]([30, 100])
 
 [node name="ChoppedWood" parent="StateMachine/grown/Drop" instance=ExtResource("9_72lio")]
 
@@ -65,6 +66,7 @@ script = ExtResource("6_erjhx")
 script = ExtResource("7_djtbg")
 
 [node name="Drop" parent="StateMachine/stump" instance=ExtResource("8_stb5q")]
+probability_array = Array[int]([100, 100])
 
 [node name="ChoppedWood" parent="StateMachine/stump/Drop" instance=ExtResource("9_72lio")]
 
