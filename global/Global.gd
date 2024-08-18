@@ -19,6 +19,11 @@ func stop_song():
 		audio[current_song - 1].stop()
 	else:
 		push_warning("Song is not playing")
+		
+func hit_stop(duration):
+	Engine.time_scale = 0
+	await get_tree().create_timer(duration, true, false, true).timeout
+	Engine.time_scale = 1
 
 #var dialogue_node = preload("res://text/dialogue_panel/dialogue_panel.tscn")
 #func dialogue(parent_node, text_array: Array):

@@ -49,6 +49,7 @@ func damage(attack: Attack):
 		if state_machine.current_state.name not in ["hit", "death"] and i_frames <= 0.0:
 			health -= damage
 			hit_indicator(owner, str(damage))
+			Global.hit_stop(0.15)
 			if health <= 0:
 				owner.death.emit()
 				if attack.attacker is Player:
